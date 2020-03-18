@@ -1,6 +1,5 @@
 "use strict";
 (function(){window.addEventListener("load", main);}());
-//GLOBAL VARIABLE HERE
 
 //FUNCTIONS
 function main()
@@ -11,5 +10,8 @@ function main()
     var map = new Image();
     map.src = "../textures/map/praca.png";
 
+    var player = new Player("Dylan","../textures/player/male/player_male","up",2);
+
     ctx.drawImage(map,-1200,-150);
+    player.orientUp(ctx);
 }
