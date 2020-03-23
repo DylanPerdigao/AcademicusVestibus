@@ -4,3 +4,5 @@ Icon
 Icon?
 Jogo/debug.log
 Jogo/resources/html/debug.log
+*.bak_001f
+*.bak_000d
