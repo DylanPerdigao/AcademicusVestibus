@@ -1,4 +1,4 @@
-class Bus extends InteractiveStructure {
+class InteractiveStructure extends Structure {
     constructor(ctx,src, posX, posY, width, height,speed) {
         super(ctx,src, posX, posY, width, height,speed);
     }
@@ -6,5 +6,6 @@ class Bus extends InteractiveStructure {
     interaction() {
         //TODO
     }
+
 }
 

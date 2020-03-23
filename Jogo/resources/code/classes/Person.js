@@ -1,10 +1,10 @@
-class Person extends InteractiveElement {
-    constructor(src, posX, posY, width, height) {
-        super(src, posX, posY, width, height);
+class Person extends InteractiveStructure {
+    constructor(ctx,src, posX, posY, width, height,speed) {
+        super(ctx,src, posX, posY, width, height,speed);
     }
 
     interaction() {
-
+        //TODO
     }
 }
 

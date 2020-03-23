@@ -1,8 +1,26 @@
 class Element extends Component {
-    constructor(src, posX, posY, width, height) {
-        super(src, posX, posY);
-        this.width = width;
-        this.height = height;
+    constructor(ctx,src, posX, posY,speed) {
+        super(ctx,src, posX, posY);
+        this.speed = speed;
     }
+
+    slide(direction){
+		switch(direction){
+			case "up":
+				this.posY+=speed;
+				break;
+			case "left":
+				this.posX+=speed;
+				break;
+			case "down":
+				this.posY-=speed;
+				break;
+			case "right":
+				this.posX-=speed;
+				break;
+		}
+		this.draw(this.posX,this.posY)
+    }
+
 }
 
