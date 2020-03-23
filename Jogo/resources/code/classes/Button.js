@@ -1,6 +1,6 @@
 class Button {
-    constructor(name) {
-        this.name = name;
+    constructor(text) {
+        this.text = text;
     }
 
     buttonHandler() {
