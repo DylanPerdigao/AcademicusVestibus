@@ -26,18 +26,21 @@ class Player{
 			elementArray[i].posY--;
 		}
 	}
-	walk(orientation){
+	draw(orientation){
 		var sprite = new Image();
 		var canvas = document.getElementById("canvas");
 		var ctxPosX = (canvas.width/2)-(sprite.width/2);
 		var ctxPosY = (canvas.height/2)-(sprite.height/2);
+		sprite.src = this.src+"_"+orientation+this.step+".png";
+		this.ctx.drawImage(sprite,ctxPosX,ctxPosY);
+	}
+	walk(orientation){
 		if (this.step>=3){
 			this.step=0;
 		}else{
 			this.step++;
 		}
-		sprite.src = this.src+"_"+orientation+this.step+".png";
-		this.ctx.drawImage(sprite,ctxPosX,ctxPosY);
+		this.draw(orientation);
 	}
 }
 
