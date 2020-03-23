@@ -20,7 +20,5 @@ class Map extends Component{
 		}
 		this.draw(this.posX,this.posY)
 	}
-
-
 }
 
