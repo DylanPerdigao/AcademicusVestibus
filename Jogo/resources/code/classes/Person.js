@@ -1,11 +1,10 @@
-class InteractiveElement extends Element{
-	constructor(src, posx, posy, width, height){
-		super(src,posx,posy, width, height);
-	} 
+class Person extends InteractiveElement {
+    constructor(src, posX, posY, width, height) {
+        super(src, posX, posY, width, height);
+    }
 
-	interaction(){
+    interaction() {
 
-	}
-	
+    }
 }
 

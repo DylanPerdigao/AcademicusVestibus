@@ -1,19 +1,26 @@
-class MainMenu extends Menu{
-	constructor(text){
-		this.text=text;
-	} 
+class OptionsMenu extends Menu {
+    constructor(text) {
+        super(text);
+    }
 
-	newGame(){
+    volumeDown() {
 
-	}
+    }
 
-	options(){
+    volumeUp() {
 
-	}
+    }
 
-	exitGame(){
-		
-	}
-	
+    turnOffSound() {
+
+    }
+
+    turnOnSound() {
+
+    }
+
+    btnBack() {
+
+    }
 }
 

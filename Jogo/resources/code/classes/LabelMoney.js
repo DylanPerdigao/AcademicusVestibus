@@ -1,13 +1,11 @@
-class Map extends Component{
-	constructor(src, posx, posy){
-		this.src=src;
-		this.posx=posx;
-		this.posy=posy;
-	} 
+class LabelMoney extends Component {
+    constructor(src, posX, posY, value) {
+        super(src, posX, posY);
+        this.value = value;
+    }
 
-	slideMap(posx, posy){
+    updateMoney(value) {
 
-	}
-	
+    }
 }
 
