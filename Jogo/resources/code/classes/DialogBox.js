@@ -1,7 +1,7 @@
 class DialogBox extends Component {
-    constructor(src, posX, posY, value) {
+    constructor(src, posX, posY, text) {
         super(src, posX, posY);
-        this.value = value;
+        this.text = text;
     }
 
     write(text) {
