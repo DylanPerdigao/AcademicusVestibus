@@ -1,7 +1,10 @@
-class Menu{
-	constructor(text){
-		this.text=text;
-	} 
-	
+class Button {
+    constructor(text) {
+        this.text = text;
+    }
+
+    buttonHandler() {
+
+    }
 }
 

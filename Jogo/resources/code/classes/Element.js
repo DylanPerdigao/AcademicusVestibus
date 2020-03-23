@@ -1,13 +1,8 @@
-class Map extends Component{
-	constructor(src, posx, posy){
-		this.src=src;
-		this.posx=posx;
-		this.posy=posy;
-	} 
-
-	slideMap(posx, posy){
-
-	}
-	
+class Element extends Component {
+    constructor(src, posX, posY, width, height) {
+        super(src, posX, posY);
+        this.width = width;
+        this.height = height;
+    }
 }
 

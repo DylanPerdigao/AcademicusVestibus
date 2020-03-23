@@ -1,19 +1,19 @@
-class Game{
-	constructor(windowWidth, windowHeight){
-		this.windowWidth=windowWidth;
-		this.windowHeight=windowHeight;
-	} 
+class Game {
+    constructor(windowWidth, windowHeight) {
+        this.windowWidth = windowWidth;
+        this.windowHeight = windowHeight;
+    }
 
-	keyHandler(){
-		
-	}
-	
-	clickHandler(){
-		
-	}
+    keyHandler() {
 
-	checkColisions(){
-		
-	}
+    }
+
+    clickHandler() {
+
+    }
+
+    checkColisions() {
+
+    }
 }
 

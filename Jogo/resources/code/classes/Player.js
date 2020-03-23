@@ -1,6 +1,4 @@
 class Player{
-
-
 	constructor(ctx,name,src,step){
 		this.ctx=ctx;
 		this.name=name;

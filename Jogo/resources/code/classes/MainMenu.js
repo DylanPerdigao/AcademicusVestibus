@@ -1,6 +1,6 @@
 class MainMenu extends Menu{
 	constructor(text){
-		this.text=text;
+		super(text);
 	} 
 
 	newGame(){
@@ -14,6 +14,5 @@ class MainMenu extends Menu{
 	exitGame(){
 		
 	}
-	
 }
 
