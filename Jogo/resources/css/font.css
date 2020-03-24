@@ -1,0 +1,18 @@
+@font-face {
+    font-family: EvilEmpire;
+    src: url(../font/evil_empire.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: Moonhouse;
+    src: url(../font/moonhouse.ttf) format("truetype");
+}
+@font-face {
+    font-family: PoeRedcoat;
+    src: url(../font/poe_redcoat_new_normal.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: PoeSans;
+    src: url(../font/poe_sans_new_normal.ttf) format("truetype");
+}
