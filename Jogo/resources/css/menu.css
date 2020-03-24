@@ -1,0 +1,17 @@
+body{
+    background: url("../textures/background/cabra.HEIC");
+}
+header{
+    margin: auto;
+	width: 50%;
+}
+
+h1{
+    font-family: EvilEmpire;
+}
+   
+button{
+    background: url("../textures/gui/buttonLong_brown.png");
+    width: auto;
+    height: auto;
+}
