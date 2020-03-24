@@ -1,17 +1,38 @@
 body{
-    background: url("../textures/background/cabra.HEIC");
+    background-image: url("../textures/background/uc.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 header{
-    margin: auto;
-	width: 50%;
+    text-align: center;
 }
 
 h1{
     font-family: EvilEmpire;
+    font-size: 500%;
 }
-   
+
+ul{
+    list-style-type: none;
+    white-space: 20px;
+}
 button{
-    background: url("../textures/gui/buttonLong_brown.png");
-    width: auto;
-    height: auto;
+    background-image: url("../textures/gui/buttonLong_brown.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    font-size: 200%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(177, 138, 87);
+    margin-top: 1%;
+    width: 400px;
+    height: 100px;
+}
+
+button:hover{
+    background-image: url("../textures/gui/buttonLong_brown_pressed.png"); 
+    background-size: contain;
+    color:burlywood;
 }
