@@ -1,7 +1,6 @@
 class Menu {
-    constructor(text) {
-        this.text = text;
+    constructor(title) {
+        this.title = title;
     }
-
 }
 

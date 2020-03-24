@@ -1,26 +1,22 @@
-class OptionsMenu extends Menu {
-    constructor(text) {
-        super(text);
+class OptionsMenu extends InfoMenu {
+    constructor(title,texts,images) {
+        super(title,texts,images);
     }
 
     volumeDown() {
-
+        //TODO
     }
 
     volumeUp() {
-
+        //TODO
     }
 
     turnOffSound() {
-
+        //TODO
     }
 
     turnOnSound() {
-
-    }
-
-    btnBack() {
-
+        //TODO
     }
 }
 

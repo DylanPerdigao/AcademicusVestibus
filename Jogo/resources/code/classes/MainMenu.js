@@ -1,18 +1,22 @@
 class MainMenu extends Menu{
-	constructor(text){
-		super(text);
+	constructor(title){
+		super(title);
 	} 
 
 	newGame(){
-
+		//TODO
 	}
-
 	options(){
-
+		//TODO
 	}
-
+	help(){
+		//TODO
+	}
+	credits(){
+		//TODO
+	}
 	exitGame(){
-		
+		//TODO
 	}
 }
 
