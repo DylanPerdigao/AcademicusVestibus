@@ -1,5 +1,5 @@
 class Player{
-	constructor(src,name,x,y,step){
+	constructor(src,name,x,y,step,hitboxHeight){
 		this.src=src;
 		this.name=name;
 		this.step=step;
@@ -14,6 +14,8 @@ class Player{
 		//ajuste da posiçao final
 		this.posX = x-(this.sprite.width/2);
 		this.posY = y-(this.sprite.height/2);
+		//hitbox
+		this.hitboxHeight=hitboxHeight;
 	} 
 
 	draw(ctx,orientation){
@@ -27,6 +29,23 @@ class Player{
 			this.step++;
 		}
 		this.draw(ctx,orientation);
+	}
+
+	drawHitbox(ctx){
+        var dim = this.getDimensions();
+        var x = dim[0];
+        var y = dim[1];
+        var w = dim[2];
+        var h = dim[3];
+        ctx.beginPath();
+        ctx.lineWidth = "1";
+        ctx.strokeStyle = "red";
+        ctx.rect(x,y,w,h); 
+        ctx.stroke();
+	}
+	
+	getDimensions(){
+		return ([this.posX,this.posY+this.sprite.height-this.hitboxHeight,this.sprite.width,this.hitboxHeight]);
 	}
 }
 
