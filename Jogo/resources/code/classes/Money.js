@@ -1,6 +1,6 @@
 class Money extends Component {
-    constructor(ctx,src, posX, posY, value) {
-        super(ctx,src, posX, posY);
+    constructor(src, posX, posY, value) {
+        super(src, posX, posY);
         this.value = value;
     }
 

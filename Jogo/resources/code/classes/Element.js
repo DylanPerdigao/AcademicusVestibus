@@ -1,10 +1,10 @@
 class Element extends Component {
-    constructor(ctx,src, posX, posY,speed) {
-        super(ctx,src, posX, posY);
+    constructor(src, posX, posY,speed) {
+        super(src, posX, posY);
         this.speed = speed;
     }
 
-    slide(direction){
+    slide(ctx,direction){
 		switch(direction){
 			case "up":
 				this.posY+=speed;
@@ -19,7 +19,7 @@ class Element extends Component {
 				this.posX-=speed;
 				break;
 		}
-		this.draw(this.posX,this.posY)
+		this.draw(ctx,this.posX,this.posY)
     }
 
 }
