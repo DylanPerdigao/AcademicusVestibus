@@ -128,42 +128,90 @@ function keyHandler(event,canvas,ctx,player,map,structs){
     }
     player.drawHitbox(ctx)
 }
-
-function updatePosition(ctx,player,map,structs,direction){
-    map.slide(ctx,direction);
-    player.walk(ctx,direction);
-    for(let i=0;i<structs.length;i++){
-        if(structs[i].isBehind(player)){
-            structs[i].slide(ctx,direction);
-            player.draw(ctx,direction);
-        }else{
-            player.draw(ctx,direction);
-            structs[i].slide(ctx,direction);
+/**
+ * Invert the direction specified
+ * @param {string} direction 
+ * @returns {string} oposite direction of the specified string
+ */
+function invertDirection(direction){
+    var returnDirection;
+        switch(direction){
+            case "up":
+                returnDirection="down";
+                break;
+            case "left":
+                returnDirection="right";
+                break;
+            case "down":
+                returnDirection="up";
+                break;
+            case "right":
+                returnDirection="left";
+                break;
+        }
+    return returnDirection;
+}
+/**
+ * Make a simulation of advance one step in the specified direction
+ * @param {*} player users player
+ * @param {Array<*>} structs structures in the map
+ * @param {string} direction direction of the player step
+ * @returns {boolean} if the player has a collision with one of the structures
+ */
+function collisionSimulation(player,structs,direction){
+    var hasCollision;
+    var structIndex;
+    var returnDirection;
+    //simula a avancar na direcao desejada
+    for(structIndex=0;structIndex<structs.length;structIndex++){
+        structs[structIndex].move(direction);
+        hasCollision=structs[structIndex].checkIntersection(player);
+        if(hasCollision){
+            structIndex++;//com o break o ciclo nao tem tempo de incrementar
+            break;
         }
     }
-    for(let i=0;i<structs.length;i++){
-        var returnDirection;
-        var hasCollision = structs[i].checkIntersection(player);
-        if(hasCollision){
-            switch(direction){
-                case "up":
-                    returnDirection="down";
-                    break;
-                case "left":
-                    returnDirection="right";
-                    break;
-                case "down":
-                    returnDirection="up";
-                    break;
-                case "right":
-                    returnDirection="left";
-                    break;
+    //recua os elementos que avancaram
+    for(let i=0;i<structIndex;i++){
+        returnDirection = invertDirection(direction);
+        structs[i].move(returnDirection);
+    }
+    return hasCollision;
+}
+/**
+ * Updates the position of the elements verifying collisions with player, and if a structure is drawed before/after the player
+ * @param {*} ctx canvas context
+ * @param {*} player users player
+ * @param {*} map map displayed
+ * @param {Array<Structure>} structs structures in the map
+ * @param {string} direction direction of the player step
+ */
+function updatePosition(ctx,player,map,structs,direction){
+    if(collisionSimulation(player,structs,direction)==false){
+        map.slide(ctx,direction);
+        for(let i=0;i<structs.length;i++){
+            if(structs[i].isBehind(player)){
+                structs[i].slide(ctx,direction);
             }
-            map.slide(ctx,returnDirection);
-            for(let j=0;j<structs.length;j++){
-                structs[j].slide(ctx,returnDirection);
+        }
+        player.walk(ctx,direction);
+        for(let i=0;i<structs.length;i++){
+            if(!structs[i].isBehind(player)){
+                structs[i].slide(ctx,direction);
             }
-            player.draw(ctx,direction);
+        }
+    }else{
+        map.draw(ctx,map.posX,map.posY);
+        for(let i=0;i<structs.length;i++){
+            if(structs[i].isBehind(player)){
+                structs[i].draw(ctx,structs[i].posX,structs[i].posY);
+            }
+        }
+        player.walk(ctx,direction);
+        for(let i=0;i<structs.length;i++){
+            if(!structs[i].isBehind(player)){
+                structs[i].draw(ctx,structs[i].posX,structs[i].posY);
+            }
         }
     }
 }

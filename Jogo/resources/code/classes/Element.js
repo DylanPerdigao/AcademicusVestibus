@@ -4,7 +4,7 @@ class Element extends Component {
         this.speed = speed;
     }
 
-    slide(ctx,direction){
+	move(direction){
 		switch(direction){
 			case "up":
 				this.posY+=speed;
@@ -19,6 +19,10 @@ class Element extends Component {
 				this.posX-=speed;
 				break;
 		}
+	}
+
+    slide(ctx,direction){
+		this.move(direction);
 		this.draw(ctx,this.posX,this.posY)
     }
 
