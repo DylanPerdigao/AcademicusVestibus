@@ -1,15 +1,15 @@
 class Component {
-    constructor(ctx,src, posX, posY) {
-        this.ctx = ctx;
+    constructor(src, posX, posY) {
         this.src = src;
         this.posX = posX;
         this.posY = posY;
+        this.img = new Image()
+        this.img.src = this.src;
+        
     }
 
-    draw(x,y){
-		var image = new Image();
-		image.src = this.src;
-		this.ctx.drawImage(image,x,y)
+    draw(ctx,x,y){
+      ctx.drawImage(this.img,x,y)
     }
     
 }

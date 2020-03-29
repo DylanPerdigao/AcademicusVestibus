@@ -1,14 +1,14 @@
 class Dialog extends Component {
-    constructor(ctx,src, posX, posY, text) {
-        super(ctx,src, posX, posY);
+    constructor(src, posX, posY, text) {
+        super(src, posX, posY);
         this.text = text;
     }
 
-    write(text) {
+    write(ctx,text) {
         //TODO
     }
 
-    clear() {
+    clear(ctx) {
        // TODO
     }
 }
