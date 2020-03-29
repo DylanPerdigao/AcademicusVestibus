@@ -35,7 +35,7 @@ class GameEngine {
     animLoop(time) {
         let me = this;
         var al = function (time) {
-            me.animLoop(time);
+            me.animLoop(time); //time --->timestamp atual; startTime --->timestamp quando a animaçao começou
         };
         var reqID = window.requestAnimationFrame(al);
         this.render(reqID, time);
