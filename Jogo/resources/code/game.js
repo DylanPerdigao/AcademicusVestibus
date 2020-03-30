@@ -4,6 +4,7 @@ const speed = 5;
 const path = "resources/textures/";
 const hitboxTree = 6;
 const hitboxTrash = 6;
+const hitboxBusStop = 10;
 const hitboxBenchDown = 8;
 const hitboxBenchLeft = 35;
 var x=0,y=0;
@@ -64,7 +65,7 @@ function main()
         new Structure(path+'structures/trash.png',map.posX-(-265),map.posY-(-500),speed,hitboxTrash),
         new Structure(path+'structures/trash.png',map.posX-(-15),map.posY-(-500),speed,hitboxTrash),
         //PARAGEM DE AUTOCARRO
-        new Structure(path+'structures/busStop.png',map.posX-(-550),map.posY-(-160),speed,10)
+        new Structure(path+'structures/busStop.png',map.posX-(-550),map.posY-(-160),speed,hitboxBusStop)
     );
     //LISTENERS
     var kHandler = function(event){
