@@ -22,6 +22,7 @@ class Player{
 		this.sprite.src = this.src+"_"+orientation+this.step+".png";
 		ctx.drawImage(this.sprite,this.posX,this.posY);
 	}
+
 	walk(ctx,orientation){
 		if (this.step>=3){
 			this.step=0;

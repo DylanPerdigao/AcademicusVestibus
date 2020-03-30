@@ -53,7 +53,7 @@ class Structure extends Element {
         var dimPlayer = player.getDimensions();
         var y = dim[1];
         var yPlayer = dimPlayer[1];
-        if(y<yPlayer){
+        if(y<=yPlayer){
             return true;
         }else{
             return false;

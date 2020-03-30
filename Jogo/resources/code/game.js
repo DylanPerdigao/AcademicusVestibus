@@ -127,7 +127,7 @@ function keyHandler(event,canvas,ctx,player,map,structs){
     for(let i=0;i<structs.length;i++){
         structs[i].drawHitbox(ctx);
     }
-    player.drawHitbox(ctx)
+    //player.drawHitbox(ctx)
 }
 /**
  * Invert the direction specified
@@ -189,16 +189,19 @@ function collisionSimulation(player,structs,direction){
  */
 function updatePosition(ctx,player,map,structs,direction){
     if(collisionSimulation(player,structs,direction)==false){
+        for(let i=0;i<structs.length;i++){
+            structs[i].move(direction);
+        }
         map.slide(ctx,direction);
         for(let i=0;i<structs.length;i++){
             if(structs[i].isBehind(player)){
-                structs[i].slide(ctx,direction);
+                structs[i].draw(ctx,structs[i].posX,structs[i].posY);
             }
         }
         player.walk(ctx,direction);
         for(let i=0;i<structs.length;i++){
             if(!structs[i].isBehind(player)){
-                structs[i].slide(ctx,direction);
+                structs[i].draw(ctx,structs[i].posX,structs[i].posY);
             }
         }
     }else{
