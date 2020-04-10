@@ -1,7 +1,7 @@
 "use strict";
 (function(){window.addEventListener("load", main);}());
 const speed = 15;
-const path = "resources/textures/";
+const path = "../textures/";
 const hitboxTree = 6;
 const hitboxTrash = 6;
 const hitboxBusStop = 10;
