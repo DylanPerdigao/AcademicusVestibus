@@ -1,7 +1,8 @@
 class Structure extends Element {
-    constructor(src, posX, posY,speed,hitboxHeight) {
-        super(src, posX, posY,speed);   
-        this.hitboxHeight=hitboxHeight;
+    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight) {
+		super(src, posX, posY,speed);   
+		this.hitboxWidth=hitboxWidth;
+		this.hitboxHeight=hitboxHeight;
     }
     /**
      * Draw a red rectangle where is the Structure's hitbox
@@ -64,7 +65,11 @@ class Structure extends Element {
      * @returns {Array<number>} array with the coordinates of the left corner, width and height of the hitbox
      */
     getDimensions(){
-		return ([this.posX,this.posY+this.img.height-this.hitboxHeight,this.img.width,this.hitboxHeight]);
+		if (this.src != null){
+			return ([this.posX,this.posY+this.img.height-this.hitboxHeight,this.img.width,this.hitboxHeight]);
+		}else{
+			return ([this.posX,this.posY,this.hitboxWidth,this.hitboxHeight]);
+		}
 	}
 
 }

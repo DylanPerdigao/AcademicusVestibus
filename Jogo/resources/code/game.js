@@ -1,6 +1,6 @@
 "use strict";
 (function(){window.addEventListener("load", main);}());
-const speed = 5;
+const speed = 15;
 const path = "resources/textures/";
 const hitboxTree = 6;
 const hitboxTrash = 6;
@@ -22,50 +22,57 @@ function main()
     var map = new Element(path+"map/praca.png",player.posX,player.posY,speed);
     var structures = new Array(
         //LIXO FORA DA PRACA
-        new Structure(path+'structures/trash.png',map.posX-(0),map.posY-(-155),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-145),map.posY-(-155),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-335),map.posY-(-155),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-440),map.posY-(-155),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-710),map.posY-(-155),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-800),map.posY-(-155),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-900),map.posY-(-155),speed,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(0),map.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-145),map.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-335),map.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-440),map.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-710),map.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-800),map.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-900),map.posY-(-155),speed,null,hitboxTrash),
         //ARVORES
-        new Structure(path+'structures/tree.png',map.posX-(0),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-125),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-250),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-375),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-500),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-625),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-750),map.posY-(-255),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-750),map.posY-(-375),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-750),map.posY-(-485),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-625),map.posY-(-485),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-500),map.posY-(-485),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-375),map.posY-(-485),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-250),map.posY-(-485),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(-125),map.posY-(-485),speed,hitboxTree),
-        new Structure(path+'structures/tree.png',map.posX-(0),map.posY-(-485),speed,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(0),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-125),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-250),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-375),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-500),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-625),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-750),map.posY-(-255),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-750),map.posY-(-375),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-750),map.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-625),map.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-500),map.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-375),map.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-250),map.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(-125),map.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png',map.posX-(0),map.posY-(-485),speed,null,hitboxTree),
         //BANCOS
-        new Structure(path+'structures/bench_down.png',map.posX-(-45),map.posY-(-265),speed,hitboxBenchDown), 
-        new Structure(path+'structures/bench_down.png',map.posX-(-175),map.posY-(-265),speed,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',map.posX-(-305),map.posY-(-265),speed,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',map.posX-(-420),map.posY-(-265),speed,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',map.posX-(-555),map.posY-(-265),speed,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',map.posX-(-685),map.posY-(-265),speed,hitboxBenchDown),
-        new Structure(path+'structures/bench_left.png',map.posX-(-750),map.posY-(-300),speed,hitboxBenchLeft),
-        new Structure(path+'structures/bench_left.png',map.posX-(-750),map.posY-(-420),speed,hitboxBenchLeft),
+        new Structure(path+'structures/bench_down.png',map.posX-(-45),map.posY-(-265),speed,null,hitboxBenchDown), 
+        new Structure(path+'structures/bench_down.png',map.posX-(-175),map.posY-(-265),speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png',map.posX-(-305),map.posY-(-265),speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png',map.posX-(-420),map.posY-(-265),speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png',map.posX-(-555),map.posY-(-265),speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png',map.posX-(-685),map.posY-(-265),speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_left.png',map.posX-(-750),map.posY-(-300),speed,null,hitboxBenchLeft),
+        new Structure(path+'structures/bench_left.png',map.posX-(-750),map.posY-(-420),speed,null,hitboxBenchLeft),
         //LIXO NO MEIO DA PRACA
-        new Structure(path+'structures/trash.png',map.posX-(-80),map.posY-(-270),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-455),map.posY-(-270),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-670),map.posY-(-270),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-750),map.posY-(-345),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-750),map.posY-(-470),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-645),map.posY-(-500),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-520),map.posY-(-500),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-265),map.posY-(-500),speed,hitboxTrash),
-        new Structure(path+'structures/trash.png',map.posX-(-15),map.posY-(-500),speed,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-80),map.posY-(-270),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-455),map.posY-(-270),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-670),map.posY-(-270),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-750),map.posY-(-345),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-750),map.posY-(-470),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-645),map.posY-(-500),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-520),map.posY-(-500),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-265),map.posY-(-500),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png',map.posX-(-15),map.posY-(-500),speed,null,hitboxTrash),
         //PARAGEM DE AUTOCARRO
-        new Structure(path+'structures/busStop.png',map.posX-(-550),map.posY-(-160),speed,hitboxBusStop)
+		new Structure(path+'structures/busStop.png',map.posX-(-550),map.posY-(-160),speed,null,hitboxBusStop),
+		//WALL
+		new Structure(null,map.posX-(0),map.posY-(0),speed,1020,160),
+		new Structure(null,map.posX-(0),map.posY-(-205),speed,505,50),
+		new Structure(null,map.posX-(0),map.posY-(-525),speed,815,50),
+		new Structure(null,map.posX-(-447),map.posY-(-160),speed,50,47),
+		new Structure(null,map.posX-(-530),map.posY-(-205),speed,505,50),
+		new Structure(null,map.posX-(-770),map.posY-(-205),speed,50,350)
     );
     //LISTENERS
     var kHandler = function(event){
