@@ -178,6 +178,14 @@ function keyHandler(event,ctx,game){
  ********TIRAR ISTO PORQUE E PARA DEBUGGING*****************************************
  ***********************************************************************************/
     switch(event.code){
+		case "Escape":
+			game.exitMap(ctx);
+			break;
+		case "KeyM":
+			var map = new Image();
+			map.src = path+"map/map.png";
+			game.showMap(ctx,map);
+			break;
         case "KeyW":
 		case "ArrowUp":
 			game.updatePosition(ctx,"up");

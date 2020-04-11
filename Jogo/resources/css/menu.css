@@ -35,4 +35,14 @@ button:hover{
 	background-image: url("../textures/gui/buttonLong_brown_pressed.png"); 
     background-size: contain;
     color:burlywood;
- }
+}
+
+credits{
+	text-align: center;
+}
+h2{
+	font-family: EvilEmpire;
+}
+p{
+	font-family: PoeSans;
+}

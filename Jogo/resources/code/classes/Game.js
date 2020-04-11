@@ -5,6 +5,17 @@ class Game {
 		this.structures=structures
     }
 
+
+	showMap(ctx,map){
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		ctx.drawImage(map,0,0,ctx.canvas.width,ctx.canvas.height);
+	}
+
+	exitMap(ctx){
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		this.updatePosition(ctx,"up");
+		this.updatePosition(ctx,"down")
+	}
 /**
  * Invert the direction specified
  * @param {string} direction 
