@@ -1,3 +1,8 @@
+body{
+	overflow: hidden;
+	overflow-y: hidden;
+}
+
 canvas {
     padding-left: 0;
     padding-right: 0;
