@@ -1,11 +1,12 @@
-ul{
-	list-style-type: none;
-	list-style-position: inside;
-	background-image: url("../textures/gui/background.png");
+body{
+	overflow: hidden;
+	overflow-y: hidden;
+}
+section{
+	background: url("../textures/gui/background.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	
 }
 
 button{
