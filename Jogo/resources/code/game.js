@@ -168,10 +168,16 @@ function main()
 		new Structure(null,mapHome.posX-(-675),mapHome.posY-(5),speed,30,235),//estrada este
 		new Structure(null,mapHome.posX-(-315),mapHome.posY-(5),speed,32,235),//estrada oeste
 		new Structure(null,mapHome.posX-(-355),mapHome.posY-(10),speed,315,165),//casas
-
+		//TRIGGER
+		new Teleporter(null,mapHome.posX-(-520),mapHome.posY-(-190), speed,20,20,mapPR,structuresPR,player.posX-730,player.posY-305,"down")
+	);
+	
+	var game = new Game(
+		player,
+		new Array(mapHome,mapPR,mapUC),
+		new Array(structuresHome,structuresPR,structuresUC)
 	);
 
-	var game = new Game(player,mapHome,structuresHome);
     //LISTENERS
     var kHandler = function(event){
         keyHandler(event,ctx,game);

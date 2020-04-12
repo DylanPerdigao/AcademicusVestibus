@@ -1,8 +1,10 @@
 class Game {
-    constructor(player,map,structures) {
+    constructor(player,mapList,structuresList) {
 		this.player=player;
-		this.map=map;
-		this.structures=structures
+		this.mapList=mapList;
+		this.structuresList=structuresList;
+		this.map = mapList[0];
+		this.structures = structuresList[0]
     }
 
 
@@ -42,27 +44,32 @@ class Game {
 /**
  * Make a simulation of advance one step in the specified direction
  * @param {string} direction direction of the player step
- * @returns {boolean} if the player has a collision with one of the structures
+ * @returns {Array} if the player has a collision with one of the structures and the structure with the player collided
  */
  	collisionSimulation(direction){
 		var hasCollision;
-		var structIndex;
+		var k;
 		var returnDirection;
 		//simula a avancar na direcao desejada
-		for(structIndex=0;structIndex<this.structures.length;structIndex++){
-			this.structures[structIndex].move(direction);
-			hasCollision=this.structures[structIndex].checkIntersection(this.player);
+		for(k=0;k<this.structures.length;k++){
+			this.structures[k].move(direction);
+			hasCollision=this.structures[k].checkIntersection(this.player);
 			if(hasCollision){
-				structIndex++;//com o break o ciclo nao tem tempo de incrementar
+				k++;//com o break o ciclo nao tem tempo de incrementar
 				break;
 			}
 		}
 		//recua os elementos que avancaram
-		for(let i=0;i<structIndex;i++){
+		for(let i=0;i<k;i++){
 			returnDirection = this.invertDirection(direction);
 			this.structures[i].move(returnDirection);
 		}
-		return hasCollision;
+		if(hasCollision){
+			return [hasCollision,this.structures[k-1]];
+		}else{
+			return [hasCollision,null];
+		}
+			
 	}
 /**
  * Updates the position of the elements verifying collisions with player, and if a structure is drawed before/after the player
@@ -71,23 +78,34 @@ class Game {
  */
  	updatePosition(ctx,direction){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		if(this.collisionSimulation(direction)==false){
-			for(let i=0;i<this.structures.length;i++){
-				this.structures[i].move(direction);
-			}
-			this.map.slide(ctx,direction);
-			for(let i=0;i<this.structures.length;i++){
-				if(this.structures[i].isBehind(this.player)){
-					this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
-				}
-			}
-			this.player.walk(ctx,direction);
-			for(let i=0;i<this.structures.length;i++){
-				if(!this.structures[i].isBehind(this.player)){
-					this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
-				}
-			}
+		var data = this.collisionSimulation(direction);
+		var hasCollision = data[0];
+		var structCollided = data[1];
+		if(hasCollision==false){
+			/*	CASO NAO HAJA COLISAO:
+			 * 		-MOVE AS ESTRUTURAS 
+			 *		-DESENHA AS ESTRUTURAS EM BACKGROUND
+			 *		-MOVE O MAPA
+			 *		-DESENHA O JOGADOR
+			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
+			 */
+			this.move(ctx,direction)
+		}else if (hasCollision==true && structCollided instanceof Trigger){
+			/*	CASO HAJA COLISAO COM UM TRIGGER:
+			 * 		-MOVE AS ESTRUTURAS 
+			 *		-DESENHA AS ESTRUTURAS EM BACKGROUND
+			 *		-MOVE O MAPA
+			 *		-DESENHA O JOGADOR
+			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
+			 */
+			this.move(ctx,direction)
 		}else{
+			/*	CASO HAJA COLISAO:
+			 * 		-DESNHA O MAPA
+			 *		-DESENHA AS ESTRUTURAS EM BACKGROUND
+			 *		-DESENHA O JOGADOR
+			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
+			 */
 			this.map.draw(ctx,this.map.posX,this.map.posY);
 			for(let i=0;i<this.structures.length;i++){
 				if(this.structures[i].isBehind(this.player)){
@@ -99,6 +117,24 @@ class Game {
 				if(!this.structures[i].isBehind(this.player)){
 					this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
 				}
+			}
+		}
+	}
+
+	move(ctx,direction){
+		for(let i=0;i<this.structures.length;i++){
+			this.structures[i].move(direction);
+		}
+		this.map.slide(ctx,direction);
+		for(let i=0;i<this.structures.length;i++){
+			if(this.structures[i].isBehind(this.player)){
+				this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
+			}
+		}
+		this.player.walk(ctx,direction);
+		for(let i=0;i<this.structures.length;i++){
+			if(!this.structures[i].isBehind(this.player)){
+				this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
 			}
 		}
 	}

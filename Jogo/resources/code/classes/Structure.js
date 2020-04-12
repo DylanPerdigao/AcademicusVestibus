@@ -3,7 +3,14 @@ class Structure extends Element {
 		super(src, posX, posY,speed);   
 		this.hitboxWidth=hitboxWidth;
 		this.hitboxHeight=hitboxHeight;
-    }
+	}
+	action(){}
+
+	updatePosition(x,y){
+		this.posX=x;
+		this.posY=y;
+	}
+
     /**
      * Draw a red rectangle where is the Structure's hitbox
      * @param {*} ctx canvas context
