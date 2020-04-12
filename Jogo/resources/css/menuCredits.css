@@ -1,9 +1,12 @@
 credits{
 	text-align: center;
+	margin:auto;
 }
 h2{
 	font-family: EvilEmpire;
+	font-size: 2.5vw;
 }
 p{
 	font-family: PoeSans;
+	font-size: 1vw;
 }

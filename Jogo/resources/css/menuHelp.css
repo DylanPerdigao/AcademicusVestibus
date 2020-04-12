@@ -1,27 +1,23 @@
-section{
-	size: 100%;
-}
 table{
 	height: 10%;
 	width: fit-content;
-	margin-left:40%; 
-	margin-right:30%;
+	margin:auto;
 }
 
 h2{
 	width: 100%;
 	font-family: EvilEmpire;
-	font-size: 200%;
+	font-size: 2.5vw;
 	text-align: center;
 }
 td{
 	text-align: center;
 	font-family: PoeSans;
+	font-size: 1vw;
 }
 
 img{
-	height: 50%;
-}
-button{
-	font-size: 330%;
+	max-height: 50%;
+	width: inherit;
+	height: inherit;
 }
