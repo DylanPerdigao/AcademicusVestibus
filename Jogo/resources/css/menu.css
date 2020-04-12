@@ -1,12 +1,29 @@
+html{
+	height: 100%;
+}
+
 body{
 	overflow: hidden;
 	overflow-y: hidden;
+	height: 100%;
 }
+
+header{
+	text-align: center;
+	font-family: EvilEmpire;
+}
+
+h1{
+	text-align: center;
+    font-size: 500%;
+}
+
 section{
 	background: url("../textures/gui/background.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	size: 100%;
 }
 
 button{
@@ -17,11 +34,10 @@ button{
     background-size: contain;
 	border: none;
 	font-family: EvilEmpire;
-	font-size: 350%;
-    font-size-adjust: none;
+	font-size: 340%;
 	color: rgb(177, 138, 87);
 	text-align: center;
-    margin: 1%;
+	margin-top: 1%;
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -35,14 +51,4 @@ button:hover{
 	background-image: url("../textures/gui/buttonLong_brown_pressed.png"); 
     background-size: contain;
     color:burlywood;
-}
-
-credits{
-	text-align: center;
-}
-h2{
-	font-family: EvilEmpire;
-}
-p{
-	font-family: PoeSans;
 }

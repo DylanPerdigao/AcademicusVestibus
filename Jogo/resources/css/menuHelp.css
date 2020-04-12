@@ -1,0 +1,27 @@
+section{
+	size: 100%;
+}
+table{
+	height: 10%;
+	width: fit-content;
+	margin-left:40%; 
+	margin-right:30%;
+}
+
+h2{
+	width: 100%;
+	font-family: EvilEmpire;
+	font-size: 200%;
+	text-align: center;
+}
+td{
+	text-align: center;
+	font-family: PoeSans;
+}
+
+img{
+	height: 50%;
+}
+button{
+	font-size: 330%;
+}
