@@ -11,9 +11,9 @@
  * -MONUMENTAIS:	player.posX-1415,player.posY-400, LEFT
  * 
  * 
- * 
- * 
- * 
+ * POSITIONS HOME:
+ * - HOUSE: 		player.posX-635,player.posY-165, DOWN
+ * - BUS: 			player.posX-520,player.posY-190, UP
  * 
  */
 const speed = 5;
@@ -156,9 +156,22 @@ function main()
 		new Structure(null,mapUC.posX-(-1440),mapUC.posY-(-475),speed,95,285),//muro monumentais suleste
 	);
 	
+	/*************************************************************************
+	 ******************	MAPA CASA ********************************************
+	 *************************************************************************/
+    var mapHome = new Element(path+"map/home.png",player.posX-635,player.posY-165,speed);
+	var structuresHome = new Array(
+		new Structure(path+'structures/busStop.png',mapHome.posX-(-455),mapHome.posY-(-155),speed,null,hitboxBusStop),
+		new Structure(path+'structures/trash.png',mapHome.posX-(-505),mapHome.posY-(-180),speed,null,hitboxTrash),
+		//WALL
+		new Structure(null,mapHome.posX-(0),mapHome.posY-(-205),speed,930,35),//estrada sul
+		new Structure(null,mapHome.posX-(-675),mapHome.posY-(5),speed,30,235),//estrada este
+		new Structure(null,mapHome.posX-(-315),mapHome.posY-(5),speed,32,235),//estrada oeste
+		new Structure(null,mapHome.posX-(-355),mapHome.posY-(10),speed,315,165),//casas
 
+	);
 
-	var game = new Game(player,mapUC,structuresUC);
+	var game = new Game(player,mapHome,structuresHome);
     //LISTENERS
     var kHandler = function(event){
         keyHandler(event,ctx,game);
