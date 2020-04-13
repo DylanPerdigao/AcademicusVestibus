@@ -3,6 +3,8 @@ html{
 	/*compensar a margem*/
 	height: 98%; 	
 	width: 98%;
+	/*ponteiro*/
+	cursor: url("../textures/gui/pointer.png"), auto;
 }
 
 body{
@@ -12,7 +14,9 @@ body{
 	width: 94%;	
 	/*impedir o scroll*/
 	overflow: hidden;
-	overflow-y: hidden; 	
+	overflow-y: hidden; 
+	/*ponteiro*/	
+	cursor: url("../textures/gui/pointer.png"), auto;
 }
 
 header{
@@ -23,6 +27,8 @@ header{
 	text-align: center;
 	font-family: EvilEmpire;
 	font-size: 3vw;
+	/*ponteiro*/
+	cursor: url("../textures/gui/pointer.png"), auto;
 }
 
 section{
@@ -35,6 +41,8 @@ section{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	/*ponteiro*/
+	cursor: url("../textures/gui/pointer.png"), auto;
 
 }
 
@@ -45,8 +53,6 @@ button{
 	height: 15%;
 	/*em coluna*/
 	display: block;
-	/*ponteiro*/
-	cursor: pointer;
 	/*bacground de madeira*/
 	background-image: url("../textures/gui/buttonLong_brown.png");
     background-color: transparent;
@@ -59,6 +65,8 @@ button{
 	font-size: 3vw;
 	color: rgb(177, 138, 87);
 	text-align: center;
+	/*ponteiro*/
+	cursor: url("../textures/gui/pointer.png"), auto;
 }
 
 button:hover{

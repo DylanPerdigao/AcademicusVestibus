@@ -1,10 +1,11 @@
 class Game {
-    constructor(player,mapList,structuresList) {
+    constructor(player,mapList,structuresList,money) {
 		this.player=player;
 		this.mapList=mapList;
 		this.structuresList=structuresList;
 		this.map = mapList[0];
 		this.structures = structuresList[0]
+		this.money=money;
     }
 
 
@@ -98,7 +99,8 @@ class Game {
 			 *		-DESENHA O JOGADOR
 			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
 			 */
-			this.move(ctx,direction)
+			this.move(ctx,direction);
+			structCollided.action(ctx,this);
 		}else{
 			/*	CASO HAJA COLISAO:
 			 * 		-DESNHA O MAPA

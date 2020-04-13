@@ -175,7 +175,8 @@ function main()
 	var game = new Game(
 		player,
 		new Array(mapHome,mapPR,mapUC),
-		new Array(structuresHome,structuresPR,structuresUC)
+		new Array(structuresHome,structuresPR,structuresUC),
+		new Money(path+"gui/labelMoney.png",ctx.canvas.width-50,10,10,false)
 	);
 
     //LISTENERS
@@ -268,5 +269,6 @@ function keyHandler(event,ctx,game){
 	for(let i=0;i<game.structures.length;i++){
 		game.structures[i].drawHitbox(ctx);
 	}
-    game.player.drawHitbox(ctx)
+	game.player.drawHitbox(ctx)
+	game.money.draw(ctx)
 }
