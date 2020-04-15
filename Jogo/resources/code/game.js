@@ -23,6 +23,9 @@ const hitboxTrash = 6;
 const hitboxBusStop = 10;
 const hitboxBenchDown = 8;
 const hitboxBenchLeft = 35;
+const HOME = 0;
+const PRACA_REPUBLICA = 1;
+const UNIVERSITY = 2;
 
 /**********************************************************************************
  ********TIRAR ISTO PORQUE E PARA DEBUGGING*****************************************
@@ -48,137 +51,143 @@ function main()
     canvas.height = 250;
     //PLAYER
 	var player = new Player(path+"player/male/player_male","Dylan",canvas.width/2,canvas.height/2,0,7);
-	
 	/*************************************************************************
-	 ******************	MAPA PRACA DA REPUBLICA*******************************
+	 ******************	STRUCTS PRACA DA REPUBLICA*******************************
 	 *************************************************************************/
-    var mapPR = new Element(path+"map/praca.png",player.posX,player.posY,speed);
     var structuresPR = new Array(
         //LIXO FORA DA PRACA
-        new Structure(path+'structures/trash.png',mapPR.posX-(0),mapPR.posY-(-155),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-145),mapPR.posY-(-155),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-335),mapPR.posY-(-155),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-440),mapPR.posY-(-155),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-710),mapPR.posY-(-155),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-800),mapPR.posY-(-155),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-900),mapPR.posY-(-155),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -0, -155,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -145, -155,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -335, -155,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -440, -155,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -710, -155,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -800, -155,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -900, -155,speed,null,hitboxTrash),
         //ARVORES
-        new Structure(path+'structures/tree.png',mapPR.posX-(0),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-125),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-250),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-375),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-500),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-625),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-750),mapPR.posY-(-255),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-750),mapPR.posY-(-375),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-750),mapPR.posY-(-485),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-625),mapPR.posY-(-485),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-500),mapPR.posY-(-485),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-375),mapPR.posY-(-485),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-250),mapPR.posY-(-485),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(-125),mapPR.posY-(-485),speed,null,hitboxTree),
-        new Structure(path+'structures/tree.png',mapPR.posX-(0),mapPR.posY-(-485),speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -0, -255,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -125, -255,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -250, -255,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -500, -255,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -625, -255,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -750, -255,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -750, -375,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -750, -485,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -625, -485,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -500, -485,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -250, -485,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -125, -485,speed,null,hitboxTree),
+        new Structure(path+'structures/tree.png', -0, -485,speed,null,hitboxTree),
         //BANCOS
-        new Structure(path+'structures/bench_down.png',mapPR.posX-(-45),mapPR.posY-(-265),speed,null,hitboxBenchDown), 
-        new Structure(path+'structures/bench_down.png',mapPR.posX-(-175),mapPR.posY-(-265),speed,null,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',mapPR.posX-(-305),mapPR.posY-(-265),speed,null,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',mapPR.posX-(-420),mapPR.posY-(-265),speed,null,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',mapPR.posX-(-555),mapPR.posY-(-265),speed,null,hitboxBenchDown),
-        new Structure(path+'structures/bench_down.png',mapPR.posX-(-685),mapPR.posY-(-265),speed,null,hitboxBenchDown),
-        new Structure(path+'structures/bench_left.png',mapPR.posX-(-750),mapPR.posY-(-300),speed,null,hitboxBenchLeft),
-        new Structure(path+'structures/bench_left.png',mapPR.posX-(-750),mapPR.posY-(-420),speed,null,hitboxBenchLeft),
+        new Structure(path+'structures/bench_down.png', -45, -265,speed,null,hitboxBenchDown), 
+        new Structure(path+'structures/bench_down.png', -175, -265,speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png', -420, -265,speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png', -555, -265,speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_down.png', -685, -265,speed,null,hitboxBenchDown),
+        new Structure(path+'structures/bench_left.png', -750, -300,speed,null,hitboxBenchLeft),
+        new Structure(path+'structures/bench_left.png', -750, -420,speed,null,hitboxBenchLeft),
         //LIXO NO MEIO DA PRACA
-        new Structure(path+'structures/trash.png',mapPR.posX-(-80),mapPR.posY-(-270),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-455),mapPR.posY-(-270),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-670),mapPR.posY-(-270),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-750),mapPR.posY-(-345),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-750),mapPR.posY-(-470),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-645),mapPR.posY-(-500),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-520),mapPR.posY-(-500),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-265),mapPR.posY-(-500),speed,null,hitboxTrash),
-        new Structure(path+'structures/trash.png',mapPR.posX-(-15),mapPR.posY-(-500),speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -80, -270,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -455, -270,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -670, -270,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -750, -345,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -750, -470,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -645, -500,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -520, -500,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -265, -500,speed,null,hitboxTrash),
+        new Structure(path+'structures/trash.png', -15, -500,speed,null,hitboxTrash),
         //PARAGEM DE AUTOCARRO
-		new Structure(path+'structures/busStop.png',mapPR.posX-(-550),mapPR.posY-(-160),speed,null,hitboxBusStop),
+		new Structure(path+'structures/busStop.png', -550, -160,speed,null,hitboxBusStop),
 		//WALL
-		new Structure(null,mapPR.posX-(0),mapPR.posY-(0),speed,1020,160),
-		new Structure(null,mapPR.posX-(0),mapPR.posY-(-205),speed,505,50),
-		new Structure(null,mapPR.posX-(0),mapPR.posY-(-525),speed,815,50),
-		new Structure(null,mapPR.posX-(-447),mapPR.posY-(-160),speed,50,47),
-		new Structure(null,mapPR.posX-(-530),mapPR.posY-(-205),speed,505,50),
-		new Structure(null,mapPR.posX-(-770),mapPR.posY-(-205),speed,50,360)
+		new Structure(null, -320, -250,speed,55,275),//ESTRADA OESTE
+		new Structure(null, -447, -160,speed,50,47),//estrada rua norte
+		new Structure(null, -0, -0,speed,1020,160),//casas norte
+		new Structure(null, -0, -205,speed,505,50),//estrada norte oeste
+		new Structure(null, -770, -205,speed,50,360),//estrada norte este,
+		new Structure(null, -0, -525,speed,470,50),//estrada sul oeste
+		new Structure(null, -505, -525,speed,400,50),//estrada sul este
+		new Structure(null, -530, -205,speed,505,50),//estrada este
+		//TRIGGER
+		new Teleporter(null, -475, -525,speed,32,30,UNIVERSITY,player.posX-1405,player.posY-400,"left")
 	);
 	/*************************************************************************
-	 ******************	MAPA UNIVERSIDADE ************************************
+	 ******************	STRUCTS UNIVERSIDADE *********************************
 	 *************************************************************************/
-    var mapUC = new Element(path+"map/uc.png",player.posX-675,player.posY-555,speed);
+
 	var structuresUC = new Array(
 		//ARVORES
-		new Structure(path+'structures/tree.png',mapUC.posX-(-375),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-405),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-465),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-495),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-525),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-555),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-585),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-615),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-645),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-720),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-795),mapUC.posY-(-290),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-470),mapUC.posY-(-500),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-555),mapUC.posY-(-500),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-660),mapUC.posY-(-500),speed,null,hitboxTree),
-		new Structure(path+'structures/tree.png',mapUC.posX-(-770),mapUC.posY-(-500),speed,null,hitboxTree), 
+		new Structure(path+'structures/tree.png', -375, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -405, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -465, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -495, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -525, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -555, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -585, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -615, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -645, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -720, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -795, -290,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -470, -500,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -555, -500,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -660, -500,speed,null,hitboxTree),
+		new Structure(path+'structures/tree.png', -770, -500,speed,null,hitboxTree), 
 		//D.DINIS
-		new Structure(path+'structures/statue.png',mapUC.posX-(-995),mapUC.posY-(-395),speed,null,10),
+		new Structure(path+'structures/statue.png', -995, -395,speed,null,10),
 		//BANCOS
-		new Structure(path+'structures/bench_down.png',mapUC.posX-(-675),mapUC.posY-(-305),speed,null,hitboxBenchDown),
+		new Structure(path+'structures/bench_down.png', -675, -305,speed,null,hitboxBenchDown),
 		//LIXO
-		new Structure(path+'structures/trash.png',mapUC.posX-(-705),mapUC.posY-(-565),speed,null,hitboxTrash),
-		new Structure(path+'structures/trash.png',mapUC.posX-(-445),mapUC.posY-(-565),speed,null,hitboxTrash),
-		new Structure(path+'structures/trash.png',mapUC.posX-(-465),mapUC.posY-(-335),speed,null,hitboxTrash),
-		new Structure(path+'structures/trash.png',mapUC.posX-(-450),mapUC.posY-(-300),speed,null,hitboxTrash),
-		new Structure(path+'structures/trash.png',mapUC.posX-(-780),mapUC.posY-(-300),speed,null,hitboxTrash),
-		new Structure(path+'structures/trash.png',mapUC.posX-(-1155),mapUC.posY-(-620),speed,null,hitboxTrash),
+		new Structure(path+'structures/trash.png', -705, -565,speed,null,hitboxTrash),
+		new Structure(path+'structures/trash.png', -445, -565,speed,null,hitboxTrash),
+		new Structure(path+'structures/trash.png', -465, -335,speed,null,hitboxTrash),
+		new Structure(path+'structures/trash.png', -450, -300,speed,null,hitboxTrash),
+		new Structure(path+'structures/trash.png', -780, -300,speed,null,hitboxTrash),
+		new Structure(path+'structures/trash.png', -1155, -620,speed,null,hitboxTrash),
 		//AUTOCARRO
-		new Structure(path+'structures/busStop.png',mapUC.posX-(-480),mapUC.posY-(-315),speed,null,hitboxBusStop),
+		new Structure(path+'structures/busStop.png', -480, -315,speed,null,hitboxBusStop),
 		//FACULDADES
-		new Structure(null,mapUC.posX-(-375),mapUC.posY-(-60),speed,445,245),//FMUC
-		new Structure(path+'structures/DM.png',mapUC.posX-(-809),mapUC.posY-(-628),speed, 455,230),//DM
-		new Structure(path+'structures/DF_DQ.png',mapUC.posX-(-373),mapUC.posY-(-574),speed,430,235),//DF-DQ
+		new Structure(null, -375, -60,speed,445,245),//FMUC
+		new Structure(path+'structures/DM.png', -809, -628,speed, 455,230),//DM
+		new Structure(path+'structures/DF_DQ.png', -373, -574,speed,430,235),//DFDQ
 		//WALL
-		new Structure(null,mapUC.posX-(-320),mapUC.posY-(0),speed,50,780),//estrada oeste
-		new Structure(null,mapUC.posX-(-1295),mapUC.posY-(-625),speed,90,130),//estrada este DM
-		new Structure(null,mapUC.posX-(-825),mapUC.posY-(-250),speed, 415,100),//estrada norte d dinis
-		new Structure(null,mapUC.posX-(-1240),mapUC.posY-(-220),speed,145,285),//estrada este d dinis
-		new Structure(null,mapUC.posX-(-825),mapUC.posY-(-505),speed,560,95),//estrada sul d dinis
-		new Structure(null,mapUC.posX-(-1375),mapUC.posY-(-200),speed,70,50),//muro monumentais norte
-		new Structure(null,mapUC.posX-(-1440),mapUC.posY-(-245),speed,45,110), //muro monumentais nordeste
-		new Structure(null,mapUC.posX-(-1440),mapUC.posY-(-475),speed,95,285),//muro monumentais suleste
+		new Structure(null, -320, -0,speed,50,780),//estrada oeste
+		new Structure(null, -1295, -625,speed,90,130),//estrada este DM
+		new Structure(null, -825, -250,speed, 415,100),//estrada norte d dinis
+		new Structure(null, -1240, -220,speed,145,285),//estrada este d dinis
+		new Structure(null, -825, -505,speed,560,95),//estrada sul d dinis
+		new Structure(null, -1375, -200,speed,70,50),//muro monumentais norte
+		new Structure(null, -1440, -245,speed,45,110), //muro monumentais nordeste
+		new Structure(null, -1440, -475,speed,95,285),//muro monumentais suleste
+		//TRIGGER
+		new Teleporter(null,-1435,-350,speed, 90,110,PRACA_REPUBLICA,player.posX-480,player.posY-480,"up")
+
 	);
 	
 	/*************************************************************************
-	 ******************	MAPA CASA ********************************************
+	 ******************	STRUCTS CASA ********************************************
 	 *************************************************************************/
-    var mapHome = new Element(path+"map/home.png",player.posX-635,player.posY-165,speed);
+
 	var structuresHome = new Array(
-		new Structure(path+'structures/busStop.png',mapHome.posX-(-455),mapHome.posY-(-155),speed,null,hitboxBusStop),
-		new Structure(path+'structures/trash.png',mapHome.posX-(-505),mapHome.posY-(-180),speed,null,hitboxTrash),
+		new Structure(path+'structures/busStop.png', -455, -155,speed,null,hitboxBusStop),
+		new Structure(path+'structures/trash.png', -505, -180,speed,null,hitboxTrash),
 		//WALL
-		new Structure(null,mapHome.posX-(0),mapHome.posY-(-205),speed,930,35),//estrada sul
-		new Structure(null,mapHome.posX-(-675),mapHome.posY-(5),speed,30,235),//estrada este
-		new Structure(null,mapHome.posX-(-315),mapHome.posY-(5),speed,32,235),//estrada oeste
-		new Structure(null,mapHome.posX-(-355),mapHome.posY-(10),speed,315,165),//casas
+		new Structure(null, -0, -205,speed,930,35),//estrada sul
+		new Structure(null, -675, -0,speed,30,240),//estrada este
+		new Structure(null, -315, -0,speed,32,240),//estrada oeste
+		new Structure(null, -355, -0,speed,315,155),//casas
 		//TRIGGER
-		new Teleporter(null,mapHome.posX-(-520),mapHome.posY-(-190), speed,20,20,mapPR,structuresPR,player.posX-730,player.posY-305,"down")
+		new Teleporter(null, -520, -190, speed,20,20,PRACA_REPUBLICA,player.posX-600,player.posY-180,"up")
 	);
-	
+	//MAPS
+	var mapPR = new Map(path+"map/praca.png",0,0,speed,structuresPR);
+	var mapUC = new Map(path+"map/uc.png",0,0,speed,structuresUC);
+	var mapHome = new Map(path+"map/home.png",0,0,speed,structuresHome);
+	//GAME
 	var game = new Game(
 		player,
 		new Array(mapHome,mapPR,mapUC),
-		new Array(structuresHome,structuresPR,structuresUC),
-		new Money(path+"gui/labelMoney.png",ctx.canvas.width-50,10,10,false)
+		new Money(path+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false)
 	);
-
+	game.map.updatePosition(player.posX-635,player.posY-160);
+	game.map.setStructuresPositions();
     //LISTENERS
     var kHandler = function(event){
         keyHandler(event,ctx,game);
@@ -227,47 +236,47 @@ function keyHandler(event,ctx,game){
 			dx+=speed;
             break;
         case "Digit1":
-			game.structures.push(new Structure(path+'structures/tree.png',game.map.posX-x,game.map.posY-y,null,hitboxTree))
+			game.map.structures.push(new Structure(path+'structures/tree.png',game.map.posX-x,game.map.posY-y,null,hitboxTree))
             console.log("new Structure(path+'structures/tree.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTree),\n")
             break;
         case "Digit2":
-            game.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,hitboxTrash))
+            game.map.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,hitboxTrash))
             console.log("new Structure(path+'structures/trash.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTrash),\n")
             break;
         case "Digit3":
-            game.structures.push(new Structure(path+'structures/bench_down.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchDown))
+            game.map.structures.push(new Structure(path+'structures/bench_down.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchDown))
             console.log("new Structure(path+'structures/bench_down.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchDown),\n")
             break;     
         case "Digit4":
-            game.structures.push(new Structure(path+'structures/bench_left.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
+            game.map.structures.push(new Structure(path+'structures/bench_left.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
             console.log("new Structure(path+'structures/bench_left.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchLeft),\n")
             break;  
         case "Digit5":
-            game.structures.push(new Structure(path+'structures/bench_right.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
+            game.map.structures.push(new Structure(path+'structures/bench_right.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
             console.log("new Structure(path+'structures/bench_right.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchRight),\n")
             break;
         case "Digit6":
-            game.structures.push(new Structure(path+'structures/busStop.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
+            game.map.structures.push(new Structure(path+'structures/busStop.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
             console.log("new Structure(path+'structures/busStop.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
 			break; 
 		case "Digit7":
-			game.structures.push(new Structure(path+'structures/statue.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
+			game.map.structures.push(new Structure(path+'structures/statue.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
 			console.log("new Structure(path+'structures/statue.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
 			break; 
 		case "Digit9":
-			game.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,10))
+			game.map.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,10))
 			dx=0
 			dy=0
 			console.log("new Structure(null,map.posX-("+ x +"),map.posY-("+ y +"),speed,")
 			break;  
 		case "Digit0":
-			game.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,10))
+			game.map.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,10))
 			console.log(dx+","+dy+"),\n")
 			break;   
          
     }
-	for(let i=0;i<game.structures.length;i++){
-		game.structures[i].drawHitbox(ctx);
+	for(let i=0;i<game.map.structures.length;i++){
+		game.map.structures[i].drawHitbox(ctx);
 	}
 	game.player.drawHitbox(ctx)
 	game.money.draw(ctx)

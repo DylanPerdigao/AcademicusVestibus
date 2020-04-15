@@ -4,6 +4,11 @@ class Element extends Component {
         this.speed = speed;
     }
 
+	updatePosition(x,y){
+		this.posX=x;
+		this.posY=y;
+	}
+
 	move(direction){
 		switch(direction){
 			case "up":

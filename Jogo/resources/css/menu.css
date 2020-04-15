@@ -37,7 +37,7 @@ section{
 	width: auto;
     height: 70%;
 	/*bacground de papel*/
-	background: url("../textures/gui/background.png");
+	background: url("../textures/gui/background.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;

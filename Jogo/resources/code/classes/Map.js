@@ -1,30 +1,16 @@
-class Element extends Component {
-    constructor(src, posX, posY,speed) {
-        super(src, posX, posY);
-        this.speed = speed;
-    }
-
-	move(direction){
-		switch(direction){
-			case "up":
-				this.posY+=speed;
-				break;
-			case "left":
-				this.posX+=speed;
-				break;
-			case "down":
-				this.posY-=speed;
-				break;
-			case "right":
-				this.posX-=speed;
-				break;
-		}
+class Map extends Element {
+    constructor(src, posX, posY,speed,structures) {
+        super(src, posX, posY,speed);
+		this.structures = structures;
+		this.setStructuresPositions();
 	}
 
-    slide(ctx,direction){
-		this.move(direction);
-		this.draw(ctx,this.posX,this.posY)
-    }
 
+	setStructuresPositions(){
+		for(let i=0;i<this.structures.length;i++){
+			this.structures[i].posX = this.posX-this.structures[i].initialX
+			this.structures[i].posY = this.posY-this.structures[i].initialY
+		}
+	}
 }
 

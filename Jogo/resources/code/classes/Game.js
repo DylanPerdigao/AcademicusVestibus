@@ -1,10 +1,8 @@
 class Game {
-    constructor(player,mapList,structuresList,money) {
+    constructor(player,mapList,money) {
 		this.player=player;
 		this.mapList=mapList;
-		this.structuresList=structuresList;
 		this.map = mapList[0];
-		this.structures = structuresList[0]
 		this.money=money;
     }
 
@@ -52,9 +50,9 @@ class Game {
 		var k;
 		var returnDirection;
 		//simula a avancar na direcao desejada
-		for(k=0;k<this.structures.length;k++){
-			this.structures[k].move(direction);
-			hasCollision=this.structures[k].checkIntersection(this.player);
+		for(k=0;k<this.map.structures.length;k++){
+			this.map.structures[k].move(direction);
+			hasCollision=this.map.structures[k].checkIntersection(this.player);
 			if(hasCollision){
 				k++;//com o break o ciclo nao tem tempo de incrementar
 				break;
@@ -63,10 +61,10 @@ class Game {
 		//recua os elementos que avancaram
 		for(let i=0;i<k;i++){
 			returnDirection = this.invertDirection(direction);
-			this.structures[i].move(returnDirection);
+			this.map.structures[i].move(returnDirection);
 		}
 		if(hasCollision){
-			return [hasCollision,this.structures[k-1]];
+			return [hasCollision,this.map.structures[k-1]];
 		}else{
 			return [hasCollision,null];
 		}
@@ -100,7 +98,17 @@ class Game {
 			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
 			 */
 			this.move(ctx,direction);
-			structCollided.action(ctx,this);
+			switch (structCollided.location){
+				case HOME:
+					structCollided.action(ctx,this,this.mapList[HOME]);
+					break;
+				case PRACA_REPUBLICA:
+					structCollided.action(ctx,this,this.mapList[PRACA_REPUBLICA]);
+					break;
+				case UNIVERSITY:
+					structCollided.action(ctx,this,this.mapList[UNIVERSITY]);
+					break;
+			}
 		}else{
 			/*	CASO HAJA COLISAO:
 			 * 		-DESNHA O MAPA
@@ -109,34 +117,34 @@ class Game {
 			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
 			 */
 			this.map.draw(ctx,this.map.posX,this.map.posY);
-			for(let i=0;i<this.structures.length;i++){
-				if(this.structures[i].isBehind(this.player)){
-					this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
+			for(let i=0;i<this.map.structures.length;i++){
+				if(this.map.structures[i].isBehind(this.player)){
+					this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 				}
 			}
 			this.player.walk(ctx,direction);
-			for(let i=0;i<this.structures.length;i++){
-				if(!this.structures[i].isBehind(this.player)){
-					this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
+			for(let i=0;i<this.map.structures.length;i++){
+				if(!this.map.structures[i].isBehind(this.player)){
+					this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 				}
 			}
 		}
 	}
 
 	move(ctx,direction){
-		for(let i=0;i<this.structures.length;i++){
-			this.structures[i].move(direction);
+		for(let i=0;i<this.map.structures.length;i++){
+			this.map.structures[i].move(direction);
 		}
 		this.map.slide(ctx,direction);
-		for(let i=0;i<this.structures.length;i++){
-			if(this.structures[i].isBehind(this.player)){
-				this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
+		for(let i=0;i<this.map.structures.length;i++){
+			if(this.map.structures[i].isBehind(this.player)){
+				this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 			}
 		}
 		this.player.walk(ctx,direction);
-		for(let i=0;i<this.structures.length;i++){
-			if(!this.structures[i].isBehind(this.player)){
-				this.structures[i].draw(ctx,this.structures[i].posX,this.structures[i].posY);
+		for(let i=0;i<this.map.structures.length;i++){
+			if(!this.map.structures[i].isBehind(this.player)){
+				this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 			}
 		}
 	}

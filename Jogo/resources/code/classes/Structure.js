@@ -1,15 +1,12 @@
 class Structure extends Element {
     constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight) {
-		super(src, posX, posY,speed);   
+		super(src, posX, posY,speed); 
+		this.initialX = posX;
+		this.initialY = posY;  
 		this.hitboxWidth=hitboxWidth;
 		this.hitboxHeight=hitboxHeight;
 	}
 	action(){}
-
-	updatePosition(x,y){
-		this.posX=x;
-		this.posY=y;
-	}
 
     /**
      * Draw a red rectangle where is the Structure's hitbox
