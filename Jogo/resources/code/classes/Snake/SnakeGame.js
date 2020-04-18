@@ -8,9 +8,6 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    
-    var snake = new Snake;
-    var food = new Food
 
 
     //TODO:
@@ -24,21 +21,31 @@ function main() {
     //colors
     const snakeColor = "#444554";
     const FruitColor = "#F29559";
-    const BackgroundColor = "#C9C5BA";
-    const WallColor = "#5A7D7C";
-    const ScoreColor = "#172121";
+    const backgroundColor = "#C9C5BA";
+    const wallColor = "#5A7D7C";
+    const scoreColor = "#172121";
 
+
+    
+    var snake = new Snake(snakeColor);
+    //var food = new Food()
 
     //Key down
     var kdh = function (ev) {
         keyDownHandler(ev, spArray);
     };
 
+
     draw()
 
 
+    for (let i=0;i<1100;i++){
+        snake.update();
+        snake.draw(ctx);
+    }
+
     function draw(){
-        ctx.fillStyle = BackgroundColor;
+        ctx.fillStyle = backgroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 }
