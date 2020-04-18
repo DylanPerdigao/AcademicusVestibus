@@ -8,5 +8,14 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    let engine = new GameEngine(ctx);
+    
 }
+
+//TODO:
+//Audio 
+
+//let audio = New Audio()
+//audio.srec="..."
+
+//bla bla bla
+
