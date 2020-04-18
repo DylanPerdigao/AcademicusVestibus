@@ -20,13 +20,14 @@ function main() {
     //bla bla bla
 
     //colors
-    const snakeColor = "#444554";
+    const wallColor = "#444554";
     const fruitColor = "#F29559";
     const backgroundColor = "#C9C5BA";
-    const wallColor = "#5A7D7C";
+    const snakeColor = "#5A7D7C";
     const scoreColor = "#172121";
 
-    
+    ctx.strokeStyle=backgroundColor;
+
     var snake = new Snake(snakeColor,cell);
     //var food = new Food()
 
@@ -41,25 +42,18 @@ function main() {
 
     
 
-
     draw();
-    var fruitPos = newFruit(cell)
-    //Draw Fruit 
-    ctx.fillStyle = fruitColor;
-    ctx.fillRect(fruitPos[0], fruitPos[1], cell, cell);;
+
+    var fruitPos = newFruit(ctx,cell, fruitColor);
 
     var interval = setInterval(render,100);
 
 
     function render(){
-        snake.update();
-        if (snake.checkFruit(fruitPos)){
-            fruitPos= newFruit(cell);
-            //Draw Fruit 
-            ctx.fillStyle = fruitColor;
-            ctx.fillRect(fruitPos[0], fruitPos[1], cell, cell);
+
+        if(snake.update(ctx,fruitPos,backgroundColor)){
+            fruitPos = newFruit(ctx,cell, fruitColor);
         }
-        snake.draw(ctx);
     }
 
     function draw(){
@@ -69,10 +63,14 @@ function main() {
 }
 
 
-function newFruit(cell){
+function newFruit(ctx, cell, fruitColor){
     var x = Math.floor(Math.random()*(600/20)+1)*cell;
     var y = Math.floor(Math.random()*(600/20)+1)*cell;
-    console.log(x,y)
+    
+    //Draw Fruit 
+    ctx.fillStyle = fruitColor;
+    ctx.fillRect(x, y, cell, cell);
+    
     return [x,y]
 }
 
