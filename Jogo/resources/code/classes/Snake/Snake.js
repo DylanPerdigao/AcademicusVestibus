@@ -24,4 +24,12 @@ class Snake{
         this.xspeed=xspeed;
         this.yspeed=yspeed;
     }
+
+    checkFruit(fruitPos){
+        if (this.x==fruitPos[0] && this.y==fruitPos[1]){
+            //Aumentar tamanho
+            return true;
+        }
+        return false;
+    }
 }

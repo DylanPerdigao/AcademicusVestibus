@@ -21,7 +21,7 @@ function main() {
 
     //colors
     const snakeColor = "#444554";
-    const FruitColor = "#F29559";
+    const fruitColor = "#F29559";
     const backgroundColor = "#C9C5BA";
     const wallColor = "#5A7D7C";
     const scoreColor = "#172121";
@@ -43,12 +43,22 @@ function main() {
 
 
     draw();
+    var fruitPos = newFruit(cell)
+    //Draw Fruit 
+    ctx.fillStyle = fruitColor;
+    ctx.fillRect(fruitPos[0], fruitPos[1], cell, cell);;
 
     var interval = setInterval(render,100);
 
 
     function render(){
         snake.update();
+        if (snake.checkFruit(fruitPos)){
+            fruitPos= newFruit(cell);
+            //Draw Fruit 
+            ctx.fillStyle = fruitColor;
+            ctx.fillRect(fruitPos[0], fruitPos[1], cell, cell);
+        }
         snake.draw(ctx);
     }
 
@@ -59,21 +69,35 @@ function main() {
 }
 
 
+function newFruit(cell){
+    var x = Math.floor(Math.random()*(600/20)+1)*cell;
+    var y = Math.floor(Math.random()*(600/20)+1)*cell;
+    console.log(x,y)
+    return [x,y]
+}
+
 //teclas
 function keyDownHandler(ev, snake) {
-    console.log(ev.code);
     switch (ev.code) {
         case "ArrowLeft":
-            snake.changeDir(-1,0);
+            if (snake.xspeed==0){   //if not in the same direction or oposit
+                snake.changeDir(-1,0);
+            }
             break;
         case "ArrowRight":
-            snake.changeDir(1,0);
+            if (snake.xspeed==0){
+                snake.changeDir(1,0);
+            }
             break;
         case "ArrowUp":
-            snake.changeDir(0,-1);
+            if (snake.yspeed==0){
+                snake.changeDir(0,-1);
+            }
             break;
         case "ArrowDown":
-            snake.changeDir(0,1);
+            if (snake.yspeed==0){
+                snake.changeDir(0,1);
+            }
             break;
     }
 }
