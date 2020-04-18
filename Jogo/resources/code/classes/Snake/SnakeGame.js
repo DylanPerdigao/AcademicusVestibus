@@ -19,3 +19,9 @@ function main() {
 
 //bla bla bla
 
+//colors
+//snake = #444554
+//Fruit = #F29559
+//Background = #C9C5BA
+//Wall = #5A7D7C
+//Score = #172121
