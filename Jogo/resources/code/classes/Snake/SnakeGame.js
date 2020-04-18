@@ -9,6 +9,7 @@ function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
+    var cell=30; 
 
     //TODO:
     //Audio 
@@ -25,21 +26,27 @@ function main() {
     const wallColor = "#5A7D7C";
     const scoreColor = "#172121";
 
-
     
     var snake = new Snake(snakeColor);
     //var food = new Food()
 
+
+    //listener
+    window.addEventListener("keydown", kdh);
+
     //Key down
     var kdh = function (ev) {
-        keyDownHandler(ev, spArray);
+        console.log('zau');
+        keyDownHandler(ev, snake);
     };
 
 
-    draw()
+    draw();
+
+    var interval = setInterval(render,100);
 
 
-    for (let i=0;i<1100;i++){
+    function render(){
         snake.update();
         snake.draw(ctx);
     }
@@ -50,8 +57,10 @@ function main() {
     }
 }
 
+
 //teclas
 function keyDownHandler(ev, snake) {
+    console.log(ev.code);
     switch (ev.code) {
         case "ArrowLeft":
             snake.changeDir(-1,0);

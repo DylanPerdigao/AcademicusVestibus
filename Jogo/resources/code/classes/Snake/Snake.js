@@ -18,4 +18,9 @@ class Snake{
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, 10, 10);
     }
+
+    changeDir(xspeed,yspeed){
+        this.xspeed=xspeed;
+        this.yspeed=yspeed;
+    }
 }
