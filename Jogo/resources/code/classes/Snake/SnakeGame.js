@@ -9,7 +9,7 @@ function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
-    var cell=30; 
+    var cell=20; 
 
     //TODO:
     //Audio 
