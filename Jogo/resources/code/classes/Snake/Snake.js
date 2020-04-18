@@ -29,7 +29,8 @@ class Snake{
         this.body.unshift([x,y]);
         this.drawCell(ctx,x,y,this.color);
 
-        if (!this.checkFruit(fruitPos)){
+        //if didn´t ate
+        if (!(this.body[0][0]==fruitPos[0] && this.body[0][1]==fruitPos[1])){
             //remove tail
             var tail = this.body.pop();
             this.drawCell(ctx,tail[0],tail[1],backgroundColor);
@@ -42,6 +43,7 @@ class Snake{
     drawCell(ctx,x,y,color){
         ctx.fillStyle = color;
         ctx.fillRect(x, y, this.cell, this.cell);
+        ctx.strokeRect(x, y, this.cell, this.cell);
     }
 
     removeTail
@@ -49,13 +51,5 @@ class Snake{
     changeDir(xspeed,yspeed){
         this.xspeed=xspeed;
         this.yspeed=yspeed;
-    }
-
-    checkFruit(fruitPos){
-        if (this.body[0][0]==fruitPos[0] && this.body[0][1]==fruitPos[1]){
-            return true;
-        }
-        
-        return false;
     }
 }

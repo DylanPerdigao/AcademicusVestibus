@@ -26,7 +26,7 @@ function main() {
     const snakeColor = "#5A7D7C";
     const scoreColor = "#172121";
 
-    ctx.strokeStyle=backgroundColor;
+    ctx.strokeStyle= backgroundColor;
 
     var snake = new Snake(snakeColor,cell);
     //var food = new Food()
