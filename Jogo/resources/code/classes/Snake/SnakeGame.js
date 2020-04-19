@@ -123,21 +123,25 @@ function insideWalls(x,y,walls){
 //teclas
 function keyDownHandler(ev, snake) {
     switch (ev.code) {
+        case "KeyA":
         case "ArrowLeft":
             if (snake.xspeed==0){   //if not in the same direction or oposit
                 snake.changeDir(-1,0);
             }
             break;
+        case "KeyD":
         case "ArrowRight":
             if (snake.xspeed==0){
                 snake.changeDir(1,0);
             }
             break;
+        case "KeyW":
         case "ArrowUp":
             if (snake.yspeed==0){
                 snake.changeDir(0,-1);
             }
             break;
+        case "KeyS":
         case "ArrowDown":
             if (snake.yspeed==0){
                 snake.changeDir(0,1);
