@@ -22,6 +22,7 @@ class Snake{
         if (insideWalls(x,y,walls) || this.insideSnake(x,y)){
             console.log('E MOREU');
             window.clearInterval(interval);
+            window.postMessage("arcade",'*');
             return
         }
 
