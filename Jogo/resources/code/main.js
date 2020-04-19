@@ -1,12 +1,5 @@
 "use strict";
 
-const MAIN_MENU = 0;
-const NEW_GAME_MENU = 1;
-const OPTIONS_MENU = 2;
-const HELP_MENU = 3;
-const CREDITS_MENU = 4;
-const EXIT = 5;
-
 const PATH = "resources/";
 
 (function(){window.addEventListener("load", main);}());
@@ -14,7 +7,7 @@ const PATH = "resources/";
 
 function main(){
 	window.addEventListener("message", messageHandler);
-	window.postMessage(MAIN_MENU, "*");
+	window.postMessage("menu", "*");
 }
 
 function showMenu(src){
@@ -25,24 +18,36 @@ function showMenu(src){
 
 function messageHandler(ev){
 	switch(ev.data){
-		case MAIN_MENU:
+		case "menu":
+		case "return":
 			showMenu(PATH+"html/mainMenu.html");
 			break;
-		case NEW_GAME_MENU:
+		case "play":
 			showMenu(PATH+"html/game.html");
 			break;
-		case OPTIONS_MENU:
+		case "options":
 			showMenu(PATH+"html/optionsMenu.html");
 			break;
-		case HELP_MENU:
+		case "help":
 			showMenu(PATH+"html/helpMenu.html");
 			break;
-		case CREDITS_MENU:
+		case "credits":
 			showMenu(PATH+"html/creditsMenu.html");
 			break;
-		case EXIT:
-			showMenu("");
-			window.close();
+		case "arcade":
+			showMenu(PATH+"html/miniGamesMenu.html");
+			break;
+		case "montyHall":
+			showMenu(PATH+"html/creditsMenu.html");
+			break;
+		case "snake":
+			showMenu(PATH+"code/classes/Snake/Snake.html");
+			break;
+		case "fill":
+			showMenu(PATH+"html/creditsMenu.html");
+			break;
+		case "moscas":
+			showMenu(PATH+"html/creditsMenu.html");
 			break;
 	}
 }
