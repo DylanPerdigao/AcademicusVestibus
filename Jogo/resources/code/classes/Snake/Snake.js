@@ -11,7 +11,7 @@ class Snake{
         this.body=[[cell,15*cell]]   //head,body1,body2....
     }
 
-    update(ctx, fruitPos, backgroundColor, interval , cw, ch, walls){     //return True if eated a fruit
+    update(ctx, fruitPos, backgroundColor, interval , walls, mainWindow){     //return True if eated a fruit
 
         var out=true;
 
@@ -22,7 +22,7 @@ class Snake{
         if (insideWalls(x,y,walls) || this.insideSnake(x,y)){
             console.log('E MOREU');
             window.clearInterval(interval);
-            window.postMessage("arcade",'*');
+            mainWindow.postMessage("arcade",'*');
             return
         }
 

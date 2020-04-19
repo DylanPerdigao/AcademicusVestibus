@@ -10,10 +10,22 @@ function main() {
     var ctx = canvas.getContext("2d");
     var score= document.getElementById("score");
 
-    var ch = canvas.height;
-    var cw = canvas.width;
+    var mainWindow;
 
-    var cell=Math.floor(ch/30); //canvas needs to be a square
+    //Key down
+    var kdh = function (ev) {
+        keyDownHandler(ev, snake);
+    };
+
+    var msgHandler = function(ev){
+        mainWindow=messageHandler(ev);
+    }
+
+    //listener
+    window.addEventListener("keydown", kdh);
+    window.addEventListener("message",msgHandler);
+
+    var cell=Math.floor(Math.min(canvas.height,canvas.width)/30);
 
 
     //TODO:
@@ -33,16 +45,8 @@ function main() {
     ctx.strokeStyle= backgroundColor;
 
     var snake = new Snake(snakeColor,cell);
-    //var food = new Food()
-
-    //Key down
-    var kdh = function (ev) {
-        keyDownHandler(ev, snake);
-    };
 
 
-    //listener
-    window.addEventListener("keydown", kdh);
 
     
     var walls=drawLevel(0);
@@ -54,7 +58,7 @@ function main() {
 
     function render(){
 
-        if(snake.update(ctx,fruitPos,backgroundColor, interval, cw, ch, walls)){
+        if(snake.update(ctx,fruitPos,backgroundColor, interval, walls, mainWindow)){
             score.textContent++;
             fruitPos = newFruit();
         }
@@ -63,7 +67,7 @@ function main() {
     function drawLevel(level){
         //Background
         ctx.fillStyle = backgroundColor;
-        ctx.fillRect(0, 0, cw, ch);
+        ctx.fillRect(0, 0, 30*cell, 30*cell);
         var wall;
         var walls=[];
         switch(level){
@@ -97,8 +101,8 @@ function main() {
 
     function newFruit(){
         do{
-            var x = (Math.floor(Math.random()*((cw/cell)-3)+1))*cell;
-            var y = (Math.floor(Math.random()*((ch/cell)-3))+1)*cell;
+            var x = (Math.floor(Math.random()*(27)+1))*cell;
+            var y = (Math.floor(Math.random()*(27))+1)*cell;
         }while(snake.insideSnake(x,y)); //if inside snake will find other spot
 
         //Draw Fruit 
@@ -117,6 +121,10 @@ function insideWalls(x,y,walls){
         }
     }
     return false;
+}
+
+function messageHandler(ev){
+    return ev.source;
 }
 
 
