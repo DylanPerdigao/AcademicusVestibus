@@ -79,12 +79,12 @@ function main() {
                 walls.push(wall);
                 
                 //right
-                wall = new Wall(30*cell,0,cell,31*cell,wallColor);
+                wall = new Wall(29*cell,0,cell,30*cell,wallColor);
                 wall.draw(ctx);
                 walls.push(wall);
 
                 //bot
-                wall = new Wall(0,30*cell,30*cell,cell,wallColor);
+                wall = new Wall(0,29*cell,30*cell,cell,wallColor);
                 wall.draw(ctx);
                 walls.push(wall);
 
@@ -101,8 +101,8 @@ function main() {
 
     function newFruit(){
         do{
-            var x = (Math.floor(Math.random()*(27)+1))*cell;
-            var y = (Math.floor(Math.random()*(27))+1)*cell;
+            var x = (Math.floor(Math.random()*(28)+1))*cell;
+            var y = (Math.floor(Math.random()*(28))+1)*cell;
         }while(snake.insideSnake(x,y)); //if inside snake will find other spot
 
         //Draw Fruit 
