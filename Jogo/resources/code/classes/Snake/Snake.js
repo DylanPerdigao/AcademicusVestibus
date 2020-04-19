@@ -22,7 +22,9 @@ class Snake{
         if (insideWalls(x,y,walls) || this.insideSnake(x,y)){
             console.log('E MOREU');
             window.clearInterval(interval);
-            mainWindow.postMessage("arcade",'*');
+            //Alterar
+            //Mostrar mensagem e só depois voltar
+            mainWindow.postMessage("arcade",'*');   //voltar ao menu arcade
             return
         }
 
