@@ -8,10 +8,10 @@ class Snake{
 
         this.color=color;
         this.cell=cell;
-        this.body=[[100,100]]   //head,body1,body2....
+        this.body=[[20,300]]   //head,body1,body2....
     }
 
-    update(ctx, fruitPos, backgroundColor){     //return True if eated a fruit
+    update(ctx, fruitPos, backgroundColor, interval){     //return True if eated a fruit
 
         var out=true;
 
@@ -19,8 +19,10 @@ class Snake{
         var y=this.body[0][1]+this.yspeed*this.cell;
 
         //check Wall colision
-        if (x==0 || x==600-this.cell || y==0 || y==600-this.cell){
+        if (x==0 || x==600-this.cell || y==0 || y==600-this.cell || this.insideSnake(x,y)){
             console.log('E MOREU');
+            window.clearInterval(interval);
+            return
         }
 
         
@@ -51,5 +53,14 @@ class Snake{
     changeDir(xspeed,yspeed){
         this.xspeed=xspeed;
         this.yspeed=yspeed;
+    }
+
+    insideSnake(x,y){
+        for (let i=0;i<this.body.length;i++){
+            if (x==this.body[i][0] && y==this.body[i][1]){
+                return true;
+            }
+        }
+        return false;
     }
 }

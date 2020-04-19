@@ -44,35 +44,61 @@ function main() {
 
     draw();
 
-    var fruitPos = newFruit(ctx,cell, fruitColor);
+    var fruitPos = newFruit(ctx,cell, fruitColor, snake);
 
     var interval = setInterval(render,100);
 
 
     function render(){
 
-        if(snake.update(ctx,fruitPos,backgroundColor)){
-            fruitPos = newFruit(ctx,cell, fruitColor);
+        if(snake.update(ctx,fruitPos,backgroundColor, interval)){
+            fruitPos = newFruit(ctx,cell, fruitColor, snake);
         }
     }
 
     function draw(){
+        //Background
         ctx.fillStyle = backgroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        //Wall
+        ctx.fillStyle = wallColor;
+
+        //left
+        ctx.fillRect(0, 0, cell, canvas.height);
+        ctx.strokeRect(0, 0, cell, canvas.height);
+        
+        //right
+        ctx.fillRect(canvas.width-cell, 0, cell, canvas.height);
+        ctx.strokeRect(canvas.width-cell, 0, cell, canvas.height);
+
+        //bot
+        ctx.fillRect(0, canvas.height-cell, canvas.width, cell);
+        ctx.strokeRect(0, canvas.height-cell, canvas.width, cell);
+
+        //top
+        ctx.fillRect(0, 0, canvas.width, cell);
+        ctx.strokeRect(0, 0, canvas.width, cell);
+
     }
+    
 }
 
 
-function newFruit(ctx, cell, fruitColor){
-    var x = Math.floor(Math.random()*(600/20)+1)*cell;
-    var y = Math.floor(Math.random()*(600/20)+1)*cell;
-    
+function newFruit(ctx, cell, fruitColor,snake){
+
+    do{
+        var x = (Math.floor(Math.random()*((600/20)-3)+1))*cell;
+        var y = (Math.floor(Math.random()*((600/20)-3))+1)*cell;
+    }while(snake.insideSnake(x,y)); //if inside snake will find other spot
+
     //Draw Fruit 
     ctx.fillStyle = fruitColor;
     ctx.fillRect(x, y, cell, cell);
     
     return [x,y]
 }
+
 
 //teclas
 function keyDownHandler(ev, snake) {
