@@ -10,14 +10,17 @@ function main() {
     var ctx = canvas.getContext("2d");
     var score= document.getElementById("score");
 
+    var ch = canvas.height;
+    var cw = canvas.width;
 
-    var cell=20; 
+    var cell=Math.floor(ch/30); //canvas needs to be a square
+
 
     //TODO:
     //Audio 
 
     //let audio = New Audio()
-    //audio.srec="..."
+    //audio.src="..."
 
     //bla bla bla
 
@@ -42,63 +45,78 @@ function main() {
     window.addEventListener("keydown", kdh);
 
     
+    var walls=drawLevel(0);
 
-    draw();
-
-    var fruitPos = newFruit(ctx,cell, fruitColor, snake);
+    var fruitPos = newFruit();
 
     var interval = setInterval(render,100);
 
 
     function render(){
 
-        if(snake.update(ctx,fruitPos,backgroundColor, interval)){
+        if(snake.update(ctx,fruitPos,backgroundColor, interval, cw, ch, walls)){
             score.textContent++;
-            fruitPos = newFruit(ctx,cell, fruitColor, snake);
+            fruitPos = newFruit();
         }
     }
 
-    function draw(){
+    function drawLevel(level){
         //Background
         ctx.fillStyle = backgroundColor;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, cw, ch);
+        var wall;
+        var walls=[];
+        switch(level){
+            case 0:
 
-        //Wall
-        ctx.fillStyle = wallColor;
+                //left
+                wall = new Wall(0,0,cell,30*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                //right
+                wall = new Wall(30*cell,0,cell,31*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
 
-        //left
-        ctx.fillRect(0, 0, cell, canvas.height);
-        ctx.strokeRect(0, 0, cell, canvas.height);
+                //bot
+                wall = new Wall(0,30*cell,30*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+
+                //top
+                wall = new Wall(0,0,30*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+
+        }
+        return walls;
+
+    }
+
+
+    function newFruit(){
+        do{
+            var x = (Math.floor(Math.random()*((cw/cell)-3)+1))*cell;
+            var y = (Math.floor(Math.random()*((ch/cell)-3))+1)*cell;
+        }while(snake.insideSnake(x,y)); //if inside snake will find other spot
+
+        //Draw Fruit 
+        ctx.fillStyle = fruitColor;
+        ctx.fillRect(x, y, cell, cell);
         
-        //right
-        ctx.fillRect(canvas.width-cell, 0, cell, canvas.height);
-        ctx.strokeRect(canvas.width-cell, 0, cell, canvas.height);
-
-        //bot
-        ctx.fillRect(0, canvas.height-cell, canvas.width, cell);
-        ctx.strokeRect(0, canvas.height-cell, canvas.width, cell);
-
-        //top
-        ctx.fillRect(0, 0, canvas.width, cell);
-        ctx.strokeRect(0, 0, canvas.width, cell);
-
+        return [x,y];
     }
     
 }
 
-
-function newFruit(ctx, cell, fruitColor,snake){
-
-    do{
-        var x = (Math.floor(Math.random()*((600/20)-3)+1))*cell;
-        var y = (Math.floor(Math.random()*((600/20)-3))+1)*cell;
-    }while(snake.insideSnake(x,y)); //if inside snake will find other spot
-
-    //Draw Fruit 
-    ctx.fillStyle = fruitColor;
-    ctx.fillRect(x, y, cell, cell);
-    
-    return [x,y]
+function insideWalls(x,y,walls){
+    for (let i = 0; i<walls.length;i++){
+        if (walls[i].insideWall(x,y)){
+            return true;
+        }
+    }
+    return false;
 }
 
 
