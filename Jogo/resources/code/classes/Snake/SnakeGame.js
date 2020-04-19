@@ -8,6 +8,8 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
+    var score= document.getElementById("score");
+
 
     var cell=20; 
 
@@ -52,6 +54,7 @@ function main() {
     function render(){
 
         if(snake.update(ctx,fruitPos,backgroundColor, interval)){
+            score.textContent++;
             fruitPos = newFruit(ctx,cell, fruitColor, snake);
         }
     }

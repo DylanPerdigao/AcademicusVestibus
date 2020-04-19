@@ -1,0 +1,20 @@
+h2{
+    position: top;
+    display: inline; 
+}
+
+h1{
+    color: #172121;
+}
+
+canvas {
+	margin:auto;
+	padding-top: 2.5%;
+	padding-left:5%;
+	padding-right: 5%;
+    width: auto;
+	height: 90%;
+	display: block;
+    border: 3px;
+	border-color: burlywood;
+} 
