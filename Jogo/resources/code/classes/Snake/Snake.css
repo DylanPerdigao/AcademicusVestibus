@@ -7,6 +7,17 @@ h1{
     color: #172121;
 }
 
+body{
+	overflow: hidden;
+	overflow-y: hidden;
+	text-align: center;
+}
+section{
+	margin:auto;
+	width: auto;
+    height: 90%;
+}
+
 canvas {
 	margin:auto;
 	padding-top: 2.5%;
