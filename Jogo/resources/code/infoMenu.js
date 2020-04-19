@@ -1,12 +1,5 @@
 "use strict";
 
-const MAIN_MENU = 0;
-const NEW_GAME_MENU = 1;
-const OPTIONS_MENU = 2;
-const HELP_MENU = 3;
-const CREDITS_MENU = 4;
-const EXIT = 5;
-
 (function(){window.addEventListener("load", main);}());
 
 
@@ -39,7 +32,7 @@ function buttonHandler(ev,func,buttons,w){
 	//envia mensagem ao main da pagina escolhida
 	switch(ev.currentTarget.id){
 		case "return":
-			w.postMessage(MAIN_MENU, "*");
+			w.postMessage(ev.currentTarget.id, "*");
 			break;
 	}
 }
