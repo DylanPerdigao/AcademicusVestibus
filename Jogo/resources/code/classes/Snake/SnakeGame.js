@@ -26,7 +26,6 @@ function main() {
     const fruitColor = "#F29559";
     const backgroundColor = "#C9C5BA";
     const snakeColor = "#5A7D7C";
-    const scoreColor = "#172121";
 
     ctx.strokeStyle= backgroundColor;
 
