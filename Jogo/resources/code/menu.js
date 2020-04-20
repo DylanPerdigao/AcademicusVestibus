@@ -30,13 +30,5 @@ function buttonHandler(ev,func,buttons,w){
 		buttons[i].removeEventListener("click",func)
 	}
 	//envia mensagem ao main da pagina escolhida
-	switch(ev.currentTarget.id){
-		case "montyHall":
-		case "snake":
-		case "fill":
-		case "moscas":
-		case "return":
-			w.postMessage(ev.currentTarget.id, "*");
-			break;
-	}
+	w.postMessage(ev.currentTarget.id, "*");
 }
