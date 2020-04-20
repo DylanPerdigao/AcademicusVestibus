@@ -40,44 +40,37 @@ function main() {
     }
 
     var MouseUpLevelHandler = function (ev){
-        var bound = canvas.getBoundingClientRect();
-        var x = Math.round(ev.clientX - bound.left); 
-        var y = Math.round(ev.clientY - bound.top);
-        console.log(x,y)
-        console.log(ev.offsetX,ev.offsetY)
+        //var bound = canvas.getBoundingClientRect();
+        var x = ev.offsetX; 
+        var y = ev.offsetY;
 
         if (4*cell<=x && x<13*cell){
             if(4*cell<=y && y<7*cell){
-                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
-                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
                 level=0;
-                drawColorsMenu();
             }
             else if(11*cell<=y && y<14*cell){
-                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
-                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
-                drawColorsMenu();
                 level=1;
             }
             else if(18*cell<=y && y<21*cell){
-                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
-                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
-                drawColorsMenu();
                 level=2;
             }
             else if(25*cell<=y && y<28*cell){
-                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
-                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
-                drawColorsMenu();
                 level=3;
             }
+            else{
+                return;
+            }
+            
+            ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
+            ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
+            drawColorsMenu();
         }
     }
 
     var MouseUpColorHandler = function(ev){
-        var bound = canvas.getBoundingClientRect();
-        var x = Math.round(ev.clientX - bound.left); 
-        var y = Math.round(ev.clientY - bound.top)
+        //var bound = canvas.getBoundingClientRect();
+        var x = ev.offsetX; 
+        var y = ev.offsetY;
         if (4*cell<=x && x<13*cell){
             if(4*cell<=y && y<7*cell){
                 ctx.canvas.removeEventListener("mouseup", MouseUpColorHandler);
@@ -141,6 +134,7 @@ function main() {
 
     function drawLevelsMenu(){
         //Background
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         ctx.font = "30px Arial";
 
@@ -164,6 +158,7 @@ function main() {
 
     function drawColorsMenu(){
         //Background
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         ctx.font = "30px Arial";
 
