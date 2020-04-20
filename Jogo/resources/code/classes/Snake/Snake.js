@@ -6,9 +6,11 @@ class Snake{
         this.xspeed=1;
         this.yspeed=0;
 
+        this.lastDir = [1,0];
+
         this.color=color;
         this.cell=cell;
-        this.body=[[cell,15*cell]]   //head,body1,body2....
+        this.body=[[14*cell,14*cell]]   //head,body1,body2....
     }
 
     update(ctx, fruitPos, backgroundColor, interval , walls, mainWindow){     //return True if eated a fruit
@@ -17,6 +19,8 @@ class Snake{
 
         var x=this.body[0][0]+this.xspeed*this.cell;
         var y=this.body[0][1]+this.yspeed*this.cell;
+
+        this.lastDir=[this.xspeed,this.yspeed];
 
         //check Wall colision
         if (insideWalls(x,y,walls) || this.insideSnake(x,y)){
@@ -53,12 +57,14 @@ class Snake{
     }
 
     changeDir(xspeed,yspeed){
-        this.xspeed=xspeed;
-        this.yspeed=yspeed;
+        if (xspeed!= -this.lastDir[0] && yspeed!= -this.lastDir[1]){
+            this.xspeed=xspeed;
+            this.yspeed=yspeed;
+        }
     }
 
     insideSnake(x,y){
-        for (let i=0;i<this.body.length;i++){
+        for (let i=4;i<this.body.length;i++){
             if (x==this.body[i][0] && y==this.body[i][1]){
                 return true;
             }

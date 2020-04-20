@@ -49,7 +49,7 @@ function main() {
 
 
     
-    var walls=drawLevel(0);
+    var walls=drawLevel(4);
 
     var fruitPos = newFruit();
 
@@ -71,7 +71,74 @@ function main() {
         var wall;
         var walls=[];
         switch(level){
+            case 4:
+                //extras
+
+            case 3:
+                //resto 
+
+                //top
+                wall = new Wall(5*cell,4*cell,20*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                wall = new Wall(11*cell,10*cell,8*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                //bot
+                wall = new Wall(11*cell,19*cell,8*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                wall = new Wall(5*cell,25*cell,20*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+
+            case 2:
+                //sides
+
+                //left
+                wall = new Wall(3*cell,8*cell,cell,3*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                wall = new Wall(4*cell,11*cell,cell,8*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                wall = new Wall(3*cell,19*cell,cell,3*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+
+                //right
+                wall = new Wall(26*cell,8*cell,cell,3*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                wall = new Wall(25*cell,11*cell,cell,8*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                wall = new Wall(26*cell,19*cell,cell,3*cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+
+            case 1:
+                //mid top bot
+                //top
+                wall = new Wall(8*cell,7*cell,14*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+                //bot
+                wall = new Wall(8*cell,22*cell,14*cell,cell,wallColor);
+                wall.draw(ctx);
+                walls.push(wall);
+                
+
             case 0:
+                //caixa
 
                 //left
                 wall = new Wall(0,0,cell,30*cell,wallColor);
@@ -92,6 +159,8 @@ function main() {
                 wall = new Wall(0,0,30*cell,cell,wallColor);
                 wall.draw(ctx);
                 walls.push(wall);
+                
+                break;
 
         }
         return walls;
@@ -103,7 +172,7 @@ function main() {
         do{
             var x = (Math.floor(Math.random()*(28)+1))*cell;
             var y = (Math.floor(Math.random()*(28))+1)*cell;
-        }while(snake.insideSnake(x,y)); //if inside snake will find other spot
+        }while(snake.insideSnake(x,y) || insideWalls(x,y,walls) ); //if inside snake will find other spot
 
         //Draw Fruit 
         ctx.fillStyle = fruitColor;
