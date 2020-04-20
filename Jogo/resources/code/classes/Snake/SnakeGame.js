@@ -11,6 +11,24 @@ function main() {
     var score= document.getElementById("score");
 
     var mainWindow;
+    var cell=Math.floor(Math.min(canvas.height,canvas.width)/30);
+
+    ctx.strokeStyle= "Black";    
+
+    //colors
+    var wallColor;
+    var fruitColor;
+    var backgroundColor;
+    var snakeColor;
+
+    var level;
+    var walls = [];
+    var fruitPos;
+    var interval;
+    var snake;
+
+
+    drawLevelsMenu();
 
     //Key down
     var kdh = function (ev) {
@@ -21,11 +39,87 @@ function main() {
         mainWindow=messageHandler(ev);
     }
 
+    var MouseUpLevelHandler = function (ev){
+        var bound = canvas.getBoundingClientRect();
+        var x = Math.round(ev.clientX - bound.left); 
+        var y = Math.round(ev.clientY - bound.top);
+        console.log(x,y)
+        console.log(ev.offsetX,ev.offsetY)
+
+        if (4*cell<=x && x<13*cell){
+            if(4*cell<=y && y<7*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
+                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
+                level=0;
+                drawColorsMenu();
+            }
+            else if(11*cell<=y && y<14*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
+                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
+                drawColorsMenu();
+                level=1;
+            }
+            else if(18*cell<=y && y<21*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
+                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
+                drawColorsMenu();
+                level=2;
+            }
+            else if(25*cell<=y && y<28*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpLevelHandler);
+                ctx.canvas.addEventListener("mouseup", MouseUpColorHandler);
+                drawColorsMenu();
+                level=3;
+            }
+        }
+    }
+
+    var MouseUpColorHandler = function(ev){
+        var bound = canvas.getBoundingClientRect();
+        var x = Math.round(ev.clientX - bound.left); 
+        var y = Math.round(ev.clientY - bound.top)
+        if (4*cell<=x && x<13*cell){
+            if(4*cell<=y && y<7*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpColorHandler);
+                wallColor = "#444554";
+                fruitColor = "#F29559";
+                backgroundColor = "#C9C5BA";
+                snakeColor = "#5A7D7C";
+                drawLevel(level);
+            }
+            else if(11*cell<=y && y<14*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpColorHandler);
+                wallColor = "#260016";
+                fruitColor = "#ed008c";
+                backgroundColor = "#daf3ec";
+                snakeColor = "#00bff3";
+                drawLevel(level);
+            }
+            else if(18*cell<=y && y<21*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpColorHandler);
+                wallColor = "#012824";
+                fruitColor = "#ed008c";
+                backgroundColor = "#fcdeea";
+                snakeColor = "#ff4d6d";
+                drawLevel(level);
+            }
+            else if(25*cell<=y && y<28*cell){
+                ctx.canvas.removeEventListener("mouseup", MouseUpColorHandler);
+                wallColor = "#08242b";
+                fruitColor = "#fda000";
+                backgroundColor = "#ffffff";
+                snakeColor = "#1d7c95";
+                drawLevel(level);
+            }
+        }
+    }
+
     //listener
+    
+    ctx.canvas.addEventListener("mouseup", MouseUpLevelHandler);
     window.addEventListener("keydown", kdh);
     window.addEventListener("message",msgHandler);
 
-    var cell=Math.floor(Math.min(canvas.height,canvas.width)/30);
 
 
     //TODO:
@@ -36,25 +130,6 @@ function main() {
 
     //bla bla bla
 
-    //colors
-    const wallColor = "#444554";
-    const fruitColor = "#F29559";
-    const backgroundColor = "#C9C5BA";
-    const snakeColor = "#5A7D7C";
-
-    ctx.strokeStyle= backgroundColor;
-
-    var snake = new Snake(snakeColor,cell);
-
-
-
-    
-    var walls=drawLevel(4);
-
-    var fruitPos = newFruit();
-
-    var interval = setInterval(render,100);
-
 
     function render(){
 
@@ -64,12 +139,58 @@ function main() {
         }
     }
 
+    function drawLevelsMenu(){
+        //Background
+        
+        ctx.font = "30px Arial";
+
+        //Level 0
+        ctx.fillText("Level 0",6*cell,6*cell);
+        ctx.strokeRect(4*cell, 4* cell, 9*cell, 3*cell);
+
+        //Level 1
+        ctx.fillText("Level 1",6*cell,13*cell);
+        ctx.strokeRect(4*cell, 11* cell, 9*cell, 3*cell);
+
+        //Level 2
+        ctx.fillText("Level 2",6*cell,20*cell);
+        ctx.strokeRect(4*cell, 18* cell, 9*cell, 3*cell);
+
+        //Level 3
+        ctx.fillText("Level 3",6*cell,27*cell);
+        ctx.strokeRect(4*cell, 25* cell, 9*cell, 3*cell);
+
+    }
+
+    function drawColorsMenu(){
+        //Background
+        
+        ctx.font = "30px Arial";
+
+        //Level 0
+        ctx.fillText("A",6*cell,6*cell);
+        ctx.strokeRect(4*cell, 4* cell, 9*cell, 3*cell);
+
+        //Level 1
+        ctx.fillText("B",6*cell,13*cell);
+        ctx.strokeRect(4*cell, 11* cell, 9*cell, 3*cell);
+
+        //Level 2
+        ctx.fillText("C",6*cell,20*cell);
+        ctx.strokeRect(4*cell, 18* cell, 9*cell, 3*cell);
+
+        //Level 3
+        ctx.fillText("D",6*cell,27*cell);
+        ctx.strokeRect(4*cell, 25* cell, 9*cell, 3*cell);
+
+    }
+
     function drawLevel(level){
         //Background
         ctx.fillStyle = backgroundColor;
+        ctx.strokeStyle= backgroundColor;
         ctx.fillRect(0, 0, 30*cell, 30*cell);
         var wall;
-        var walls=[];
         switch(level){
             case 4:
                 //extras
@@ -163,7 +284,9 @@ function main() {
                 break;
 
         }
-        return walls;
+        snake = new Snake(snakeColor,cell);
+        fruitPos=newFruit()
+        interval=setInterval(render,100);
 
     }
 
