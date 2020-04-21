@@ -1,7 +1,8 @@
 "use strict";
 
-const IMG_MATAMOSCAS = "resources/mataMoscas.png";
-const IMG_BACKGROUND = "resources/background.png";
+const IMG_MATAMOSCAS = "../resources/mataMoscas.png";
+const IMG_BACKGROUND = "../resources/background.png";
+const IMG_MOSCA = "../resources/mosca.png";
 const WIDTH_BACKGROUND = 600;
 const HEIGHT_BACKGROUND = 300;
 
@@ -15,7 +16,8 @@ class MataMoscas {
         this.ctx = ctx;
         this.init();
         this.timestamp = 0;
-        this.gameTime = 30_000;
+        this.gameTime = 5_000;
+        this.gameOver = false;
     }
 
     init() {
@@ -28,7 +30,7 @@ class MataMoscas {
 
         this.imgMosca = new Image();
         this.imgMosca.addEventListener("load", imgLoadedHandler);
-        this.imgMosca.src = "resources/mosca.png"; //TODO
+        this.imgMosca.src = IMG_MOSCA;
 
         this.imgMataMoscas = new Image();
         this.imgMataMoscas.src = IMG_MATAMOSCAS;
@@ -51,6 +53,25 @@ class MataMoscas {
                 }
             }
         }
+
+        this.MouseMoveHandler = function (ev) {
+            if (!(ev.offsetX < me.mataMoscas.width / 2 || ev.offsetY > 350 - me.mataMoscas.height / 4 || ev.offsetY < 50 + me.mataMoscas.height / 8 || ev.offsetX > 600 - me.mataMoscas.width / 2)) {
+                me.mataMoscas.x = ev.offsetX - me.mataMoscas.width / 2;
+                me.mataMoscas.y = ev.offsetY - me.mataMoscas.height / 8;
+            }
+        };
+
+        this.clickHandler = function (ev) {
+            if(me.gameOver) return;
+            var i = 0;
+            while (i < me.moscas.length) {
+                if (me.mataMoscas.intersectPixels(me.moscas[i])) {
+                    me.moscas.splice(i, 1);
+                    me.moscasMortas++;
+                    me.moscas.push(new SpriteImage(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, false));
+                } else i++;
+            }
+        };
     }
 
     draw(ctx) {
@@ -60,7 +81,7 @@ class MataMoscas {
         this.ctx.textAlign = "right";
         this.ctx.fillText(this.title, 425, 25);
         this.ctx.fillText("Pontuação: " + this.moscasMortas, 350, 395);
-        this.ctx.fillText("Tempo: " + (this.gameTime/1000).toFixed(0), 350, 375);
+        this.ctx.fillText("Tempo: " + (Math.abs(this.gameTime/1000)).toFixed(0), 350, 375);
         this.background.draw(ctx);
         for (let i = 0; i < this.moscas.length; i++) {
             this.moscas[i].draw(ctx);
@@ -72,31 +93,22 @@ class MataMoscas {
     activate() {
         this.isActive = true;
         let me = this;
-        var MouseMoveHandler = function (ev) {
-            if (!(ev.offsetX < me.mataMoscas.width / 2 || ev.offsetY > 350 - me.mataMoscas.height / 4 || ev.offsetY < 50 + me.mataMoscas.height / 8 || ev.offsetX > 600 - me.mataMoscas.width / 2)) {
-                me.mataMoscas.x = ev.offsetX - me.mataMoscas.width / 2;
-                me.mataMoscas.y = ev.offsetY - me.mataMoscas.height / 8;
-            }
-        };
-        this.ctx.canvas.addEventListener("mousemove", MouseMoveHandler);
 
-        var clickHandler = function (ev) {
-            var i = 0;
-            while (i < me.moscas.length) {
-                if (me.mataMoscas.intersectPixels(me.moscas[i])) {
-                    me.moscas.splice(i, 1);
-                    me.moscasMortas++;
-                    me.moscas.push(new SpriteImage(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, false));
-                } else i++;
-            }
-        };
+        this.ctx.canvas.addEventListener("mousemove", this.MouseMoveHandler);
+        this.ctx.canvas.addEventListener("click", this.clickHandler);
+    }
 
-        this.ctx.canvas.addEventListener("click", clickHandler);
+    deactivate(){
+        this.ctx.canvas.removeEventListener("mousemove", this.MouseMoveHandler);
+        this.ctx.canvas.removeEventListener("click", this.clickHandler);
     }
 
     update(time){
-        this.gameTime = this.gameTime - (time - this.timestamp);
+        if(this.gameTime > 0){
+            this.gameTime = this.gameTime - (time - this.timestamp);
+        }else{
+            this.gameOver = true;
+        }
         this.timestamp = time;
-
     }
 }

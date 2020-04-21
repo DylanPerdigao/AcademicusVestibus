@@ -20,8 +20,6 @@ class GameEngine {
     }
 
 
-
-
     startAnim() //Colocar o startTime a 0
     {
         this.draw();
