@@ -43,6 +43,7 @@ function main() {
         //var bound = canvas.getBoundingClientRect();
         var x = ev.offsetX; 
         var y = ev.offsetY;
+        console.log(x,y);
 
         if (4*cell<=x && x<13*cell){
             if(4*cell<=y && y<7*cell){
@@ -109,7 +110,7 @@ function main() {
 
     //listener
     
-    ctx.canvas.addEventListener("mouseup", MouseUpLevelHandler);
+    canvas.addEventListener("mouseup", MouseUpLevelHandler);
     window.addEventListener("keydown", kdh);
     window.addEventListener("message",msgHandler);
 

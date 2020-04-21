@@ -7,13 +7,13 @@ section{
 	margin:auto;
 	width: auto;
     height: 90%;
+	padding-top: 2.5%;
+	padding-left:5%;
+	padding-right: 5%;
 }
 
 canvas {
 	margin:auto;
-	padding-top: 2.5%;
-	padding-left:5%;
-	padding-right: 5%;
     width: auto;
 	height: 90%;
 	display: block;

@@ -40,10 +40,6 @@ function messageHandler(ev){
 		case "montyHall":
 			showMenu(PATH+"html/creditsMenu.html");
 			break;
-			//snake
-		case "snake":
-			showMenu(PATH+"code/classes/Snake/Snake.html");
-			break;
 		case "snake":
 			showMenu(PATH+"code/classes/Snake/Snake.html");
 			break;
