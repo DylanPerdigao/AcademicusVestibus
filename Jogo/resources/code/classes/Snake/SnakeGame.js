@@ -135,13 +135,15 @@ function main() {
 
     function drawLevelsMenu(){
         //Background
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        ctx.font = "30px Arial";
+        //ctx.font = "30px Arial";
 
         //Level 0
         var level = new Image();
-        level.src="Level2.png";
+        level.src="Level0.png";
+        console.log(level);
+        console.log(ctx);
         ctx.drawImage(level,3*cell,3*cell,10*cell,10*cell);
         //ctx.fillText("Level 0",6*cell,6*cell);
         //ctx.strokeRect(4*cell, 4* cell, 9*cell, 3*cell);
