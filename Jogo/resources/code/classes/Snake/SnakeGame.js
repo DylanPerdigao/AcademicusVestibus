@@ -140,9 +140,13 @@ function main() {
         ctx.font = "30px Arial";
 
         //Level 0
-        ctx.fillText("Level 0",6*cell,6*cell);
-        ctx.strokeRect(4*cell, 4* cell, 9*cell, 3*cell);
+        var level = new Image();
+        level.src="Level2.png";
+        ctx.drawImage(level,3*cell,3*cell,10*cell,10*cell);
+        //ctx.fillText("Level 0",6*cell,6*cell);
+        //ctx.strokeRect(4*cell, 4* cell, 9*cell, 3*cell);
 
+        /*
         //Level 1
         ctx.fillText("Level 1",6*cell,13*cell);
         ctx.strokeRect(4*cell, 11* cell, 9*cell, 3*cell);
@@ -154,6 +158,7 @@ function main() {
         //Level 3
         ctx.fillText("Level 3",6*cell,27*cell);
         ctx.strokeRect(4*cell, 25* cell, 9*cell, 3*cell);
+        */
 
     }
 
