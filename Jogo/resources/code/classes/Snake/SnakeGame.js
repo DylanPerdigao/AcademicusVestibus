@@ -111,7 +111,6 @@ function main() {
     //listener
     
     canvas.addEventListener("mouseup", MouseUpLevelHandler);
-    window.addEventListener("keydown", kdh);
     window.addEventListener("message",msgHandler);
 
 
@@ -290,6 +289,7 @@ function main() {
         }
         snake = new Snake(snakeColor,cell);
         fruitPos=newFruit()
+        window.addEventListener("keydown", kdh);
         interval=setInterval(render,100);
 
     }
