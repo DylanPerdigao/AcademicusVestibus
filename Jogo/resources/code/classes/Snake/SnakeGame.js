@@ -143,7 +143,7 @@ function main() {
         level.src="Level0.png";
         console.log(level);
         console.log(ctx);
-        ctx.drawImage(level,0,0,canvas.width,canvas.height);
+        ctx.drawImage(level,0,0);
         //ctx.drawImage(level,3*cell,3*cell,10*cell,10*cell);
         //ctx.fillText("Level 0",6*cell,6*cell);
         //ctx.strokeRect(4*cell, 4* cell, 9*cell, 3*cell);
