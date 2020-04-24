@@ -203,11 +203,14 @@ function main()
 	var mapPR = new Map(PATH+"map/praca.png",0,0,speed,structuresPR);
 	var mapUC = new Map(PATH+"map/uc.png",0,0,speed,structuresUC);
 	var mapHome = new Map(PATH+"map/home.png",0,0,speed,structuresHome);
+	//MINI-MAP
+	var miniMap = new MiniMap(PATH+"map/map.png",0,0);
 	//GAME
 	var game = new Game(
 		player,
 		new Array(mapHome,mapPR,mapUC),
-		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false)
+		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
+		miniMap
 	);
 	game.map.updatePosition(player.posX-635,player.posY-160);
 	game.map.setStructuresPositions();
@@ -237,7 +240,7 @@ function keyHandler(event,ctx,game){
 			game.exitMap(ctx);
 			break;
 		case "KeyM":
-			game.showMap(ctx,map);
+			game.miniMap.showMap(ctx,game.player,game.mapList.indexOf(game.map));
 			break;
         case "KeyW":
 		case "ArrowUp":

@@ -1,22 +1,12 @@
 class Game {
-    constructor(player,mapList,money) {
+    constructor(player,mapList,money,miniMap) {
 		this.player=player;
 		this.mapList=mapList;
 		this.map = mapList[0];
 		this.money=money;
+		this.miniMap=miniMap;
     }
 
-
-	showMap(ctx,map){
-		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		ctx.drawImage(map,0,0,ctx.canvas.width,ctx.canvas.height);
-	}
-
-	exitMap(ctx){
-		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		this.updatePosition(ctx,"up");
-		this.updatePosition(ctx,"down")
-	}
 /**
  * Invert the direction specified
  * @param {string} direction 
