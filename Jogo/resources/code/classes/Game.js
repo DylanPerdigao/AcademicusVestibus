@@ -5,7 +5,81 @@ class Game {
 		this.map = mapList[0];
 		this.money=money;
 		this.miniMap=miniMap;
-    }
+		this.window = window;
+		this.isShowingMap=false;
+		this.isAnimated=false;
+		this.isDebugging=true;
+		this.yDebug = 0;
+		this.yDebug = 0;
+		//CANVAS
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		canvas.width = 250;
+		canvas.height = 250;
+		//AJUSTES
+		this.map.updatePosition(player.posX-635,player.posY-160);
+		this.map.setStructuresPositions();
+		this.updatePosition(ctx,"up");
+		this.updatePosition(ctx,"down");
+		//LISTENER
+		var game=this;
+		this.kHandler = function(event){
+			game.keyHandler(event,ctx,game);
+		}
+		this.window.addEventListener("keydown",this.kHandler);
+		}
+		
+		
+	keyHandler(event,ctx,game){
+		game.isShowingMap=false;
+		switch(event.code){
+			case "Escape":
+				game.exitMap(ctx);
+				break;
+			case "KeyM":
+				game.isShowingMap=true;
+				game.miniMap.showMap(ctx,game.player,game.mapList.indexOf(game.map));
+				break;
+			case "KeyW":
+			case "ArrowUp":
+				game.updatePosition(ctx,"up");
+				break;
+			case "KeyA":
+			case "ArrowLeft":
+				game.updatePosition(ctx,"left");
+				break;
+			case "KeyS":
+			case "ArrowDown":
+				game.updatePosition(ctx,"down");
+				break;
+			case "KeyD":
+			case "ArrowRight":
+				game.updatePosition(ctx,"right");
+				break;
+			case "Digit1":
+				game.map.structures.push(new Structure(PATH+'structures/bush.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTree))
+				console.log("new Structure(PATH+'structures/bush.png',map.posX-("+ this.xDebug +"),map.posY-("+ this.yDebug +"),speed,null,hitboxTree),\n")
+				break;
+			case "Digit2":
+				game.map.structures.push(new Structure(PATH+'structures/box1.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTrash))
+				console.log("new Structure(PATH+'structures/box1.png',map.posX-("+ this.xDebug +"),map.posY-("+ this.yDebug +"),speed,null,hitboxTrash),\n")
+				break
+				
+		}
+		if (!this.isAnimated && !this.isShowingMap){
+			if(this.isDebugging){
+				this.xDebug = game.map.posX-game.player.posX;
+				this.yDebug = game.map.posY-game.player.posY;
+				document.getElementById("debug").style.color="red"
+				document.getElementById("debug").innerHTML="X:"+this.xDebug+"\nY:"+this.yDebug+"\n"
+				for(let i=0;i<game.map.structures.length;i++){
+					game.map.structures[i].drawHitbox(ctx);
+				}
+				game.player.drawHitbox(ctx);
+			}
+			game.money.draw(ctx);
+		}
+	}
 
 /**
  * Invert the direction specified
@@ -81,24 +155,14 @@ class Game {
 			this.move(ctx,direction)
 		}else if (hasCollision==true && structCollided instanceof Trigger){
 			/*	CASO HAJA COLISAO COM UM TRIGGER:
+			 *		-ANIMACAO
 			 * 		-MOVE AS ESTRUTURAS 
 			 *		-DESENHA AS ESTRUTURAS EM BACKGROUND
 			 *		-MOVE O MAPA
 			 *		-DESENHA O JOGADOR
 			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
 			 */
-			this.move(ctx,direction);
-			switch (structCollided.location){
-				case HOME:
-					structCollided.action(ctx,this,this.mapList[HOME]);
-					break;
-				case PRACA_REPUBLICA:
-					structCollided.action(ctx,this,this.mapList[PRACA_REPUBLICA]);
-					break;
-				case UNIVERSITY:
-					structCollided.action(ctx,this,this.mapList[UNIVERSITY]);
-					break;
-			}
+			this.loadingAnimation(ctx,direction,structCollided);
 		}else{
 			/*	CASO HAJA COLISAO:
 			 * 		-DESNHA O MAPA
@@ -137,6 +201,53 @@ class Game {
 				this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 			}
 		}
+	}
+	
+	loadingAnimation(ctx,direction,structCollided){
+		var cw = ctx.canvas.width;
+		var ch = ctx.canvas.height;
+		var time = 0;
+		var interval = 500;
+		var game = this;
+		var anim = function(){
+			if (time <= 5000){
+				if (game.player.posX < cw+10){
+					game.player.posX += time/100;
+				}else{
+					game.player.posX = -10
+				}
+				game.player.walk(ctx,"right");
+				time+=interval;
+				setTimeout(anim,interval)
+			}else{
+				game.player.resetPosition(cw/2,ch/2);
+				game.loadMap(ctx,direction,structCollided);
+			}
+		}
+		ctx.fillStyle = "rgb(211,187,143)";
+		ctx.fillRect(0,0,cw,ch);
+		this.player.posX = -10;
+		this.player.posY = ch-20;
+		this.isAnimated=true;
+		this.window.removeEventListener("keydown",this.kHandler);
+		setTimeout(anim,interval)
+	}
+
+	loadMap(ctx,direction,structCollided){
+		this.move(ctx,direction);
+		switch (structCollided.location){
+			case HOME:
+				structCollided.action(ctx,this,this.mapList[HOME]);
+				break;
+			case PRACA_REPUBLICA:
+				structCollided.action(ctx,this,this.mapList[PRACA_REPUBLICA]);
+				break;
+			case UNIVERSITY:
+				structCollided.action(ctx,this,this.mapList[UNIVERSITY]);
+				break;
+		}
+		this.isAnimated=false;
+		this.window.addEventListener("keydown",this.kHandler);
 	}
 }
 

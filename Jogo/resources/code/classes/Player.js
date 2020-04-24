@@ -25,6 +25,11 @@ class Player{
 		this.hitboxHeight=hitboxHeight;
 	} 
 
+	resetPosition(x,y){
+		this.posX = x-(this.sprite[0].width/2);
+		this.posY = y-(this.sprite[0].height/2);
+	}
+	
 	draw(ctx,orientation){
 		var i = this.step;
 		switch(orientation){

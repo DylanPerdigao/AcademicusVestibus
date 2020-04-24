@@ -29,19 +29,6 @@ const HOME = 0;
 const PRACA_REPUBLICA = 1;
 const UNIVERSITY = 2;
 const PATH = "../textures/";
-/**********************************************************************************
- ********TIRAR ISTO PORQUE E PARA DEBUGGING*****************************************
- *******vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*****************************************/
-					var x=0,y=0;
-					var dx=0,dy=0;
-/*********^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^****************************************
- ********TIRAR ISTO PORQUE E PARA DEBUGGING*****************************************
- ***********************************************************************************/
-
-
-
-
-
 
 //FUNCTIONS
 function main()
@@ -52,7 +39,7 @@ function main()
     canvas.width = 250;
 	canvas.height = 250;
     //PLAYER
-	var player = new Player(PATH+"player/male/player_male","Dylan",canvas.width/2,canvas.height/2,0,7);
+	var player = new Player(PATH+"player/male/player_male","Dylan",canvas.width/2,canvas.height/2,0,5);
 	/*************************************************************************
 	 ******************	STRUCTS PRACA DA REPUBLICA*******************************
 	 *************************************************************************/
@@ -104,7 +91,7 @@ function main()
 		//WALL
 		new Structure(null, -320, -250,speed,55,275),//ESTRADA OESTE
 		new Structure(null, -447, -160,speed,50,47),//estrada rua norte
-		new Structure(null, -0, -0,speed,1020,160),//casas norte
+		new Structure(null, -0, -0,speed,1020,157),//casas norte
 		new Structure(null, -0, -205,speed,505,50),//estrada norte oeste
 		new Structure(null, -770, -205,speed,50,360),//estrada norte este,
 		new Structure(null, -0, -525,speed,470,50),//estrada sul oeste
@@ -199,7 +186,7 @@ function main()
 		new Structure(null, -0, -205,speed,930,35),//estrada sul
 		new Structure(null, -675, -0,speed,30,240),//estrada este
 		new Structure(null, -315, -0,speed,32,240),//estrada oeste
-		new Structure(null, -355, -0,speed,315,155),//casas
+		new Structure(null, -355, -0,speed,315,157),//casas
 		//TRIGGER
 		new Teleporter(null, -460, -190, speed,40,20,PRACA_REPUBLICA,player.posX-615,player.posY-195,"up")
 	);
@@ -216,69 +203,4 @@ function main()
 		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
 		miniMap
 	);
-	game.map.updatePosition(player.posX-635,player.posY-160);
-	game.map.setStructuresPositions();
-	game.updatePosition(ctx,"up");
-	game.updatePosition(ctx,"down");
-	//LISTENER
-    var kHandler = function(event){
-        keyHandler(event,ctx,game);
-    }
-    window.addEventListener("keydown",kHandler);
-}
-
-
-function keyHandler(event,ctx,game){
-	/**********************************************************************************
- ********TIRAR ISTO PORQUE E PARA DEBUGGING*****************************************
- *******vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*****************************************/
-    x = game.map.posX-game.player.posX;
-	y = game.map.posY-game.player.posY;
-	document.getElementById("debug").style.color="red"
-    document.getElementById("debug").innerHTML="X:"+ x+"\nY:"+y+"\ndelta X: " +dx+ "\ndelta Y: " +dy
-	/*********^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^****************************************
- ********TIRAR ISTO PORQUE E PARA DEBUGGING*****************************************
- ***********************************************************************************/
-    switch(event.code){
-		case "Escape":
-			game.exitMap(ctx);
-			break;
-		case "KeyM":
-			game.miniMap.showMap(ctx,game.player,game.mapList.indexOf(game.map));
-			break;
-        case "KeyW":
-		case "ArrowUp":
-			game.updatePosition(ctx,"up");
-			dy-=speed;
-            break;
-        case "KeyA":
-		case "ArrowLeft":
-			game.updatePosition(ctx,"left");
-			dx -=speed;
-            break;
-        case "KeyS":
-		case "ArrowDown":
-			game.updatePosition(ctx,"down");
-			dy+=speed;
-            break;
-        case "KeyD":
-		case "ArrowRight":
-			game.updatePosition(ctx,"right");
-			dx+=speed;
-            break;
-        case "Digit1":
-			game.map.structures.push(new Structure(PATH+'structures/bush.png',game.map.posX-x,game.map.posY-y,null,hitboxTree))
-            console.log("new Structure(PATH+'structures/bush.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTree),\n")
-            break;
-        case "Digit2":
-            game.map.structures.push(new Structure(PATH+'structures/box1.png',game.map.posX-x,game.map.posY-y,null,hitboxTrash))
-            console.log("new Structure(PATH+'structures/box1.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTrash),\n")
-			break
-         
-    }
-	for(let i=0;i<game.map.structures.length;i++){
-		game.map.structures[i].drawHitbox(ctx);
-	}
-	game.player.drawHitbox(ctx)
-	game.money.draw(ctx)
 }
