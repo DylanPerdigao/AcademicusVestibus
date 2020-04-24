@@ -43,7 +43,6 @@ section{
 	background-size: contain;
 	/*ponteiro*/
 	cursor: url("../textures/gui/pointer.png"), auto;
-
 }
 
 button{
@@ -62,7 +61,7 @@ button{
 	border: none;
 	/*texto*/
 	font-family: EvilEmpire;
-	font-size: 3vw;
+	font-size: 300%;
 	color: rgb(177, 138, 87);
 	text-align: center;
 	/*ponteiro*/
@@ -72,8 +71,13 @@ button{
 button:hover{
     color:burlywood;
 }
- button:active{
+button:active{
 	background-image: url("../textures/gui/buttonLong_brown_pressed.png"); 
     background-size: contain;
     color:burlywood;
+}
+button:disabled{
+	background-image: url("../textures/gui/buttonLong_disabled.png"); 
+    background-size: contain;
+    color:rgb(189, 185, 180);
 }

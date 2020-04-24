@@ -4,7 +4,7 @@
 
 
 function main(){
-	var buttons = document.getElementsByTagName("button")
+	var buttons = document.getElementsByTagName("button");
 	var mainWindow;;
 	//listener nas mensagens da janela principal
 	var msgHandler = function(ev){

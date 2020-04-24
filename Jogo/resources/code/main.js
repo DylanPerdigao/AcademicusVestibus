@@ -22,6 +22,9 @@ function messageHandler(ev){
 		case "return":
 			showMenu(PATH+"html/mainMenu.html");
 			break;
+		case "game":
+			showMenu(PATH+"html/gameMenu.html");
+			break;
 		case "play":
 			showMenu(PATH+"html/game.html");
 			break;
