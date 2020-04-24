@@ -19,6 +19,9 @@
 const speed = 5;
 const path = "../textures/";
 const hitboxTree = 6;
+const hitboxBox = 5;
+const hitboxCone = 4;
+const hitboxBarrer = 6;
 const hitboxTrash = 6;
 const hitboxBusStop = 10;
 const hitboxBenchDown = 8;
@@ -97,6 +100,8 @@ function main()
         new Structure(path+'structures/trash.png', -15, -500,speed,null,hitboxTrash),
         //PARAGEM DE AUTOCARRO
 		new Structure(path+'structures/busStop.png', -550, -160,speed,null,hitboxBusStop),
+		//CARTOLA
+		new Structure(path+'structures/cartola.png', -475, -330,speed,null,80),
 		//WALL
 		new Structure(null, -320, -250,speed,55,275),//ESTRADA OESTE
 		new Structure(null, -447, -160,speed,50,47),//estrada rua norte
@@ -106,8 +111,15 @@ function main()
 		new Structure(null, -0, -525,speed,470,50),//estrada sul oeste
 		new Structure(null, -505, -525,speed,400,50),//estrada sul este
 		new Structure(null, -530, -205,speed,505,50),//estrada este
+		//BOXES
+		new Structure(path+'structures/box1.png',-810,-160,speed,null,hitboxBox),
+		new Structure(path+'structures/box2.png',-825,-165,speed,null,hitboxBox),
+		new Structure(path+'structures/box3.png',-810,-170,speed,null,hitboxBox),
+		new Structure(path+'structures/box4.png',-820,-180,speed,null,hitboxBox),
+		new Structure(path+'structures/box2.png',-805,-190,speed,null,hitboxBox),
 		//TRIGGER
-		new Teleporter(null, -475, -525,speed,32,30,UNIVERSITY,player.posX-1405,player.posY-400,"left")
+		new Teleporter(null, -475, -540,speed,32,30,UNIVERSITY,player.posX-1425,player.posY-400,"left"),
+		new Teleporter(null, -555, -190,speed,40,20,HOME,player.posX-520,player.posY-195,"up")
 	);
 	/*************************************************************************
 	 ******************	STRUCTS UNIVERSIDADE *********************************
@@ -130,6 +142,12 @@ function main()
 		new Structure(path+'structures/tree.png', -555, -500,speed,null,hitboxTree),
 		new Structure(path+'structures/tree.png', -660, -500,speed,null,hitboxTree),
 		new Structure(path+'structures/tree.png', -770, -500,speed,null,hitboxTree), 
+		new Structure(path+'structures/bush.png', -495, -540,speed,null,hitboxTree), 
+		new Structure(path+'structures/bush.png', -580, -540,speed,null,hitboxTree), 
+		new Structure(path+'structures/bush.png', -615, -540,speed,null,hitboxTree), 
+		new Structure(path+'structures/bush.png', -530, -540,speed,null,hitboxTree), 
+		
+
 		//D.DINIS
 		new Structure(path+'structures/statue.png', -995, -395,speed,null,10),
 		//BANCOS
@@ -156,9 +174,15 @@ function main()
 		new Structure(null, -1375, -200,speed,70,50),//muro monumentais norte
 		new Structure(null, -1440, -245,speed,45,110), //muro monumentais nordeste
 		new Structure(null, -1440, -475,speed,95,285),//muro monumentais suleste
+		//Barrer and cones
+		new Structure(path+'structures/barrer2.png',-1390,-635,speed,null,hitboxBarrer),
+		new Structure(path+'structures/cone.png',-1430,-635,speed,null,hitboxCone), 
+		new Structure(path+'structures/cone.png',-1420,-635,speed,null,hitboxCone), 
+		new Structure(path+'structures/cone.png',-1280,-625,speed,null,hitboxCone), 
+		new Structure(path+'structures/cone.png',-1270,-635,speed,null,hitboxCone), 
+		new Structure(path+'structures/cone.png',-1260,-640,speed,null,hitboxCone),
 		//TRIGGER
-		new Teleporter(null,-1435,-350,speed, 90,110,PRACA_REPUBLICA,player.posX-480,player.posY-480,"up")
-
+		new Teleporter(null,-1450,-350,speed, 90,120,PRACA_REPUBLICA,player.posX-480,player.posY-510,"up")
 	);
 	
 	/*************************************************************************
@@ -174,7 +198,7 @@ function main()
 		new Structure(null, -315, -0,speed,32,240),//estrada oeste
 		new Structure(null, -355, -0,speed,315,155),//casas
 		//TRIGGER
-		new Teleporter(null, -520, -190, speed,20,20,PRACA_REPUBLICA,player.posX-600,player.posY-180,"up")
+		new Teleporter(null, -460, -190, speed,40,20,PRACA_REPUBLICA,player.posX-615,player.posY-195,"up")
 	);
 	//MAPS
 	var mapPR = new Map(path+"map/praca.png",0,0,speed,structuresPR);
@@ -236,32 +260,36 @@ function keyHandler(event,ctx,game){
 			dx+=speed;
             break;
         case "Digit1":
-			game.map.structures.push(new Structure(path+'structures/tree.png',game.map.posX-x,game.map.posY-y,null,hitboxTree))
-            console.log("new Structure(path+'structures/tree.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTree),\n")
+			game.map.structures.push(new Structure(path+'structures/bush.png',game.map.posX-x,game.map.posY-y,null,hitboxTree))
+            console.log("new Structure(path+'structures/bush.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTree),\n")
             break;
         case "Digit2":
-            game.map.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,hitboxTrash))
-            console.log("new Structure(path+'structures/trash.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTrash),\n")
+            game.map.structures.push(new Structure(path+'structures/box1.png',game.map.posX-x,game.map.posY-y,null,hitboxTrash))
+            console.log("new Structure(path+'structures/box1.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxTrash),\n")
             break;
         case "Digit3":
-            game.map.structures.push(new Structure(path+'structures/bench_down.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchDown))
-            console.log("new Structure(path+'structures/bench_down.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchDown),\n")
+            game.map.structures.push(new Structure(path+'structures/box2.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchDown))
+            console.log("new Structure(path+'structures/box2.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchDown),\n")
             break;     
         case "Digit4":
-            game.map.structures.push(new Structure(path+'structures/bench_left.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
-            console.log("new Structure(path+'structures/bench_left.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchLeft),\n")
+            game.map.structures.push(new Structure(path+'structures/box3.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
+            console.log("new Structure(path+'structures/box3.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchLeft),\n")
             break;  
         case "Digit5":
-            game.map.structures.push(new Structure(path+'structures/bench_right.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
-            console.log("new Structure(path+'structures/bench_right.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchRight),\n")
+            game.map.structures.push(new Structure(path+'structures/box4.png',game.map.posX-x,game.map.posY-y,null,hitboxBenchLeft))
+            console.log("new Structure(path+'structures/box4.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBenchRight),\n")
             break;
         case "Digit6":
-            game.map.structures.push(new Structure(path+'structures/busStop.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
-            console.log("new Structure(path+'structures/busStop.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
+            game.map.structures.push(new Structure(path+'structures/barrer1.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
+            console.log("new Structure(path+'structures/barrer1.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
 			break; 
 		case "Digit7":
-			game.map.structures.push(new Structure(path+'structures/statue.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
-			console.log("new Structure(path+'structures/statue.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
+			game.map.structures.push(new Structure(path+'structures/barrer2.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
+			console.log("new Structure(path+'structures/barrer2.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
+			break; 
+		case "Digit8":
+			game.map.structures.push(new Structure(path+'structures/cone.png',game.map.posX-x,game.map.posY-y,null,hitboxBusStop))
+			console.log("new Structure(path+'structures/cone.png',map.posX-("+ x +"),map.posY-("+ y +"),speed,null,hitboxBusStop),\n")
 			break; 
 		case "Digit9":
 			game.map.structures.push(new Structure(path+'structures/trash.png',game.map.posX-x,game.map.posY-y,null,10))
