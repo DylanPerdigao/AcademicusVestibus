@@ -145,8 +145,6 @@ function main()
 		new Structure(PATH+'structures/bush.png', -580, -540,speed,null,hitboxTree), 
 		new Structure(PATH+'structures/bush.png', -615, -540,speed,null,hitboxTree), 
 		new Structure(PATH+'structures/bush.png', -530, -540,speed,null,hitboxTree), 
-		
-
 		//D.DINIS
 		new Structure(PATH+'structures/statue.png', -995, -395,speed,null,10),
 		//BANCOS
@@ -163,7 +161,7 @@ function main()
 		//FACULDADES
 		new Structure(null, -375, -60,speed,445,245),//FMUC
 		new Structure(PATH+'structures/DM.png', -809, -628,speed, 455,230),//DM
-		new Structure(PATH+'structures/DF_DQ.png', -373, -574,speed,430,235),//DFDQ
+		new Structure(PATH+'structures/DF_DQ.png', -373, -574,speed,430,230),//DFDQ
 		//WALL
 		new Structure(null, -320, -0,speed,50,780),//estrada oeste
 		new Structure(null, -1295, -625,speed,90,130),//estrada este DM
@@ -181,7 +179,13 @@ function main()
 		new Structure(PATH+'structures/cone.png',-1270,-635,speed,null,hitboxCone), 
 		new Structure(PATH+'structures/cone.png',-1260,-640,speed,null,hitboxCone),
 		//TRIGGER
-		new Teleporter(null,-1450,-350,speed, 90,120,PRACA_REPUBLICA,player.posX-480,player.posY-510,"up")
+		new Teleporter(null,-1450,-350,speed, 90,120,PRACA_REPUBLICA,player.posX-480,player.posY-510,"up"),
+		new MiniGameTrigger(null,-1110,-635,speed,45,15),//DM
+		new MiniGameTrigger(null,-655,-580,speed,50,20),//DQ
+		new MiniGameTrigger(null,-395,-580,speed,50,20),//DF
+		new MiniGameTrigger(null,-425,-300,speed,30,10),//FMUC Esquerda
+		new MiniGameTrigger(null,-750,-300,speed,30,10),//FMUC Direita
+
 	);
 	
 	/*************************************************************************
