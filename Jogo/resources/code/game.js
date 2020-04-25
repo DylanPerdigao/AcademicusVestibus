@@ -40,9 +40,7 @@ function main()
 	canvas.height = 250;
     //PLAYER
 	var player = new Player(PATH+"player/male/player_male","Dylan",canvas.width/2,canvas.height/2,0,5);
-	/*************************************************************************
-	 ******************	STRUCTS PRACA DA REPUBLICA*******************************
-	 *************************************************************************/
+	//STRUCTURES
     var structuresPR = new Array(
         //LIXO FORA DA PRACA
         new Structure(PATH+'structures/trash.png', -0, -155,speed,null,hitboxTrash),
@@ -107,10 +105,6 @@ function main()
 		new Teleporter(null, -475, -540,speed,32,30,UNIVERSITY,player.posX-1425,player.posY-400,"left"),
 		new Teleporter(null, -555, -190,speed,40,20,HOME,player.posX-520,player.posY-195,"up")
 	);
-	/*************************************************************************
-	 ******************	STRUCTS UNIVERSIDADE *********************************
-	 *************************************************************************/
-
 	var structuresUC = new Array(
 		//ARVORES
 		new Structure(PATH+'structures/tree.png', -375, -290,speed,null,hitboxTree),
@@ -172,13 +166,7 @@ function main()
 		new MiniGameTrigger(null,-395,-580,speed,50,20),//DF
 		new MiniGameTrigger(null,-425,-300,speed,30,10),//FMUC Esquerda
 		new MiniGameTrigger(null,-750,-300,speed,30,10),//FMUC Direita
-
 	);
-	
-	/*************************************************************************
-	 ******************	STRUCTS CASA ********************************************
-	 *************************************************************************/
-
 	var structuresHome = new Array(
 		new Structure(PATH+'structures/busStop.png', -455, -155,speed,null,hitboxBusStop),
 		new Structure(PATH+'structures/trash.png', -505, -180,speed,null,hitboxTrash),
@@ -197,10 +185,5 @@ function main()
 	//MINI-MAP
 	var miniMap = new MiniMap(PATH+"map/map.png",0,0);
 	//GAME
-	var game = new Game(
-		player,
-		new Array(mapHome,mapPR,mapUC),
-		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
-		miniMap
-	);
+	new Game(ctx,player,new Array(mapHome,mapPR,mapUC),new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),miniMap);
 }

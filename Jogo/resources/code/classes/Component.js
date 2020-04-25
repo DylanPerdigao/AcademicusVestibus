@@ -11,6 +11,7 @@ class Component {
 				var c = document.getElementById("canvas");
 				var ctx = c.getContext("2d");
 				ctx.drawImage(comp.img,0,0);
+				ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
 			}
 			this.img.addEventListener("load", imgHandler);
 		}

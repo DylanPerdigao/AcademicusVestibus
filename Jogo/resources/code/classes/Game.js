@@ -1,26 +1,20 @@
 class Game {
-    constructor(player,mapList,money,miniMap) {
+    constructor(ctx,player,mapList,money,miniMap) {
 		this.player=player;
 		this.mapList=mapList;
 		this.map = mapList[0];
 		this.money=money;
 		this.miniMap=miniMap;
-		this.window = window;
 		this.isShowingMap=false;
 		this.isAnimated=false;
 		this.isDebugging=true;
 		this.yDebug = 0;
 		this.yDebug = 0;
-		//CANVAS
-		var canvas = document.getElementById("canvas");
-		var ctx = canvas.getContext("2d");
-		canvas.width = 250;
-		canvas.height = 250;
+		this.window = window;
 		//AJUSTES
 		this.map.updatePosition(player.posX-635,player.posY-160);
 		this.map.setStructuresPositions();
-		this.updatePosition(ctx,"up");
-		this.updatePosition(ctx,"down");
+		this.loadingAnimation(ctx,"down",null)
 		//LISTENER
 		var game=this;
 		this.kHandler = function(event){
@@ -219,7 +213,8 @@ class Game {
 					game.player.posX = 0;
 				}
 				ctx.clearRect(0,0,cw,ch);
-				ctx.fillText(percentage.toFixed(0)+"%",(cw/2)-10,ch/2, 20);
+				ctx.fillStyle = "#86592D";
+				ctx.fillText(percentage.toFixed(0)+"%",(cw/2)-7,ch/2, 14);
 				game.player.walk(ctx,"right");
 				time+=interval;
 				percentage = (time/maxTime)*100
@@ -239,16 +234,18 @@ class Game {
 
 	loadMap(ctx,direction,structCollided){
 		this.move(ctx,direction);
-		switch (structCollided.location){
-			case HOME:
-				structCollided.action(ctx,this,this.mapList[HOME]);
-				break;
-			case PRACA_REPUBLICA:
-				structCollided.action(ctx,this,this.mapList[PRACA_REPUBLICA]);
-				break;
-			case UNIVERSITY:
-				structCollided.action(ctx,this,this.mapList[UNIVERSITY]);
-				break;
+		if(structCollided){
+			switch (structCollided.location){
+				case HOME:
+					structCollided.action(ctx,this,this.mapList[HOME]);
+					break;
+				case PRACA_REPUBLICA:
+					structCollided.action(ctx,this,this.mapList[PRACA_REPUBLICA]);
+					break;
+				case UNIVERSITY:
+					structCollided.action(ctx,this,this.mapList[UNIVERSITY]);
+					break;
+			}
 		}
 		this.isAnimated=false;
 		this.window.addEventListener("keydown",this.kHandler);
