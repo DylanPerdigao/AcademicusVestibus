@@ -207,26 +207,30 @@ class Game {
 		var cw = ctx.canvas.width;
 		var ch = ctx.canvas.height;
 		var time = 0;
-		var interval = 500;
+		var maxTime = 5000;
+		var interval = 50;
+		var percentage = 0;
 		var game = this;
 		var anim = function(){
-			if (time <= 5000){
+			if (time <= maxTime){
 				if (game.player.posX < cw+10){
 					game.player.posX += time/100;
 				}else{
-					game.player.posX = -10
+					game.player.posX = 0;
 				}
+				ctx.clearRect(0,0,cw,ch);
+				ctx.fillText(percentage.toFixed(0)+"%",(cw/2)-10,ch/2, 20);
 				game.player.walk(ctx,"right");
 				time+=interval;
+				percentage = (time/maxTime)*100
 				setTimeout(anim,interval)
 			}else{
 				game.player.resetPosition(cw/2,ch/2);
 				game.loadMap(ctx,direction,structCollided);
 			}
 		}
-		ctx.fillStyle = "rgb(211,187,143)";
-		ctx.fillRect(0,0,cw,ch);
-		this.player.posX = -10;
+		ctx.clearRect(0,0,cw,ch);
+		this.player.posX = 0;
 		this.player.posY = ch-20;
 		this.isAnimated=true;
 		this.window.removeEventListener("keydown",this.kHandler);
