@@ -1,10 +1,11 @@
 class Game {
-    constructor(ctx,player,mapList,money,miniMap) {
+    constructor(ctx,player,mapList,money,miniMap,dialogBox) {
 		this.player=player;
 		this.mapList=mapList;
 		this.map = mapList[0];
 		this.money=money;
 		this.miniMap=miniMap;
+		this.dialogBox=dialogBox;
 		this.isShowingMap=false;
 		this.isAnimated=false;
 		this.isDebugging=true;
@@ -20,7 +21,7 @@ class Game {
 		this.kHandler = function(event){
 			game.keyHandler(event,ctx,game);
 		}
-		this.window.addEventListener("keydown",this.kHandler);
+		//this.window.addEventListener("keydown",this.kHandler);
 		}
 		
 		
@@ -71,6 +72,7 @@ class Game {
 				}
 				game.player.drawHitbox(ctx);
 			}
+			game.dialogBox.write(ctx,["ola","oi"]);
 			game.money.draw(ctx);
 		}
 	}

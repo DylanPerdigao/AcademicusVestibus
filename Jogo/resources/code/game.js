@@ -33,11 +33,12 @@ const PATH = "../textures/";
 //FUNCTIONS
 function main()
 {   
-    //CANVAS
+    //CANVAS 
 	var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
+	var ctx = canvas.getContext("2d");
     canvas.width = 250;
 	canvas.height = 250;
+
     //PLAYER
 	var player = new Player(PATH+"player/male/player_male","Dylan",canvas.width/2,canvas.height/2,0,5);
 	//STRUCTURES
@@ -182,8 +183,11 @@ function main()
 	var mapPR = new Map(PATH+"map/praca.png",0,0,speed,structuresPR);
 	var mapUC = new Map(PATH+"map/uc.png",0,0,speed,structuresUC);
 	var mapHome = new Map(PATH+"map/home.png",0,0,speed,structuresHome);
-	//MINI-MAP
-	var miniMap = new MiniMap(PATH+"map/map.png",0,0);
 	//GAME
-	new Game(ctx,player,new Array(mapHome,mapPR,mapUC),new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),miniMap);
+	new Game(ctx,player,
+		new Array(mapHome,mapPR,mapUC),
+		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
+		new MiniMap(PATH+"map/map.png",0,0),
+		new Dialog(PATH+"gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25)
+	);
 }
