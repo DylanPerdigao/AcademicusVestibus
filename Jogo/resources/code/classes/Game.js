@@ -15,73 +15,88 @@ class Game {
 		//AJUSTES
 		this.map.updatePosition(player.posX-635,player.posY-160);
 		this.map.setStructuresPositions();
-		this.loadingAnimation(ctx,"down",null)
+		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
 		//LISTENER
 		var game=this;
 		this.kHandler = function(event){
-			game.keyHandler(event,ctx,game);
+			game.keyHandler(event,ctx);
 		}
-		//this.window.addEventListener("keydown",this.kHandler);
-		}
-		
-		
-	keyHandler(event,ctx,game){
-		game.isShowingMap=false;
+	}	
+	/**
+	 * Handles key press detection
+	 * @param {Event} event event who's called the function
+	 * @param {*} ctx canvas context
+	 */	
+	keyHandler(event,ctx){
+		this.isShowingMap=false;
 		switch(event.code){
 			case "Escape":
-				game.exitMap(ctx);
+				this.exitMap(ctx);
 				break;
 			case "KeyM":
-				game.isShowingMap=true;
-				game.miniMap.showMap(ctx,game.player,game.mapList.indexOf(game.map));
+				this.isShowingMap=true;
+				this.miniMap.showMap(ctx,this.player,this.mapList.indexOf(this.map));
 				break;
 			case "KeyW":
 			case "ArrowUp":
-				game.updatePosition(ctx,"up");
+				this.updatePosition(ctx,"up");
 				break;
 			case "KeyA":
 			case "ArrowLeft":
-				game.updatePosition(ctx,"left");
+				this.updatePosition(ctx,"left");
 				break;
 			case "KeyS":
 			case "ArrowDown":
-				game.updatePosition(ctx,"down");
+				this.updatePosition(ctx,"down");
 				break;
 			case "KeyD":
 			case "ArrowRight":
-				game.updatePosition(ctx,"right");
+				this.updatePosition(ctx,"right");
 				break;
 			case "Digit1":
-				game.map.structures.push(new Structure(PATH+'structures/bush.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTree))
+				this.map.structures.push(new Structure(PATH+'structures/bush.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTree))
 				console.log("new Structure(PATH+'structures/bush.png',map.posX-("+ this.xDebug +"),map.posY-("+ this.yDebug +"),speed,null,hitboxTree),\n")
 				break;
 			case "Digit2":
-				game.map.structures.push(new Structure(PATH+'structures/box1.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTrash))
+				this.map.structures.push(new Structure(PATH+'structures/box1.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTrash))
 				console.log("new Structure(PATH+'structures/box1.png',map.posX-("+ this.xDebug +"),map.posY-("+ this.yDebug +"),speed,null,hitboxTrash),\n")
 				break
 				
 		}
 		if (!this.isAnimated && !this.isShowingMap){
-			if(this.isDebugging){
-				this.xDebug = game.map.posX-game.player.posX;
-				this.yDebug = game.map.posY-game.player.posY;
-				document.getElementById("debug").style.color="red"
-				document.getElementById("debug").innerHTML="X:"+this.xDebug+"\nY:"+this.yDebug+"\n"
-				for(let i=0;i<game.map.structures.length;i++){
-					game.map.structures[i].drawHitbox(ctx);
-				}
-				game.player.drawHitbox(ctx);
-			}
-			game.dialogBox.write(ctx,["ola","oi"]);
-			game.money.draw(ctx);
+			this.showDebug(ctx);
+			this.dialogBox.write(ctx,["ola","oi"]);
+			this.money.draw(ctx);
 		}
 	}
-
-/**
- * Invert the direction specified
- * @param {string} direction 
- * @returns {string} oposite direction of the specified string
- */
+	/**
+	 * Shows debugging elements
+	 * @param {*} ctx canvas context
+	 */
+	showDebug(ctx){
+		if(this.isDebugging){
+			this.xDebug = game.map.posX-game.player.posX;
+			this.yDebug = game.map.posY-game.player.posY;
+			document.getElementById("debug").style.color="red"
+			document.getElementById("debug").innerHTML="X:"+this.xDebug+"\nY:"+this.yDebug+"\n"
+			this.showHitboxes(ctx);
+		}
+	}
+	/**
+	 * Shows structure's hitboxes
+	 * @param {*} ctx canvas context
+	 */
+	showHitboxes(ctx){
+		for(let i=0;i<this.map.structures.length;i++){
+			this.map.structures[i].drawHitbox(ctx);
+		}
+		this.player.drawHitbox(ctx);
+	}
+	/**
+	 * Invert the direction specified
+	 * @param {string} direction 
+	 * @returns {string} oposite direction of the specified string
+	 */
 	invertDirection(direction){
 		var returnDirection;
 			switch(direction){
@@ -100,11 +115,11 @@ class Game {
 			}
 		return returnDirection;
 	}
-/**
- * Make a simulation of advance one step in the specified direction
- * @param {string} direction direction of the player step
- * @returns {Array} if the player has a collision with one of the structures and the structure with the player collided
- */
+	/**
+	 * Make a simulation of advance one step in the specified direction
+	 * @param {string} direction direction of the player step
+	 * @returns {Array} if the player has a collision with one of the structures and the structure with the player collided
+	 */
  	collisionSimulation(direction){
 		var hasCollision;
 		var k;
@@ -130,11 +145,11 @@ class Game {
 		}
 			
 	}
-/**
- * Updates the position of the elements verifying collisions with player, and if a structure is drawed before/after the player
- * @param {*} ctx canvas context
- * @param {string} direction direction of the player step
- */
+	/**
+	 * Updates the position of the elements verifying collisions with player, and if a structure is drawed before/after the player
+	 * @param {*} ctx canvas context
+	 * @param {string} direction direction of the player step
+	 */
  	updatePosition(ctx,direction){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		var data = this.collisionSimulation(direction);
@@ -180,7 +195,11 @@ class Game {
 			}
 		}
 	}
-
+	/**
+	 * Moves the map and structures in the specified direction
+	 * @param {*} ctx canvas context
+	 * @param {*} direction direction where the player is facing
+	 */	
 	move(ctx,direction){
 		for(let i=0;i<this.map.structures.length;i++){
 			this.map.structures[i].move(direction);
@@ -198,7 +217,12 @@ class Game {
 			}
 		}
 	}
-	
+	/**
+	 * Makes the animation of map loading and active key listener after the animation (during the animation key listeners are off)
+	 * @param {*} ctx canvas context
+	 * @param {*} direction direction where the player is facing
+	 * @param {*} structCollided trigger collided (if null => keeps the actual map)
+	 */	
 	loadingAnimation(ctx,direction,structCollided){
 		var cw = ctx.canvas.width;
 		var ch = ctx.canvas.height;
@@ -233,7 +257,12 @@ class Game {
 		this.window.removeEventListener("keydown",this.kHandler);
 		setTimeout(anim,interval)
 	}
-
+	/**
+	 * Loads the map specified by the trigger collided
+	 * @param {*} ctx canvas context
+	 * @param {*} direction direction where the player is facing
+	 * @param {*} structCollided trigger collided
+	 */	
 	loadMap(ctx,direction,structCollided){
 		this.move(ctx,direction);
 		if(structCollided){
