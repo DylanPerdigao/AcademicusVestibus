@@ -16,10 +16,7 @@ class Wall{
     }
 
     insideWall(x,y){
-        console.log(x,y);
         if (this.x<=x && x<this.x+this.width && this.y<=y && y<this.y+this.height){
-            console.log(this.x,this.x+this.width)
-            console.log(this.y,this.y+this.height)
             return true;
         }
         return false;

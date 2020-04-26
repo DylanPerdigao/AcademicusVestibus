@@ -1,10 +1,8 @@
 "use strict";
 
 class SnakeMenus{
-    constructor(canvas, ctx, cell, handler, img1, img2, img3, img4) {
+    constructor(ctx, cell, img1, img2, img3, img4) {
         this.imgs = [];
-        this.canvas=canvas;
-        this.handler=handler;
         this.init(ctx, cell, img1, img2, img3, img4);
     }
 

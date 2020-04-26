@@ -23,5 +23,10 @@ class SpriteImage {
         else
             return false;
     }
+
+    clicked(ev) //ev.target é a canvas
+    {
+        return this.mouseOver(ev);
+    }
 }
 

@@ -23,7 +23,7 @@ class Snake{
         this.lastDir=[this.xspeed,this.yspeed];
 
         //check Wall colision
-        if (insideWalls(x,y,walls) || this.insideSnake(x,y)){
+        if (this.insideWalls(x,y,walls) || this.insideSnake(x,y)){
             console.log('E MOREU');
             window.clearInterval(interval);
             //TODO:
@@ -54,6 +54,15 @@ class Snake{
         ctx.fillStyle = color;
         ctx.fillRect(x, y, this.cell, this.cell);
         ctx.strokeRect(x, y, this.cell, this.cell);
+    }
+
+    insideWalls(x,y, walls){
+        for (let i = 0; i<walls.length;i++){
+            if (walls[i].insideWall(x,y)){
+                return true;
+            }
+        }
+        return false;
     }
 
     changeDir(xspeed,yspeed){
