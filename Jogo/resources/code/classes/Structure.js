@@ -9,7 +9,7 @@ class Structure extends Element {
 	action(){}
     /**
      * Draw a red rectangle where is the Structure's hitbox
-     * @param {*} ctx canvas context
+     * @param {CanvasRenderingContext2D} ctx canvas context
      */
     drawHitbox(ctx){
         var dim = this.getDimensions();
@@ -25,7 +25,7 @@ class Structure extends Element {
     }
     /**
      * Check if the Player's hitbox has an intersection with the Structure's hitbox
-     * @param {*} player user player
+     * @param {Player} player user player
      * @returns {boolean} state of the intersection
      */
     checkIntersection(player){
@@ -49,7 +49,7 @@ class Structure extends Element {
     }
     /**
      * Check if the Player is behind the Structure
-     * @param {*} player user player
+     * @param {Player} player user player
      * @returns {boolean} state of the position
      */
     isBehind(player){

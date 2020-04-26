@@ -1,8 +1,8 @@
 class Player{
-	constructor(src,name,x,y,step,hitboxHeight){
+	constructor(src,name,x,y,hitboxHeight){
 		this.src=src;
 		this.name=name;
-		this.step=step;
+		this.step=0;
 		//load das imagens todas
 		this.sprite=new Array() 
 		var player = this;

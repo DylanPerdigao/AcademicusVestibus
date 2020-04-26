@@ -16,9 +16,10 @@ class Component {
 			this.img.addEventListener("load", imgHandler);
 		}
     }
-
+	drawShadow(){}
     draw(ctx,x,y){
 		if (this.src != null){
+			this.drawShadow(ctx,this.hitboxHeight-1);
 			ctx.drawImage(this.img,x,y)
 		}
     } 

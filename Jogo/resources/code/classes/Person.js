@@ -11,7 +11,7 @@ class Person extends Trigger {
 	drawShadow(ctx,radius){
 		ctx.fillStyle = "rgba(0,0,0,0.4)";
 		ctx.beginPath();
-		ctx.arc(this.posX+this.sprite[0].width/2,this.posY+this.sprite[0].height-2,radius, 0, 2*Math.PI);
+		ctx.arc(this.posX+this.img.width/2,this.posY+this.img.height-2,radius, 0, 2*Math.PI);
 		ctx.fill();
 	}
 	/**
