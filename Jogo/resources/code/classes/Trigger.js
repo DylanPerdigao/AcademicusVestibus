@@ -3,7 +3,7 @@ class Trigger extends Structure {
 		super(src, posX, posY,speed,hitboxWidth,hitboxHeight);
 		this.hitboxColor = "white"
 	}
-	
+	action() {}
 	/**
      * Draw an orange rectangle where is the Trigger's hitbox
      * @param {*} ctx canvas context
@@ -20,7 +20,7 @@ class Trigger extends Structure {
         ctx.rect(x,y,w,h); 
         ctx.stroke();
     }
-    action() {}
+
 
 }
 

@@ -18,9 +18,5 @@ class Dialog extends Component {
 			ctx.fillText(text[i],this.posX+8,this.posY+10*(i+1),this.width-16);
 		}
     }
-
-    clear(ctx) {
-       // TODO
-    }
 }
 

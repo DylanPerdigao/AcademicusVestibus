@@ -7,7 +7,6 @@ class Teleporter extends Trigger {
 		this.direction=direction;
 		this.hitboxColor = "orange";
 	}
-	
     action(ctx,game,map) {
 		game.map = map;
 		game.map.updatePosition(this.localX,this.localY);//this.localX+game.map.posX-game.player.posX,this.localY+game.map.posY-game.player.posY);

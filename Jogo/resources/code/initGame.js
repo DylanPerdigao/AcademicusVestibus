@@ -104,7 +104,39 @@ function main()
 		new Structure(PATH+'structures/box2.png',-805,-190,speed,null,HITBOX_BOX),
 		//TRIGGER
 		new Teleporter(null, -475, -540,speed,32,30,UNIVERSITY,player.posX-1425,player.posY-400,"left"),
-		new Teleporter(null, -555, -190,speed,40,20,HOME,player.posX-520,player.posY-195,"up")
+		new Teleporter(null, -555, -190,speed,40,20,HOME,player.posX-520,player.posY-195,"up"),
+		//PEOPLE
+		new Person(PATH+'people/female3_0.png',-600,-178,speed,null,HITBOX_PERSON,["Para voltares a casa apanha o autocarro"]), 
+		new Person(PATH+'people/male1_3.png',-600,-153,speed,null,HITBOX_PERSON,["Quero comprar o traje académicio!!"]), 
+		new Person(PATH+'people/male1_2.png',-775,-183,speed,null,HITBOX_PERSON,["Bloquearam o passeio com estes cartões"]), 
+		new Person(PATH+'people/female2_3.png',-505,-153,speed,null,HITBOX_PERSON,["O Multibanco está avariado, não consigo","levantar dinheiro"]), 
+		new Person(PATH+'people/male2_1.png',-390,-378,speed,null,HITBOX_PERSON,["Linda esta Cidade dos Estudantes..."]), 
+		new Person(PATH+'people/female1_0.png',-670,-473,speed,null,HITBOX_PERSON,["O meu filho está a ser praxado, aiiii que","girooo"]), 
+		new Person(PATH+'people/female3_1.png',-755,-348,speed,null,HITBOX_PERSON,["O Jardim da Sereia está fechado ao publico","não é habitual"]), 
+		new Person(PATH+'people/female1_0.png',-695,-278,speed,null,HITBOX_PERSON,["Adoro ver os caloiros a serem Praxados"]), 
+		new Person(PATH+'people/female3_3.png',-460,-508,speed,null,HITBOX_PERSON,["Por aqui pode ir até à Universidade"]), 
+		new Person(PATH+'people/female1_3.png',-495,-418,speed,null,HITBOX_PERSON,["O café está fechado, queria uma cervejinha :("]), 
+		new Person(PATH+'people/male4_0.png',-685,-333,speed,null,HITBOX_PERSON,["SIM DOUTORA RITA!"]), 
+		new Person(PATH+'people/male4_0.png',-685,-348,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-685,-363,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-685,-378,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-670,-378,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-670,-363,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-670,-348,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-670,-333,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-655,-333,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-655,-348,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-655,-363,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-655,-378,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-640,-378,speed,null,HITBOX_PERSON,["SIM DOUTOR BRUNO!"]), 
+		new Person(PATH+'people/male4_0.png',-640,-363,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/male4_0.png',-640,-348,speed,null,HITBOX_PERSON,["SIM DOUTOR DYLAN!"]), 
+		new Person(PATH+'people/male4_0.png',-640,-333,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/female1_3.png',-660,-398,speed,null,HITBOX_PERSON,["CALOIRADA!","FORMAÇÃO!"]), 
+		new Person(PATH+'people/female1_3.png',-675,-398,speed,null,HITBOX_PERSON,["CALOIROS! QUEM CHEGOU ATRASADO FICA D4"]), 
+		new Person(PATH+'people/female3_0.png',-700,-378,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/female3_0.png',-700,-363,speed,null,HITBOX_PERSON,["SIM DOUTOR!"]), 
+		new Person(PATH+'people/female1_2.png',-620,-373,speed,null,HITBOX_PERSON,["Estes caloiros não se sabem comportar"]), 
 	);
 	var structuresUC = new Array(
 		//ARVORES
@@ -177,7 +209,11 @@ function main()
 		new Structure(null, -315, -0,speed,32,240),//estrada oeste
 		new Structure(null, -355, -0,speed,315,157),//casas
 		//TRIGGER
-		new Teleporter(null, -460, -190, speed,40,20,PRACA_REPUBLICA,player.posX-615,player.posY-195,"up")
+		new Teleporter(null, -460, -190, speed,40,20,PRACA_REPUBLICA,player.posX-615,player.posY-195,"up"),
+		//PEOPLE
+		new Person(PATH+'people/male4_2.png',-505,-168,speed,null,HITBOX_PERSON,["Podes apanhar o autocarro para ir à Praça"]), 
+		new Person(PATH+'people/female1_0.png',-635,-153,speed,null,HITBOX_PERSON,["Meu filho a tua aventura começa aqui vai à","universidade conheceres os teus amigos"]), 
+		new Person(PATH+'people/female1_0.png',-370,-168,speed,null,HITBOX_PERSON,["Se carregares na tecla M podes ver o mapa","da cidade"]), 
 	);
 	//MAPS
 	var mapPR = new Map(PATH+"map/praca.png",0,0,speed,structuresPR);
@@ -187,6 +223,8 @@ function main()
 	new Game(ctx,player,
 		new Array(mapHome,mapPR,mapUC),
 		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
-		new MiniMap(PATH+"map/map.png",0,0)
+		new MiniMap(PATH+"map/map.png",0,0),
+		new Dialog(PATH+"gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25)
 	);
 }
+

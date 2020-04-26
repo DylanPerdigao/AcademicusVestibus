@@ -17,10 +17,10 @@ class Person extends Trigger {
 	/**
 	 * Write the text of the Person in a dialog box
 	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {Game} game This game
 	 */
-    interaction(ctx) {
-		var dialog = new Dialog(PATH+"gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25);
-		dialog.write(ctx,text);
+    action(ctx,dialog) {
+		dialog.write(ctx,this.text);
     }
 }
 

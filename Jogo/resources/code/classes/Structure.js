@@ -7,7 +7,6 @@ class Structure extends Element {
 		this.hitboxHeight=hitboxHeight;
 	}
 	action(){}
-
     /**
      * Draw a red rectangle where is the Structure's hitbox
      * @param {*} ctx canvas context

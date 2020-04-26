@@ -1,10 +1,11 @@
 class Game {
-    constructor(ctx,player,mapList,money,miniMap) {
+    constructor(ctx,player,mapList,money,miniMap,dialog) {
 		this.player=player;
 		this.mapList=mapList;
 		this.map = mapList[0];
 		this.money=money;
 		this.miniMap=miniMap;
+		this.dialog = dialog;
 		this.isShowingMap=false;
 		this.isAnimated=false;
 		this.isDebugging=true;
@@ -53,13 +54,12 @@ class Game {
 				this.updatePosition(ctx,"right");
 				break;
 			case "Digit1":
-				this.map.structures.push(new Person(PATH+'people/female1_0.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,10,HITBOX_PERSON,["Hey"]))
+				this.map.structures.push(new Person(PATH+'people/female1_0.png',this.map.posX-this.xDebug,this.map.posY-this.yDebug,10,HITBOX_PERSON,["Hey"]))
 				console.log("new Person(PATH+'people/female1_0.png',"+ this.xDebug +","+ this.yDebug +",speed,null,HITBOX_PERSON),\n")
 				break;				
 		}
 		if (!this.isAnimated && !this.isShowingMap){
 			this.showDebug(ctx);
-			this.dialogBox.write(ctx,["ola","oi"]);
 			this.money.draw(ctx);
 		}
 	}
@@ -158,7 +158,7 @@ class Game {
 			 *		-DESENHA AS ESTRUTURAS EM FOREGROUND
 			 */
 			this.move(ctx,direction)
-		}else if (hasCollision==true && structCollided instanceof Trigger){
+		}else if (hasCollision==true && structCollided instanceof Teleporter){
 			/*	CASO HAJA COLISAO COM UM TRIGGER:
 			 *		-ANIMACAO
 			 * 		-MOVE AS ESTRUTURAS 
@@ -187,6 +187,7 @@ class Game {
 					this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 				}
 			}
+			structCollided.action(ctx,this.dialog);
 		}
 	}
 	/**
@@ -221,7 +222,7 @@ class Game {
 		var cw = ctx.canvas.width;
 		var ch = ctx.canvas.height;
 		var time = 0;
-		var maxTime = 5000;
+		var maxTime = 500; //TODO: REPOR A 5000
 		var interval = 50;
 		var percentage = 0;
 		var game = this;
@@ -240,7 +241,7 @@ class Game {
 				percentage = (time/maxTime)*100
 				setTimeout(anim,interval)
 			}else{
-				game.player.resetPosition(cw/2,ch/2);
+				game.player.setPosition(cw/2,ch/2);
 				game.loadMap(ctx,direction,structCollided);
 			}
 		}
