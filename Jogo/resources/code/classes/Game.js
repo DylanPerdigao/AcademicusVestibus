@@ -1,11 +1,10 @@
 class Game {
-    constructor(ctx,player,mapList,money,miniMap,dialogBox) {
+    constructor(ctx,player,mapList,money,miniMap) {
 		this.player=player;
 		this.mapList=mapList;
 		this.map = mapList[0];
 		this.money=money;
 		this.miniMap=miniMap;
-		this.dialogBox=dialogBox;
 		this.isShowingMap=false;
 		this.isAnimated=false;
 		this.isDebugging=true;
@@ -25,7 +24,7 @@ class Game {
 	/**
 	 * Handles key press detection
 	 * @param {Event} event event who's called the function
-	 * @param {*} ctx canvas context
+	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 */	
 	keyHandler(event,ctx){
 		this.isShowingMap=false;
@@ -54,14 +53,9 @@ class Game {
 				this.updatePosition(ctx,"right");
 				break;
 			case "Digit1":
-				this.map.structures.push(new Structure(PATH+'structures/bush.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTree))
-				console.log("new Structure(PATH+'structures/bush.png',map.posX-("+ this.xDebug +"),map.posY-("+ this.yDebug +"),speed,null,hitboxTree),\n")
-				break;
-			case "Digit2":
-				this.map.structures.push(new Structure(PATH+'structures/box1.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,null,hitboxTrash))
-				console.log("new Structure(PATH+'structures/box1.png',map.posX-("+ this.xDebug +"),map.posY-("+ this.yDebug +"),speed,null,hitboxTrash),\n")
-				break
-				
+				this.map.structures.push(new Person(PATH+'people/female1_0.png',game.map.posX-this.xDebug,game.map.posY-this.yDebug,10,HITBOX_PERSON,["Hey"]))
+				console.log("new Person(PATH+'people/female1_0.png',"+ this.xDebug +","+ this.yDebug +",speed,null,HITBOX_PERSON),\n")
+				break;				
 		}
 		if (!this.isAnimated && !this.isShowingMap){
 			this.showDebug(ctx);
@@ -71,12 +65,12 @@ class Game {
 	}
 	/**
 	 * Shows debugging elements
-	 * @param {*} ctx canvas context
+	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 */
 	showDebug(ctx){
 		if(this.isDebugging){
-			this.xDebug = game.map.posX-game.player.posX;
-			this.yDebug = game.map.posY-game.player.posY;
+			this.xDebug = this.map.posX-this.player.posX;
+			this.yDebug = this.map.posY-this.player.posY;
 			document.getElementById("debug").style.color="red"
 			document.getElementById("debug").innerHTML="X:"+this.xDebug+"\nY:"+this.yDebug+"\n"
 			this.showHitboxes(ctx);
@@ -84,7 +78,7 @@ class Game {
 	}
 	/**
 	 * Shows structure's hitboxes
-	 * @param {*} ctx canvas context
+	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 */
 	showHitboxes(ctx){
 		for(let i=0;i<this.map.structures.length;i++){
@@ -147,7 +141,7 @@ class Game {
 	}
 	/**
 	 * Updates the position of the elements verifying collisions with player, and if a structure is drawed before/after the player
-	 * @param {*} ctx canvas context
+	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {string} direction direction of the player step
 	 */
  	updatePosition(ctx,direction){
@@ -197,8 +191,8 @@ class Game {
 	}
 	/**
 	 * Moves the map and structures in the specified direction
-	 * @param {*} ctx canvas context
-	 * @param {*} direction direction where the player is facing
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {string} direction direction where the player is facing
 	 */	
 	move(ctx,direction){
 		for(let i=0;i<this.map.structures.length;i++){
@@ -219,9 +213,9 @@ class Game {
 	}
 	/**
 	 * Makes the animation of map loading and active key listener after the animation (during the animation key listeners are off)
-	 * @param {*} ctx canvas context
-	 * @param {*} direction direction where the player is facing
-	 * @param {*} structCollided trigger collided (if null => keeps the actual map)
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {string} direction direction where the player is facing
+	 * @param {Trigger} structCollided trigger collided (if null => keeps the actual map)
 	 */	
 	loadingAnimation(ctx,direction,structCollided){
 		var cw = ctx.canvas.width;
@@ -259,9 +253,9 @@ class Game {
 	}
 	/**
 	 * Loads the map specified by the trigger collided
-	 * @param {*} ctx canvas context
-	 * @param {*} direction direction where the player is facing
-	 * @param {*} structCollided trigger collided
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {string} direction direction where the player is facing
+	 * @param {Trigger} structCollided trigger collided
 	 */	
 	loadMap(ctx,direction,structCollided){
 		this.move(ctx,direction);

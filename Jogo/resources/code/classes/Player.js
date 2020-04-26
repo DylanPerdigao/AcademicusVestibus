@@ -46,6 +46,7 @@ class Player{
 				i+=12
 				break;
 		}
+		this.drawShadow(ctx,this.hitboxHeight-1)
 		ctx.drawImage(this.sprite[i],this.posX,this.posY);
 	}
 
@@ -57,7 +58,12 @@ class Player{
 		}
 		this.draw(ctx,orientation);
 	}
-
+	drawShadow(ctx,radius){
+		ctx.fillStyle = "rgba(0,0,0,0.4)";
+		ctx.beginPath();
+		ctx.arc(this.posX+this.sprite[0].width/2,this.posY+this.sprite[0].height-2,radius, 0, 2*Math.PI);
+		ctx.fill();
+	}
 	drawHitbox(ctx){
         var dim = this.getDimensions();
         var x = dim[0];

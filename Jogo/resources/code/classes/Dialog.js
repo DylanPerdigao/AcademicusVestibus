@@ -5,7 +5,11 @@ class Dialog extends Component {
 		this.height=height;
 		this.enabled=false;
     }
-
+	/**
+	 * Write text in a dialog box
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {Array<string>} text array of text, organized by lines
+	 */
     write(ctx,text) {
 		ctx.drawImage(this.img, this.posX,this.posY,this.width,this.height);
 		ctx.fillStyle = "#86592D";
