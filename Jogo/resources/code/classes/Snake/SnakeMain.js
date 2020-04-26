@@ -14,7 +14,7 @@ function main() {
 
     
     //colors
-    const colors=[["#444554", "#F29559", "#C9C5BA", "#5A7D7C"], ["#260016", "#ed008c", "#daf3ec", "#00bff3"], ["#012824", "#ed008c", "#fcdeea", "#ff4d6d"], ["#08242b", "#fda000", "#ffffff", "#1d7c95"]]
+    const colors=[["#625772", "#a9eee6", "#fefaec", "#f9a1bc"], ["#743c08", "#df760b", "#ffebaf", "#f6b61e"], ["#142850", "#00909e", "#dae1e7", "#27496d"], ["#222831", "#f2a365", "#ececec", "#30475e"]]
     
     var menu;
     var level;
@@ -23,7 +23,7 @@ function main() {
     var MouseUpColorHandler = function (ev){
         for (var i=0;i<menu.imgs.length;i++){
             if (menu.imgs[i].mouseOver(ev)){
-                canvas.removeEventListener("mouseup", this);
+                canvas.removeEventListener("mouseup", MouseUpColorHandler);
                 new SnakeGame(level,colors[i], cell, ctx)
             }
         }
@@ -33,7 +33,7 @@ function main() {
     var MouseUpLevelHandler = function (ev){
         for (var i=0;i<menu.imgs.length;i++){
             if (menu.imgs[i].mouseOver(ev)){
-                canvas.removeEventListener("mouseup", this);
+                canvas.removeEventListener("mouseup", MouseUpLevelHandler);
                 level=i;
                 new SnakeMenus(ctx, cell, imgColorl0, imgColorl1 ,imgColorl2, imgColorl3);
                 canvas.addEventListener("mouseup",MouseUpColorHandler);

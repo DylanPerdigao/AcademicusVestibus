@@ -11,6 +11,7 @@ class SpriteImage {
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
     }
 
     mouseOver(ev) //ev.target é a canvas
