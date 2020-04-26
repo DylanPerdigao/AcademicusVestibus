@@ -1,5 +1,9 @@
 "use strict";
 
+(function () {
+    window.addEventListener("load", main);
+}());
+
 
 function main() {
     var canvas = document.getElementById("myCanvas");
@@ -9,7 +13,46 @@ function main() {
     var mainWindow;
     var cell=Math.floor(Math.min(canvas.height,canvas.width)/30);
 
-    ctx.strokeStyle= "Black";    
+    ctx.strokeStyle= "Black";
+    
+    
+    var MouseUpHandler = function (ev){
+
+        for (i=0;i<imgs.length;i++){
+            if (imgs[i].mouseOver(ev)){
+                canvas.removeEventListener("mouseup", this);
+            }
+        }
+        
+    }
+
+    var imgLoaded = 0;
+    function imgLoadedHandler(ev) {
+        imgLoaded++;
+        if (imgLoaded === 4) {
+            new SnakeMenus(canvas, ctx, cell, MouseUpHandler, imgLevel0, imgLevel1 ,imgLevel2, imgLevel3);
+        }
+    }
+
+
+    var imgLevel0 = new Image();
+    imgLevel0.addEventListener("load", imgLoadedHandler);
+    imgLevel0.src = "Level0.png";
+
+    var imgLevel1 = new Image();
+    imgLevel1.addEventListener("load", imgLoadedHandler);
+    imgLevel1.src = "Level1.png";
+
+    var imgLevel2 = new Image();
+    imgLevel2.addEventListener("load", imgLoadedHandler);
+    imgLevel2.src = "Level2.png";
+
+    var imgLevel3 = new Image();
+    imgLevel3.addEventListener("load", imgLoadedHandler);
+    imgLevel3.src = "Level3.png";
+
+    
+
 
     //colors
     var wallColor;
@@ -22,6 +65,8 @@ function main() {
     var fruitPos;
     var interval;
     var snake;
+
+    
 
     
     var level = new Image();
@@ -44,16 +89,6 @@ function main() {
     }
 
     /*
-    var MouseUpHandler = function (ev){
-
-        for (i=0;i<imgs.length;i++){
-            if (imgs[i].mouseOver(ev)){
-                canvas.removeEventListener("mouseup", MouseUpHandler);
-            }
-        }
-            
-    }
-
     var MouseUpLevelHandler = function (ev){
         //var bound = canvas.getBoundingClientRect();
         var x = ev.offsetX; 
@@ -126,7 +161,6 @@ function main() {
 
     //listener
     
-    canvas.addEventListener("mouseup", MouseUpLevelHandler);
     window.addEventListener("message",msgHandler);
 
 
