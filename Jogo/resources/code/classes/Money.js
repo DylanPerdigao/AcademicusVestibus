@@ -9,7 +9,6 @@ class Money extends Component {
 	draw(ctx){
 		if (!this.isHidden){
 			ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
-			ctx.font = "10px EvilEmpire";
 			ctx.fillStyle = "#86592D";
 			ctx.fillText(this.value,this.posX+15,this.posY+11, this.width-20);
 		}

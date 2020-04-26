@@ -4,23 +4,49 @@ class Player{
 		this.name=name;
 		this.step=step;
 		//load das imagens todas
-		this.sprite=new Image()
-		for(let i=0;i<4;i++){
-			this.sprite.src=this.src+"_"+"up"+i+".png";
-			this.sprite.src=this.src+"_"+"left"+i+".png";
-			this.sprite.src=this.src+"_"+"right"+i+".png";
-			this.sprite.src=this.src+"_"+"down"+i+".png";
+		this.sprite=new Array() 
+		var player = this;
+		var imgHandler = function(event){
+			var c = document.getElementById("canvas");
+			var ctx = c.getContext("2d");
+			for(let i=0;i<player.sprite.length;i++){
+				ctx.drawImage(player.sprite[i],0,0);
+			}
+		}
+		for(let i=0;i<16;i++){
+			this.sprite.push(new Image())
+			this.sprite[i].src = this.src + i + ".png";
+			this.sprite[i].addEventListener("load", imgHandler);
 		}
 		//ajuste da posiçao final
-		this.posX = x-(this.sprite.width/2);
-		this.posY = y-(this.sprite.height/2);
+		this.posX = x-(this.sprite[0].width/2);
+		this.posY = y-(this.sprite[0].height/2);
 		//hitbox
 		this.hitboxHeight=hitboxHeight;
 	} 
 
+	resetPosition(x,y){
+		this.posX = x-(this.sprite[0].width/2);
+		this.posY = y-(this.sprite[0].height/2);
+	}
+	
 	draw(ctx,orientation){
-		this.sprite.src = this.src+"_"+orientation+this.step+".png";
-		ctx.drawImage(this.sprite,this.posX,this.posY);
+		var i = this.step;
+		switch(orientation){
+			case "down":
+				i+=0
+				break;
+			case "left":
+				i+=4
+				break;
+			case "right":
+				i+=8
+				break;
+			case "up":
+				i+=12
+				break;
+		}
+		ctx.drawImage(this.sprite[i],this.posX,this.posY);
 	}
 
 	walk(ctx,orientation){
@@ -46,7 +72,7 @@ class Player{
 	}
 	
 	getDimensions(){
-		return ([this.posX,this.posY+this.sprite.height-this.hitboxHeight,this.sprite.width,this.hitboxHeight]);
+		return ([this.posX,this.posY+this.sprite[0].height-this.hitboxHeight,this.sprite[0].width,this.hitboxHeight]);
 	}
 }
 

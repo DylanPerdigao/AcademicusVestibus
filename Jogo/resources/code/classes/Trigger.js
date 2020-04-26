@@ -1,6 +1,7 @@
 class Trigger extends Structure {
     constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight) {
-        super(src, posX, posY,speed,hitboxWidth,hitboxHeight);
+		super(src, posX, posY,speed,hitboxWidth,hitboxHeight);
+		this.hitboxColor = "white"
 	}
 	
 	/**
@@ -15,7 +16,7 @@ class Trigger extends Structure {
         var h = dim[3];
         ctx.beginPath();
         ctx.lineWidth = "1";
-        ctx.strokeStyle = "orange";
+        ctx.strokeStyle = this.hitboxColor;
         ctx.rect(x,y,w,h); 
         ctx.stroke();
     }

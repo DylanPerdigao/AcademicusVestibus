@@ -1,6 +1,7 @@
-class Person extends InteractiveStructure {
-    constructor(src, posX, posY, width, height,speed) {
-        super(src, posX, posY, width, height,speed);
+class Person extends Trigger {
+    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,text) {
+		super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
+		this.text=text;
     }
 
     interaction() {
