@@ -102,7 +102,7 @@ class Player{
 	 * @returns {Array<number>} Positions x/y and width/heigth
 	 */
 	getDimensions(){
-		return ([this.posX,this.posY+this.sprite[0].height-this.hitboxHeight,this.sprite[0].width,this.hitboxHeight]);
+		return ([this.posX+2,this.posY+this.sprite[0].height-this.hitboxHeight,this.sprite[0].width-4,this.hitboxHeight]);
 	}
 }
 

@@ -178,10 +178,10 @@ function main()
 		new Structure(PATH+'structures/DF_DQ.png', -373, -574,speed,430,230),//DFDQ
 		//WALL
 		new Structure(null, -320, -0,speed,50,780),//estrada oeste
-		new Structure(null, -1295, -625,speed,90,130),//estrada este DM
+		new Structure(null, -1295, -625,speed,95,130),//estrada este DM
 		new Structure(null, -825, -250,speed, 415,100),//estrada norte d dinis
-		new Structure(null, -1240, -220,speed,145,285),//estrada este d dinis
-		new Structure(null, -825, -505,speed,560,95),//estrada sul d dinis
+		new Structure(null, -1240, -220,speed,150,285),//estrada este d dinis
+		new Structure(null, -825, -505,speed,565,95),//estrada sul d dinis
 		new Structure(null, -1375, -200,speed,70,50),//muro monumentais norte
 		new Structure(null, -1440, -245,speed,45,110), //muro monumentais nordeste
 		new Structure(null, -1440, -475,speed,95,285),//muro monumentais suleste
