@@ -192,7 +192,7 @@ class SnakeGame{
 
         }
         this.fruitPos=this.newFruit();
-        this.interval=setInterval(this.render,1000);
+        this.interval=setInterval(this.render,100);
 
     }
 
