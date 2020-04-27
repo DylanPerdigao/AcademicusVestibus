@@ -73,7 +73,7 @@ class Snake{
     }
 
     insideSnake(x,y){
-        for (let i=4;i<this.body.length;i++){
+        for (let i=3;i<this.body.length;i++){
             if (x==this.body[i][0] && y==this.body[i][1]){
                 return true;
             }

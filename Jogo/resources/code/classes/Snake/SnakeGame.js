@@ -2,7 +2,7 @@
 
 
 class SnakeGame{
-    constructor(level, colors, cell, ctx){
+    constructor(level, colors, cell, ctx, mainWindow){
         this.wallColor=colors[0];
         this.fruitColor=colors[1];
         this.backgroundColor=colors[2];
@@ -11,12 +11,12 @@ class SnakeGame{
         this.ctx=ctx;
         this.cell=cell;
         this.level=level;
+        this.mainWindow=mainWindow;
         this.snake=new Snake(this.snakeColor,this.cell);
 
 
         this.interval=null;
         this.walls=[];
-        this.mainWindow=null;
         this.fruitPos=null;
         this.render=null;
 
@@ -34,11 +34,7 @@ class SnakeGame{
 
     init(){
         var me=this; //me = class
-        //message
-        function msgHandler(ev) {
-            me.mainWindow = messageHandler(ev);
-        }
-        
+       
 
         //teclas
         function keyDownHandler(ev) {
@@ -68,15 +64,6 @@ class SnakeGame{
                     }
                     break;
             }
-}
-    
-        //listener
-        
-        window.addEventListener("message",msgHandler);
-    
-    
-        function messageHandler(ev){
-            return ev.source;
         }
 
         this.render = function(){

@@ -19,12 +19,27 @@ function main() {
     var menu;
     var level;
 
+    //message
+    var me=this;
+    function msgHandler(ev) {
+        me.mainWindow = messageHandler(ev);
+    }
+    //listener
+        
+    window.addEventListener("message",msgHandler);
+    
+    
+    function messageHandler(ev){
+        return ev.source;
+    }
+    
+
 
     var MouseUpColorHandler = function (ev){
         for (var i=0;i<menu.imgs.length;i++){
             if (menu.imgs[i].mouseOver(ev)){
                 canvas.removeEventListener("mouseup", MouseUpColorHandler);
-                new SnakeGame(level,colors[i], cell, ctx)
+                new SnakeGame(level,colors[i], cell, ctx, me.mainWindow)
             }
         }
         
