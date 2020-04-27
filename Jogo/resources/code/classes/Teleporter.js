@@ -8,12 +8,16 @@ class Teleporter extends Trigger {
 		this.hitboxColor = "orange";
 	}
     action(ctx,game,map) {
+		return this.teleport(ctx,game,map) ;
+	}
+
+	teleport(ctx,game,map) {
+		game.loadingAnimation(ctx,this.direction,map)
 		game.map = map;
-		game.map.updatePosition(this.localX,this.localY);//this.localX+game.map.posX-game.player.posX,this.localY+game.map.posY-game.player.posY);
+		game.map.updatePosition(this.localX,this.localY);
 		game.map.setStructuresPositions();
-		var invertedDir = game.invertDirection(this.direction);
-		game.updatePosition(ctx,invertedDir);
-		game.updatePosition(ctx,this.direction);
+		game.player.orientation=this.direction;
+		game.draw(ctx);
 		return game;
 	}
 }

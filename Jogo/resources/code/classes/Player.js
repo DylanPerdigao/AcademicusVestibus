@@ -3,6 +3,7 @@ class Player{
 		this.src=src;
 		this.name=name;
 		this.step=0;
+		this.orientation="down";
 		//load das imagens todas
 		this.sprite=new Array() 
 		var player = this;
@@ -38,9 +39,9 @@ class Player{
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {string} orientation where the player is facing
 	 */
-	draw(ctx,orientation){
+	draw(ctx){
 		var i = this.step;
-		switch(orientation){
+		switch(this.orientation){
 			case "down":
 				i+=0
 				break;
@@ -62,13 +63,13 @@ class Player{
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {string} orientation where the player is facing
 	 */
-	walk(ctx,orientation){
+	walk(ctx){
 		if (this.step>=3){
 			this.step=0;
 		}else{
 			this.step++;
 		}
-		this.draw(ctx,orientation);
+		this.draw(ctx);
 	}
 	/**
 	 * Draws player's shadow

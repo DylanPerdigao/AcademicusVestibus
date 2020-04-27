@@ -29,6 +29,7 @@ const HITBOX_BENCH_LEFT = 35;
 const HOME = 0;
 const PRACA_REPUBLICA = 1;
 const UNIVERSITY = 2;
+const ANIMATION_DURATION = 2500;//ms
 const PATH = "../textures/";
 
 //FUNCTIONS
@@ -104,7 +105,7 @@ function main()
 		new Structure(PATH+'structures/box2.png',-805,-190,speed,null,HITBOX_BOX),
 		//TRIGGER
 		new Teleporter(null, -475, -540,speed,32,30,UNIVERSITY,player.posX-1425,player.posY-400,"left"),
-		new Teleporter(null, -555, -190,speed,40,20,HOME,player.posX-520,player.posY-195,"up"),
+		new Bus(null, -555, -190,speed,40,20,HOME,player.posX-530,player.posY-195,"up"),
 		//PEOPLE
 		new Person(PATH+'people/female3_0.png',-600,-178,speed,null,HITBOX_PERSON,["Para voltares a casa apanha o autocarro"]), 
 		new Person(PATH+'people/male1_3.png',-600,-153,speed,null,HITBOX_PERSON,["Quero comprar o traje académicio!!"]), 
@@ -113,6 +114,7 @@ function main()
 		new Person(PATH+'people/male2_1.png',-390,-378,speed,null,HITBOX_PERSON,["Linda esta Cidade dos Estudantes..."]), 
 		new Person(PATH+'people/female1_0.png',-670,-473,speed,null,HITBOX_PERSON,["O meu filho está a ser praxado, aiiii que","girooo"]), 
 		new Person(PATH+'people/female3_1.png',-755,-348,speed,null,HITBOX_PERSON,["O Jardim da Sereia está fechado ao publico","não é habitual"]), 
+		new Person(PATH+'people/female1_2.png',-760,-333,speed,null,HITBOX_PERSON,["Queria ver o jardim :("]),
 		new Person(PATH+'people/female1_0.png',-695,-278,speed,null,HITBOX_PERSON,["Adoro ver os caloiros a serem Praxados"]), 
 		new Person(PATH+'people/female3_3.png',-460,-508,speed,null,HITBOX_PERSON,["Por aqui pode ir até à Universidade"]), 
 		new Person(PATH+'people/female1_3.png',-495,-418,speed,null,HITBOX_PERSON,["O café está fechado, queria uma cervejinha :("]), 
@@ -305,7 +307,7 @@ function main()
 		new Structure(null, -315, -0,speed,32,240),//estrada oeste
 		new Structure(null, -355, -0,speed,315,157),//casas
 		//TRIGGER
-		new Teleporter(null, -460, -190, speed,40,20,PRACA_REPUBLICA,player.posX-620,player.posY-195,"up"),
+		new Bus(null, -460, -190, speed,40,20,PRACA_REPUBLICA,player.posX-620,player.posY-195,"up"),
 		//PEOPLE
 		new Person(PATH+'people/male4_0.png',-515,-178,speed,null,HITBOX_PERSON,["Podes apanhar o autocarro para ir à Praça"]), 
 		new Person(PATH+'people/female1_0.png',-635,-153,speed,null,HITBOX_PERSON,["Meu filho a tua aventura começa aqui vai à","universidade conheceres os teus amigos"]), 

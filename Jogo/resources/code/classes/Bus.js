@@ -1,10 +1,10 @@
-class Bus extends InteractiveStructure {
-    constructor(src, posX, posY, width, height,speed) {
-        super(src, posX, posY, width, height,speed);
+class Bus extends Teleporter {
+    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction) {
+        super(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction);
     }
-
-    interaction() {
-        //TODO
+    action(ctx,game,map) {
+		game.dialog.write(ctx,["Carregue em ENTER/SPACE para apanhar o","Autocarro"])
+		return game;
     }
 }
 

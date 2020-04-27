@@ -28,10 +28,9 @@ class MiniMap extends Component {
 		ctx.drawImage(player.sprite[0],Math.floor(x),Math.floor(y));
 	}
 
-	exitMap(ctx){
+	exitMap(ctx,game){
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		this.updatePosition(ctx,"up");
-		this.updatePosition(ctx,"down")
+		game.draw(ctx,game.player.orientation);
 	}
 }
 
