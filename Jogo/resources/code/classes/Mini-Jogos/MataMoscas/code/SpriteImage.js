@@ -1,14 +1,13 @@
 "use strict";
 
 class SpriteImage {
-    constructor(x, y, w, h, img, clickable) {
+    constructor(x, y, w, h, img) {
         this.x = x;
         this.y = y;
         this.width = w;
         this.height = h;
         this.img = img;
         this.imageData = this.getImageData(img);
-        this.clickable = clickable;
     }
 
     getImageData(img) {

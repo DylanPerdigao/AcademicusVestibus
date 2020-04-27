@@ -14,9 +14,21 @@ function main() {
 class GameEngine {
     constructor(ctx) {
         this.ctx = ctx;
-        this.mH = new MataMoscas(ctx, true);
-        this.mH.activate();
+        this.gameMM = new GameMataMoscas(ctx);
+        this.gameMH = new GameMontyHall(ctx);
+        // commented block for test purposes only
+        /*this.gameMM.activate();
         this.startAnim();
+        let me = this;
+        document.getElementById("Change_game").onclick = function (ev) {
+            if(me.gameMM.isActive){
+                me.gameMM.deactivate();
+                me.gameMH.activate();
+            }else{
+                me.gameMH.deactivate();
+                me.gameMM.activate();
+            }
+        };*/
     }
 
 
@@ -27,7 +39,8 @@ class GameEngine {
     }
 
     draw() {
-        this.mH.draw(this.ctx);
+        this.gameMM.draw(this.ctx);
+        this.gameMH.draw(this.ctx);
         //outros jogos
     }
 
@@ -42,9 +55,9 @@ class GameEngine {
 
 //resedenho, actualizações, ...
     render(reqID, time) {
-        this.mH.update(time);
+        this.gameMM.update(time);
         this.clear();
-        this.draw(this.ctx);
+        this.draw();
 
         //this.ctx.fillText(txt, 250, 20);
     }
