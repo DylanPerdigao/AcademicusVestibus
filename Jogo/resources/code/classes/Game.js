@@ -7,9 +7,10 @@ class Game {
 		this.miniMap=miniMap;
 		this.dialog = dialog;
 		this.busStructCollided=null;
+		this.canInteract=false;
 		this.isShowingMap=false;
 		this.isAnimated=false;
-		this.isDebugging=true;
+		this.isDebugging=false;
 		this.yDebug = 0;
 		this.yDebug = 0;
 		this.window = window;
@@ -45,9 +46,7 @@ class Game {
 					break;
 				case "Enter":
 				case "Space":
-					if (this.busStructCollided){
-						this.busStructCollided.teleport(ctx,this,this.mapList[this.busStructCollided.location])
-					}
+					this.interaction(ctx);
 					break;
 				case "KeyW":
 				case "ArrowUp":
@@ -69,11 +68,7 @@ class Game {
 					this.map.structures.push(new Person(PATH+'people/female1_0.png',this.map.posX-this.xDebug,this.map.posY-this.yDebug,10,HITBOX_PERSON,["Hey"]))
 					console.log("new Person(PATH+'people/female1_0.png',"+ this.xDebug +","+ this.yDebug +",speed,null,HITBOX_PERSON),\n")
 					break;	
-			}
-			if (!this.isAnimated){
-				this.showDebug(ctx);
-				this.money.draw(ctx);
-			}			
+			}		
 		}
 	}
 	/**
@@ -163,27 +158,30 @@ class Game {
 		var hasCollision = data[0];
 		var structCollided = data[1];
 		this.player.orientation=direction;
+		this.canInteract=false;
 		if(hasCollision==false){
 			this.busStructCollided=null;
 			this.move(ctx,direction)
 		}else if (hasCollision==true && structCollided instanceof Bus){
 			this.move(ctx,direction)
 			this.busStructCollided = structCollided;
-			this.busStructCollided.action(ctx,this,this.mapList[structCollided.location]);
+			this.busStructCollided.action(ctx,this.dialog,this.money.value);
 		}else if (hasCollision==true && structCollided instanceof Teleporter){
 			structCollided.action(ctx,this,this.mapList[structCollided.location]);
 		}else{
 			this.draw(ctx);
-			structCollided.action(ctx,this.dialog);
+			this.canInteract=true;
 			if(this.busStructCollided){
-				this.busStructCollided.action(ctx,this,this.mapList[structCollided.location]);
+				this.busStructCollided.action(ctx,this.dialog,this.money.value);
+			}else{
+				structCollided.action(ctx,this.dialog);
 			}
 		}
+		this.money.draw(ctx);
 	}
 	/**
 	 * Daws the map and structures in the specified direction
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {string} direction direction where the player is facing
 	 */	
 	draw(ctx){
 		this.map.draw(ctx,this.map.posX,this.map.posY);
@@ -198,6 +196,10 @@ class Game {
 				this.map.structures[i].draw(ctx,this.map.structures[i].posX,this.map.structures[i].posY);
 			}
 		}
+		if (!this.isAnimated){
+			this.showDebug(ctx);
+			this.money.draw(ctx);
+		}	
 	}
 	/**
 	 * Moves the map and structures in the specified direction
@@ -223,12 +225,27 @@ class Game {
 		}
 	}
 	/**
+	 * Execute the possible interactions
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 */	
+	interaction(ctx){
+		if (this.busStructCollided){//SE ESTA NA PAREGEM DE AUTOCARRO
+			if(this.money.value>BUS_COST){
+				this.money.removeMoney(BUS_COST);
+				this.busStructCollided.teleport(ctx,this,this.mapList[this.busStructCollided.location]);
+			}else{
+				this.busStructCollided.action(ctx,this.dialog,this.money.value);
+			}	
+		}else if(this.canInteract){//SE ESTA COM UMA PESSOA EM FRENTE PARA FALAR
+			this.collisionSimulation(this.player.orientation)[1].speak(ctx,this.dialog);
+		}
+	}
+	/**
 	 * Makes the animation of map loading and active key listener after the animation (during the animation key listeners are off)
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {string} direction direction where the player is facing
-	 * @param {Trigger} structCollided trigger collided (if null => keeps the actual map)
 	 */	
-	loadingAnimation(ctx,direction,structCollided){
+	loadingAnimation(ctx,direction){
 		var cw = ctx.canvas.width;
 		var ch = ctx.canvas.height;
 		var time = 0;
@@ -249,11 +266,11 @@ class Game {
 				game.player.orientation="right";
 				game.player.walk(ctx);
 				time+=interval;
-				percentage = (time/maxTime)*100
-				setTimeout(anim,interval)
+				percentage = (time/maxTime)*100;
+				setTimeout(anim,interval);
 			}else{
 				game.player.setPosition(cw/2,ch/2);
-				game.loadMap(ctx,direction,structCollided);
+				game.loadMap(ctx,direction);
 			}
 		}
 		ctx.clearRect(0,0,cw,ch);
@@ -261,15 +278,14 @@ class Game {
 		this.player.posY = ch-20;
 		this.isAnimated=true;
 		this.window.removeEventListener("keydown",this.kHandler);
-		setTimeout(anim,interval)
+		setTimeout(anim,interval);
 	}
 	/**
 	 * Loads the map specified by the trigger collided
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {string} direction direction where the player is facing
-	 * @param {Trigger} structCollided trigger collided
 	 */	
-	loadMap(ctx,direction,structCollided){
+	loadMap(ctx,direction){
 		this.move(ctx,direction);
 		this.isAnimated=false;
 		this.window.addEventListener("keydown",this.kHandler);

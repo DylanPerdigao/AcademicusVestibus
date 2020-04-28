@@ -4,7 +4,7 @@ html{
 	height: 98%; 	
 	width: 98%;
 	/*ponteiro*/
-	cursor: url("../textures/gui/pointer.png"), auto;
+	cursor: url("../textures/gui/pointer.svg"), auto;
 }
 
 body{
@@ -16,7 +16,7 @@ body{
 	overflow: hidden;
 	overflow-y: hidden; 
 	/*ponteiro*/	
-	cursor: url("../textures/gui/pointer.png"), auto;
+	cursor: url("../textures/gui/pointer.svg"), auto;
 }
 
 header{
@@ -28,7 +28,7 @@ header{
 	font-family: EvilEmpire;
 	font-size: 3vw;
 	/*ponteiro*/
-	cursor: url("../textures/gui/pointer.png"), auto;
+	cursor: url("../textures/gui/pointer.svg"), auto;
 }
 
 section{
@@ -42,7 +42,7 @@ section{
 	background-position: center;
 	background-size: contain;
 	/*ponteiro*/
-	cursor: url("../textures/gui/pointer.png"), auto;
+	cursor: url("../textures/gui/pointer.svg"), auto;
 }
 
 button{
@@ -53,7 +53,7 @@ button{
 	/*em coluna*/
 	display: block;
 	/*bacground de madeira*/
-	background-image: url("../textures/gui/buttonLong_brown.png");
+	background-image: url("../textures/gui/buttonLong_brown.svg");
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
@@ -65,19 +65,19 @@ button{
 	color: rgb(177, 138, 87);
 	text-align: center;
 	/*ponteiro*/
-	cursor: url("../textures/gui/pointer.png"), auto;
+	cursor: url("../textures/gui/pointer.svg"), auto;
 }
 
 button:hover{
     color:burlywood;
 }
 button:active{
-	background-image: url("../textures/gui/buttonLong_brown_pressed.png"); 
+	background-image: url("../textures/gui/buttonLong_brown_pressed.svg"); 
     background-size: contain;
     color:burlywood;
 }
 button:disabled{
-	background-image: url("../textures/gui/buttonLong_disabled.png"); 
+	background-image: url("../textures/gui/buttonLong_disabled.svg"); 
     background-size: contain;
     color:rgb(189, 185, 180);
 }

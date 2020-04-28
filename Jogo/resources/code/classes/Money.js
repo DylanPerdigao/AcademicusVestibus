@@ -16,6 +16,10 @@ class Money extends Component {
     addMoney(n) {
         this.value+=n;
         return this.value;
+	}
+	removeMoney(n) {
+        this.value-=n;
+        return this.value;
     }
 }
 

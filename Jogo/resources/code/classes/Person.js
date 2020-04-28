@@ -19,8 +19,12 @@ class Person extends Trigger {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {Game} game This game
 	 */
-    action(ctx,dialog) {
-		dialog.write(ctx,this.text);
+    speak(ctx,dialog) {
+		dialog.writeSpeak(ctx,this.text);
     }
+
+    action(ctx,dialog) {
+		dialog.writeInfo(ctx,["  FALAR"]);
+	}
 }
 

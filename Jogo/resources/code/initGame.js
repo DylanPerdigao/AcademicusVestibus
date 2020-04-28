@@ -17,6 +17,7 @@
  * 
  */
 const speed = 5;
+const BUS_COST = 3;
 const HITBOX_PERSON = 5;
 const HITBOX_TREE = 6;
 const HITBOX_BOX = 5;
@@ -322,7 +323,7 @@ function main()
 		new Array(mapHome,mapPR,mapUC),
 		new Money(PATH+"gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
 		new MiniMap(PATH+"map/map.png",0,0),
-		new Dialog(PATH+"gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25)
+		new Dialog(PATH+"gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25),
 	);
 }
 
