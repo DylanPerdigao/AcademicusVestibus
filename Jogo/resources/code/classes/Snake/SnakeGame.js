@@ -67,8 +67,13 @@ class SnakeGame{
         }
 
         this.render = function(){
-            console.log(me);
-            if(me.snake.update(me.ctx,me.fruitPos,me.backgroundColor, me.interval, me.walls, me.mainWindow)){
+            var val = me.snake.update(me.ctx,me.fruitPos,me.backgroundColor, me.walls);
+            
+            if (val == 'o'){
+                me.gameOver();
+            }
+            
+            else if(val){
                 me.score.textContent++;
                 me.fruitPos = me.newFruit();
             }
@@ -206,6 +211,13 @@ class SnakeGame{
         return false;
     }
     
+    gameOver(){
+        //TODO
+        console.log('E MOREU');
+        window.clearInterval(interval);
+        //Mostrar mensagem e só depois voltar
+        mainWindow.postMessage("arcade",'*');   //voltar ao menu arcade
+    }
 }
 
 
