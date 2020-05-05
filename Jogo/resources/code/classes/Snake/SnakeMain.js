@@ -11,7 +11,6 @@ function main() {
 
     var mainWindow;
     var cell=Math.floor(Math.min(canvas.height,canvas.width)/30);
-
     
     //colors
     const colors=[["#625772", "#a9eee6", "#fefaec", "#f9a1bc"], ["#743c08", "#df760b", "#ffebaf", "#f6b61e"], ["#142850", "#00909e", "#dae1e7", "#27496d"], ["#222831", "#f2a365", "#ececec", "#30475e"]]

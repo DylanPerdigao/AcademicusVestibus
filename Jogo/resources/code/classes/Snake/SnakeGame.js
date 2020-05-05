@@ -21,7 +21,6 @@ class SnakeGame{
         this.render=null;
 
         this.init();
-        console.log(this);
     }
 
     //TODO:
@@ -67,8 +66,14 @@ class SnakeGame{
         }
 
         this.render = function(){
-            console.log(me);
-            if(me.snake.update(me.ctx,me.fruitPos,me.backgroundColor, me.interval, me.walls, me.mainWindow)){
+            var val = me.snake.update(me.ctx,me.fruitPos,me.backgroundColor, me.walls);
+            
+            if (val == 'o'){
+                window.removeEventListener("keydown", keyDownHandler);
+                me.gameOver();
+            }
+            
+            else if(val){
                 me.score.textContent++;
                 me.fruitPos = me.newFruit();
             }
@@ -206,6 +211,30 @@ class SnakeGame{
         return false;
     }
     
+    gameOver(){
+        //TODO
+        window.clearInterval(this.interval);
+        //GAME OVER
+        this.ctx.font = (this.cell*4)+'px Calibri';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillStyle = 'blue';
+        this.ctx.fillText('Game Over!',15*this.cell,15*this.cell);
+        //Press
+        this.ctx.font = (this.cell)+'px Calibri';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText('Pressione qualquer tecla para voltar',15*this.cell,17*this.cell);
+        
+        var me=this; //me = class
+        var gameOverHandler = function(){
+            window.removeEventListener("keydown", gameOverHandler);
+            me.mainWindow.postMessage("arcade",'*');   //voltar ao menu arcade
+        }
+        
+        window.addEventListener("keydown", gameOverHandler);
+        //Mostrar mensagem e só depois voltar
+
+    }
 }
 
 
