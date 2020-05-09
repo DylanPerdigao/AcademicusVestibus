@@ -2,7 +2,7 @@
 
 
 class SnakeGame{
-    constructor(level, colors, cell, ctx, mainWindow){
+    constructor(level, colors, cell, ctx,walls, mainWindow){
         this.wallColor=colors[0];
         this.fruitColor=colors[1];
         this.backgroundColor=colors[2];
@@ -16,7 +16,7 @@ class SnakeGame{
 
 
         this.interval=null;
-        this.walls=[];
+        this.walls=walls;
         this.fruitPos=null;
         this.render=null;
 
@@ -79,114 +79,14 @@ class SnakeGame{
             }
         }
 
-        this.drawLevel();
+        
+        this.fruitPos=this.newFruit();
+        this.interval=setInterval(this.render,100);
         window.addEventListener("keydown", keyDownHandler);
 
     }
 
 
-    drawLevel(){
-        //Background
-        this.ctx.fillStyle = this.backgroundColor;
-        this.ctx.strokeStyle= this.backgroundColor;
-        this.ctx.fillRect(0, 0, 30*this.cell, 30*this.cell);
-        var wall;
-        switch(this.level){
-            case 4:
-                //extras
-
-            case 3:
-                //resto 
-
-                //top
-                wall = new Wall(5*this.cell,4*this.cell,20*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                wall = new Wall(11*this.cell,10*this.cell,8*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                //bot
-                wall = new Wall(11*this.cell,19*this.cell,8*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                wall = new Wall(5*this.cell,25*this.cell,20*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-
-            case 2:
-                //sides
-
-                //left
-                wall = new Wall(3*this.cell,8*this.cell,this.cell,3*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                wall = new Wall(4*this.cell,11*this.cell,this.cell,8*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                wall = new Wall(3*this.cell,19*this.cell,this.cell,3*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-
-                //right
-                wall = new Wall(26*this.cell,8*this.cell,this.cell,3*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                wall = new Wall(25*this.cell,11*this.cell,this.cell,8*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                wall = new Wall(26*this.cell,19*this.cell,this.cell,3*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-
-            case 1:
-                //mid top bot
-                //top
-                wall = new Wall(8*this.cell,7*this.cell,14*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                //bot
-                wall = new Wall(8*this.cell,22*this.cell,14*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-
-            case 0:
-                //caixa
-                //left
-                wall = new Wall(0,0,this.cell,30*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                //right
-                wall = new Wall(29*this.cell,0,this.cell,30*this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-
-                //bot
-                wall = new Wall(0,29*this.cell,30*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-
-                //top
-                wall = new Wall(0,0,30*this.cell,this.cell,this.wallColor);
-                wall.draw(this.ctx);
-                this.walls.push(wall);
-                
-                break;
-
-        }
-        this.fruitPos=this.newFruit();
-        this.interval=setInterval(this.render,100);
-
-    }
 
 
     newFruit(){

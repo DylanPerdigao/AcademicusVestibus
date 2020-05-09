@@ -46,9 +46,8 @@ function messageHandler(ev){
 		case "snake":
 			showMenu(PATH+"code/classes/Snake/Snake.html");
 			break;
-
 		case "fill":
-			showMenu(PATH+"html/creditsMenu.html");
+			showMenu(PATH+"code/classes/Snake/Fill.html");
 			break;
 		case "moscas":
 			showMenu(PATH+"html/creditsMenu.html");

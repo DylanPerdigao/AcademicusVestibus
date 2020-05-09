@@ -1,6 +1,6 @@
 "use strict";
 
-class SnakeMenus{
+class SnakeFillMenus{
     constructor(ctx, cell, img1, img2, img3, img4) {
         this.imgs = [];
         this.init(ctx, cell, img1, img2, img3, img4);
