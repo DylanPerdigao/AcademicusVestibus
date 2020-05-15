@@ -1,8 +1,8 @@
 "use strict";
 
 const INITIAL_MESSAGE_MONTY = "Escolha uma porta!";
-const WIN_MESSAGE = "Ganhou";
-const LOSE_MESSAGE = "Riperino :(";
+const WIN_MESSAGE = "Ganhou!";
+const LOSE_MESSAGE = "Perdeu!";
 
 class GameMontyHall {
     constructor(ctx, isActive) {

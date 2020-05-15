@@ -1,34 +1,11 @@
 "use strict";
 
-(function () {
-    window.addEventListener("load", main);
-}());
-
-
-function main() {
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    let engine = new GameEngine(ctx);
-}
-
 class GameEngine {
     constructor(ctx) {
         this.ctx = ctx;
         this.gameMM = new GameMataMoscas(ctx);
         this.gameMH = new GameMontyHall(ctx);
-        // commented block for test purposes only
-        /*this.gameMM.activate();
         this.startAnim();
-        let me = this;
-        document.getElementById("Change_game").onclick = function (ev) {
-            if(me.gameMM.isActive){
-                me.gameMM.deactivate();
-                me.gameMH.activate();
-            }else{
-                me.gameMH.deactivate();
-                me.gameMM.activate();
-            }
-        };*/
     }
 
 

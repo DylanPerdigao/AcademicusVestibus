@@ -6,7 +6,7 @@ const IMG_MOSCA = "../MataMoscas/resources/mosca.png";
 const WIDTH_BACKGROUND = 600;
 const HEIGHT_BACKGROUND = 300;
 const ALIVE_TIME = 3_000;
-const GAME_TIME = 5_000;
+const GAME_TIME = 30_000;
 const INITIAL_MESSAGE_MOSCAS = "Mate moscas para ganhar moedas!";
 
 class GameMataMoscas {
