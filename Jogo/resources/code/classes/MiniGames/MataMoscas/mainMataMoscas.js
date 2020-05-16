@@ -1,11 +1,20 @@
-"use strict";
+(function () {
+    window.addEventListener("load", main);
+}());
 
-class GameEngine {
+
+function main() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    new mainMataMoscas(ctx);
+}
+
+class mainMataMoscas {
     constructor(ctx) {
         this.ctx = ctx;
         this.gameMM = new GameMataMoscas(ctx);
-        this.gameMH = new GameMontyHall(ctx);
         this.startAnim();
+        this.gameMM.activate();
     }
 
 
@@ -17,8 +26,6 @@ class GameEngine {
 
     draw() {
         this.gameMM.draw(this.ctx);
-        this.gameMH.draw(this.ctx);
-        //outros jogos
     }
 
     animLoop(time) {
@@ -26,17 +33,16 @@ class GameEngine {
         var al = function (time) {
             me.animLoop(time); //time --->timestamp atual; startTime --->timestamp quando a animaçao começou
         };
-        var reqID = window.requestAnimationFrame(al);
-        this.render(reqID, time);
+        window.requestAnimationFrame(al);
+        this.render(time);
     }
 
-//resedenho, actualizações, ...
-    render(reqID, time) {
+    //resedenho, actualizações, ...
+    render(time) {
         this.gameMM.update(time);
         this.clear();
         this.draw();
 
-        //this.ctx.fillText(txt, 250, 20);
     }
 
     clear() {

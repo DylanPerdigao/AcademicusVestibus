@@ -1,8 +1,8 @@
 "use strict";
 
-const IMG_MATAMOSCAS = "../MataMoscas/resources/mataMoscas.png";
-const IMG_BACKGROUND = "../MataMoscas/resources/background.png";
-const IMG_MOSCA = "../MataMoscas/resources/mosca.png";
+const IMG_MATAMOSCAS = "resources/mataMoscas.png";
+const IMG_BACKGROUND = "resources/background.png";
+const IMG_MOSCA = "resources/mosca.png";
 const WIDTH_BACKGROUND = 600;
 const HEIGHT_BACKGROUND = 300;
 const ALIVE_TIME = 3_000;
