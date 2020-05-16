@@ -6,5 +6,5 @@
 
 
 function main(){
-    snake_fill_main(true);
+    new SnakeFillMain(false);
 }

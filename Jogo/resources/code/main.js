@@ -41,16 +41,16 @@ function messageHandler(ev){
 			showMenu(PATH+"html/miniGamesMenu.html");
 			break;
 		case "montyHall":
-			showMenu(PATH+"html/creditsMenu.html");
+			showMenu(PATH+"code/classes/MiniGames/MontyHall/MontyHall.html");
 			break;
 		case "snake":
-			showMenu(PATH+"code/classes/Snake/Snake.html");
+			showMenu(PATH+"code/classes/MiniGames/SnakeFill/Snake/Snake.html");
 			break;
 		case "fill":
-			showMenu(PATH+"code/classes/Snake/Fill.html");
+			showMenu(PATH+"code/classes/MiniGames/SnakeFill/Fill/Fill.html");
 			break;
 		case "moscas":
-			showMenu(PATH+"html/creditsMenu.html");
+			showMenu(PATH+"code/classes/MiniGames/MataMoscas/MataMoscas.html");
 			break;
 	}
 }
