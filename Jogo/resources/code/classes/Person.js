@@ -1,7 +1,7 @@
 class Person extends Trigger {
-    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,text) {
+    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,textID) {
 		super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
-		this.text=text;
+		this.textID=textID;
 	}
 	/**
 	 * Draws the shadow under the person
@@ -20,11 +20,13 @@ class Person extends Trigger {
 	 * @param {Game} game This game
 	 */
     speak(ctx,dialog) {
-		dialog.writeSpeak(ctx,this.text);
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+		dialog.writeSpeak(ctx,lang.people[this.textID]);
     }
 
     action(ctx,dialog) {
-		dialog.writeInfo(ctx,["  FALAR"]);
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+		dialog.writeInfo(ctx,lang.informations[0]);
 	}
 }
 

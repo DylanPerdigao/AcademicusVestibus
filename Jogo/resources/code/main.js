@@ -6,6 +6,16 @@ const PATH = "resources/";
 
 
 function main(){
+	//LANG DATA
+	var rawFile = new XMLHttpRequest();
+	rawFile.open("GET",PATH+"lang/lang_PT.json", false);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4) {
+			window.localStorage.setItem("lang",rawFile.responseText)
+		}
+	}
+	rawFile.send();
+	//Listeners
 	window.addEventListener("message", messageHandler);
 	window.postMessage("menu", "*");
 }

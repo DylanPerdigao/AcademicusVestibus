@@ -1,10 +1,10 @@
 {
-	"textPeopleHome":[
-		["Podes apanhar o autocarro para ir à Praça"],
-		["Meu filho a tua aventura começa aqui vai à","universidade conheceres os teus amigos"],
-		["Se carregares na tecla M podes ver o mapa","da cidade"]
+	"informations":[
+		["FALAR"],
+		["APANHAR","AUTOCARRO"],
+		["DINHEIRO","INSUFICIENTE"]
 	],
-	"textPeoplePR":[
+	"people":[
 		["Para voltares a casa apanha o autocarro"],
 		["Quero comprar o traje académicio!!"],
 		["Bloquearam o passeio com estes cartões"],
@@ -36,9 +36,7 @@
 		["CALOIROS! QUEM CHEGOU ATRASADO FICA D4"],
 		["SIM DOUTOR"],
 		["SIM DOUTOR"],
-		["Estes caloiros não se sabem comportar"]
-	],
-	"textPeopleUC":[
+		["Estes caloiros não se sabem comportar"],
 		["Estou farta destas obras, não me apetece","descer as Monumentais"],
 		["A minha frente tens o Departamento de Matemática"],
 		["Este é o Departamento de Quimica","Olha!! Ao nosso lado está a tuna da FCTUC"],
@@ -132,6 +130,9 @@
 		["CALOIROS COMPORTEM-SE!"],
 		["APRENDAM AS MUSICAS DO NOSSO CURSO!"],
 		["REPRESENTEM O NOSSO CURSO!"],
-		["TENTEM CHEGAR AOS CALCANHARES","DOS CALOIROS DE INFORMÁTICA!"]
+		["TENTEM CHEGAR AOS CALCANHARES","DOS CALOIROS DE INFORMÁTICA!"],
+		["Podes apanhar o autocarro para ir à Praça"],
+		["Meu filho a tua aventura começa aqui vai à","universidade conheceres os teus amigos"],
+		["Se carregares na tecla M podes ver o mapa","da cidade"]
 	]
 }
