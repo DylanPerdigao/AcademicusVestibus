@@ -25,7 +25,7 @@ function showMenu(src){
 	frm.src = src;
 	frm.addEventListener("load", iframeHandler);
 }
-
+	
 function messageHandler(ev){
 	switch(ev.data){
 		case "menu":
@@ -64,6 +64,7 @@ function messageHandler(ev){
 			break;
 	}
 }
+
 
 function iframeHandler(ev){
 	var frm = ev.target;

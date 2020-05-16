@@ -4,8 +4,9 @@
 
 
 function main(){
+	var lang = JSON.parse(window.localStorage.getItem("lang"));
 	var buttons = document.getElementsByTagName("button");
-	var mainWindow;;
+	var mainWindow;
 	//listener nas mensagens da janela principal
 	var msgHandler = function(ev){
 		mainWindow = messageHandler(ev);
@@ -16,9 +17,12 @@ function main(){
 		buttonHandler(ev,btnHandler,buttons,mainWindow);
 	}
 	for(let i=0;i<buttons.length;i++){
-		buttons[i].addEventListener("click",btnHandler)
+		buttons[i].addEventListener("click",btnHandler);
+		buttons[i].innerHTML =lang.buttons[buttons[i].id];
 	}
+
 }
+
 
 function messageHandler(ev){
 	return ev.source;

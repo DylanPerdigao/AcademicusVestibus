@@ -1,4 +1,20 @@
 {
+	"buttons":{
+		"return":"VOLTAR",
+		"game":"JOGAR",
+		"options":"OPÇÕES",
+		"help":"AJUDA",
+		"credits":"CRÉDITOS",
+		"arcade":"ARCADE",
+		"play":"RETOMAR JOGO",
+		"new":"NOVO JOGO",
+		"delete":"APAGAR JOGO",
+		"montyHall":"MONTY HALL",
+		"snake":"SNAKE",
+		"fill":"FILL GAME",
+		"moscas":"MATA-MOSCAS"
+	},
+		
 	"informations":[
 		["FALAR"],
 		["APANHAR","AUTOCARRO"],
