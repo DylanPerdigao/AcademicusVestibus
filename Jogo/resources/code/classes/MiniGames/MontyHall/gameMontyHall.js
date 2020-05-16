@@ -5,25 +5,41 @@ const WIN_MESSAGE = "Ganhou!";
 const LOSE_MESSAGE = "Perdeu!";
 
 class GameMontyHall {
-    constructor(ctx, isActive) {
-        if(isActive !== undefined)
-            this.isActive = isActive;
-        else this.isActive = false;
+    constructor(ctx) {
         this.replay_button = document.getElementById("play_again");
         this.exit_button = document.getElementById("exit");
         this.ctx = ctx;
         this.numWin = 0;
         this.numLoss = 0;
-        this.init();
+
+        this.imgPortaAberta = new Image();
+        this.imgPortaAberta.addEventListener("load", imgLoadedHandler);
+        this.imgPortaAberta.src = "resources/porta_aberta.png";
+    
+        this.imgPortaFechada = new Image();
+        this.imgPortaFechada.addEventListener("load", imgLoadedHandler);
+        this.imgPortaFechada.src = "resources/porta_fechada.png";
+    
+        this.imgMoney = new Image();
+        this.imgMoney.addEventListener("load", imgLoadedHandler);
+        this.imgMoney.src = "resources/money.png";
+
+        this.imgLoaded = 0;
+        var me = this;
+        function imgLoadedHandler(ev) {
+            me.imgLoaded++;
+            if (me.imgLoaded == 3) {
+                me.init();
+            }
+        }
+
     }
 
     init() {
-        let nLoad = 0;
-        let totLoad = 3;
         this.portas = new Array(3);
 
         for (let i = 0; i < 3; i++) {
-            this.portas[i] = new mhPorta(i * 200, 50, 200, 350, false);
+            this.portas[i] = new mhPorta(i * 200, 50, 200, 350, this.imgPortaAberta, this.imgPortaFechada, this.imgMoney);
         }
 
         //Decide aleatoriamente em que porta esta o dinheiro
@@ -34,7 +50,16 @@ class GameMontyHall {
         this.txt = INITIAL_MESSAGE_MONTY;
 
         let me = this;
+        
+        this.replay_button.onclick = function (ev) {
+            me.reset()
+        };
+        this.exit_button.onclick = function (ev) {
+            me.deactivate()
+        };
+
         this.clickHandler1 = function (ev) {
+            console.log(ev.offsetX,ev.offsetY)
             let escolhida = -1;
             for(let i = 0; i < me.portas.length; i++){
                 if(me.portas[i].mouseOverBoundingBox(ev)){
@@ -58,6 +83,7 @@ class GameMontyHall {
         };
 
         this.clickHandler0 = function (ev) {
+            console.log(ev.offsetX,ev.offsetY)
             let escolhida = -1;
             for(let i = 0; i < me.portas.length; i++) {
                 if (me.portas[i].mouseOverBoundingBox(ev)){
@@ -74,33 +100,25 @@ class GameMontyHall {
             me.ctx.canvas.removeEventListener("click", me.clickHandler0);
             me.ctx.canvas.addEventListener("click", me.clickHandler1);
         };
+
+        
+        this.ctx.canvas.addEventListener("click", this.clickHandler0);
+        
+        this.draw();
     }
 
-    draw(ctx){
-        if(!this.isActive) return;
+    draw(){
         for(let i = 0; i < 3; i++){
-            this.portas[i].draw(ctx)
+            this.portas[i].draw(this.ctx)
         }
         this.ctx.font = "16px Comic Sans MS";
         this.ctx.fillStyle = "red";
         this.ctx.textAlign = "right";
         this.ctx.fillText(this.txt, 250, 20);
     }
-
-    activate(){
-        this.isActive = true;
-        this.ctx.canvas.addEventListener("click", this.clickHandler0);
-        let me = this;
-        this.replay_button.onclick = function (ev) {
-            me.reset()
-        };
-        this.exit_button.onclick = function (ev) {
-            me.deactivate()
-        };
-    }
+   
 
     deactivate(){ //returns difference between wins and losses after closing the game
-        this.isActive = false;
         this.ctx.canvas.removeEventListener("click", this.clickHandler0);
         this.ctx.canvas.removeEventListener("click", this.clickHandler1);
         this.replay_button.onclick = null;

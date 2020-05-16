@@ -1,35 +1,33 @@
 "use strict";
 
-const IMG_PORTA_ABERTA = "../Mnty_Hall/resources/porta_aberta.png";
-const IMG_PORTA_FECHADA = "../Mnty_Hall/resources/porta_fechada.png";
-const IMG_MONEY = "../Mnty_Hall/resources/money.png";
-
 class mhPorta extends SpriteImage{
-    constructor(x, y, w, h, isWinner) {
-        var PortaFechada = new Image();
-        PortaFechada.src = IMG_PORTA_FECHADA;
-        super(x, y, w, h, PortaFechada);
-        this.money = new Image();
-        this.money.src = IMG_MONEY
-        this.isWinner = isWinner;
+    constructor(x, y, w, h, imgPortaAberta, imgPortaFechada, imgMoney) {
+        super(x, y, w, h, imgPortaFechada);
+        this.imgPortaAberta = imgPortaAberta;
+        this.imgPortaFechada = imgPortaFechada;
+        this.imgMoney = imgMoney;
+        this.isWinner = false;
         this.isOpen = false;
     }
 
-    open(){
+    open(ctx){
         this.isOpen = true;
-        this.img.src = IMG_PORTA_ABERTA;
+        super.img= this.imgPortaAberta;
+        super.clear(ctx);
+        this.draw(ctx);
     }
 
-    reset(){
+    reset(ctx){
         this.isOpen = false;
-        this.img.src = IMG_PORTA_FECHADA;
+        super.img = this.imgPortaFechada;
+        super.clear(ctx);
+        this.draw(ctx);
     }
 
     draw(ctx) {
         super.draw(ctx);
         if(this.isWinner && this.isOpen){
-
-            ctx.drawImage(this.money, this.x, this.y + this.height/2, this.width/2, this.height/2);
+            ctx.drawImage(this.imgMoney, this.x, this.y + this.height/2, this.width/2, this.height/2);
         }
     }
 }

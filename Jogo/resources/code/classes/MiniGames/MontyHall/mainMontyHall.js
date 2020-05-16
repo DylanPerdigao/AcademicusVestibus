@@ -6,6 +6,5 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    let engine = new GameEngine(ctx);
-    engine.gameMH.activate();
+    new GameMontyHall(ctx);
 }
