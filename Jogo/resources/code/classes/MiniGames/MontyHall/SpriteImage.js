@@ -28,14 +28,5 @@ class SpriteImage {
         else
             return false;
     }
-
-    clickedBoundingBox(ev) //ev.target é a canvas
-    {
-        return this.mouseOverBoundingBox(ev);
-    }
-
-    intersectsBoundingBox(sprite) {
-        return this.x <= sprite.x + sprite.width && sprite.x <= this.x + this.width && this.y <= sprite.y + sprite.height && sprite.y <= this.y + this.height;
-    }
 }
 

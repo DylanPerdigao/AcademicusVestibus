@@ -52,14 +52,13 @@ class GameMontyHall {
         let me = this;
         
         this.replay_button.onclick = function (ev) {
-            me.reset()
+            me.reset(me.ctx)
         };
         this.exit_button.onclick = function (ev) {
             me.deactivate()
         };
 
         this.clickHandler1 = function (ev) {
-            console.log(ev.offsetX,ev.offsetY)
             let escolhida = -1;
             for(let i = 0; i < me.portas.length; i++){
                 if(me.portas[i].mouseOverBoundingBox(ev)){
@@ -70,7 +69,7 @@ class GameMontyHall {
             let premiada = -1;
             for(let i = 0; i < me.portas.length; i++) {
                 if(me.portas[i].isWinner) premiada = i;
-                me.portas[i].open();
+                me.portas[i].open(me.ctx);
             }
             if (escolhida === premiada) {
                 me.txt = WIN_MESSAGE;
@@ -83,7 +82,6 @@ class GameMontyHall {
         };
 
         this.clickHandler0 = function (ev) {
-            console.log(ev.offsetX,ev.offsetY)
             let escolhida = -1;
             for(let i = 0; i < me.portas.length; i++) {
                 if (me.portas[i].mouseOverBoundingBox(ev)){
@@ -96,7 +94,7 @@ class GameMontyHall {
             while(abrir === -1 || me.portas[abrir].isWinner || abrir === escolhida){
                 abrir = Math.floor(Math.random()*3);
             }
-            me.portas[abrir].open();
+            me.portas[abrir].open(me.ctx);
             me.ctx.canvas.removeEventListener("click", me.clickHandler0);
             me.ctx.canvas.addEventListener("click", me.clickHandler1);
         };
@@ -131,7 +129,7 @@ class GameMontyHall {
         this.numLoss = 0;
         this.txt = INITIAL_MESSAGE_MONTY;
         for(let i = 0; i < this.portas.length; i++){
-            this.portas[i].reset();
+            this.portas[i].reset(this.ctx);
         }
         this.ctx.canvas.addEventListener("click", this.clickHandler0);
         this.ctx.canvas.removeEventListener("click", this.clickHandler1);
