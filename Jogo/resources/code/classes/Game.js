@@ -10,7 +10,7 @@ class Game {
 		this.canInteract=false;
 		this.isShowingMap=false;
 		this.isAnimated=false;
-		this.isDebugging=false;
+		this.isDebugging=true;
 		this.yDebug = 0;
 		this.yDebug = 0;
 		this.window = window;

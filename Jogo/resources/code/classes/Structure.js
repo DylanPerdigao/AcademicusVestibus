@@ -1,10 +1,19 @@
 class Structure extends Element {
     constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight) {
-		super(src, posX, posY,speed); 
-		this.initialX = posX;
-		this.initialY = posY;  
-		this.hitboxWidth=hitboxWidth;
-		this.hitboxHeight=hitboxHeight;
+		if (arguments.length==1){
+			var obj=src;
+			super(obj.src, obj.posX, obj.posY,obj.speed);
+			this.initialX = obj.posX;
+			this.initialY =  obj.posY;  
+			this.hitboxWidth= obj.hitboxWidth;
+			this.hitboxHeight= obj.hitboxHeight;
+		}else{
+			super(src, posX, posY,speed); 
+			this.initialX = posX;
+			this.initialY = posY;  
+			this.hitboxWidth=hitboxWidth;
+			this.hitboxHeight=hitboxHeight;
+		}
 	}
 	action(){}
     /**

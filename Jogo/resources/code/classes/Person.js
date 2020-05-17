@@ -1,7 +1,13 @@
 class Person extends Trigger {
     constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,textID) {
-		super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
-		this.textID=textID;
+		if (arguments.length==1){
+			var obj=src;
+			super(obj.src, obj.posX, obj.posY,obj.speed,obj.hitboxWidth,obj.hitboxHeight);
+			this.textID=obj.textID
+		}else{
+			super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
+			this.textID=textID;
+		}
 	}
 	/**
 	 * Draws the shadow under the person
