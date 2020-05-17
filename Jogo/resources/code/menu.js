@@ -18,9 +18,24 @@ function main(){
 	}
 	for(let i=0;i<buttons.length;i++){
 		buttons[i].addEventListener("click",btnHandler);
+		//set nome dos botoes
 		buttons[i].innerHTML =lang.buttons[buttons[i].id];
 	}
-
+	//set nome do objetos do html
+	var title = document.getElementsByTagName("h1")[0]
+	title.innerHTML = lang.title[title.id];
+	var subtitles = document.getElementsByTagName("h2");
+	for(let i=0;i<subtitles.length;i++){
+		subtitles[i].innerHTML =lang.subtitle[subtitles[i].id];
+	}
+	var acknowledgments = document.getElementsByTagName("ack");
+	for(let i=0;i<acknowledgments.length;i++){
+		acknowledgments[i].innerHTML =lang.text[acknowledgments[i].id];
+	}
+	var controls = document.getElementsByTagName("control");
+	for(let i=0;i<controls.length;i++){
+		controls[i].innerHTML =lang.text[controls[i].id];
+	}
 }
 
 
