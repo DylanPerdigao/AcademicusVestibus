@@ -15,7 +15,7 @@ class Game {
 		this.yDebug = 0;
 		this.window = window;
 		//AJUSTES
-		this.map.updatePosition(player.posX-635,player.posY-160);
+		this.map.updatePosition(player.posX-640,player.posY-170);
 		this.map.setStructuresPositions();
 		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
 		//LISTENER
