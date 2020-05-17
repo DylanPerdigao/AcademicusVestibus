@@ -10,12 +10,12 @@ class Dialog extends Component {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {Array<string>} text array of text, organized by lines
 	 */
-	writeSpeak(ctx,text){
+	writeSpeak(ctx,text,name){
 		this.posX=10;
 		this.posY=ctx.canvas.height-35;
 		this.width=ctx.canvas.width-20;
 		this.height=25;
-		this.write(ctx,text)
+		this.write(ctx,text,name)
 	}
 	/**
 	 * Sets the size of the box for showing a command.
@@ -34,7 +34,7 @@ class Dialog extends Component {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {Array<string>} text array of text, organized by lines
 	 */
-    write(ctx,text) {
+    write(ctx,text,name) {
 		ctx.drawImage(this.img, this.posX,this.posY,this.width,this.height);
 		ctx.fillStyle = "#86592D";
 		ctx.font = "10px Arial";
@@ -42,7 +42,11 @@ class Dialog extends Component {
 			ctx.fillText(text[0],this.posX+8,this.posY+15,this.width-16);
 		}else{
 			for(let i=0; i<text.length;i++){
-				ctx.fillText(text[i],this.posX+8,this.posY+10*(i+1),this.width-16);
+				if (i==0 && name != undefined){
+					ctx.fillText(name+text[i],this.posX+8,this.posY+10*(i+1),this.width-16);
+				}else{
+					ctx.fillText(text[i],this.posX+8,this.posY+10*(i+1),this.width-16);
+				}
 			}
 		}
     }

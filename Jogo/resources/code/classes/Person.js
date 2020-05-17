@@ -25,9 +25,20 @@ class Person extends Trigger {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {Game} game This game
 	 */
-    speak(ctx,dialog) {
+    speak(ctx,dialog,name,money) {
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
-		dialog.writeSpeak(ctx,lang.people[this.textID]);
+		if(this.textID==129){
+			if(money<BUS_COST){
+				dialog.writeSpeak(ctx,lang.people[this.textID+1],name);
+				return BUS_COST;
+			}else{
+				dialog.writeSpeak(ctx,lang.people[this.textID],name);
+				return 0;
+			}
+		}else{
+			dialog.writeSpeak(ctx,lang.people[this.textID]);
+			return 0;
+		}
     }
 
     action(ctx,dialog) {
