@@ -7,6 +7,7 @@
 		"titleArcade":"ARCADE"
 	},
 	"subtitle":{
+		"insertName":"Inserir nome",
 		"creators":"Criadores",
 		"acknowledgment":"Agradecimentos",
 		"controls":"Controlos"
@@ -35,7 +36,9 @@
 		"montyHall":"MONTY HALL",
 		"snake":"SNAKE",
 		"fill":"FILL GAME",
-		"moscas":"MATA-MOSCAS"
+		"moscas":"MATA-MOSCAS",
+		"create":"CRIAR",
+		"returnGameMenu":"VOLTAR"
 	},
 		
 	"informations":[
@@ -172,7 +175,7 @@
 		["TENTEM CHEGAR AOS CALCANHARES","DOS CALOIROS DE INFORMÁTICA!"],
 		["Podes apanhar o autocarro para ir à Praça"],
 		["Se carregares na tecla M podes ver o mapa","da cidade"],
-		[" a tua aventura começa aqui, peço para ires","à universidade conheceres os teus amigos"],
-		[" já não tens dinheiro? Toma umas moedas","para pagar o autocarro"]
+		[" a tua aventura começa aqui, vai","à universidade conheceres os teus amigos"],
+		[" já não tens dinheiro? Toma umas","moedas para pagar o autocarro"]
 	]
 }

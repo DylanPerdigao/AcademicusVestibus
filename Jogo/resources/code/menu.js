@@ -18,8 +18,6 @@ function main(){
 	}
 	for(let i=0;i<buttons.length;i++){
 		buttons[i].addEventListener("click",btnHandler);
-		//set nome dos botoes
-		buttons[i].innerHTML =lang.buttons[buttons[i].id];
 	}
 	//set nome do objetos do html
 	var title = document.getElementsByTagName("h1")[0]
@@ -27,6 +25,9 @@ function main(){
 	var subtitles = document.getElementsByTagName("h2");
 	for(let i=0;i<subtitles.length;i++){
 		subtitles[i].innerHTML =lang.subtitle[subtitles[i].id];
+	}
+	for(let i=0;i<buttons.length;i++){
+		buttons[i].innerHTML =lang.buttons[buttons[i].id];
 	}
 	var acknowledgments = document.getElementsByTagName("ack");
 	for(let i=0;i<acknowledgments.length;i++){
@@ -50,4 +51,15 @@ function buttonHandler(ev,func,buttons,w){
 	}
 	//envia mensagem ao main da pagina escolhida
 	w.postMessage(ev.currentTarget.id, "*");
+}
+
+function nameValidation(){
+	var name = document.getElementById("name").value;
+	var regExp = /[A-Z][àâæáäãåāéèêëęėēîïìíįīôœöòóõøōûùüúūÿçćčñń\-a-z]{2,10}$/g;
+	if (regExp.test(name)){
+		document.getElementById("create").disabled = false;
+		window.localStorage.setItem("name",name);
+	}else{
+		document.getElementById("create").disabled = true;
+	}
 }

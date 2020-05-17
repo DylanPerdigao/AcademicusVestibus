@@ -28,9 +28,10 @@ function main(){
 	var mapHome = new Map(maps.HOME);
 	var mapPlace = new Map(maps.PLACE);
 	var mapUniversity = new Map(maps.UNIVERSITY);
+	var name = window.localStorage.getItem("name");
 	//GAME
 	new Game(ctx,
-		new Player("../textures/player/male/player_male","Nome",canvas.width/2,canvas.height/2,5),
+		new Player("../textures/player/male/player_male",name,canvas.width/2,canvas.height/2,5),
 		new Array(mapHome,mapPlace,mapUniversity),
 		new Money("../textures/gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
 		new MiniMap("../textures/map/map.png",0,0),

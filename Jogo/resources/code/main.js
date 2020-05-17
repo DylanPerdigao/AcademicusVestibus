@@ -32,11 +32,18 @@ function messageHandler(ev){
 		case "return":
 			showMenu(PATH+"html/mainMenu.html");
 			break;
+		case "returnGameMenu":
 		case "game":
 			showMenu(PATH+"html/gameMenu.html");
 			break;
 		case "play":
 			showMenu(PATH+"html/game.html");
+			break;
+		case "create":
+			showMenu(PATH+"html/game.html");
+			break;
+		case "new":
+			showMenu(PATH+"html/newGameMenu.html");
 			break;
 		case "options":
 			showMenu(PATH+"html/optionsMenu.html");
