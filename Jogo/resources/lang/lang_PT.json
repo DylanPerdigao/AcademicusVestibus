@@ -4,13 +4,16 @@
 		"titleOptions":"OPÇÕES",
 		"titleHelp":"AJUDA",
 		"titleCredits":"CRÉDITOS",
-		"titleArcade":"ARCADE"
+		"titleArcade":"ARCADE",
+		"titleSettings":"OPÇÕES"
 	},
 	"subtitle":{
 		"insertName":"Inserir nome",
 		"creators":"Criadores",
 		"acknowledgment":"Agradecimentos",
-		"controls":"Controlos"
+		"controls":"Controlos",
+		"volume": "Som",
+		"language": "Língua"
 	},
 	"text":{
 		"ack1": "Ao site <a href='www.kenney.nl'>KENNEY</a> pelos assets",
@@ -38,7 +41,10 @@
 		"fill":"FILL GAME",
 		"moscas":"MATA-MOSCAS",
 		"create":"CRIAR",
-		"returnGameMenu":"VOLTAR"
+		"returnGameMenu":"VOLTAR",
+		"PT":"Português",
+		"EN":"Inglês",
+		"FR":"Francês"
 	},
 		
 	"informations":[

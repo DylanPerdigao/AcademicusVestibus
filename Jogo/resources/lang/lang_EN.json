@@ -10,7 +10,9 @@
 		"insertName":"Insert your name",
 		"creators":"Creators",
 		"acknowledgment":"Acknowledgments",
-		"controls":"Controls"
+		"controls":"Controls",
+		"volume": "Sound",
+		"language": "Language"
 	},
 	"text":{
 		"ack1": "To the website <a href='www.kenney.nl'>KENNEY</a> for assets",
@@ -30,7 +32,7 @@
 		"help":"HELP",
 		"credits":"CREDITS",
 		"arcade":"ARCADE",
-		"play":"CONTINUE GAME",
+		"play":"CONTINUE",
 		"new":"NEW GAME",
 		"delete":"DELETE GAME",
 		"montyHall":"MONTY HALL",
@@ -38,7 +40,10 @@
 		"fill":"FILL GAME",
 		"moscas":"KILL-FLY",
 		"create":"CREATE",
-		"returnGameMenu":"RETURN"
+		"returnGameMenu":"RETURN",
+		"PT":"Portuguese",
+		"EN":"English",
+		"FR":"French"
 	},
 		
 	"informations":[

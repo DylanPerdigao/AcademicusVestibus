@@ -10,7 +10,9 @@
 		"insertName":"Insérer votre nom",
 		"creators":"Créateurs",
 		"acknowledgment":"Remerciements",
-		"controls":"Commandes"
+		"controls":"Commandes",
+		"volume": "Son",
+		"language": "Langue"
 	},
 	"text":{
 		"ack1": "Au site <a href='www.kenney.nl'>KENNEY</a> pour les assets",
@@ -30,15 +32,18 @@
 		"help":"AIDE",
 		"credits":"CRÉDITS",
 		"arcade":"ARCADE",
-		"play":"CONTINUER LA PARTIE",
-		"new":"NOUVELLE PARTIE",
-		"delete":"SUPPRIMER LA PARTIE",
+		"play":"REPRENDRE",
+		"new":"NOUV. PARTIE",
+		"delete":"SUPPR. PARTIE",
 		"montyHall":"MONTY HALL",
 		"snake":"SNAKE",
 		"fill":"FILL GAME",
 		"moscas":"TUE-MOUCHES",
 		"create":"CRÉE",
-		"returnGameMenu":"RETOUR"
+		"returnGameMenu":"RETOUR",
+		"PT":"Portugais",
+		"EN":"Anglais",
+		"FR":"Français"
 	},
 		
 	"informations":[
