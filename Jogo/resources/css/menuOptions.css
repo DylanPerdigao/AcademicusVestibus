@@ -1,0 +1,19 @@
+.langButton{
+	height: 10%;
+	font-size: 150%;
+}
+
+.volume{
+	margin-bottom: 0;
+	margin-top: 0;
+	font-family: PoeSans;
+	text-align: center;
+}
+
+h2{
+	margin-bottom: 0;
+}
+
+input{
+	height: 10%;
+}
