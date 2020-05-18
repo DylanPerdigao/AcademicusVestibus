@@ -6,6 +6,16 @@ const PATH = "resources/";
 
 
 function main(){
+	//LANG DATA
+	var rawFile = new XMLHttpRequest();
+	rawFile.open("GET",PATH+"lang/lang_PT.json", false);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4) {
+			window.localStorage.setItem("lang",rawFile.responseText)
+		}
+	}
+	rawFile.send();
+	//Listeners
 	window.addEventListener("message", messageHandler);
 	window.postMessage("menu", "*");
 }
@@ -15,18 +25,25 @@ function showMenu(src){
 	frm.src = src;
 	frm.addEventListener("load", iframeHandler);
 }
-
+	
 function messageHandler(ev){
 	switch(ev.data){
 		case "menu":
 		case "return":
 			showMenu(PATH+"html/mainMenu.html");
 			break;
+		case "returnGameMenu":
 		case "game":
 			showMenu(PATH+"html/gameMenu.html");
 			break;
 		case "play":
 			showMenu(PATH+"html/game.html");
+			break;
+		case "create":
+			showMenu(PATH+"html/game.html");
+			break;
+		case "new":
+			showMenu(PATH+"html/newGameMenu.html");
 			break;
 		case "options":
 			showMenu(PATH+"html/optionsMenu.html");
@@ -54,6 +71,7 @@ function messageHandler(ev){
 			break;
 	}
 }
+
 
 function iframeHandler(ev){
 	var frm = ev.target;

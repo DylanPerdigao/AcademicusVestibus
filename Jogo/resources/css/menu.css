@@ -44,7 +44,21 @@ section{
 	/*ponteiro*/
 	cursor: url("../textures/gui/pointer.svg"), auto;
 }
-
+h2{
+	font-family: EvilEmpire;
+	font-size: 2.5vw;
+	text-align: center;
+}
+input{
+	margin:auto;
+	margin-top:1%;
+	width: 30%;
+	height: 10%;
+	display: block;
+	text-align: center;
+	font-family: PoeSans;
+	font-size:200%;
+}
 button{
 	margin:auto;
 	margin-top:1%;
@@ -67,7 +81,6 @@ button{
 	/*ponteiro*/
 	cursor: url("../textures/gui/pointer.svg"), auto;
 }
-
 button:hover{
     color:burlywood;
 }

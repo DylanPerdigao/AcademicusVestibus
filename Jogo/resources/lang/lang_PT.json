@@ -1,10 +1,52 @@
 {
-	"textPeopleHome":[
-		["Podes apanhar o autocarro para ir à Praça"],
-		["Meu filho a tua aventura começa aqui vai à","universidade conheceres os teus amigos"],
-		["Se carregares na tecla M podes ver o mapa","da cidade"]
+	"title":{
+		"titleGame":"ACADEMICUS VESTIBUS",
+		"titleOptions":"OPÇÕES",
+		"titleHelp":"AJUDA",
+		"titleCredits":"CRÉDITOS",
+		"titleArcade":"ARCADE"
+	},
+	"subtitle":{
+		"insertName":"Inserir nome",
+		"creators":"Criadores",
+		"acknowledgment":"Agradecimentos",
+		"controls":"Controlos"
+	},
+	"text":{
+		"ack1": "Ao site <a href='www.kenney.nl'>KENNEY</a> pelos assets",
+		"ack2": "Ao site <a href='www.pixabay.com'>PIXABAY</a> pelas imagens",
+		"ack3": "Ao <a href='www.deviantart.com/lolw3e932'>Lolw3e932</a> pelas sprites das personagens",
+		"instr1": "Andar para cima",
+		"instr2": "Andar para a esquerda",
+		"instr3": "Andar para baixo",
+		"instr4": "Andar para a direita",
+		"instr5": "Mostrar mapa",
+		"instr6": "Interagir"
+	},
+	"buttons":{
+		"return":"VOLTAR",
+		"game":"JOGAR",
+		"options":"OPÇÕES",
+		"help":"AJUDA",
+		"credits":"CRÉDITOS",
+		"arcade":"ARCADE",
+		"play":"RETOMAR JOGO",
+		"new":"NOVO JOGO",
+		"delete":"APAGAR JOGO",
+		"montyHall":"MONTY HALL",
+		"snake":"SNAKE",
+		"fill":"FILL GAME",
+		"moscas":"MATA-MOSCAS",
+		"create":"CRIAR",
+		"returnGameMenu":"VOLTAR"
+	},
+		
+	"informations":[
+		["FALAR"],
+		["APANHAR","AUTOCARRO"],
+		["DINHEIRO","INSUFICIENTE"]
 	],
-	"textPeoplePR":[
+	"people":[
 		["Para voltares a casa apanha o autocarro"],
 		["Quero comprar o traje académicio!!"],
 		["Bloquearam o passeio com estes cartões"],
@@ -36,9 +78,7 @@
 		["CALOIROS! QUEM CHEGOU ATRASADO FICA D4"],
 		["SIM DOUTOR"],
 		["SIM DOUTOR"],
-		["Estes caloiros não se sabem comportar"]
-	],
-	"textPeopleUC":[
+		["Estes caloiros não se sabem comportar"],
 		["Estou farta destas obras, não me apetece","descer as Monumentais"],
 		["A minha frente tens o Departamento de Matemática"],
 		["Este é o Departamento de Quimica","Olha!! Ao nosso lado está a tuna da FCTUC"],
@@ -132,6 +172,10 @@
 		["CALOIROS COMPORTEM-SE!"],
 		["APRENDAM AS MUSICAS DO NOSSO CURSO!"],
 		["REPRESENTEM O NOSSO CURSO!"],
-		["TENTEM CHEGAR AOS CALCANHARES","DOS CALOIROS DE INFORMÁTICA!"]
+		["TENTEM CHEGAR AOS CALCANHARES","DOS CALOIROS DE INFORMÁTICA!"],
+		["Podes apanhar o autocarro para ir à Praça"],
+		["Se carregares na tecla M podes ver o mapa","da cidade"],
+		[" a tua aventura começa aqui, vai","à universidade conheceres os teus amigos"],
+		[" já não tens dinheiro? Toma umas","moedas para pagar o autocarro"]
 	]
 }

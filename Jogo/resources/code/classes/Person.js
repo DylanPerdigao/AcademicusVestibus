@@ -1,7 +1,13 @@
 class Person extends Trigger {
-    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,text) {
-		super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
-		this.text=text;
+    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,textID) {
+		if (arguments.length==1){
+			var obj=src;
+			super(obj.src, obj.posX, obj.posY,obj.speed,obj.hitboxWidth,obj.hitboxHeight);
+			this.textID=obj.textID
+		}else{
+			super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
+			this.textID=textID;
+		}
 	}
 	/**
 	 * Draws the shadow under the person
@@ -19,12 +25,25 @@ class Person extends Trigger {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 * @param {Game} game This game
 	 */
-    speak(ctx,dialog) {
-		dialog.writeSpeak(ctx,this.text);
+    speak(ctx,dialog,name,money) {
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+		if(this.textID==129){
+			if(money<BUS_COST){
+				dialog.writeSpeak(ctx,lang.people[this.textID+1],name);
+				return BUS_COST;
+			}else{
+				dialog.writeSpeak(ctx,lang.people[this.textID],name);
+				return 0;
+			}
+		}else{
+			dialog.writeSpeak(ctx,lang.people[this.textID]);
+			return 0;
+		}
     }
 
     action(ctx,dialog) {
-		dialog.writeInfo(ctx,["  FALAR"]);
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+		dialog.writeInfo(ctx,lang.informations[0]);
 	}
 }
 

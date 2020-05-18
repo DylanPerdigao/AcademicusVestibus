@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-		<title>Academicus Vestibus</title>
+		<title>JOGAR</title>
 		<meta charset="UTF-8">
 		<link rel="shortcut icon" href="../textures/icon/UC.png" type="image/png">
 		<link rel="stylesheet" type="text/css" href="../css/font.css">
@@ -10,15 +10,16 @@
 	</head>
 	<body>
 		<header>
-			<h1 id="titleGame"></h1>	
+			<h1 id="titleGame">ACADEMICUS VESTIBUS</h1>	
 		</header>
 		<section>
 			<p>&nbsp;</p>
-			<button id="game"></button>
-			<button id="options" disabled></button>
-			<button id="help"></button>
-			<button id="credits"></button>
-			<button id="arcade"></button>
+			<h2 id="insertName"></h2>
+			<input id="name" type="text" oninput="nameValidation()"></input>
+			<p>&nbsp;</p>
+			<button id="create" disabled></button>
+			<p>&nbsp;</p>
+			<button id="returnGameMenu"></button>
 			<p>&nbsp;</p>
 		</section>
     </body>

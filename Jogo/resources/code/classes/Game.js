@@ -10,12 +10,12 @@ class Game {
 		this.canInteract=false;
 		this.isShowingMap=false;
 		this.isAnimated=false;
-		this.isDebugging=false;
+		this.isDebugging=true;
 		this.yDebug = 0;
 		this.yDebug = 0;
 		this.window = window;
 		//AJUSTES
-		this.map.updatePosition(player.posX-635,player.posY-160);
+		this.map.updatePosition(player.posX-640,player.posY-170);
 		this.map.setStructuresPositions();
 		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
 		//LISTENER
@@ -64,10 +64,14 @@ class Game {
 				case "ArrowRight":
 					this.updatePosition(ctx,"right");
 					break;
-				case "Digit1":
-					this.map.structures.push(new Person(PATH+'people/female1_0.png',this.map.posX-this.xDebug,this.map.posY-this.yDebug,10,HITBOX_PERSON,["Hey"]))
-					console.log("new Person(PATH+'people/female1_0.png',"+ this.xDebug +","+ this.yDebug +",speed,null,HITBOX_PERSON),\n")
+			}
+			switch(event.key){
+				case "&":
+					this.money.addMoney(1);
 					break;	
+				case "%":
+					this.money.removeMoney(1);
+					break;
 			}		
 		}
 	}
@@ -237,7 +241,8 @@ class Game {
 				this.busStructCollided.action(ctx,this.dialog,this.money.value);
 			}	
 		}else if(this.canInteract){//SE ESTA COM UMA PESSOA EM FRENTE PARA FALAR
-			this.collisionSimulation(this.player.orientation)[1].speak(ctx,this.dialog);
+			var n = this.collisionSimulation(this.player.orientation)[1].speak(ctx,this.dialog,this.player.name,this.money.value);
+			this.money.addMoney(n);
 		}
 	}
 	/**
