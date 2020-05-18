@@ -35,10 +35,10 @@ class SnakeFillMain {
                 if (me.menu.imgs[i].mouseOver(ev)){
                     me.canvas.removeEventListener("mouseup", MouseUpColorHandler);
                     if (snake){
-                        new SnakeGame(me.level,me.colors[i], me.cell, me.ctx,me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow);
+                        new SnakeGame(me.level,me.colors[i], me.cell, me.ctx, me.canvas, me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow);
                     }
                     else{
-                        new FillGame(me.level,me.colors[i], me.cell, me.ctx,me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow);
+                        new FillGame(me.level,me.colors[i], me.cell, me.ctx, me.canvas, me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow);
                     }
                 }
     

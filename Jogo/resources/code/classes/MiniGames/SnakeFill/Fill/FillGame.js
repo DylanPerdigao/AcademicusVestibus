@@ -2,7 +2,7 @@
 
 
 class FillGame{
-    constructor(level, colors, cell, ctx,walls, mainWindow){
+    constructor(level, colors, cell, ctx, canvas, walls, mainWindow){
         this.wallColor=colors[0];
         this.backgroundColor=colors[2];
         this.fillColor=colors[1];
@@ -10,8 +10,10 @@ class FillGame{
         this.ctx=ctx;
         this.cell=cell;
         this.level=level;
-        this.mainWindow=mainWindow;
         this.fill=new Fill(this.fillColor,this.cell);
+
+        //game over
+        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
 
 
         this.interval=null;
@@ -84,25 +86,9 @@ class FillGame{
     gameOver(){
         //TODO
         window.clearInterval(this.interval);
+        
         //GAME OVER
-        this.ctx.font = (this.cell*4)+'px Calibri';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'blue';
-        this.ctx.fillText('Game Over!',15*this.cell,15*this.cell);
-        //Press
-        this.ctx.font = (this.cell)+'px Calibri';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillText('Pressione qualquer tecla para voltar',15*this.cell,17*this.cell);
-        
-        var me=this; //me = class
-        var gameOverHandler = function(){
-            window.removeEventListener("keydown", gameOverHandler);
-            me.mainWindow.postMessage("arcade",'*');   //voltar ao menu arcade
-        }
-        
-        window.addEventListener("keydown", gameOverHandler);
-        //Mostrar mensagem e só depois voltar
+        this. go.gameOver();
 
     }
 }

@@ -2,18 +2,20 @@
 
 
 class SnakeGame{
-    constructor(level, colors, cell, ctx,walls, mainWindow){
+    constructor(level, colors, cell, ctx, canvas, walls, mainWindow){
         this.wallColor=colors[0];
         this.fruitColor=colors[1];
         this.backgroundColor=colors[2];
         this.snakeColor=colors[3];
         this.score= document.getElementById("score");
+        this.canvas=canvas;
         this.ctx=ctx;
         this.cell=cell;
         this.level=level;
-        this.mainWindow=mainWindow;
         this.snake=new Snake(this.snakeColor,this.cell);
 
+        //game over
+        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
 
         this.interval=null;
         this.walls=walls;
@@ -115,24 +117,7 @@ class SnakeGame{
         //TODO
         window.clearInterval(this.interval);
         //GAME OVER
-        this.ctx.font = (this.cell*4)+'px Calibri';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'blue';
-        this.ctx.fillText('Game Over!',15*this.cell,15*this.cell);
-        //Press
-        this.ctx.font = (this.cell)+'px Calibri';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillText('Pressione qualquer tecla para voltar',15*this.cell,17*this.cell);
-        
-        var me=this; //me = class
-        var gameOverHandler = function(){
-            window.removeEventListener("keydown", gameOverHandler);
-            me.mainWindow.postMessage("arcade",'*');   //voltar ao menu arcade
-        }
-        
-        window.addEventListener("keydown", gameOverHandler);
-        //Mostrar mensagem e só depois voltar
+        this.go.gameOver();
 
     }
 }
