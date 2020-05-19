@@ -78,7 +78,10 @@ function nameValidation(){
 
 function updateVolume(ev){
 	var percentage = ev.target.value;
-	parent.document.getElementsByTagName("audio")[0].volume = percentage/100;
+	var audios = parent.document.getElementsByTagName("audio")
+	for (let i=0;i<audios.length;i++){
+		audios[i].volume = percentage/100;
+	}
 	document.getElementById("percentage").innerHTML = percentage+"%";
 }
 

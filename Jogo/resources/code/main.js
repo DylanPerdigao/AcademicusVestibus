@@ -8,7 +8,7 @@ const PATH = "resources/";
 function main(){
 	//LANG DATA
 	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET",PATH+"lang/lang_PT.json", false);
+	rawFile.open("GET",PATH+"lang/lang_PT.json", true);
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4) {
 			window.localStorage.setItem("lang",rawFile.responseText)
