@@ -1,22 +1,26 @@
 class Game {
-    constructor(ctx,player,mapList,money,miniMap,dialog) {
-		this.player=player;
-		this.mapList=mapList;
-		this.map = mapList[0];
-		this.money=money;
-		this.miniMap=miniMap;
-		this.dialog = dialog;
-		this.busStructCollided=null;
-		this.canInteract=false;
-		this.isShowingMap=false;
-		this.isAnimated=false;
-		this.isDebugging=true;
-		this.yDebug = 0;
-		this.yDebug = 0;
-		this.window = window;
-		//AJUSTES
-		this.map.updatePosition(player.posX-640,player.posY-170);
-		this.map.setStructuresPositions();
+    constructor(ctx,storedData,player,mapList,money,miniMap,dialog) {
+		if(storedData==null){
+			this.player=player;
+			this.mapList=mapList;
+			this.map = mapList[0];
+			this.money=money;
+			this.miniMap=miniMap;
+			this.dialog = dialog;
+			this.busStructCollided=null;
+			this.canInteract=false;
+			this.isShowingMap=false;
+			this.isAnimated=false;
+			this.isDebugging=true;
+			this.yDebug = 0;
+			this.yDebug = 0;
+			this.window = window;
+			//AJUSTES
+			this.map.updatePosition(player.posX-640,player.posY-170);
+			this.map.setStructuresPositions();
+		}else{
+
+		}
 		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
 		//LISTENER
 		var game=this;
