@@ -15,7 +15,12 @@ class Structure extends Element {
 			this.hitboxHeight=hitboxHeight;
 		}
 	}
-	action(){}
+	action(ctx,game,direction,map){
+		return null;
+	}
+	interaction(ctx,game){
+		return null;
+	}
     /**
      * Draw a red rectangle where is the Structure's hitbox
      * @param {CanvasRenderingContext2D} ctx canvas context

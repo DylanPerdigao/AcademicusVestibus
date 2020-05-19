@@ -12,7 +12,7 @@
 			{"type":"Structure","src":null,"posX":-675,"posY":-0,"speed":5,"initialX":-675,"initialY":0,"hitboxWidth":30,"hitboxHeight":240},
 			{"type":"Structure","src":null,"posX":-315,"posY":-0,"speed":5,"initialX":-315,"initialY":0,"hitboxWidth":32,"hitboxHeight":240},
 			{"type":"Structure","src":null,"posX":-355,"posY":-0,"speed":5,"initialX":-355,"initialY":0,"hitboxWidth":315,"hitboxHeight":157},
-			{"type":"Bus","src":null,"posX":-460,"posY":-190,"speed":5,"initialX":-460,"initialY":-190,"hitboxWidth":40,"hitboxHeight":20,"hitboxColor":"orange","location":1,"localX":-495,"localY":-70,"direction":"up"},
+			{"type":"Bus","src":null,"posX":-460,"posY":-185,"speed":5,"initialX":-460,"initialY":-185,"hitboxWidth":40,"hitboxHeight":25,"hitboxColor":"orange","location":1,"localX":-495,"localY":-70,"direction":"up"},
 			{"type":"Person","src":"../textures/people/male4_0.png","posX":-515,"posY":-178,"img":{},"speed":5,"initialX":-515,"initialY":-178,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":127},
 			{"type":"Person","src":"../textures/people/male1_2.png","posX":-370,"posY":-168,"img":{},"speed":5,"initialX":-370,"initialY":-168,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":128},
 			{"type":"Person","src":"../textures/people/female1_0.png","posX":-635,"posY":-153,"img":{},"speed":5,"initialX":-635,"initialY":-153,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":129}
@@ -77,7 +77,7 @@
 			{"type":"Structure","src":"../textures/structures/box4.png","posX":-820,"posY":-180,"img":{},"speed":5,"initialX":-820,"initialY":-180,"hitboxWidth":null,"hitboxHeight":5},
 			{"type":"Structure","src":"../textures/structures/box2.png","posX":-805,"posY":-190,"img":{},"speed":5,"initialX":-805,"initialY":-190,"hitboxWidth":null,"hitboxHeight":5},
 			{"type":"Teleporter","src":null,"posX":-475,"posY":-540,"speed":5,"initialX":-475,"initialY":-540,"hitboxWidth":32,"hitboxHeight":30,"hitboxColor":"orange","location":2,"localX":-1300,"localY":-275,"direction":"left"},
-			{"type":"Bus","src":null,"posX":-555,"posY":-190,"speed":5,"initialX":-555,"initialY":-190,"hitboxWidth":40,"hitboxHeight":20,"hitboxColor":"orange","location":0,"localX":-405,"localY":-70,"direction":"up"},
+			{"type":"Bus","src":null,"posX":-555,"posY":-185,"speed":5,"initialX":-555,"initialY":-185,"hitboxWidth":40,"hitboxHeight":25,"hitboxColor":"orange","location":0,"localX":-405,"localY":-70,"direction":"up"},
 			{"type":"Person","src":"../textures/people/female3_0.png","posX":-600,"posY":-178,"img":{},"speed":5,"initialX":-600,"initialY":-178,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":0},
 			{"type":"Person","src":"../textures/people/male1_3.png","posX":-600,"posY":-153,"img":{},"speed":5,"initialX":-600,"initialY":-153,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":1},
 			{"type":"Person","src":"../textures/people/male1_2.png","posX":-775,"posY":-183,"img":{},"speed":5,"initialX":-775,"initialY":-183,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":2},

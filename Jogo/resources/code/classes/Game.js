@@ -132,27 +132,22 @@ class Game {
 	 */
  	collisionSimulation(direction){
 		var hasCollision;
-		var k;
 		var returnDirection;
+		var collidedStruct = new Array();
 		//simula a avancar na direcao desejada
-		for(k=0;k<this.map.structures.length;k++){
+		for(let k=0;k<this.map.structures.length;k++){
 			this.map.structures[k].move(direction);
 			hasCollision=this.map.structures[k].checkIntersection(this.player);
 			if(hasCollision){
-				k++;//com o break o ciclo nao tem tempo de incrementar
-				break;
+				collidedStruct.push(this.map.structures[k]);
 			}
 		}
 		//recua os elementos que avancaram
-		for(let i=0;i<k;i++){
+		for(let i=0;i<this.map.structures.length;i++){
 			returnDirection = this.invertDirection(direction);
 			this.map.structures[i].move(returnDirection);
 		}
-		if(hasCollision){
-			return [hasCollision,this.map.structures[k-1]];
-		}else{
-			return [hasCollision,null];
-		}
+		return collidedStruct;
 			
 	}
 	/**
@@ -162,27 +157,16 @@ class Game {
 	 */
  	updatePosition(ctx,direction){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		var data = this.collisionSimulation(direction);
-		var hasCollision = data[0];
-		var structCollided = data[1];
+		var collidedStructs = this.collisionSimulation(direction);
 		this.player.orientation=direction;
 		this.canInteract=false;
-		if(hasCollision==false){
-			this.busStructCollided=null;
-			this.move(ctx,direction)
-		}else if (hasCollision==true && structCollided instanceof Bus){
-			this.move(ctx,direction)
-			this.busStructCollided = structCollided;
-			this.busStructCollided.action(ctx,this.dialog,this.money.value);
-		}else if (hasCollision==true && structCollided instanceof Teleporter){
-			structCollided.action(ctx,this,this.mapList[structCollided.location]);
+		if(collidedStructs.length==0){
+			this.move(ctx,direction)	
 		}else{
 			this.draw(ctx);
 			this.canInteract=true;
-			if(this.busStructCollided){
-				this.busStructCollided.action(ctx,this.dialog,this.money.value);
-			}else{
-				structCollided.action(ctx,this.dialog);
+			for(let i in collidedStructs){
+				collidedStructs[i].action(ctx,this,direction,this.mapList[collidedStructs[i].location],collidedStructs.length);
 			}
 		}
 		this.money.draw(ctx);
@@ -237,17 +221,10 @@ class Game {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 */	
 	interaction(ctx){
-		if (this.busStructCollided){//SE ESTA NA PAREGEM DE AUTOCARRO
-			if(this.money.value>BUS_COST){
-				this.money.removeMoney(BUS_COST);
-				this.busStructCollided.teleport(ctx,this,this.mapList[this.busStructCollided.location]);
-			}else{
-				this.busStructCollided.action(ctx,this.dialog,this.money.value);
-			}	
-		}else if(this.canInteract){//SE ESTA COM UMA PESSOA EM FRENTE PARA FALAR
-			var n = this.collisionSimulation(this.player.orientation)[1].speak(ctx,this.dialog,this.player.name,this.money.value);
-			this.money.addMoney(n);
-		}
+		var collidedStructs = this.collisionSimulation(this.player.orientation);
+		for(let i in collidedStructs){
+			collidedStructs[i].interaction(ctx,this)
+		}	
 	}
 	/**
 	 * Makes the animation of map loading and active key listener after the animation (during the animation key listeners are off)

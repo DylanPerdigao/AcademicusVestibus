@@ -16,10 +16,12 @@ class Teleporter extends Trigger {
 		}
 		this.hitboxColor = "orange";
 	}
-    action(ctx,game,map) {
-		return this.teleport(ctx,game,map) ;
+    action(ctx,game,direction,map) {
+		return this.teleport(ctx,game,map);
 	}
-
+	interaction(ctx,game){
+		return null;
+	}
 	teleport(ctx,game,map) {
 		game.loadingAnimation(ctx,this.direction,map)
 		game.map = map;

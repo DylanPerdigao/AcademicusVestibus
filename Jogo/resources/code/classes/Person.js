@@ -28,7 +28,7 @@ class Person extends Trigger {
     speak(ctx,dialog,name,money) {
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
 		if(this.textID==129){
-			if(money<BUS_COST){
+			if(money.value<BUS_COST){
 				dialog.writeSpeak(ctx,lang.people[this.textID+1],name);
 				return BUS_COST;
 			}else{
@@ -41,9 +41,18 @@ class Person extends Trigger {
 		}
     }
 
-    action(ctx,dialog) {
+    action(ctx,game,direction,map) {
+		var dialog = game.dialog;
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
 		dialog.writeInfo(ctx,lang.informations[0]);
+	}
+
+	interaction(ctx,game){
+		var dialog = game.dialog;
+		var name = game.player.name;
+		var money = game.money;
+		var n = this.speak(ctx,dialog,name,money);
+		money.addMoney(n);
 	}
 }
 
