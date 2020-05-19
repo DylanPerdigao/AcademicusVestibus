@@ -96,7 +96,9 @@ function updateLanguage(ev,buttons){
 	rawFile.open("GET","../lang/lang_"+ev.target.id+".json", false);
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4) {
-			window.localStorage.setItem("lang",rawFile.responseText)
+			if(rawFile.status === 200 || rawFile.status == 0){
+				window.localStorage.setItem("lang",rawFile.responseText)
+            }
 		}
 	}
 	rawFile.send();

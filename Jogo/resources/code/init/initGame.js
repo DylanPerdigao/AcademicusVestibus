@@ -17,10 +17,12 @@ function main(){
 	canvas.height = 250;
 	//MAP DATA
 	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET","../json/maps.json", false);
+	rawFile.open("GET","../json/maps.json", true);
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4) {
-			window.localStorage.setItem("maps",rawFile.responseText)
+			if(rawFile.status === 200 || rawFile.status == 0){
+				window.localStorage.setItem("maps",rawFile.responseText)
+            }
 		}
 	}
 	rawFile.send();

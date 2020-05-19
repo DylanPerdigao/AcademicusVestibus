@@ -7,14 +7,18 @@ const PATH = "resources/";
 
 function main(){
 	//LANG DATA
-	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET",PATH+"lang/lang_PT.json", true);
-	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4) {
-			window.localStorage.setItem("lang",rawFile.responseText)
+	var request = new XMLHttpRequest();
+	request.open("GET",PATH+"lang/lang_PT.json", true);
+	request.onreadystatechange = function() {
+		if (request.readyState === 4) {
+			if(request.status === 200 || request.status == 0){
+				window.localStorage.setItem("lang",request.responseText)
+            }
 		}
 	}
-	rawFile.send();
+	request.setRequestHeader("Access-Control-Allow-Origin","*");
+	request.send();
+
 	//Listeners
 	window.addEventListener("message", messageHandler);
 	window.postMessage("menu", "*");
