@@ -12,17 +12,21 @@ class ExitMinigame {
 
     }
 
-    gameOver(){
+    gameOver(coins){
 
         //GAME OVER
         this.ctx.font = 'bold '+(this.size)+'px Calibri';
         this.ctx.textAlign = 'center';
         this.ctx.fillStyle = 'blue';
         this.ctx.fillText('Game Over!',this.cw/2,this.ch/2);
+
+        //Coins earned
+        this.ctx.font = (this.size/3)+'px Calibri';
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText('Ganhou '+coins+' moedas!',this.cw/2,(this.ch+(this.size/2))/2);
+
         //Press
         this.ctx.font = (this.size/4)+'px Calibri';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'black';
         this.ctx.fillText('Pressione "Enter" para voltar',this.cw/2,(this.ch+this.size)/2);
         
         var me =this;
@@ -35,6 +39,8 @@ class ExitMinigame {
        
        window.addEventListener("keydown", gameOverHandler);
        //Mostrar mensagem e só depois voltar
+
+       //TODO: adicionar as moedas
 
     }
 }

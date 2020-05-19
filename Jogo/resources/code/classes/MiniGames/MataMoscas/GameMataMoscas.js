@@ -1,29 +1,19 @@
 "use strict";
 
-const IMG_MATAMOSCAS = "resources/mataMoscas.png";
-const IMG_BACKGROUND = "resources/background.png";
-const IMG_MOSCA = "resources/mosca.png";
 const WIDTH_BACKGROUND = 600;
 const HEIGHT_BACKGROUND = 300;
-const ALIVE_TIME = 3_000;
-const GAME_TIME = 30_000;
 const INITIAL_MESSAGE_MOSCAS = "Mate moscas para ganhar moedas!";
 
 class GameMataMoscas {
-    constructor(ctx, isActive) {
-        if (isActive !== undefined) {
-            this.isActive = isActive;
-        } else {
-            this.isActive = false;
-        }
-        this.replay_button = document.getElementById("play_again");
-        this.exit_button = document.getElementById("exit");
+    constructor(ctx, canvas, mainWindow) {
         this.ctx = ctx;
+        this.isActive=false;
         this.init();
         this.timestamp = 0;
-        this.gameTime = GAME_TIME;
-        this.gameOver = false;
-        this.total_earned = 0;
+        this.gameTime = 30_000;
+
+        //game over
+        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
     }
 
     init() {
@@ -32,14 +22,14 @@ class GameMataMoscas {
         this.moscas = [];
         var background = new Image();
         background.addEventListener("load", imgLoadedHandler);
-        background.src = IMG_BACKGROUND;
+        background.src = "resources/background.png";
 
         this.imgMosca = new Image();
         this.imgMosca.addEventListener("load", imgLoadedHandler);
-        this.imgMosca.src = IMG_MOSCA;
+        this.imgMosca.src = "resources/mosca.png";
 
         this.imgMataMoscas = new Image();
-        this.imgMataMoscas.src = IMG_MATAMOSCAS;
+        this.imgMataMoscas.src = "resources/mataMoscas.png";
         this.imgMataMoscas.addEventListener("load", imgLoadedHandler);
 
 
@@ -56,8 +46,9 @@ class GameMataMoscas {
                 me.background = new SpriteImage(0, 50, WIDTH_BACKGROUND, HEIGHT_BACKGROUND, background);
                 me.mataMoscas = new MatadorMoscas(300, 250, 40, 85, me.imgMataMoscas);
                 for (let i = 0; i < me.numMoscasIni; i++) {
-                    me.moscas[i] = new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca);
+                    me.moscas[i] = new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000);
                 }
+                me.start()
             }
         }
 
@@ -70,13 +61,12 @@ class GameMataMoscas {
         };
 
         this.clickHandler = function (ev) {
-            if(me.gameOver) return;
             var i = 0;
             while (i < me.moscas.length) {
                 if (me.mataMoscas.intersectPixels(me.moscas[i])) {
                     me.moscas.splice(i, 1);
                     me.moscasMortas++;
-                    me.moscas.push(new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca));
+                    me.moscas.push(new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000));
                 } else i++;
             }
         };
@@ -99,30 +89,13 @@ class GameMataMoscas {
             this.mataMoscas.draw(ctx);
     }
 
-    activate() {
-        this.gameOver = true;
-        this.reset();
+    start() {
+        this.moscasMortas = 0;
         this.isActive = true;
         this.ctx.canvas.addEventListener("mousemove", this.MouseMoveHandler);
         this.ctx.canvas.addEventListener("click", this.clickHandler);
-        let me = this;
-        this.replay_button.onclick = function (ev) {
-            me.reset()
-        };
-        this.exit_button.onclick = function (ev) {
-            me.deactivate()
-        };
+        
         this.ctx.canvas.style.cursor = "none";
-    }
-
-    deactivate(){// closes game and returns coins earned
-        this.isActive = false;
-        this.ctx.canvas.removeEventListener("mousemove", this.MouseMoveHandler);
-        this.ctx.canvas.removeEventListener("click", this.clickHandler);
-        this.replay_button.onclick = null;
-        this.exit_button.onclick = null;
-        this.ctx.canvas.style.cursor = "initial";
-        return this.moscasMortas + this.total_earned;
     }
 
     update(time){
@@ -132,20 +105,26 @@ class GameMataMoscas {
                 this.moscas[i].alive_time -= (time - this.timestamp);
                 if(this.moscas[i].alive_time < 0){
                     this.moscas.splice(i, 1);
-                    this.moscas.push(new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, this.imgMosca));
+                    this.moscas.push(new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, this.imgMosca, 3_000));
                 }
             }
         }else{
-            this.gameOver = true;
+            //Game Over
+            this.gameOver();
+            return false;
         }
         this.timestamp = time;
+        return true;
     }
 
-    reset(){
-        if(!this.gameOver) return;
-        this.total_earned += this.moscasMortas;
-        this.gameTime = GAME_TIME;
-        this.moscasMortas = 0;
-        this.gameOver = false;
+    gameOver(coins){ //returns difference between wins and losses after closing the game
+        this.ctx.canvas.removeEventListener("mousemove", this.MouseMoveHandler);
+        this.ctx.canvas.removeEventListener("click", this.clickHandler);
+        this.ctx.canvas.style.cursor = "initial";
+
+        //GAME OVER
+        this.go.gameOver(coins);
+    
     }
+
 }

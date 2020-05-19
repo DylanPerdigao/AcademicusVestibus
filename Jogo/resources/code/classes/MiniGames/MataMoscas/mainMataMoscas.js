@@ -6,15 +6,24 @@
 function main() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    new mainMataMoscas(ctx);
+
+    function msgHandler(ev) {
+        new mainMataMoscas(ctx, canvas, messageHandler(ev));
+    }
+
+    function messageHandler(ev){
+        return ev.source;
+    }
+
+    //listener
+    window.addEventListener("message",msgHandler);
 }
 
 class mainMataMoscas {
-    constructor(ctx) {
+    constructor(ctx, canvas, mainWindow) {
         this.ctx = ctx;
-        this.gameMM = new GameMataMoscas(ctx);
+        this.gameMM = new GameMataMoscas(ctx, canvas, mainWindow);
         this.startAnim();
-        this.gameMM.activate();
     }
 
 
@@ -33,13 +42,17 @@ class mainMataMoscas {
         var al = function (time) {
             me.animLoop(time); //time --->timestamp atual; startTime --->timestamp quando a animaçao começou
         };
-        window.requestAnimationFrame(al);
-        this.render(time);
+        var reqID=window.requestAnimationFrame(al);
+        this.render(time, reqID);
     }
 
     //resedenho, actualizações, ...
-    render(time) {
-        this.gameMM.update(time);
+    render(time, reqID) {
+        if (!this.gameMM.update(time)) {
+            //break loop
+            window.cancelAnimationFrame(reqID);
+            return;
+        }
         this.clear();
         this.draw();
 

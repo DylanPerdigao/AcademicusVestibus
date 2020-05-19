@@ -15,7 +15,6 @@ class FillGame{
         //game over
         this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
 
-
         this.interval=null;
         this.walls=walls;
         this.render=null;
@@ -86,11 +85,9 @@ class FillGame{
     gameOver(){
         //TODO
         window.clearInterval(this.interval);
-        
+
         //GAME OVER
         this. go.gameOver();
 
     }
 }
-
-
