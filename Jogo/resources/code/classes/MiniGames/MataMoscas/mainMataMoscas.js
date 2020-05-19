@@ -8,11 +8,19 @@ function main() {
     var ctx = canvas.getContext("2d");
 
     function msgHandler(ev) {
-        new mainMataMoscas(ctx, canvas, messageHandler(ev));
+        var args=messageHandler(ev);
+        new mainMataMoscas(ctx, canvas, args[0], args[1]);
     }
 
     function messageHandler(ev){
-        return ev.source;
+        var arcade;
+        if (ev.data=='arcade'){
+            arcade=true;
+        }
+        else{
+            arcade = false;
+        }
+        return [ev.source,arcade];
     }
 
     //listener
@@ -20,9 +28,9 @@ function main() {
 }
 
 class mainMataMoscas {
-    constructor(ctx, canvas, mainWindow) {
+    constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
-        this.gameMM = new GameMataMoscas(ctx, canvas, mainWindow);
+        this.gameMM = new GameMataMoscas(ctx, canvas, mainWindow, arcade);
         this.startAnim();
     }
 

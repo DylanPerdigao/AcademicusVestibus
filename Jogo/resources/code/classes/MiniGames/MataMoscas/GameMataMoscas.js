@@ -5,7 +5,7 @@ const HEIGHT_BACKGROUND = 300;
 const INITIAL_MESSAGE_MOSCAS = "Mate moscas para ganhar moedas!";
 
 class GameMataMoscas {
-    constructor(ctx, canvas, mainWindow) {
+    constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
         this.isActive=false;
         this.init();
@@ -13,7 +13,7 @@ class GameMataMoscas {
         this.gameTime = 30_000;
 
         //game over
-        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
+        this.go = new ExitMinigame(mainWindow, arcade, canvas, this.ctx);
     }
 
     init() {

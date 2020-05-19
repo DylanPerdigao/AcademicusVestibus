@@ -5,7 +5,7 @@ const WIN_MESSAGE = "Ganhou!";
 const LOSE_MESSAGE = "Perdeu!";
 
 class GameMontyHall {
-    constructor(ctx, canvas, mainWindow) {
+    constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
 
         this.imgPortaAberta = new Image();
@@ -30,7 +30,7 @@ class GameMontyHall {
         }
 
         //game over
-        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
+        this.go = new ExitMinigame(mainWindow, arcade, canvas, this.ctx);
 
 
     }
