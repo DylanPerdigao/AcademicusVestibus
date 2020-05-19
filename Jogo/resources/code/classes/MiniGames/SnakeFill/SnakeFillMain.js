@@ -14,17 +14,27 @@ class SnakeFillMain {
         this.menu;
         this.level;
         this.mainWindow;
+        this.arcade;
 
         
         //message
         var me=this
 
         function msgHandler(ev) {
-            me.mainWindow = messageHandler(ev);
+            var args=messageHandler(ev);
+            me.mainWindow =args[0];
+            me.arcade =args[1];
         }
 
         function messageHandler(ev){
-            return ev.source;
+            var arcade;
+            if (ev.data=='arcade'){
+                arcade=true;
+            }
+            else{
+                arcade = false;
+            }
+            return [ev.source,arcade];
         }
 
         //listener
@@ -35,10 +45,10 @@ class SnakeFillMain {
                 if (me.menu.imgs[i].mouseOver(ev)){
                     me.canvas.removeEventListener("mouseup", MouseUpColorHandler);
                     if (snake){
-                        new SnakeGame(me.level,me.colors[i], me.cell, me.ctx, me.canvas, me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow);
+                        new SnakeGame(me.level,me.colors[i], me.cell, me.ctx, me.canvas, me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow, me.arcade);
                     }
                     else{
-                        new FillGame(me.level,me.colors[i], me.cell, me.ctx, me.canvas, me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow);
+                        new FillGame(me.level,me.colors[i], me.cell, me.ctx, me.canvas, me.drawLevel(me.ctx,me.colors[i][2],me.colors[i][0],me.cell,me.level), me.mainWindow, me.arcade);
                     }
                 }
     

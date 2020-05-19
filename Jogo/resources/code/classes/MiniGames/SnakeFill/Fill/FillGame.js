@@ -2,7 +2,7 @@
 
 
 class FillGame{
-    constructor(level, colors, cell, ctx, canvas, walls, mainWindow){
+    constructor(level, colors, cell, ctx, canvas, walls, mainWindow, arcade){
         this.wallColor=colors[0];
         this.backgroundColor=colors[2];
         this.fillColor=colors[1];
@@ -13,8 +13,7 @@ class FillGame{
         this.fill=new Fill(this.fillColor,this.cell);
 
         //game over
-        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
-
+        this.go = new ExitMinigame(mainWindow, arcade, canvas, this.ctx);
 
         this.interval=null;
         this.walls=walls;
@@ -86,11 +85,9 @@ class FillGame{
     gameOver(){
         //TODO
         window.clearInterval(this.interval);
-        
+
         //GAME OVER
         this. go.gameOver();
 
     }
 }
-
-

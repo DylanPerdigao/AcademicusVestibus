@@ -5,12 +5,8 @@ const WIN_MESSAGE = "Ganhou!";
 const LOSE_MESSAGE = "Perdeu!";
 
 class GameMontyHall {
-    constructor(ctx) {
-        this.replay_button = document.getElementById("play_again");
-        this.exit_button = document.getElementById("exit");
+    constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
-        this.numWin = 0;
-        this.numLoss = 0;
 
         this.imgPortaAberta = new Image();
         this.imgPortaAberta.addEventListener("load", imgLoadedHandler);
@@ -33,6 +29,10 @@ class GameMontyHall {
             }
         }
 
+        //game over
+        this.go = new ExitMinigame(mainWindow, arcade, canvas, this.ctx);
+
+
     }
 
     init() {
@@ -51,12 +51,7 @@ class GameMontyHall {
 
         let me = this;
         
-        this.replay_button.onclick = function (ev) {
-            me.reset(me.ctx)
-        };
-        this.exit_button.onclick = function (ev) {
-            me.deactivate()
-        };
+        
 
         this.clickHandler1 = function (ev) {
             let escolhida = -1;
@@ -72,13 +67,14 @@ class GameMontyHall {
                 me.portas[i].open(me.ctx);
             }
             if (escolhida === premiada) {
+                //WIN
                 me.txt = WIN_MESSAGE;
-                me.numWin++;
+                me.gameOver();
             }else{
+                //LOSE
                 me.txt = LOSE_MESSAGE;
-                me.numLoss++;
+                me.gameOver(0);
             }
-            me.ctx.canvas.removeEventListener("click", me.clickHandler1);
         };
 
         this.clickHandler0 = function (ev) {
@@ -116,22 +112,13 @@ class GameMontyHall {
     }
    
 
-    deactivate(){ //returns difference between wins and losses after closing the game
+    gameOver(coins){ //returns difference between wins and losses after closing the game
         this.ctx.canvas.removeEventListener("click", this.clickHandler0);
         this.ctx.canvas.removeEventListener("click", this.clickHandler1);
-        this.replay_button.onclick = null;
-        this.exit_button.onclick = null;
-        return this.numWin - this.numLoss;
+    
+        //GAME OVER
+        this.go.gameOver(coins);
+    
     }
 
-    reset(){
-        this.numWin = 0;
-        this.numLoss = 0;
-        this.txt = INITIAL_MESSAGE_MONTY;
-        for(let i = 0; i < this.portas.length; i++){
-            this.portas[i].reset(this.ctx);
-        }
-        this.ctx.canvas.addEventListener("click", this.clickHandler0);
-        this.ctx.canvas.removeEventListener("click", this.clickHandler1);
-    }
 }

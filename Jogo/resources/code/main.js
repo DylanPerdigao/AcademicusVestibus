@@ -75,5 +75,5 @@ function messageHandler(ev){
 
 function iframeHandler(ev){
 	var frm = ev.target;
-	frm.contentWindow.postMessage("loaded", "*");
+	frm.contentWindow.postMessage("arcade", "*");
 }

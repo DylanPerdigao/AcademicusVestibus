@@ -2,7 +2,7 @@
 
 
 class SnakeGame{
-    constructor(level, colors, cell, ctx, canvas, walls, mainWindow){
+    constructor(level, colors, cell, ctx, canvas, walls, mainWindow, arcade){
         this.wallColor=colors[0];
         this.fruitColor=colors[1];
         this.backgroundColor=colors[2];
@@ -15,7 +15,7 @@ class SnakeGame{
         this.snake=new Snake(this.snakeColor,this.cell);
 
         //game over
-        this.go = new ExitMinigame(mainWindow, canvas, this.ctx);
+        this.go = new ExitMinigame(mainWindow, arcade, canvas, this.ctx);
 
         this.interval=null;
         this.walls=walls;
