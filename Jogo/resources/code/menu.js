@@ -7,6 +7,7 @@ function main(){
 	var lang = JSON.parse(window.localStorage.getItem("lang"));
 	var buttons = document.getElementsByTagName("button");
 	var slider = document.getElementById("volumeSlider");
+	var input = document.getElementById("name");
 	var mainWindow;
 	//listener nas mensagens da janela principal
 	var msgHandler = function(ev){
@@ -26,6 +27,10 @@ function main(){
 	}
 	//set nome do objetos do html
 	setNames(lang,buttons);
+	//focus no input para escrever diretamente sem clicar
+	if(input){
+		input.focus();
+	}
 }
 
 
@@ -67,7 +72,7 @@ function setNames(lang,buttons){
 }
 function nameValidation(){
 	var name = document.getElementById("name").value;
-	var regExp = /[A-Z][àâæáäãåāéèêëęėēîïìíįīôœöòóõøōûùüúūÿçćčñń\-a-z]{2,10}$/g;
+	var regExp = /^[àâæáäãåāéèêëęėēîïìíįīôœöòóõøōûùüúūÿçćčñń\-a-z]{2,10}$/ig;
 	if (regExp.test(name)){
 		document.getElementById("create").disabled = false;
 		window.localStorage.setItem("name",name);
