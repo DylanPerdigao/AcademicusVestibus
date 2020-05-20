@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/menu.css">
 		<link rel="stylesheet" type="text/css" href="../css/game.css">
 		<link rel="stylesheet" type="text/css" href="../css/font.css">
+		<script type="text/javascript" src="../code/menu.js"></script>
 		<script type="text/javascript" src="../code/init/initGame.js"></script>
 		<script type="text/javascript" src="../code/classes/Game.js"></script>
 		<script type="text/javascript" src="../code/classes/Player.js"></script>
@@ -23,8 +24,21 @@
 		<script type="text/javascript" src="../code/classes/MiniMap.js"></script>
 	</head>
 	<body>
-		<section>
-			<canvas id="canvas"></canvas>
+		<section id="game">
+			<canvas id="canvas" ></canvas>
+		</section>
+		<section id="pause" style="display:none">
+			<h1 id="titlePause"></h1>
+			<h2 id="volume"></h2>
+			<center>
+				<input type="range" min="1" max="100" value="30" id="volumeSlider" class="volume">
+				<p id="percentage" class="volume">30%</p>
+			</center>
+			<p>&nbsp;</p>
+			<button id="save"></button>
+			<p>&nbsp;</p>
+			<button id="returnGame"></button>
+			<button id="quitGame"></button>
 		</section>
 		<p id="debug"><p>
     </body>

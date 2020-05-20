@@ -5,7 +5,8 @@
 		"titleHelp":"AJUDA",
 		"titleCredits":"CRÉDITOS",
 		"titleArcade":"ARCADE",
-		"titleSettings":"OPÇÕES"
+		"titleSettings":"OPÇÕES",
+		"titlePause":"PAUSA"
 	},
 	"subtitle":{
 		"insertName":"Inserir nome",
@@ -44,7 +45,10 @@
 		"returnGameMenu":"VOLTAR",
 		"PT":"Português",
 		"EN":"Inglês",
-		"FR":"Francês"
+		"FR":"Francês",
+		"returnGame":"VOLTAR",
+		"quitGame":"SAIR",
+		"save":"GUARDAR"
 	},
 		
 	"informations":[

@@ -21,3 +21,21 @@ canvas {
 	border-color: burlywood;
 	font-family: EvilEmpire;
 }  
+
+h1{
+	margin:auto;
+	width: auto;
+	margin-top: 5%;
+	height: 10%;
+	/*text*/
+	text-align: center;
+	font-family: EvilEmpire;
+	font-size: 3vw;
+	/*ponteiro*/
+	cursor: url("../textures/gui/pointer.svg"), auto;
+}
+
+button{
+	height: 10%;
+	font-size: 150%;
+}

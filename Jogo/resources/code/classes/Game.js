@@ -12,12 +12,16 @@ class Game {
 			this.isShowingMap=false;
 			this.isAnimated=false;
 			this.isDebugging=true;
+			this.isPaused=false;
 			this.yDebug = 0;
 			this.yDebug = 0;
 			this.window = window;
 			//AJUSTES
 			this.map.updatePosition(player.posX-640,player.posY-170);
 			this.map.setStructuresPositions();
+			//LISTENER BOTAO PAUSA E SALVAR
+			document.getElementById("save").addEventListener("click",this.save);
+			document.getElementById("returnGame").addEventListener("click",this.unpause);
 		}else{
 
 		}
@@ -34,49 +38,62 @@ class Game {
 	 * @param {CanvasRenderingContext2D} ctx canvas context
 	 */	
 	keyHandler(event,ctx){
-		if (this.isShowingMap){
+		//CASO ESTEJA EM PAUSA
+		if(this.isPaused){
 			switch(event.code){
-				case "KeyM":
 				case "Escape":
-					this.isShowingMap=false;
-					this.miniMap.exitMap(ctx,this);
+					this.pauseManagement();
 					break;
 			}
 		}else{
-			switch(event.code){
-				case "KeyM":
-					this.isShowingMap=true;
-					this.miniMap.showMap(ctx,this.player,this.mapList.indexOf(this.map));
-					break;
-				case "Enter":
-				case "Space":
-					this.interaction(ctx);
-					break;
-				case "KeyW":
-				case "ArrowUp":
-					this.updatePosition(ctx,"up");
-					break;
-				case "KeyA":
-				case "ArrowLeft":
-					this.updatePosition(ctx,"left");
-					break;
-				case "KeyS":
-				case "ArrowDown":
-					this.updatePosition(ctx,"down");
-					break;
-				case "KeyD":
-				case "ArrowRight":
-					this.updatePosition(ctx,"right");
-					break;
+		//CASO NAO ESTEJA EM PAUSA MAS ESTA A MOSTRAR O MAPA
+			if (this.isShowingMap){
+				switch(event.code){
+					case "KeyM":
+						this.isShowingMap=false;
+						this.miniMap.exitMap(ctx,this);
+						break;
+				}
+		//CASO NEM ESTA EM PAUSA NEM ESTA A MOSTRAR O MAPA
+			}else{
+				switch(event.code){
+					case "Escape":
+						this.pauseManagement();
+						break;
+					case "KeyM":
+						this.isShowingMap=true;
+						this.miniMap.showMap(ctx,this.player,this.mapList.indexOf(this.map));
+						break;
+					case "Enter":
+					case "Space":
+						this.interaction(ctx);
+						break;
+					case "KeyW":
+					case "ArrowUp":
+						this.updatePosition(ctx,"up");
+						break;
+					case "KeyA":
+					case "ArrowLeft":
+						this.updatePosition(ctx,"left");
+						break;
+					case "KeyS":
+					case "ArrowDown":
+						this.updatePosition(ctx,"down");
+						break;
+					case "KeyD":
+					case "ArrowRight":
+						this.updatePosition(ctx,"right");
+						break;
+				}
+				switch(event.key){
+					case "&":
+						this.money.addMoney(1);
+						break;	
+					case "%":
+						this.money.removeMoney(1);
+						break;
+				}		
 			}
-			switch(event.key){
-				case "&":
-					this.money.addMoney(1);
-					break;	
-				case "%":
-					this.money.removeMoney(1);
-					break;
-			}		
 		}
 	}
 	/**
@@ -87,8 +104,8 @@ class Game {
 		if(this.isDebugging){
 			this.xDebug = this.map.posX-this.player.posX;
 			this.yDebug = this.map.posY-this.player.posY;
-			document.getElementById("debug").style.color="red"
-			document.getElementById("debug").innerHTML="X:"+this.xDebug+"\nY:"+this.yDebug+"\n"
+			document.getElementById("debug").style.color="red";
+			document.getElementById("debug").innerHTML="X:"+this.xDebug+"\nY:"+this.yDebug+"\n";
 			this.showHitboxes(ctx);
 		}
 	}
@@ -101,6 +118,43 @@ class Game {
 			this.map.structures[i].drawHitbox(ctx);
 		}
 		this.player.drawHitbox(ctx);
+	}
+	/**
+	 * Manage the pause in the game
+	 */
+	pauseManagement(){
+		if(this.isPaused){
+			this.unpause();
+		}else{
+			this.pause();
+		}
+	}
+	/**
+	 * Unpause the game
+	 */
+	unpause(){
+		document.getElementById("game").style.display = "block";
+		document.getElementById("pause").style.display = "none";
+		this.isPaused=false;
+	}
+	/**
+	 * Pause the game
+	 */
+	pause(){
+		//esconder jogo para aparecer o menu pausa
+		document.getElementById("game").style.display = "none";
+		document.getElementById("pause").style.display = "block";
+		//set do volume
+		var volume = window.localStorage.getItem("volume");
+		document.getElementById("percentage").innerHTML=volume+"%";;
+		//mudar estado
+		this.isPaused=true;
+	}
+	/**
+	 * 
+	 */
+	save(){
+
 	}
 	/**
 	 * Invert the direction specified
