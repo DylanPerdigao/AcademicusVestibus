@@ -19,9 +19,6 @@ class Game {
 			//AJUSTES
 			this.map.updatePosition(player.posX-640,player.posY-170);
 			this.map.setStructuresPositions();
-			//LISTENER BOTAO PAUSA E SALVAR
-			document.getElementById("save").addEventListener("click",this.save);
-			document.getElementById("returnGame").addEventListener("click",this.unpause);
 		}else{
 
 		}
@@ -149,12 +146,20 @@ class Game {
 		document.getElementById("percentage").innerHTML=volume+"%";;
 		//mudar estado
 		this.isPaused=true;
+		//ativar os listeners dos botoes
+		var game = this;
+		var saveBtn = document.getElementById("save");
+		saveBtn.onclick = function(e){game.save()};
+		var returnBtn = document.getElementById("returnGame");
+		returnBtn.onclick = function(e){game.unpause()};
 	}
 	/**
 	 * 
 	 */
-	save(){
-
+	save(ev){
+		var gameSaved = JSON.stringify(this);
+		console.log(gameSaved);
+		window.localStorage.setItem("game",gameSaved);
 	}
 	/**
 	 * Invert the direction specified

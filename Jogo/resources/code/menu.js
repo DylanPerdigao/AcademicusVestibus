@@ -20,6 +20,7 @@ function main(){
 	}
 	updateDisabledButtons(buttons);
 	for(let i=0;i<buttons.length;i++){
+		if (buttons[i].id != "save" && buttons[i].id != "returnGame")
 		buttons[i].addEventListener("click",btnHandler);
 	}
 	if(slider){
@@ -126,7 +127,7 @@ function updateLanguage(ev,buttons){
 
 function updateDisabledButtons(buttons){
 	for(let i=0;i<buttons.length;i++){
-		if(buttons[i].id == window.localStorage.getItem("currentLanguage")){
+		if(buttons[i].id == window.localStorage.getItem("currentLanguage")||buttons[i].id=="create"){
 			document.getElementById(buttons[i].id).disabled = true;
 		}else{
 			document.getElementById(buttons[i].id).disabled = false;

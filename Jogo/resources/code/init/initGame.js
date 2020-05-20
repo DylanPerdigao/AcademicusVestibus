@@ -32,11 +32,12 @@ function main(){
 	var mapUniversity = new Map(maps.UNIVERSITY);
 	var name = window.localStorage.getItem("name");
 	//GAME
-	var storedGame = window.localStorage.getItem("game")
+	var game;
+	var storedGame = window.localStorage.getItem("game");
 	if(storedGame){
-		new Game(ctx,storedGame);
+		game = new Game(ctx,storedGame);
 	}else{
-		new Game(ctx,null,
+		game = new Game(ctx,null,
 			new Player("../textures/player/male/player_male",name,canvas.width/2,canvas.height/2,5),
 			new Array(mapHome,mapPlace,mapUniversity),
 			new Money("../textures/gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
