@@ -1,11 +1,11 @@
-h2{
-    position: top;
-    display: inline; 
-}
-
 h1{
     color: #172121;
 	text-align: center;
+}
+
+h2{
+    position: top;
+    display: inline; 
 }
 
 body{
