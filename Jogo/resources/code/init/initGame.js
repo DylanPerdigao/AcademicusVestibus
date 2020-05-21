@@ -33,7 +33,7 @@ function main(){
 	var name = window.localStorage.getItem("name");
 	//GAME
 	var game;
-	var storedGame = window.localStorage.getItem("game");
+	var storedGame = JSON.parse(window.localStorage.getItem("game"));
 	if(storedGame){
 		game = new Game(ctx,storedGame);
 	}else{

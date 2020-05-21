@@ -1,9 +1,17 @@
 class Dialog extends Component {
     constructor(src, posX, posY,width,height) {
-		super(src, posX, posY);
-		this.width=width;
-		this.height=height;
-		this.enabled=false;
+		if (arguments.length==1){
+			var obj=src;
+			super(obj.src,obj.posX,obj.posY);
+			this.width=obj.width;
+			this.height=obj.height;
+			this.enabled=obj.enabled;
+		}else{
+			super(src, posX, posY);
+			this.width=width;
+			this.height=height;
+			this.enabled=false;
+		}
 	}
 	/**
 	 * Sets the size of the box for speaking

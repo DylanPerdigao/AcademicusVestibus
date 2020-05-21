@@ -1,6 +1,11 @@
 class MiniMap extends Component {
     constructor(src, posX, posY) {
-        super(src, posX, posY);
+		if (arguments.length==1){
+			var obj=src;
+			super(obj.src,obj.posX,obj.posY);
+		}else{
+			super(src, posX, posY);
+		}
 	}
 
 	showMap(ctx,player,location){

@@ -7,21 +7,29 @@ class Game {
 			this.money=money;
 			this.miniMap=miniMap;
 			this.dialog = dialog;
-			this.busStructCollided=null;
-			this.canInteract=false;
-			this.isShowingMap=false;
-			this.isAnimated=false;
-			this.isDebugging=true;
-			this.isPaused=false;
-			this.yDebug = 0;
-			this.yDebug = 0;
-			this.window = window;
 			//AJUSTES
 			this.map.updatePosition(player.posX-640,player.posY-170);
 			this.map.setStructuresPositions();
 		}else{
-
+			this.player = new Player(storedData.player);
+			this.mapList = new Array();
+			for (let i in storedData.mapList){
+				this.mapList.push(new Map(storedData.mapList[i]));
+			}
+			this.map = new Map(storedData.map);
+			this.money= new Money(storedData.money);
+			this.miniMap= new MiniMap(storedData.miniMap);
+			this.dialog = new Dialog(storedData.dialog);
 		}
+		this.busStructCollided=null;
+		this.canInteract=false;
+		this.isShowingMap=false;
+		this.isAnimated=false;
+		this.isDebugging=true;
+		this.isPaused=false;
+		this.yDebug = 0;
+		this.yDebug = 0;
+		this.window = window;
 		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
 		//LISTENER
 		var game=this;
@@ -156,10 +164,17 @@ class Game {
 	/**
 	 * 
 	 */
-	save(ev){
-		var gameSaved = JSON.stringify(this);
-		console.log(gameSaved);
-		window.localStorage.setItem("game",gameSaved);
+	save(){
+		var save = {
+			"player":this.player,
+			"mapList":this.mapList,
+			"map":this.map,
+			"money":this.money,
+			"miniMap":this.miniMap,
+			"dialog":this.dialog
+		}
+		window.localStorage.setItem("game",JSON.stringify(save));
+		document.getElementById("save").disabled = true;
 	}
 	/**
 	 * Invert the direction specified

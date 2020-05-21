@@ -1,10 +1,19 @@
 class Money extends Component {
     constructor(src, posX, posY,width,height, value,isHidden) {
-		super(src, posX, posY);
-		this.width=width;
-		this.height=height;
-		this.value = value;
-		this.isHidden=isHidden;
+		if (arguments.length==1){
+			var obj=src;
+			super(obj.src,obj.posX,obj.posY);
+			this.width=obj.width;
+			this.height=obj.height;
+			this.value = obj.value;
+			this.isHidden=obj.isHidden;
+		}else{
+			super(src, posX, posY);
+			this.width=width;
+			this.height=height;
+			this.value = value;
+			this.isHidden=isHidden;
+		}
     }
 	draw(ctx){
 		if (!this.isHidden){
