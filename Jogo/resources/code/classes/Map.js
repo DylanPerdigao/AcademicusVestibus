@@ -4,9 +4,8 @@ class Map extends Element {
 			var obj=src;
 			super(obj.src,obj.posX,obj.posY,obj.speed);
 			this.structures = new Array()
-			for(let i in obj.structures){
+			for(let i=0;i<obj.structures.length;i++){
 				var struct = obj.structures[i]
-				console.log(struct.type)
 				switch(struct.type){
 					case "Structure":
 						this.structures.push(new Structure(struct));
@@ -32,7 +31,6 @@ class Map extends Element {
 			super(src, posX, posY,speed);
 			this.structures = structures;
 		}
-		this.setStructuresPositions();
 	}
 	setStructuresPositions(){
 		for(let i=0;i<this.structures.length;i++){

@@ -5,8 +5,8 @@ class Player{
 			this.src=obj.src;
 			this.name=obj.name;
 			this.hitboxHeight=obj.hitboxHeight;
-			this.x=obj.x;
-			this.y=obj.y;
+			this.posX=obj.posX;
+			this.posY=obj.posY;
 		}else{
 			this.src=src;
 			this.name=name;
@@ -30,7 +30,9 @@ class Player{
 			this.sprite[i].addEventListener("load", imgHandler);
 		}
 		//ajuste da posiçao final
-		this.setPosition(x,y);
+		if(arguments.length>1){
+			this.setPosition(x,y);
+		}
 	} 
 	/**
 	 * Sets the position of the player in the canvas

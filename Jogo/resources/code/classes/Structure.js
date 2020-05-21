@@ -6,7 +6,7 @@ class Structure extends Element {
 			this.initialX = obj.posX;
 			this.initialY =  obj.posY;  
 			this.hitboxWidth= obj.hitboxWidth;
-			this.hitboxHeight= obj.hitboxHeight;
+			this.hitboxHeight = obj.hitboxHeight;
 		}else{
 			super(src, posX, posY,speed); 
 			this.initialX = posX;
@@ -14,6 +14,7 @@ class Structure extends Element {
 			this.hitboxWidth=hitboxWidth;
 			this.hitboxHeight=hitboxHeight;
 		}
+		this.type = this.constructor.name;
 	}
 	action(ctx,game,direction,map){
 		return null;

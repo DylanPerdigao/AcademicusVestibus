@@ -15,28 +15,28 @@ function main(){
 	var ctx = canvas.getContext("2d");
     canvas.width = 250;
 	canvas.height = 250;
-	//MAP DATA
-	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET","../json/maps.json", true);
-	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4) {
-			if(rawFile.status === 200 || rawFile.status == 0){
-				window.localStorage.setItem("maps",rawFile.responseText)
-            }
-		}
-	}
-	rawFile.send();
-	var maps = JSON.parse(window.localStorage.getItem("maps"));
-	var mapHome = new Map(maps.HOME);
-	var mapPlace = new Map(maps.PLACE);
-	var mapUniversity = new Map(maps.UNIVERSITY);
-	var name = window.localStorage.getItem("name");
 	//GAME
 	var game;
 	var storedGame = JSON.parse(window.localStorage.getItem("game"));
 	if(storedGame){
 		game = new Game(ctx,storedGame);
 	}else{
+		//MAP DATA
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET","../json/maps.json", true);
+		rawFile.onreadystatechange = function() {
+			if (rawFile.readyState === 4) {
+				if(rawFile.status === 200 || rawFile.status == 0){
+					window.localStorage.setItem("maps",rawFile.responseText)
+				}
+			}
+		}
+		rawFile.send();
+		var maps = JSON.parse(window.localStorage.getItem("maps"));
+		var mapHome = new Map(maps.HOME);
+		var mapPlace = new Map(maps.PLACE);
+		var mapUniversity = new Map(maps.UNIVERSITY);
+		var name = window.localStorage.getItem("name");
 		game = new Game(ctx,null,
 			new Player("../textures/player/male/player_male",name,canvas.width/2,canvas.height/2,5),
 			new Array(mapHome,mapPlace,mapUniversity),
