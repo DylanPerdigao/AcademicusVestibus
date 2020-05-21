@@ -24,15 +24,15 @@ class MiniGameTrigger extends Trigger {
 		frm.style.display = "block";
 		window.addEventListener("message", messageHandler);
 
-		
-		var money = game.money;
 
 		function messageHandler(ev){
-			game.money=parseInt(ev.data);
+			game.money.addMoney(parseInt(ev.data));
+			frm.style.display = "none";
+			document.getElementById("game").style.display = "block";
 		}
 
 		function iframeHandler(ev){
-			var frm = ev.target;
+			let frm = ev.target;
 			frm.contentWindow.postMessage("-", "*");
 		}
 	}
