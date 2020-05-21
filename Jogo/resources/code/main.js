@@ -7,14 +7,22 @@ const PATH = "resources/";
 
 function main(){
 	//LANG DATA
-	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET",PATH+"lang/lang_PT.json", true);
-	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4) {
-			window.localStorage.setItem("lang",rawFile.responseText)
+	var lang = window.localStorage.getItem("currentLanguage");
+	if(!lang){
+		lang="PT";
+	}
+	var request = new XMLHttpRequest();
+	request.open("GET",PATH+"lang/lang_"+lang+".json", true);
+	request.onreadystatechange = function() {
+		if (request.readyState === 4) {
+			if(request.status === 200 || request.status == 0){
+				window.localStorage.setItem("lang",request.responseText)
+            }
 		}
 	}
-	rawFile.send();
+	request.setRequestHeader("Access-Control-Allow-Origin","*");
+	request.send();
+	window.localStorage.setItem("volume",30);
 	//Listeners
 	window.addEventListener("message", messageHandler);
 	window.postMessage("menu", "*");
@@ -30,6 +38,7 @@ function messageHandler(ev){
 	switch(ev.data){
 		case "menu":
 		case "return":
+		case "quitGame":
 			showMenu(PATH+"html/mainMenu.html");
 			break;
 		case "returnGameMenu":

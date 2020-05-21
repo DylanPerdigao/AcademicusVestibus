@@ -4,7 +4,8 @@
 		"titleOptions":"OPTIONS",
 		"titleHelp":"AIDE",
 		"titleCredits":"CRÉDITS",
-		"titleArcade":"ARCADE"
+		"titleArcade":"ARCADE",
+		"titlePause":"PAUSE"
 	},
 	"subtitle":{
 		"insertName":"Insérer votre nom",
@@ -39,11 +40,14 @@
 		"snake":"SNAKE",
 		"fill":"FILL GAME",
 		"moscas":"TUE-MOUCHES",
-		"create":"CRÉE",
+		"create":"CRÉER",
 		"returnGameMenu":"RETOUR",
 		"PT":"Portugais",
 		"EN":"Anglais",
-		"FR":"Français"
+		"FR":"Français",
+		"returnGame":"RETOUR",
+		"quitGame":"QUITTER",
+		"save":"SAUVGARDER"
 	},
 		
 	"informations":[

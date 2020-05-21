@@ -1,7 +1,17 @@
 class Player{
 	constructor(src,name,x,y,hitboxHeight){
-		this.src=src;
-		this.name=name;
+		if (arguments.length==1){
+			var obj=src;
+			this.src=obj.src;
+			this.name=obj.name;
+			this.hitboxHeight=obj.hitboxHeight;
+			this.x=obj.x;
+			this.y=obj.y;
+		}else{
+			this.src=src;
+			this.name=name;
+			this.hitboxHeight=hitboxHeight;
+		}
 		this.step=0;
 		this.orientation="down";
 		//load das imagens todas
@@ -20,10 +30,7 @@ class Player{
 			this.sprite[i].addEventListener("load", imgHandler);
 		}
 		//ajuste da posiçao final
-		this.posX = x-(this.sprite[0].width/2);
-		this.posY = y-(this.sprite[0].height/2);
-		//hitbox
-		this.hitboxHeight=hitboxHeight;
+		this.setPosition(x,y);
 	} 
 	/**
 	 * Sets the position of the player in the canvas

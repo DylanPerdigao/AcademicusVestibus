@@ -18,12 +18,21 @@ function main(){
 	var btnHandler = function(ev){
 		buttonHandler(ev,btnHandler,buttons,mainWindow);
 	}
+	updateDisabledButtons(buttons);
 	for(let i=0;i<buttons.length;i++){
+		if (buttons[i].id != "save" && buttons[i].id != "returnGame")
 		buttons[i].addEventListener("click",btnHandler);
 	}
 	if(slider){
 		slider.addEventListener("input",updateVolume);//para chrome/safari/firefox
 		slider.addEventListener("change",updateVolume);//para IE
+	}
+	//setVolume
+	updateVolume(null);
+	if(slider){
+		var volume = window.localStorage.getItem("volume");
+		document.getElementById("percentage").innerHTML=volume+"%";;
+		slider.value=volume;
 	}
 	//set nome do objetos do html
 	setNames(lang,buttons);
@@ -42,18 +51,16 @@ function buttonHandler(ev,func,buttons,w){
 	if (ev.target.className == "langButton"){
 		updateLanguage(ev,buttons)
 	}else{
-		//remove os listeners
-		for(let i=0;i<buttons.length;i++){
-			buttons[i].removeEventListener("click",func);
-		}
 		//envia mensagem ao main da pagina escolhida
 		w.postMessage(ev.currentTarget.id, "*");
 	}
 }
 
 function setNames(lang,buttons){
-	var title = document.getElementsByTagName("h1")[0]
-	title.innerHTML = lang.title[title.id];
+	var titles = document.getElementsByTagName("h1");
+	for(let i=0;i<titles.length;i++){
+		titles[i].innerHTML = lang.title[titles[i].id];
+	}
 	var subtitles = document.getElementsByTagName("h2");
 	for(let i=0;i<subtitles.length;i++){
 		subtitles[i].innerHTML =lang.subtitle[subtitles[i].id];
@@ -82,12 +89,21 @@ function nameValidation(){
 }
 
 function updateVolume(ev){
-	var percentage = ev.target.value;
+	var percentage;
+	if(ev){
+		percentage = ev.target.value;
+	}else{
+		percentage = window.localStorage.getItem("volume");
+	}
+	var label = document.getElementById("percentage");
 	var audios = parent.document.getElementsByTagName("audio")
 	for (let i=0;i<audios.length;i++){
 		audios[i].volume = percentage/100;
 	}
-	document.getElementById("percentage").innerHTML = percentage+"%";
+	if(label){
+		label.innerHTML = percentage+"%";
+		window.localStorage.setItem("volume",percentage);
+	}
 }
 
 function updateLanguage(ev,buttons){
@@ -96,15 +112,22 @@ function updateLanguage(ev,buttons){
 	rawFile.open("GET","../lang/lang_"+ev.target.id+".json", false);
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4) {
-			window.localStorage.setItem("lang",rawFile.responseText)
+			if(rawFile.status === 200 || rawFile.status == 0){
+				window.localStorage.setItem("lang",rawFile.responseText)
+            }
 		}
 	}
 	rawFile.send();
+	window.localStorage.setItem("currentLanguage",ev.target.id);
 	var lang = JSON.parse(window.localStorage.getItem("lang"));
 	setNames(lang,buttons);
 	//desativar o botao lingua selecionada
+	updateDisabledButtons(buttons);
+}
+
+function updateDisabledButtons(buttons){
 	for(let i=0;i<buttons.length;i++){
-		if(buttons[i].id == ev.target.id){
+		if(buttons[i].id == window.localStorage.getItem("currentLanguage")||buttons[i].id=="create"){
 			document.getElementById(buttons[i].id).disabled = true;
 		}else{
 			document.getElementById(buttons[i].id).disabled = false;
