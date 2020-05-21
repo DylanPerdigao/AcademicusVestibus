@@ -117,7 +117,8 @@ class SnakeGame{
         //TODO
         window.clearInterval(this.interval);
         //GAME OVER
-        this.go.gameOver();
+
+        this.go.gameOver(Math.round((this.score.textContent*(this.level+1))/10));
 
     }
 }

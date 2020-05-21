@@ -69,7 +69,7 @@ class GameMontyHall {
             if (escolhida === premiada) {
                 //WIN
                 me.txt = WIN_MESSAGE;
-                me.gameOver();
+                me.gameOver(5);
             }else{
                 //LOSE
                 me.txt = LOSE_MESSAGE;

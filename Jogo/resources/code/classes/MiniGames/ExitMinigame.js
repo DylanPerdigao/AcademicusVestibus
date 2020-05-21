@@ -15,10 +15,6 @@ class ExitMinigame {
 
     gameOver(coins){
 
-        //DEBUG ___ Remover depois de atribuir todos os valores a coins:
-        if (coins===undefined) coins=0;
-
-
         //GAME OVER
         this.ctx.font = 'bold '+(this.size)+'px Calibri';
         this.ctx.textAlign = 'center';
@@ -40,6 +36,7 @@ class ExitMinigame {
         function gameOverHandler(ev){
             if (ev.code == "Enter"){
                 window.removeEventListener("keydown", gameOverHandler);
+                me.ctx.clearRect(0,0,me.cw,me.ch);
                 if (me.arcade){
                     me.mainWindow.postMessage("arcade",'*');   //voltar ao menu arcade
                 }else{
@@ -50,8 +47,6 @@ class ExitMinigame {
        
        window.addEventListener("keydown", gameOverHandler);
        //Mostrar mensagem e só depois voltar
-
-       //TODO: adicionar as moedas
 
     }
 }

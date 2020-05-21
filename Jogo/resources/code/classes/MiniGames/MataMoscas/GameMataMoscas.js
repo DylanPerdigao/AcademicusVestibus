@@ -110,7 +110,7 @@ class GameMataMoscas {
             }
         }else{
             //Game Over
-            this.gameOver();
+            this.gameOver(Math.round(this.moscasMortas/5));
             return false;
         }
         this.timestamp = time;

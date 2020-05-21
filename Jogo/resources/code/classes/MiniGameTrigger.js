@@ -29,11 +29,14 @@ class MiniGameTrigger extends Trigger {
 			game.money.addMoney(parseInt(ev.data));
 			frm.style.display = "none";
 			document.getElementById("game").style.display = "block";
+			
+			window.removeEventListener("message", messageHandler);
 		}
 
 		function iframeHandler(ev){
 			let frm = ev.target;
 			frm.contentWindow.postMessage("-", "*");
+			frm.removeEventListener("load", iframeHandler);
 		}
 	}
 }
