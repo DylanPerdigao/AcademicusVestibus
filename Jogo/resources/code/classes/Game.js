@@ -13,7 +13,7 @@ class Game {
 		}else{
 			this.player = new Player(storedData.player);
 			this.mapList = new Array();
-			for (let i in storedData.mapList){
+			for (let i =0;i<storedData.mapList.length;i++){
 				this.mapList.push(new Map(storedData.mapList[i]));
 			}
 			this.map = new Map(storedData.map);
@@ -239,7 +239,7 @@ class Game {
 		}else{
 			this.draw(ctx);
 			this.canInteract=true;
-			for(let i in collidedStructs){
+			for(let i=0; i<collidedStructs.length; i++){
 				collidedStructs[i].action(ctx,this,direction,this.mapList[collidedStructs[i].location],collidedStructs.length);
 			}
 		}
@@ -296,7 +296,7 @@ class Game {
 	 */	
 	interaction(ctx){
 		var collidedStructs = this.collisionSimulation(this.player.orientation);
-		for(let i in collidedStructs){
+		for(let i = 0; i<collidedStructs.length; i++){
 			collidedStructs[i].interaction(ctx,this)
 		}	
 	}

@@ -31,10 +31,11 @@ class Person extends Trigger {
 			if(money.value<BUS_COST){
 				dialog.writeSpeak(ctx,lang.people[this.textID+1],name);
 				return BUS_COST;
-			}else{
-				dialog.writeSpeak(ctx,lang.people[this.textID],name);
-				return 0;
 			}
+				
+			dialog.writeSpeak(ctx,lang.people[this.textID],name);
+			return 0;
+
 		}else{
 			dialog.writeSpeak(ctx,lang.people[this.textID]);
 			return 0;
