@@ -188,5 +188,23 @@
 		["Si tu appuyes sur la touche M, tu peux voir", "la carte de la ville"],
 		[" ton aventure commence ici, va", "à l'université pour rencontrer tes amis"],
 		[" tu n'as pas d'argent? Prends quelques", "pièces pour payer le bus"]
+	],
+	"minigame":{
+		"flyKiller":[
+			["OBJECTIF: Tuer les mouches pour gagner des pièces!"],
+			["POINTS: "],
+			["TEMPS: "]
+		],
+		"montyHall":[
+			["OBJECTIF: Choisir une des portes, l'une d'elles s'ouvrira et il sera possible de changer d'avis"],
+			["VOUS AVEZ GAGNÉ"],
+			["VOUS AVEZ PERDU"]
+		],
+		"gameOver":[
+			["Game Over!"],
+			["Vous avez gagné "],
+			[" pièce(s)"],
+			["Appuyez 'Enter' pour sortir"]
 		]
+	}
 }

@@ -189,5 +189,23 @@
 		["If you press the M key, you can see", "the city map"],
 		[" your adventure starts here, go", "to university to meet your friends"],
 		[" you have no money? Take some", "coins to pay the bus"]
-	]
+	],
+	"minigame":{
+		"flyKiller":[
+			["GOAL: Kill flies to earn pieces!"],
+			["POINTS: "],
+			["TIME: "]
+		],
+		"montyHall":[
+			["GOAL: Choose one door, one of them opens and you can change your choice"],
+			["YOU WIN"],
+			["YOU LOOSE"]
+		],
+		"gameOver":[
+			["Game Over!"],
+			["You earn "],
+			[" piece(s)"],
+			["Press 'Enter' to return"]
+		]
+	}
 }

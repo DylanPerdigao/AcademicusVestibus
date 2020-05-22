@@ -304,7 +304,7 @@ class Game {
 	/**
 	 * Makes the animation of map loading and active key listener after the animation (during the animation key listeners are off)
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {string} direction direction where the player is facing
+	 * @param {String} direction direction where the player is facing
 	 */	
 	loadingAnimation(ctx,direction){
 		var cw = ctx.canvas.width;
@@ -344,7 +344,7 @@ class Game {
 	/**
 	 * Loads the map specified by the trigger collided
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {string} direction direction where the player is facing
+	 * @param {String} direction direction where the player is facing
 	 */	
 	loadMap(ctx,direction){
 		this.move(ctx,direction);

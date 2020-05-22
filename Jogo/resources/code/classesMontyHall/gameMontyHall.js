@@ -1,9 +1,5 @@
 "use strict";
 
-const INITIAL_MESSAGE_MONTY = "Escolha uma porta!";
-const WIN_MESSAGE = "Ganhou!";
-const LOSE_MESSAGE = "Perdeu!";
-
 class GameMontyHall {
     constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
@@ -46,13 +42,11 @@ class GameMontyHall {
         var doorWinner = Math.floor(Math.random()*3);
         this.portas[doorWinner].isWinner = true;
 
-
-        this.txt = INITIAL_MESSAGE_MONTY;
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+        this.txt = lang.minigame.montyHall[0];
 
         let me = this;
-        
-        
-
+    
         this.clickHandler1 = function (ev) {
             let escolhida = -1;
             for(let i = 0; i < me.portas.length; i++){
@@ -68,11 +62,11 @@ class GameMontyHall {
             }
             if (escolhida === premiada) {
                 //WIN
-                me.txt = WIN_MESSAGE;
+                me.txt = lang.minigame.montyHall[1];
                 me.gameOver(5);
             }else{
                 //LOSE
-                me.txt = LOSE_MESSAGE;
+                me.txt = lang.minigame.montyHall[2];
                 me.gameOver(0);
             }
         };

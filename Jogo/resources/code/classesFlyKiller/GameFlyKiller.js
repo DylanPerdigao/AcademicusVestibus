@@ -2,7 +2,6 @@
 
 const WIDTH_BACKGROUND = 600;
 const HEIGHT_BACKGROUND = 300;
-const INITIAL_MESSAGE_MOSCAS = "Mate moscas para ganhar moedas!";
 
 class GameFlyKiller {
     constructor(ctx, canvas, mainWindow, arcade) {
@@ -36,11 +35,7 @@ class GameFlyKiller {
 
         //this.mataMoscas = new SpriteImage(, )
         this.numMoscasIni = Math.floor(Math.random() * 5 + 1);
-
-        this.title = INITIAL_MESSAGE_MOSCAS;
-
         let me = this;
-
         function imgLoadedHandler(ev) {
             nLoad++;
             if (nLoad === 3) {
@@ -74,13 +69,14 @@ class GameFlyKiller {
     }
 
     draw(ctx) {
-        if (!this.isActive) return;
+		if (!this.isActive) return;
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
         this.ctx.font = "16px Comic Sans MS";
         this.ctx.fillStyle = "red";
         this.ctx.textAlign = "right";
-        this.ctx.fillText(this.title, 425, 25);
-        this.ctx.fillText("Pontuação: " + this.moscasMortas, 350, 395);
-        this.ctx.fillText("Tempo: " + (Math.abs(this.gameTime/1000)).toFixed(0), 350, 375);
+        this.ctx.fillText(lang.minigame.flyKiller[0], 425, 25);
+        this.ctx.fillText(lang.minigame.flyKiller[1] + this.moscasMortas, 350, 395);
+        this.ctx.fillText(lang.minigame.flyKiller[2] + (Math.abs(this.gameTime/1000)).toFixed(0), 350, 375);
         if(!this.mataMoscas) return;
         this.background.draw(ctx);
         for (let i = 0; i < this.moscas.length; i++) {

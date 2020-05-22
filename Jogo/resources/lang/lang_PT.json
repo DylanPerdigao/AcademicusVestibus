@@ -188,5 +188,23 @@
 		["Se carregares na tecla M podes ver o mapa","da cidade"],
 		[" a tua aventura começa aqui, vai","à universidade conheceres os teus amigos"],
 		[" já não tens dinheiro? Toma umas","moedas para pagar o autocarro"]
-	]
+	],
+	"minigame":{
+		"flyKiller":[
+			["OBJETIVO: Matar as moscas para ganhar moedas!"],
+			["PONTUAÇÃO: "],
+			["TEMPO: "]
+		],
+		"montyHall":[
+			["OBJETIVO: Escolher uma das portas, uma delas será aberta e pode mudar de ideias"],
+			["GANHOU"],
+			["PERDEU"]
+		],
+		"gameOver":[
+			["Game Over!"],
+			["Ganhou "],
+			[" moeda(s)"],
+			["Pressione 'Enter' para voltar"]
+		]
+	}
 }

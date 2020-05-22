@@ -117,7 +117,7 @@ function updateVolume(ev){
 function updateLanguage(ev,buttons){
 	//pedir ficheiro de lingua
 	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET","../lang/lang_"+ev.target.id+".json", false);
+	rawFile.open("GET","../../lang/lang_"+ev.target.id+".json", false);
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4) {
 			if(rawFile.status === 200 || rawFile.status == 0){
