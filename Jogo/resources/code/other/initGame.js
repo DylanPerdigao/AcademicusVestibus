@@ -21,17 +21,6 @@ function main(){
 	if(storedGame){
 		game = new Game(ctx,storedGame);
 	}else{
-		//MAP DATA
-		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET","../../json/maps.json", true);
-		rawFile.onreadystatechange = function() {
-			if (rawFile.readyState === 4) {
-				if(rawFile.status === 200 || rawFile.status == 0){
-					window.localStorage.setItem("maps",rawFile.responseText)
-				}
-			}
-		}
-		rawFile.send();
 		var maps = JSON.parse(window.localStorage.getItem("maps"));
 		var mapHome = new Map(maps.HOME);
 		var mapPlace = new Map(maps.PLACE);

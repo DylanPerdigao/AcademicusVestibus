@@ -20,8 +20,18 @@ function main(){
             }
 		}
 	}
-	request.setRequestHeader("Access-Control-Allow-Origin","*");
 	request.send();
+	//MAP DATA
+	var rawFile = new XMLHttpRequest();
+	rawFile.open("GET",PATH+"json/maps.json", true);
+	rawFile.onreadystatechange = function() {
+		if (rawFile.readyState === 4) {
+			if(rawFile.status === 200 || rawFile.status == 0){
+				window.localStorage.setItem("maps",rawFile.responseText)
+			}
+		}
+	}
+	rawFile.send();
 	window.localStorage.setItem("volume",30);
 	//Listeners
 	window.addEventListener("message", messageHandler);

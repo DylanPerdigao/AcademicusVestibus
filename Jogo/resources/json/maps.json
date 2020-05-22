@@ -88,7 +88,7 @@
 			{"type":"Person","src":"../../textures/people/female1_2.png","posX":-760,"posY":-333,"img":{},"speed":5,"initialX":-760,"initialY":-333,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":7},
 			{"type":"Person","src":"../../textures/people/female1_0.png","posX":-695,"posY":-278,"img":{},"speed":5,"initialX":-695,"initialY":-278,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":8},
 			{"type":"Person","src":"../../textures/people/female3_3.png","posX":-460,"posY":-508,"img":{},"speed":5,"initialX":-460,"initialY":-508,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":9},
-			{"type":"Person","src":"../../textures/people/female1_3.png","posX":-495,"posY":-418,"img":{},"speed":5,"initialX":-495,"initialY":-418,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":0},
+			{"type":"Person","src":"../../textures/people/female1_3.png","posX":-495,"posY":-418,"img":{},"speed":5,"initialX":-495,"initialY":-418,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":10},
 			{"type":"Person","src":"../../textures/people/caloiro1.png","posX":-685,"posY":-333,"img":{},"speed":5,"initialX":-685,"initialY":-333,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":11},
 			{"type":"Person","src":"../../textures/people/caloiro2.png","posX":-685,"posY":-348,"img":{},"speed":5,"initialX":-685,"initialY":-348,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":12},
 			{"type":"Person","src":"../../textures/people/caloiro6.png","posX":-685,"posY":-363,"img":{},"speed":5,"initialX":-685,"initialY":-363,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":13},
