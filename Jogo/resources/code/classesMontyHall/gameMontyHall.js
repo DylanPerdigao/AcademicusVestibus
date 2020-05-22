@@ -98,11 +98,12 @@ class GameMontyHall {
     draw(){
         for(let i = 0; i < 3; i++){
             this.portas[i].draw(this.ctx)
-        }
-        this.ctx.font = "16px Comic Sans MS";
-        this.ctx.fillStyle = "red";
-        this.ctx.textAlign = "right";
-        this.ctx.fillText(this.txt, 250, 20);
+		}
+		document.getElementById("goal").innerHTML=this.txt;
+        //this.ctx.font = "16px Comic Sans MS";
+        //this.ctx.fillStyle = "red";
+        //this.ctx.textAlign = "right";
+        //this.ctx.fillText(this.txt, 250, 20);
     }
    
 

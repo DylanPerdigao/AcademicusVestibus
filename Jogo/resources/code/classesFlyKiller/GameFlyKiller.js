@@ -71,12 +71,15 @@ class GameFlyKiller {
     draw(ctx) {
 		if (!this.isActive) return;
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
-        this.ctx.font = "16px Comic Sans MS";
-        this.ctx.fillStyle = "red";
-        this.ctx.textAlign = "right";
-        this.ctx.fillText(lang.minigame.flyKiller[0], 425, 25);
-        this.ctx.fillText(lang.minigame.flyKiller[1] + this.moscasMortas, 350, 395);
-        this.ctx.fillText(lang.minigame.flyKiller[2] + (Math.abs(this.gameTime/1000)).toFixed(0), 350, 375);
+       	//this.ctx.font = "16px Comic Sans MS";
+        //this.ctx.fillStyle = "red";
+		//this.ctx.textAlign = "right";
+		document.getElementById("goal").innerHTML=lang.minigame.flyKiller[0];
+		document.getElementById("score").innerHTML=lang.minigame.flyKiller[1]+ this.moscasMortas;
+		document.getElementById("time").innerHTML=lang.minigame.flyKiller[2]+(Math.abs(this.gameTime/1000)).toFixed(0);
+        //this.ctx.fillText(lang.minigame.flyKiller[0], 425, 25);
+        //this.ctx.fillText(lang.minigame.flyKiller[1] + this.moscasMortas, 350, 395);
+        //this.ctx.fillText(lang.minigame.flyKiller[2] + (Math.abs(this.gameTime/1000)).toFixed(0), 350, 375);
         if(!this.mataMoscas) return;
         this.background.draw(ctx);
         for (let i = 0; i < this.moscas.length; i++) {
