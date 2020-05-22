@@ -8,22 +8,22 @@ class Map extends Element {
 				var struct = obj.structures[i]
 				switch(struct.type){
 					case "Structure":
-						this.structures.push(new Structure(struct));
+						this.structures.push(new Structure(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight));
 						break;
 					case "Teleporter":
-						this.structures.push(new Teleporter(struct));
+						this.structures.push(new Teleporter(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.location, struct.localX, struct.localY, struct.direction));
 						break;
 					case "Person":
-						this.structures.push(new Person(struct));
+						this.structures.push(new Person(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.textID));
 						break;
 					case "Bus":
-						this.structures.push(new Bus(struct));
+						this.structures.push(new Bus(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.location, struct.localX, struct.localY, struct.direction));
 						break;
 					case "Trigger":
-						this.structures.push(new Trigger(struct));
+						this.structures.push(new Trigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight));
 						break;
 					case "MiniGameTrigger":
-						this.structures.push(new MiniGameTrigger(struct));
+						this.structures.push(new MiniGameTrigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.miniGame));
 						break;
 				}	
 			}
