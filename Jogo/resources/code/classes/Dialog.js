@@ -16,7 +16,8 @@ class Dialog extends Component {
 	/**
 	 * Sets the size of the box for speaking
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {Array<string>} text array of text, organized by lines
+	 * @param {Array<String>} text array of text, organized by lines
+	 * @param {String} name player name
 	 */
 	writeSpeak(ctx,text,name){
 		this.posX=10;
@@ -28,7 +29,7 @@ class Dialog extends Component {
 	/**
 	 * Sets the size of the box for showing a command.
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {Array<string>} text array of text, organized by lines
+	 * @param {Array<String>} text array of text, organized by lines
 	 */
 	writeInfo(ctx,text){
 		this.posX=ctx.canvas.width-70;
@@ -38,9 +39,10 @@ class Dialog extends Component {
 		this.write(ctx,text)
 	}
 	/**
-	 * Write text in a dialog box
+	 * Write text in a dialog box, if the array of text has two elements it put each element in a line
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {Array<string>} text array of text, organized by lines
+	 * @param {Array<String>} text array of text, organized by lines
+	 * @param {String} name player name
 	 */
     write(ctx,text,name) {
 		ctx.drawImage(this.img, this.posX,this.posY,this.width,this.height);

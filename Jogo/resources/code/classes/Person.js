@@ -7,7 +7,7 @@ class Person extends Trigger {
 	/**
 	 * Draws the shadow under the person
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {number} radius shadow's radius
+	 * @param {Number} radius shadow's radius
 	 */
 	drawShadow(ctx,radius){
 		ctx.fillStyle = "rgba(0,0,0,0.4)";
@@ -16,9 +16,11 @@ class Person extends Trigger {
 		ctx.fill();
 	}
 	/**
-	 * Write the text of the Person in a dialog box
+	 * Write the text of the Person in a dialog box and check for eventual special texts depending of special conditions
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {Game} game This game
+	 * @param {*} dialog dialog structure
+	 * @param {*} name player's name
+	 * @param {*} money money structure
 	 */
     speak(ctx,dialog,name,money) {
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
@@ -36,13 +38,21 @@ class Person extends Trigger {
 			return 0;
 		}
     }
-
-    action(ctx,game,direction,map) {
+	/**
+	 * Shows dialog box for indicating that the player can interact with.
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {*} game game structure
+	 */
+    action(ctx,game) {
 		var dialog = game.dialog;
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
 		dialog.writeInfo(ctx,lang.informations[0]);
 	}
-
+	/**
+	 * Speaks with the person and adds money if the preson gives
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {*} game game structure
+	 */
 	interaction(ctx,game){
 		var dialog = game.dialog;
 		var name = game.player.name;

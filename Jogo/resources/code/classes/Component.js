@@ -17,6 +17,12 @@ class Component {
 		}
     }
 	drawShadow(){}
+	/**
+	 * Draw the component and his shadow if it has one
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {Number} x position x in canvas
+	 * @param {Number} y position y in canvas
+	 */
     draw(ctx,x,y){
 		if (this.src != null){
 			this.drawShadow(ctx,this.hitboxHeight-1);

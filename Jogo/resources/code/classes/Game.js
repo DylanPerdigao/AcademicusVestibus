@@ -97,7 +97,8 @@ class Game {
 					case "%":
 						this.money.removeMoney(1);
 						break;
-				}		
+				}	
+				showDebug(ctx);	
 			}
 		}
 	}
@@ -162,7 +163,7 @@ class Game {
 		returnBtn.onclick = function(e){game.unpause()};
 	}
 	/**
-	 * 
+	 * Save the game
 	 */
 	save(){
 		var save = {

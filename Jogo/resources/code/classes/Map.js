@@ -32,6 +32,9 @@ class Map extends Element {
 			this.structures = structures;
 		}
 	}
+	/**
+	 * Sets structures positions depending of the map position
+	 */
 	setStructuresPositions(){
 		for(let i=0;i<this.structures.length;i++){
 			this.structures[i].posX = this.posX-this.structures[i].initialX

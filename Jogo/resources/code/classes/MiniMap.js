@@ -7,7 +7,12 @@ class MiniMap extends Component {
 			super(src, posX, posY);
 		}
 	}
-
+	/**
+	 * Shows city map and put the player in the zone on map
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {*} player player structure
+	 * @param {Number} location zone of the game
+	 */
 	showMap(ctx,player,location){
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		ctx.drawImage(this.img,0,0,ctx.canvas.width,ctx.canvas.height);
@@ -32,7 +37,11 @@ class MiniMap extends Component {
 		ctx.fill();
 		ctx.drawImage(player.sprite[0],Math.floor(x),Math.floor(y));
 	}
-
+	/**
+	 * Exit map and returns to the game
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {*} game game structure
+	 */
 	exitMap(ctx,game){
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		game.draw(ctx,game.player.orientation);

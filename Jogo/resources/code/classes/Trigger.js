@@ -3,15 +3,11 @@ class Trigger extends Structure {
         super(src, posX, posY,speed, hitboxWidth, hitboxHeight,initialX,initialY);
 		this.hitboxColor = "white"
 	}
-	action(ctx,game,direction,map) {
-		return null;
-	}
-	interaction(ctx,game){
-		return null;
-	}
+	action() {}
+	interaction(){}
 	/**
      * Draw an orange rectangle where is the Trigger's hitbox
-     * @param {*} ctx canvas context
+	 * @param {CanvasRenderingContext2D} ctx canvas context
      */
     drawHitbox(ctx){
         var dim = this.getDimensions();

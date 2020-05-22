@@ -14,18 +14,32 @@ class Money extends Component {
 			this.value = value;
 			this.isHidden=isHidden;
 		}
-    }
+	}
+	/**
+	 * Shows the label where zhr money is displayed
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 */
 	draw(ctx){
 		if (!this.isHidden){
 			ctx.drawImage(this.img,this.posX,this.posY,this.width,this.height);
 			ctx.fillStyle = "#86592D";
 			ctx.fillText(this.value,this.posX+15,this.posY+11, this.width-20);
 		}
-    } 
+	} 
+	/**
+	 * Adds money
+	 * @param {Number} n 
+	 * @returns the value after adicioned
+	 */
     addMoney(n) {
 		this.value+=n;
         return this.value;
 	}
+		/**
+	 * Removes money
+	 * @param {Number} n 
+	 * @returns the value after removed
+	 */
 	removeMoney(n) {
 		this.value-=n;
         return this.value;

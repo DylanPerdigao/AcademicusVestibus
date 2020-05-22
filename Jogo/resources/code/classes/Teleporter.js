@@ -7,15 +7,22 @@ class Teleporter extends Trigger {
 		this.direction=direction;
 		this.hitboxColor = "orange";
 	}
-
-    action(ctx,game,direction,map) {
+	interaction(){}
+	/**
+	 * Calls teleport function
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {*} game game structure
+	 * @param {*} map map where the player is teleported
+	 */
+    action(ctx,game,_,map) {
 		return this.teleport(ctx,game,map);
 	}
-
-	interaction(ctx,game){
-		return null;
-	}
-	
+	/**
+	 * Teleports the player to the selected map
+	 * @param {CanvasRenderingContext2D} ctx canvas context
+	 * @param {*} game game structure
+	 * @param {*} map map where the player is teleported
+	 */
 	teleport(ctx,game,map) {
 		game.loadingAnimation(ctx,this.direction,map)
 		game.map = map;

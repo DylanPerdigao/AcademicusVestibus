@@ -12,14 +12,8 @@ class Structure extends Element {
         this.hitboxHeight=hitboxHeight;
 		this.type = this.constructor.name;
     }
-    
-	action(ctx,game,direction,map){
-		return null;
-    }
-    
-	interaction(ctx,game){
-		return null;
-    }
+	action(){}
+	interaction(){}
     
     /**
      * Draw a red rectangle where is the Structure's hitbox
@@ -40,7 +34,7 @@ class Structure extends Element {
     /**
      * Check if the Player's hitbox has an intersection with the Structure's hitbox
      * @param {Player} player user player
-     * @returns {boolean} state of the intersection
+     * @returns {Boolean} state of the intersection
      */
     checkIntersection(player){
         var dim = this.getDimensions();
@@ -64,7 +58,7 @@ class Structure extends Element {
     /**
      * Check if the Player is behind the Structure
      * @param {Player} player user player
-     * @returns {boolean} state of the position
+     * @returns {Boolean} state of the position
      */
     isBehind(player){
         var dim = this.getDimensions();
@@ -79,7 +73,7 @@ class Structure extends Element {
     }
     /**
      * Gets the dimensions of the Structure hitbox
-     * @returns {Array<number>} array with the coordinates of the left corner, width and height of the hitbox
+     * @returns {Array<Number>} array with the coordinates of the left corner, width and height of the hitbox
      */
     getDimensions(){
 		if (this.src != null){

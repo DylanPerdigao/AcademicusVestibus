@@ -36,8 +36,8 @@ class Player{
 	} 
 	/**
 	 * Sets the position of the player in the canvas
-	 * @param {number} x coordinate "x"
-	 * @param {number} y coordinate "y"
+	 * @param {Number} x coordinate "x"
+	 * @param {Number} y coordinate "y"
 	 */
 	setPosition(x,y){
 		this.posX = x-(this.sprite[0].width/2);
@@ -46,7 +46,6 @@ class Player{
 	/**
 	 * Draws the player choosing the sprite with the right step and rigth orientation
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {string} orientation where the player is facing
 	 */
 	draw(ctx){
 		var i = this.step;
@@ -70,7 +69,6 @@ class Player{
 	/**
 	 * Updates the step of the player and draw it
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {string} orientation where the player is facing
 	 */
 	walk(ctx){
 		if (this.step>=3){
@@ -83,7 +81,7 @@ class Player{
 	/**
 	 * Draws player's shadow
 	 * @param {CanvasRenderingContext2D} ctx canvas context
-	 * @param {number} radius shadow's radius
+	 * @param {Number} radius shadow's radius
 	 */
 	drawShadow(ctx,radius){
 		ctx.fillStyle = "rgba(0,0,0,0.4)";
@@ -109,7 +107,7 @@ class Player{
 	}
 	/**
 	 * Gets player's dimensions
-	 * @returns {Array<number>} Positions x/y and width/heigth
+	 * @returns {Array<Number>} Positions x/y and width/heigth
 	 */
 	getDimensions(){
 		return ([this.posX+2,this.posY+this.sprite[0].height-this.hitboxHeight,this.sprite[0].width-4,this.hitboxHeight]);
