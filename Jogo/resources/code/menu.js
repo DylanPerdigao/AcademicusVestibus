@@ -50,9 +50,17 @@ function messageHandler(ev){
 function buttonHandler(ev,func,buttons,w){
 	if (ev.target.className == "langButton"){
 		updateLanguage(ev,buttons)
+	}else if(ev.target.id == "delete"){
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+		var confirmation = confirm(lang.text.confirm);
+		if (confirmation == true) {
+			window.localStorage.removeItem("game");
+		}
+		updateDisabledButtons(buttons);
 	}else{
 		//envia mensagem ao main da pagina escolhida
 		w.postMessage(ev.currentTarget.id, "*");
+		updateDisabledButtons(buttons);
 	}
 }
 
@@ -127,10 +135,21 @@ function updateLanguage(ev,buttons){
 
 function updateDisabledButtons(buttons){
 	for(let i=0;i<buttons.length;i++){
-		if(buttons[i].id == window.localStorage.getItem("currentLanguage")||buttons[i].id=="create"){
-			document.getElementById(buttons[i].id).disabled = true;
-		}else{
-			document.getElementById(buttons[i].id).disabled = false;
+		switch (buttons[i].id){
+			case window.localStorage.getItem("currentLanguage"):
+			case "create":
+				document.getElementById(buttons[i].id).disabled = true;
+				break;
+			case "delete":
+			case "play":
+				if(window.localStorage.getItem("game")==undefined){
+					document.getElementById(buttons[i].id).disabled = true;
+					break;
+				}
+				//normal de nao ter break aqui
+			default:
+				document.getElementById(buttons[i].id).disabled = false;
+				break;
 		}
 	}
 }

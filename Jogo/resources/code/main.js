@@ -52,13 +52,6 @@ function messageHandler(ev){
 			window.localStorage.removeItem("game");
 			showMenu(PATH+"html/game.html");
 			break;
-		case "delete":
-			var confirmation = confirm("Sure?");
-			if (confirmation == true) {
-				window.localStorage.removeItem("game");
-				ev.target.disabled = true;
-			}
-			break;
 		case "new":
 			showMenu(PATH+"html/newGameMenu.html");
 			break;

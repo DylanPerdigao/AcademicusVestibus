@@ -25,7 +25,8 @@
 		"instr3": "Andar para baixo",
 		"instr4": "Andar para a direita",
 		"instr5": "Mostrar mapa",
-		"instr6": "Interagir"
+		"instr6": "Interagir",
+		"confirm": "Tem a certeza? A progressão atual será perdida."
 	},
 	"buttons":{
 		"return":"VOLTAR",

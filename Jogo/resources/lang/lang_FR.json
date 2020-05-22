@@ -24,7 +24,8 @@
 		"instr3": "Marcher en bas",
 		"instr4": "Marcher à droite",
 		"instr5": "Monter la carte",
-		"instr6": "Intéragir"
+		"instr6": "Intéragir",
+		"confirm": "Êtes-vous sûr? La progression sera perdue."
 	},
 	"buttons":{
 		"return":"RETOUR",

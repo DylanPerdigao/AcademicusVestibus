@@ -1,4 +1,5 @@
 {
+
 	"title":{
 		"titleGame":"ACADEMICUS VESTIBUS",
 		"titleOptions":"SETTINGS",
@@ -24,7 +25,8 @@
 		"instr3": "Go down",
 		"instr4": "Go right",
 		"instr5": "Show map",
-		"instr6": "Interact"
+		"instr6": "Interact",
+		"confirm": "Are you sure? Progression will be lost."
 	},
 	"buttons":{
 		"return":"RETURN",
