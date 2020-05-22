@@ -4,7 +4,7 @@ const WIDTH_BACKGROUND = 600;
 const HEIGHT_BACKGROUND = 300;
 const INITIAL_MESSAGE_MOSCAS = "Mate moscas para ganhar moedas!";
 
-class GameMataMoscas {
+class GameFlyKiller {
     constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
         this.isActive=false;
@@ -45,9 +45,9 @@ class GameMataMoscas {
             nLoad++;
             if (nLoad === 3) {
                 me.background = new SpriteImage(0, 50, WIDTH_BACKGROUND, HEIGHT_BACKGROUND, background);
-                me.mataMoscas = new MatadorMoscas(300, 250, 40, 85, me.imgMataMoscas);
+                me.mataMoscas = new FlyKiller(300, 250, 40, 85, me.imgMataMoscas);
                 for (let i = 0; i < me.numMoscasIni; i++) {
-                    me.moscas[i] = new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000);
+                    me.moscas[i] = new Fly(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000);
                 }
                 me.start()
             }
@@ -67,7 +67,7 @@ class GameMataMoscas {
                 if (me.mataMoscas.intersectPixels(me.moscas[i])) {
                     me.moscas.splice(i, 1);
                     me.moscasMortas++;
-                    me.moscas.push(new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000));
+                    me.moscas.push(new Fly(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000));
                 } else i++;
             }
         };
@@ -106,7 +106,7 @@ class GameMataMoscas {
                 this.moscas[i].alive_time -= (time - this.timestamp);
                 if(this.moscas[i].alive_time < 0){
                     this.moscas.splice(i, 1);
-                    this.moscas.push(new Mosca(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, this.imgMosca, 3_000));
+                    this.moscas.push(new Fly(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, this.imgMosca, 3_000));
                 }
             }
         }else{
@@ -117,8 +117,11 @@ class GameMataMoscas {
         this.timestamp = time;
         return true;
     }
-
-    gameOver(coins){ //returns difference between wins and losses after closing the game
+	/**
+	 * Returns difference between wins and losses after closing the game
+	 * @param {*} coins 
+	 */
+    gameOver(coins){
         this.ctx.canvas.removeEventListener("mousemove", this.MouseMoveHandler);
         this.ctx.canvas.removeEventListener("click", this.clickHandler);
         this.ctx.canvas.style.cursor = "initial";

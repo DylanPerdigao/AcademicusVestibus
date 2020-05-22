@@ -23,7 +23,7 @@ class Map extends Element {
 						this.structures.push(new Trigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight,struct.initialX,struct.initialY));
 						break;
 					case "MiniGameTrigger":
-						this.structures.push(new MiniGameTrigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.miniGame,struct.initialX,struct.initialY));
+						this.structures.push(new MiniGameTrigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.miniGameSrc,struct.initialX,struct.initialY));
 						break;
 				}	
 			}

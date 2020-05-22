@@ -9,7 +9,7 @@ function main() {
 
     function msgHandler(ev) {
         var args=messageHandler(ev);
-        new mainMataMoscas(ctx, canvas, args[0], args[1]);
+        new MainFlyKiller(ctx, canvas, args[0], args[1]);
     }
 
     function messageHandler(ev){
@@ -27,10 +27,10 @@ function main() {
     window.addEventListener("message",msgHandler);
 }
 
-class mainMataMoscas {
+class MainFlyKiller {
     constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
-        this.gameMM = new GameMataMoscas(ctx, canvas, mainWindow, arcade);
+        this.gameMM = new GameFlyKiller(ctx, canvas, mainWindow, arcade);
         this.startAnim();
     }
 

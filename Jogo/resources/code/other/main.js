@@ -77,7 +77,7 @@ function messageHandler(ev){
 			showMenu(PATH+"html/game/Fill.html");
 			break;
 		case "moscas":
-			showMenu(PATH+"html/game/MataMoscas.html");
+			showMenu(PATH+"html/game/FlyKiller.html");
 			break;
 	}
 }

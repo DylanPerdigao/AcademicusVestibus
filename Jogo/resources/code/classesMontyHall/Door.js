@@ -1,6 +1,6 @@
 "use strict";
 
-class mhPorta extends SpriteImage{
+class Door extends SpriteImage{
     constructor(x, y, w, h, imgPortaAberta, imgPortaFechada, imgMoney) {
         super(x, y, w, h, imgPortaFechada);
         this.imgPortaAberta = imgPortaAberta;

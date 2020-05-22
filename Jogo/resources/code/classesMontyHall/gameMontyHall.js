@@ -39,7 +39,7 @@ class GameMontyHall {
         this.portas = new Array(3);
 
         for (let i = 0; i < 3; i++) {
-            this.portas[i] = new mhPorta(i * 200, 50, 200, 350, this.imgPortaAberta, this.imgPortaFechada, this.imgMoney);
+            this.portas[i] = new Door(i * 200, 50, 200, 350, this.imgPortaAberta, this.imgPortaFechada, this.imgMoney);
         }
 
         //Decide aleatoriamente em que porta esta o dinheiro

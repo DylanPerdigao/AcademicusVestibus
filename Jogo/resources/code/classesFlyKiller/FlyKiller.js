@@ -1,6 +1,6 @@
 "use strict";
 
-class MatadorMoscas extends SpriteImage{
+class FlyKiller extends SpriteImage{
     constructor(x, y, w, h, img, clickable) {
         super(x, y, w, h, img, clickable);
     }
