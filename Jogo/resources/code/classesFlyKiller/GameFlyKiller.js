@@ -42,7 +42,7 @@ class GameFlyKiller {
                 me.background = new SpriteImage(0, 50, WIDTH_BACKGROUND, HEIGHT_BACKGROUND, background);
                 me.mataMoscas = new FlyKiller(300, 250, 40, 85, me.imgMataMoscas);
                 for (let i = 0; i < me.numMoscasIni; i++) {
-                    me.moscas[i] = new Fly(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000);
+                    me.moscas[i] =new Fly(Math.round(Math.random() * (WIDTH_BACKGROUND - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (HEIGHT_BACKGROUND - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, me.imgMosca, 3_000);
                 }
                 me.start()
             }
@@ -62,7 +62,7 @@ class GameFlyKiller {
                 if (me.mataMoscas.intersectPixels(me.moscas[i])) {
                     me.moscas.splice(i, 1);
                     me.moscasMortas++;
-                    me.moscas.push(new Fly(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, me.imgMosca, 3_000));
+                    me.moscas.push(new Fly(Math.round(Math.random() * (WIDTH_BACKGROUND - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (HEIGHT_BACKGROUND - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, me.imgMosca, 3_000));
                 } else i++;
             }
         };
@@ -102,10 +102,11 @@ class GameFlyKiller {
         if(this.gameTime > 0){
             this.gameTime = this.gameTime - (time - this.timestamp);
             for(let i = 0; i < this.moscas.length; i++){
-                this.moscas[i].alive_time -= (time - this.timestamp);
+                let time_diff = time - this.timestamp;
+                this.moscas[i].update(time_diff);
                 if(this.moscas[i].alive_time < 0){
                     this.moscas.splice(i, 1);
-                    this.moscas.push(new Fly(Math.round(Math.random() * (600 - 40)), Math.round(Math.random() * (300 - 40)) + 50, 40, 40, this.imgMosca, 3_000));
+                    this.moscas.push(new Fly(Math.round(Math.random() * (WIDTH_BACKGROUND - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (HEIGHT_BACKGROUND - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, this.imgMosca, 3_000));
                 }
             }
         }else{
