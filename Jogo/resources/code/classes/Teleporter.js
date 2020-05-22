@@ -1,12 +1,10 @@
 class Teleporter extends Trigger {
-    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction) {
-		
-		super(src, posX, posY,speed,hitboxWidth,hitboxHeight);
+    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction,initialX,initialY) {
+		super(src, posX, posY,speed,hitboxWidth,hitboxHeight,initialX,initialY);
 		this.location=location;
 		this.localX=localX;
 		this.localY=localY;
 		this.direction=direction;
-		
 		this.hitboxColor = "orange";
 	}
 

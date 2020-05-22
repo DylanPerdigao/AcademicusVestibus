@@ -8,22 +8,22 @@ class Map extends Element {
 				var struct = obj.structures[i]
 				switch(struct.type){
 					case "Structure":
-						this.structures.push(new Structure(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight));
+						this.structures.push(new Structure(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight,struct.initialX,struct.initialY));
 						break;
 					case "Teleporter":
-						this.structures.push(new Teleporter(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.location, struct.localX, struct.localY, struct.direction));
+						this.structures.push(new Teleporter(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.location, struct.localX, struct.localY, struct.direction,struct.initialX,struct.initialY));
 						break;
 					case "Person":
-						this.structures.push(new Person(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.textID));
+						this.structures.push(new Person(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.textID,struct.initialX,struct.initialY));
 						break;
 					case "Bus":
-						this.structures.push(new Bus(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.location, struct.localX, struct.localY, struct.direction));
+						this.structures.push(new Bus(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.location, struct.localX, struct.localY, struct.direction,struct.initialX,struct.initialY));
 						break;
 					case "Trigger":
-						this.structures.push(new Trigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight));
+						this.structures.push(new Trigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight,struct.initialX,struct.initialY));
 						break;
 					case "MiniGameTrigger":
-						this.structures.push(new MiniGameTrigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.miniGame));
+						this.structures.push(new MiniGameTrigger(struct.src, struct.posX, struct.posY, struct.speed, struct.hitboxWidth, struct.hitboxHeight, struct.miniGame,struct.initialX,struct.initialY));
 						break;
 				}	
 			}

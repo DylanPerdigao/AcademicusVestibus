@@ -1,12 +1,15 @@
 class Structure extends Element {
-    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight) {
-		
-        super(src, posX, posY,speed); 
-        this.initialX = posX;
-        this.initialY = posY;  
+    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,initialX,initialY) {
+		super(src, posX, posY,speed); 
+		if(initialX == undefined && initialY == undefined){
+			this.initialX = posX;
+			this.initialY = posY; 
+		}else{
+			this.initialX = initialX;
+			this.initialY = initialY; 
+		}
         this.hitboxWidth=hitboxWidth;
         this.hitboxHeight=hitboxHeight;
-		
 		this.type = this.constructor.name;
     }
     

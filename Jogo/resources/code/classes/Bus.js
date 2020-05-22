@@ -1,8 +1,6 @@
 class Bus extends Teleporter {
-    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction) {
-		
-		super(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction);
-		
+    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction,initialX,initialY) {
+		super(src, posX, posY,speed,hitboxWidth,hitboxHeight,location,localX,localY,direction,initialX,initialY);
 	}
 	inform(ctx,dialog,money){
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
@@ -25,7 +23,7 @@ class Bus extends Teleporter {
 	interaction(ctx,game){
 		var money = game.money;
 		var dialog = game.dialog;
-		if(money.value>BUS_COST){
+		if(money.value>=BUS_COST){
 			money.removeMoney(BUS_COST);
 			this.teleport(ctx,game,game.mapList[this.location]);
 		}else{

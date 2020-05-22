@@ -1,7 +1,7 @@
 class MiniGameTrigger extends Trigger {
-    constructor(src, posX, posY, speed, hitboxWidth, hitboxHeight, miniGame) {
+    constructor(src, posX, posY, speed, hitboxWidth, hitboxHeight, miniGame,initialX,initialY) {
 		
-		super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
+		super(src, posX, posY,speed, hitboxWidth, hitboxHeight,initialX,initialY);
 		this.miniGameSrc ="../code/classes/MiniGames/"+miniGame;
 		
 		this.hitboxColor = "blue";

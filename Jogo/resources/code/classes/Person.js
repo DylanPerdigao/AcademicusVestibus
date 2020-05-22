@@ -1,7 +1,7 @@
 class Person extends Trigger {
-    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,textID) {
+    constructor(src, posX, posY,speed, hitboxWidth, hitboxHeight,textID,initialX,initialY) {
 		
-		super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
+		super(src, posX, posY,speed, hitboxWidth, hitboxHeight,initialX,initialY);
 		this.textID=textID;
 	}
 	/**

@@ -1,8 +1,6 @@
 class Trigger extends Structure {
-    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight) {
-        
-        super(src, posX, posY,speed, hitboxWidth, hitboxHeight);
-		
+    constructor(src, posX, posY,speed,hitboxWidth,hitboxHeight,initialX,initialY) {
+        super(src, posX, posY,speed, hitboxWidth, hitboxHeight,initialX,initialY);
 		this.hitboxColor = "white"
 	}
 	action(ctx,game,direction,map) {
