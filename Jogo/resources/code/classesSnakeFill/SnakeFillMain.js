@@ -69,39 +69,39 @@ class SnakeFillMain {
             
         }
     
-
+		var path = "../../textures/gui/";
         this.imgLevel0 = new Image();
         this.imgLevel0.addEventListener("load", imgLoadedHandler);
-        this.imgLevel0.src = "../Resources/Level0.png";
+        this.imgLevel0.src = path+"Level0.png";
     
         this.imgLevel1 = new Image();
         this.imgLevel1.addEventListener("load", imgLoadedHandler);
-        this.imgLevel1.src = "../Resources/Level1.png";
+        this.imgLevel1.src = path+"/Level1.png";
     
         this.imgLevel2 = new Image();
         this.imgLevel2.addEventListener("load", imgLoadedHandler);
-        this.imgLevel2.src = "../Resources/Level2.png";
+        this.imgLevel2.src = path+"Level2.png";
     
         this.imgLevel3 = new Image();
         this.imgLevel3.addEventListener("load", imgLoadedHandler);
-        this.imgLevel3.src = "../Resources/Level3.png";
+        this.imgLevel3.src = path+"Level3.png";
     
 
         this.imgColorl0 = new Image();
         this.imgColorl0.addEventListener("load", imgLoadedHandler);
-        this.imgColorl0.src = "../Resources/color0.png";
+        this.imgColorl0.src = path+"color0.png";
     
         this.imgColorl1 = new Image();
         this.imgColorl1.addEventListener("load", imgLoadedHandler);
-        this.imgColorl1.src = "../Resources/color1.png";
+        this.imgColorl1.src = path+"color1.png";
     
         this.imgColorl2 = new Image();
         this.imgColorl2.addEventListener("load", imgLoadedHandler);
-        this.imgColorl2.src = "../Resources/color2.png";
+        this.imgColorl2.src = path+"color2.png";
     
         this.imgColorl3 = new Image();
         this.imgColorl3.addEventListener("load", imgLoadedHandler);
-        this.imgColorl3.src = "../Resources/color3.png";
+        this.imgColorl3.src = path+"color3.png";
 
         this.imgLoaded = 0;
         function imgLoadedHandler(ev) {

@@ -19,17 +19,18 @@ class GameMataMoscas {
     init() {
         this.moscasMortas = 0;
         let nLoad = 0;
-        this.moscas = [];
+		this.moscas = [];
+		var path = "../../textures/";
         var background = new Image();
         background.addEventListener("load", imgLoadedHandler);
-        background.src = "resources/background.png";
+        background.src = path+"misc/background.png";
 
         this.imgMosca = new Image();
         this.imgMosca.addEventListener("load", imgLoadedHandler);
-        this.imgMosca.src = "resources/mosca.png";
+        this.imgMosca.src = path+"misc/mosca.png";
 
         this.imgMataMoscas = new Image();
-        this.imgMataMoscas.src = "resources/mataMoscas.png";
+        this.imgMataMoscas.src = path+"misc/mataMoscas.png";
         this.imgMataMoscas.addEventListener("load", imgLoadedHandler);
 
 

@@ -23,7 +23,7 @@ function main(){
 	}else{
 		//MAP DATA
 		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET","../json/maps.json", true);
+		rawFile.open("GET","../../json/maps.json", true);
 		rawFile.onreadystatechange = function() {
 			if (rawFile.readyState === 4) {
 				if(rawFile.status === 200 || rawFile.status == 0){
@@ -38,11 +38,11 @@ function main(){
 		var mapUniversity = new Map(maps.UNIVERSITY);
 		var name = window.localStorage.getItem("name");
 		game = new Game(ctx,null,
-			new Player("../textures/player/male/player_male",name,canvas.width/2,canvas.height/2,5),
+			new Player("../../textures/player/male/player_male",name,canvas.width/2,canvas.height/2,5),
 			new Array(mapHome,mapPlace,mapUniversity),
-			new Money("../textures/gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
-			new MiniMap("../textures/map/map.png",0,0),
-			new Dialog("../textures/gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25),
+			new Money("../../textures/gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
+			new MiniMap("../../textures/map/map.png",0,0),
+			new Dialog("../../textures/gui/dialog.svg",10, ctx.canvas.height-35, ctx.canvas.width-20,25),
 		);
 	}
 }

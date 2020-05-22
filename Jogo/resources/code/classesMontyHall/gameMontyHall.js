@@ -7,18 +7,18 @@ const LOSE_MESSAGE = "Perdeu!";
 class GameMontyHall {
     constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
-
+		var path = "../../textures/";
         this.imgPortaAberta = new Image();
         this.imgPortaAberta.addEventListener("load", imgLoadedHandler);
-        this.imgPortaAberta.src = "resources/porta_aberta.png";
+        this.imgPortaAberta.src = path+"misc/porta_aberta.png";
     
         this.imgPortaFechada = new Image();
         this.imgPortaFechada.addEventListener("load", imgLoadedHandler);
-        this.imgPortaFechada.src = "resources/porta_fechada.png";
+        this.imgPortaFechada.src = path+"misc/porta_fechada.png";
     
         this.imgMoney = new Image();
         this.imgMoney.addEventListener("load", imgLoadedHandler);
-        this.imgMoney.src = "resources/money.png";
+        this.imgMoney.src = path+"misc/money.png";
 
         this.imgLoaded = 0;
         var me = this;

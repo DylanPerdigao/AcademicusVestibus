@@ -39,45 +39,45 @@ function messageHandler(ev){
 		case "menu":
 		case "return":
 		case "quitGame":
-			showMenu(PATH+"html/mainMenu.html");
+			showMenu(PATH+"html/menu/mainMenu.html");
 			break;
 		case "returnGameMenu":
 		case "game":
-			showMenu(PATH+"html/gameMenu.html");
+			showMenu(PATH+"html/menu/gameMenu.html");
 			break;
 		case "play":
-			showMenu(PATH+"html/game.html");
+			showMenu(PATH+"html/game/game.html");
 			break;
 		case "create":
 			window.localStorage.removeItem("game");
-			showMenu(PATH+"html/game.html");
+			showMenu(PATH+"html/game/game.html");
 			break;
 		case "new":
-			showMenu(PATH+"html/newGameMenu.html");
+			showMenu(PATH+"html/menu/newGameMenu.html");
 			break;
 		case "options":
-			showMenu(PATH+"html/optionsMenu.html");
+			showMenu(PATH+"html/menu/optionsMenu.html");
 			break;
 		case "help":
-			showMenu(PATH+"html/helpMenu.html");
+			showMenu(PATH+"html/menu/helpMenu.html");
 			break;
 		case "credits":
-			showMenu(PATH+"html/creditsMenu.html");
+			showMenu(PATH+"html/menu/creditsMenu.html");
 			break;
 		case "arcade":
-			showMenu(PATH+"html/miniGamesMenu.html");
+			showMenu(PATH+"html/menu/miniGamesMenu.html");
 			break;
 		case "montyHall":
-			showMenu(PATH+"code/classes/MiniGames/MontyHall/MontyHall.html");
+			showMenu(PATH+"html/game/MontyHall.html");
 			break;
 		case "snake":
-			showMenu(PATH+"code/classes/MiniGames/SnakeFill/Snake/Snake.html");
+			showMenu(PATH+"html/game/Snake.html");
 			break;
 		case "fill":
-			showMenu(PATH+"code/classes/MiniGames/SnakeFill/Fill/Fill.html");
+			showMenu(PATH+"html/game/Fill.html");
 			break;
 		case "moscas":
-			showMenu(PATH+"code/classes/MiniGames/MataMoscas/MataMoscas.html");
+			showMenu(PATH+"html/game/MataMoscas.html");
 			break;
 	}
 }
