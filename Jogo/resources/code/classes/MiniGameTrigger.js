@@ -31,23 +31,22 @@ class MiniGameTrigger extends Trigger {
 
 		function iframeHandler(ev){
 			let frm = ev.target;
-			frm.contentWindow.postMessage("-", "*");
+			frm.contentWindow.postMessage(String(game.money), "*");
 			frm.removeEventListener("load", iframeHandler);
 		}
 	}
 
 	action(ctx,game,direction,map,numCollisions) {
 		var dialog = game.dialog;
-		var money = game.money;
 		if(numCollisions<=1){
 			game.move(ctx,direction)
 		}else{
 			game.draw(ctx);
 		}
-		this.inform(ctx,dialog,money)
+		this.inform(ctx,dialog)
 	}
 
-	inform(ctx,dialog,money){
+	inform(ctx,dialog){
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
 		
 		//TODO: Mudar fala conforme linguagem
