@@ -11,7 +11,7 @@ class Fill{
         this.color=color;
         this.cell=cell;
         this.head=[14*cell,14*cell];
-        this.last=[[14*cell,14*cell]]
+        this.last=[];
     }
 
     update(ctx, walls){
