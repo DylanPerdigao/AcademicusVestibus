@@ -1,8 +1,10 @@
 "use strict";
 
 class FlyKiller extends SpriteImage{
-    constructor(x, y, w, h, img, clickable) {
+    constructor(x, y, w, h, img, clickable, imgAnimated) {
         super(x, y, w, h, img, clickable);
+        this.imgAnimated = imgAnimated;
+        this.imgAnimatedData = this.getImageData(imgAnimated);
     }
 
     intersectPixels(sprite) {
@@ -36,5 +38,14 @@ class FlyKiller extends SpriteImage{
             }
         }
         return false;
+    }
+
+    animation(){
+        let aux = this.img;
+        let aux_data = this.imageData;
+        this.img = this.imgAnimated;
+        this.imageData = this.imgAnimatedData;
+        this.imgAnimated = aux;
+        this.imgAnimatedData = aux_data;
     }
 }

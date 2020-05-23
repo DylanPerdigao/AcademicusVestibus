@@ -1,11 +1,9 @@
 "use strict";
 
-const WIDTH_BACKGROUND = 600;
-const HEIGHT_BACKGROUND = 300;
-
 class GameFlyKiller {
     constructor(ctx, canvas, mainWindow, arcade) {
         this.ctx = ctx;
+        this.canvas = canvas;
         this.isActive=false;
         this.init();
         this.timestamp = 0;
@@ -32,17 +30,21 @@ class GameFlyKiller {
         this.imgMataMoscas.src = path+"misc/mataMoscas.png";
         this.imgMataMoscas.addEventListener("load", imgLoadedHandler);
 
+        this.imgMataMoscasAnim = new Image();
+        this.imgMataMoscasAnim.src = path+"misc/mataMoscas_pressed.png";
+        this.imgMataMoscasAnim.addEventListener("load", imgLoadedHandler);
+
 
         //this.mataMoscas = new SpriteImage(, )
         this.numMoscasIni = Math.floor(Math.random() * 5 + 1);
         let me = this;
         function imgLoadedHandler(ev) {
             nLoad++;
-            if (nLoad === 3) {
-                me.background = new SpriteImage(0, 50, WIDTH_BACKGROUND, HEIGHT_BACKGROUND, background);
-                me.mataMoscas = new FlyKiller(300, 250, 40, 85, me.imgMataMoscas);
+            if (nLoad === 4) {
+                me.background = new SpriteImage(0, 50, me.canvas.width, me.canvas.height, background);
+                me.mataMoscas = new FlyKiller(300, 250, 40, 85, me.imgMataMoscas, false, me.imgMataMoscasAnim);
                 for (let i = 0; i < me.numMoscasIni; i++) {
-                    me.moscas[i] =new Fly(Math.round(Math.random() * (WIDTH_BACKGROUND - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (HEIGHT_BACKGROUND - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, me.imgMosca, 3_000);
+                    me.moscas[i] =new Fly(Math.round(Math.random() * (me.canvas.width - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (me.canvas.height - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, me.imgMosca, 3_000);
                 }
                 me.start()
             }
@@ -56,13 +58,17 @@ class GameFlyKiller {
             }
         };
 
+        this.MouseHandler = function (ev) {
+            me.mataMoscas.animation();
+        };
+
         this.clickHandler = function (ev) {
             var i = 0;
             while (i < me.moscas.length) {
                 if (me.mataMoscas.intersectPixels(me.moscas[i])) {
                     me.moscas.splice(i, 1);
                     me.moscasMortas++;
-                    me.moscas.push(new Fly(Math.round(Math.random() * (WIDTH_BACKGROUND - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (HEIGHT_BACKGROUND - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, me.imgMosca, 3_000));
+                    me.moscas.push(new Fly(Math.round(Math.random() * (me.canvas.width - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (me.canvas.height - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, me.imgMosca, 3_000));
                 } else i++;
             }
         };
@@ -94,6 +100,8 @@ class GameFlyKiller {
         this.isActive = true;
         this.ctx.canvas.addEventListener("mousemove", this.MouseMoveHandler);
         this.ctx.canvas.addEventListener("click", this.clickHandler);
+        this.ctx.canvas.addEventListener("mousedown", this.MouseHandler);
+        this.ctx.canvas.addEventListener("mouseup", this.MouseHandler);
         
         this.ctx.canvas.style.cursor = "none";
     }
@@ -106,7 +114,7 @@ class GameFlyKiller {
                 this.moscas[i].update(time_diff);
                 if(this.moscas[i].alive_time < 0){
                     this.moscas.splice(i, 1);
-                    this.moscas.push(new Fly(Math.round(Math.random() * (WIDTH_BACKGROUND - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (HEIGHT_BACKGROUND - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, this.imgMosca, 3_000));
+                    this.moscas.push(new Fly(Math.round(Math.random() * (this.canvas.width - 40 - 2*MOVEMENT_RADIUS)) + MOVEMENT_RADIUS, Math.round(Math.random() * (this.canvas.height - 40  - 2*MOVEMENT_RADIUS)) + 50 + MOVEMENT_RADIUS, 40, 40, this.imgMosca, 3_000));
                 }
             }
         }else{
