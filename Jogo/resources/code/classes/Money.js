@@ -31,18 +31,14 @@ class Money extends Component {
 	 * @param {Number} n 
 	 * @returns the value after adicioned
 	 */
-    addMoney(n) {
+    addMoney(n, ctx) {
 		this.value+=n;
+		this.draw(ctx);
         return this.value;
 	}
-		/**
-	 * Removes money
-	 * @param {Number} n 
-	 * @returns the value after removed
-	 */
-	removeMoney(n) {
-		this.value-=n;
+	
+	getMoney(){
         return this.value;
-    }
+	}
 }
 

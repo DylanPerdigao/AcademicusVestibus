@@ -22,7 +22,7 @@ class MiniGameTrigger extends Trigger {
 
 
 		function messageHandler(ev){
-			game.money.addMoney(parseInt(ev.data));
+			game.money.addMoney(parseInt(ev.data), ctx);
 			frm.style.display = "none";
 			document.getElementById("game").style.display = "block";
 			
@@ -31,7 +31,7 @@ class MiniGameTrigger extends Trigger {
 
 		function iframeHandler(ev){
 			let frm = ev.target;
-			frm.contentWindow.postMessage(String(game.money), "*");
+			frm.contentWindow.postMessage(String(game.money.getMoney()), "*");
 			frm.removeEventListener("load", iframeHandler);
 		}
 	}

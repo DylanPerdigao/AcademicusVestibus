@@ -99,7 +99,6 @@ class GameMontyHall {
             this.portas[i].draw(this.ctx)
 		}
     }
-   
 
     gameOver(coins){ //returns difference between wins and losses after closing the game
         this.ctx.canvas.removeEventListener("click", this.clickHandler0);
