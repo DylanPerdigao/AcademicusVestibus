@@ -167,6 +167,8 @@ class Game {
 		saveBtn.onclick = function(e){game.save()};
 		var returnBtn = document.getElementById("returnGame");
 		returnBtn.onclick = function(e){game.unpause()};
+		var quitBtn = document.getElementById("quitGame");
+		quitBtn.onclick = function(e){top.window.postMessage(e.currentTarget.id, "*");};
 	}
 	/**
 	 * Save the game
