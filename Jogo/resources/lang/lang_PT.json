@@ -20,6 +20,7 @@
 		"ack1": "Ao site <a href='www.kenney.nl'>KENNEY</a> pelos assets",
 		"ack2": "Ao site <a href='www.pixabay.com'>PIXABAY</a> pelas imagens",
 		"ack3": "Ao <a href='www.deviantart.com/lolw3e932'>Lolw3e932</a> pelas sprites das personagens",
+		"ack4": "À <a href='https://www.facebook.com/Quantunna/'>Quantunna</a> pela música",
 		"instr1": "Andar para cima",
 		"instr2": "Andar para a esquerda",
 		"instr3": "Andar para baixo",
@@ -190,13 +191,14 @@
 		[" já não tens dinheiro? Toma umas","moedas para pagar o autocarro"]
 	],
 	"minigame":{
+		"goal":"OBJETIVO",
 		"flyKiller":[
-			["OBJETIVO: Matar as moscas para ganhar moedas!"],
-			["PONTUAÇÃO: "],
-			["TEMPO: "]
+			["Matar as moscas para ganhar moedas!"],
+			["PONTUAÇÃO"],
+			["TEMPO"]
 		],
 		"montyHall":[
-			["OBJETIVO: Escolher uma das portas, uma delas será aberta e pode mudar de ideias"],
+			["Escolher uma das portas, uma delas será aberta e pode mudar de ideias"],
 			["GANHOU"],
 			["PERDEU"]
 		],

@@ -20,6 +20,7 @@
 		"ack1": "To the website <a href='www.kenney.nl'>KENNEY</a> for assets",
 		"ack2": "To the website <a href='www.pixabay.com'>PIXABAY</a> for images",
 		"ack3": "To <a href='www.deviantart.com/lolw3e932'>Lolw3e932</a> for sprites",
+		"ack4": "To <a href='https://www.facebook.com/Quantunna/'>Quantunna</a> for music",
 		"instr1": "Go up",
 		"instr2": "Go left",
 		"instr3": "Go down",
@@ -191,13 +192,14 @@
 		[" you have no money? Take some", "coins to pay the bus"]
 	],
 	"minigame":{
+		"goal":"GOAL",
 		"flyKiller":[
-			["GOAL: Kill flies to earn pieces!"],
-			["POINTS: "],
-			["TIME: "]
+			["Kill the flies to earn pieces!"],
+			["POINTS"],
+			["TIME"]
 		],
 		"montyHall":[
-			["GOAL: Choose one door, one of them opens and you can change your choice"],
+			["Choose one door, one of them opens and you can change your choice"],
 			["YOU WIN"],
 			["YOU LOOSE"]
 		],

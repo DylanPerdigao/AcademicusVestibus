@@ -77,15 +77,12 @@ class GameFlyKiller {
     draw(ctx) {
 		if (!this.isActive) return;
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
-       	//this.ctx.font = "16px Comic Sans MS";
-        //this.ctx.fillStyle = "red";
-		//this.ctx.textAlign = "right";
-		document.getElementById("goal").innerHTML=lang.minigame.flyKiller[0];
-		document.getElementById("score").innerHTML=lang.minigame.flyKiller[1]+ this.moscasMortas;
-		document.getElementById("time").innerHTML=lang.minigame.flyKiller[2]+(Math.abs(this.gameTime/1000)).toFixed(0);
-        //this.ctx.fillText(lang.minigame.flyKiller[0], 425, 25);
-        //this.ctx.fillText(lang.minigame.flyKiller[1] + this.moscasMortas, 350, 395);
-        //this.ctx.fillText(lang.minigame.flyKiller[2] + (Math.abs(this.gameTime/1000)).toFixed(0), 350, 375);
+		document.getElementById("goal").innerHTML=lang.minigame.goal;
+		document.getElementById("goalDescription").innerHTML=lang.minigame.flyKiller[0];
+		document.getElementById("score").innerHTML=lang.minigame.flyKiller[1]
+		document.getElementById("time").innerHTML=lang.minigame.flyKiller[2]
+		document.getElementById("scoreValue").innerHTML=this.moscasMortas;
+		document.getElementById("timeValue").innerHTML=(Math.abs(this.gameTime/1000)).toFixed(0);
         if(!this.mataMoscas) return;
         this.background.draw(ctx);
         for (let i = 0; i < this.moscas.length; i++) {

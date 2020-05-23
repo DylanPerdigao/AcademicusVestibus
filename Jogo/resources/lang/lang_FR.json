@@ -19,6 +19,7 @@
 		"ack1": "Au site <a href='www.kenney.nl'>KENNEY</a> pour les assets",
 		"ack2": "Au site <a href='www.pixabay.com'>PIXABAY</a> pour les images",
 		"ack3": "À <a href='www.deviantart.com/lolw3e932'>Lolw3e932</a> pour les sprites des personages",
+		"ack4": "À <a href='https://www.facebook.com/Quantunna/'>Quantunna</a> pour la musique",
 		"instr1": "Macher en haut",
 		"instr2": "Marcher à gauche",
 		"instr3": "Marcher en bas",
@@ -190,13 +191,14 @@
 		[" tu n'as pas d'argent? Prends quelques", "pièces pour payer le bus"]
 	],
 	"minigame":{
+		"goal":"OBJECTIF",
 		"flyKiller":[
-			["OBJECTIF: Tuer les mouches pour gagner des pièces!"],
-			["POINTS: "],
-			["TEMPS: "]
+			["Tuer les mouches pour gagner des pièces!"],
+			["POINTS"],
+			["TEMPS"]
 		],
 		"montyHall":[
-			["OBJECTIF: Choisir une des portes, l'une d'elles s'ouvrira et il sera possible de changer d'avis"],
+			["Choisir une des portes, l'une d'elles s'ouvrira et il sera possible de changer d'avis"],
 			["VOUS AVEZ GAGNÉ"],
 			["VOUS AVEZ PERDU"]
 		],

@@ -11,7 +11,6 @@ function main() {
         var args=messageHandler(ev);
         new MainFlyKiller(ctx, canvas, args[0], args[1]);
     }
-
     function messageHandler(ev){
         var arcade;
         if (ev.data=='arcade'){
@@ -22,7 +21,6 @@ function main() {
         }
         return [ev.source,arcade];
     }
-
     //listener
     window.addEventListener("message",msgHandler);
 }
@@ -33,10 +31,7 @@ class MainFlyKiller {
         this.gameMM = new GameFlyKiller(ctx, canvas, mainWindow, arcade);
         this.startAnim();
     }
-
-
-    startAnim() //Colocar o startTime a 0
-    {
+    startAnim(){//Colocar o startTime a 0
         this.draw();
         this.animLoop(0);
     }
@@ -52,9 +47,8 @@ class MainFlyKiller {
         };
         var reqID=window.requestAnimationFrame(al);
         this.render(time, reqID);
-    }
-
-    //resedenho, actualizações, ...
+	}
+	
     render(time, reqID) {
         if (!this.gameMM.update(time)) {
             //break loop
@@ -63,7 +57,6 @@ class MainFlyKiller {
         }
         this.clear();
         this.draw();
-
     }
 
     clear() {

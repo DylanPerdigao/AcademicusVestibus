@@ -11,33 +11,36 @@ function main(){
 	if(!lang){
 		lang="PT";
 	}
-	var request = new XMLHttpRequest();
-	request.open("GET",PATH+"lang/lang_"+lang+".json", true);
-	request.onreadystatechange = function() {
-		if (request.readyState === 4) {
-			if(request.status === 200 || request.status == 0){
-				window.localStorage.setItem("lang",request.responseText)
-            }
-		}
-	}
-	request.send();
+	dataRequest(PATH+"lang/lang_"+lang+".json","lang");
 	//MAP DATA
-	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET",PATH+"json/maps.json", true);
-	rawFile.onreadystatechange = function() {
-		if (rawFile.readyState === 4) {
-			if(rawFile.status === 200 || rawFile.status == 0){
-				window.localStorage.setItem("maps",rawFile.responseText)
-			}
-		}
+	dataRequest(PATH+"json/maps.json","maps");
+	//AUDIO
+	var audios = document.getElementsByTagName("audio");
+	var audioHandler = function(event){
+		switchMusic(event,audios);
 	}
-	rawFile.send();
+	for(let i=0;i<audios.length;i++){
+		audios[i].volume=0.3;
+		audios[i].addEventListener("ended",audioHandler);
+	}
 	window.localStorage.setItem("volume",30);
 	//Listeners
 	window.addEventListener("message", messageHandler);
 	window.postMessage("menu", "*");
 }
 
+function dataRequest(src,item){
+	var request = new XMLHttpRequest();
+	request.open("GET",src, true);
+	request.onreadystatechange = function() {
+		if (request.readyState === 4) {
+			if(request.status === 200 || request.status == 0){
+				window.localStorage.setItem(item,request.responseText)
+            }
+		}
+	}
+	request.send();
+}
 function showMenu(src){
 	var frm = document.getElementsByTagName("iframe")[0];
 	frm.src = src;
@@ -96,4 +99,23 @@ function messageHandler(ev){
 function iframeHandler(ev){
 	var frm = ev.target;
 	frm.contentWindow.postMessage("arcade", "*");
+}
+
+function switchMusic(ev,audios){
+	var id = ev.target.id;
+	switch (id) {
+		case "music0":
+			audios[1].play();
+			break
+		case "music1":
+			audios[2].play();
+			break;
+		case "music2":
+			audios[3].play();
+			break;
+		case "music3":
+			audios[0].play();
+			break;
+	}
+	
 }

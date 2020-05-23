@@ -43,10 +43,9 @@ class GameMontyHall {
         this.portas[doorWinner].isWinner = true;
 
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
-        this.txt = lang.minigame.montyHall[0];
-
+		document.getElementById("goal").innerHTML=lang.minigame.goal;
+		document.getElementById("goalDescription").innerHTML=lang.minigame.montyHall[0];
         let me = this;
-    
         this.clickHandler1 = function (ev) {
             let escolhida = -1;
             for(let i = 0; i < me.portas.length; i++){
@@ -99,11 +98,6 @@ class GameMontyHall {
         for(let i = 0; i < 3; i++){
             this.portas[i].draw(this.ctx)
 		}
-		document.getElementById("goal").innerHTML=this.txt;
-        //this.ctx.font = "16px Comic Sans MS";
-        //this.ctx.fillStyle = "red";
-        //this.ctx.textAlign = "right";
-        //this.ctx.fillText(this.txt, 250, 20);
     }
    
 
