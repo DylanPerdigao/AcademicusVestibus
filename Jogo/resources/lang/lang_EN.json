@@ -1,5 +1,4 @@
 {
-
 	"title":{
 		"titleGame":"ACADEMICUS VESTIBUS",
 		"titleOptions":"SETTINGS",
@@ -52,7 +51,6 @@
 		"quitGame":"QUIT",
 		"save":"SAVE"
 	},
-		
 	"informations":[
 		["SPEAK"],
 		["CATCH THE","BUS"],
