@@ -35,5 +35,24 @@ class MiniGameTrigger extends Trigger {
 			frm.removeEventListener("load", iframeHandler);
 		}
 	}
+
+	action(ctx,game,direction,map,numCollisions) {
+		var dialog = game.dialog;
+		var money = game.money;
+		if(numCollisions<=1){
+			game.move(ctx,direction)
+		}else{
+			game.draw(ctx);
+		}
+		this.inform(ctx,dialog,money)
+	}
+
+	inform(ctx,dialog,money){
+		var lang = JSON.parse(window.localStorage.getItem("lang"));
+		
+		//TODO: Mudar fala conforme linguagem
+		dialog.writeInfo(ctx,lang.informations[2]);
+		
+	}
 }
 
