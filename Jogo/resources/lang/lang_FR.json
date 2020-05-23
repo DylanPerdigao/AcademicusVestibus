@@ -50,8 +50,7 @@
 		"returnGame":"RETOUR",
 		"quitGame":"QUITTER",
 		"save":"SAUVGARDER"
-	},
-		
+	},	
 	"informations":[
 		["PARLER"],
 		["PRENDRE","LE BUS"],

@@ -5,7 +5,6 @@
 		"titleHelp":"AJUDA",
 		"titleCredits":"CRÉDITOS",
 		"titleArcade":"ARCADE",
-		"titleSettings":"OPÇÕES",
 		"titlePause":"PAUSA"
 	},
 	"subtitle":{
@@ -52,7 +51,6 @@
 		"quitGame":"SAIR",
 		"save":"GUARDAR"
 	},
-		
 	"informations":[
 		["FALAR"],
 		["APANHAR","AUTOCARRO"],
@@ -94,7 +92,8 @@
 		["Estou farta destas obras, não me apetece","descer as Monumentais"],
 		["A minha frente tens o Departamento de Matemática"],
 		["Este é o Departamento de Quimica","Olha!! Ao nosso lado está a tuna da FCTUC"],
-		["Bem vindo à Faculdade de Medicina"],["Esta é outra entrada da Faculdade de Medicina"],
+		["Bem vindo à Faculdade de Medicina"],
+		["Esta é outra entrada da Faculdade de Medicina"],
 		["Hoje como é um dia especial não há autocarros","a circular aqui"],
 		["Podes entrar na Faculdade de Fisica se quiseres"],
 		["SIM DOUTOR"],
