@@ -91,11 +91,17 @@ class Game {
 						break;
 				}
 				switch(event.key){
-					case "&":
+					case "(":
 						this.money.addMoney(1);
 						break;	
-					case "%":
+					case ")":
 						this.money.removeMoney(1);
+						break;
+					case "{":
+						this.money.addMoney(100);
+						break;
+					case "}":
+						this.money.removeMoney(100);
 						break;
 				}	
 				this.showDebug(ctx);	
