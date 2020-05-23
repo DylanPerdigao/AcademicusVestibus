@@ -78,6 +78,7 @@
 			{"type":"Structure","src":"../../textures/structures/box2.png","posX":-805,"posY":-190,"img":{},"speed":5,"initialX":-805,"initialY":-190,"hitboxWidth":null,"hitboxHeight":5},
 			{"type":"Teleporter","src":null,"posX":-475,"posY":-540,"speed":5,"initialX":-475,"initialY":-540,"hitboxWidth":32,"hitboxHeight":30,"hitboxColor":"orange","location":2,"localX":-1300,"localY":-275,"direction":"left"},
 			{"type":"Bus","src":null,"posX":-552,"posY":-185,"speed":5,"initialX":-552,"initialY":-185,"hitboxWidth":43,"hitboxHeight":25,"hitboxColor":"orange","location":0,"localX":-405,"localY":-70,"direction":"up"},
+			{"type":"MiniGameTrigger","src":null,"posX":-624,"posY":-148,"speed":5,"initialX":-624,"initialY":-148,"hitboxWidth":25,"hitboxHeight":20,"hitboxColor":"blue","miniGameSrc":"../game/shop.html"},
 			{"type":"Person","src":"../../textures/people/female3_0.png","posX":-600,"posY":-178,"img":{},"speed":5,"initialX":-600,"initialY":-178,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":0},
 			{"type":"Person","src":"../../textures/people/male1_3.png","posX":-600,"posY":-153,"img":{},"speed":5,"initialX":-600,"initialY":-153,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":1},
 			{"type":"Person","src":"../../textures/people/male1_2.png","posX":-775,"posY":-183,"img":{},"speed":5,"initialX":-775,"initialY":-183,"hitboxWidth":null,"hitboxHeight":5,"hitboxColor":"white","textID":2},
