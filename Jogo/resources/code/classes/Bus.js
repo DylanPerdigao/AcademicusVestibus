@@ -23,7 +23,7 @@ class Bus extends Teleporter {
 	 * @param {String} direction directions the player's facing
 	 * @param {Number} numCollisions numbers of collisions the player has
 	 */
-    action(ctx,game,direction,map,numCollisions) {
+    action(ctx,game,direction,_,numCollisions) {
 		var dialog = game.dialog;
 		var money = game.money;
 		if(numCollisions<=1){

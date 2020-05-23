@@ -25,7 +25,7 @@ class Game {
 		this.canInteract=false;
 		this.isShowingMap=false;
 		this.isAnimated=false;
-		this.isDebugging=false;
+		this.isDebugging=true;
 		this.isPaused=false;
 		this.yDebug = 0;
 		this.yDebug = 0;
@@ -98,7 +98,7 @@ class Game {
 						this.money.removeMoney(1);
 						break;
 				}	
-				showDebug(ctx);	
+				this.showDebug(ctx);	
 			}
 		}
 	}
