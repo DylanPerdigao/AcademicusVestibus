@@ -97,6 +97,12 @@ class Game {
 					case "%":
 						this.money.addMoney(-1, ctx);
 						break;
+					case "{":
+						this.money.addMoney(100);
+						break;
+					case "}":
+						this.money.removeMoney(100);
+						break;
 				}	
 				this.showDebug(ctx);	
 			}
@@ -161,6 +167,8 @@ class Game {
 		saveBtn.onclick = function(e){game.save()};
 		var returnBtn = document.getElementById("returnGame");
 		returnBtn.onclick = function(e){game.unpause()};
+		var quitBtn = document.getElementById("quitGame");
+		quitBtn.onclick = function(e){top.window.postMessage(e.currentTarget.id, "*");};
 	}
 	/**
 	 * Save the game

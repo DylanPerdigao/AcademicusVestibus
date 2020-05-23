@@ -90,6 +90,7 @@ function nameValidation(){
 	var regExp = /^[àâæáäãåāéèêëęėēîïìíįīôœöòóõøōûùüúūÿçćčñń\-a-z]{2,10}$/ig;
 	if (regExp.test(name)){
 		document.getElementById("create").disabled = false;
+		name = name.charAt(0).toUpperCase() + name.slice(1);
 		window.localStorage.setItem("name",name);
 	}else{
 		document.getElementById("create").disabled = true;
