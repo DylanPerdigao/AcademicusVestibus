@@ -32,7 +32,7 @@ class MiniGameTrigger extends Trigger {
 
 		function iframeHandler(ev){
 			let frm = ev.target;
-			frm.contentWindow.postMessage(String(game.money.getMoney()), "*");
+			frm.contentWindow.postMessage(String([game.money.getMoney(),game.player.getTraje() === true ? 1 : 0]), "*");
 			frm.removeEventListener("load", iframeHandler);
 		}
 	}

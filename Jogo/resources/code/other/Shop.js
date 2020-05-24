@@ -7,22 +7,26 @@ function main() {
 
     function msgHandler(ev) {
         var args=messageHandler(ev);
-        new Shop(args[0], args[1]);
+        new Shop(args[0], args[1], args[2]);
     }
     function messageHandler(ev){
-        var coins = parseInt(ev.data);
+        console.log(ev.data);
+        var [coins, hasTraje] = ev.data.split(',');
+        console.log(hasTraje);
         
-        return [ev.source,coins];
+        return [ev.source,parseInt(coins), hasTraje === '1'];
     }
     //listener
     window.addEventListener("message",msgHandler);
 }
 
 class Shop {
-    constructor(mainWindow, coins) {
+    constructor(mainWindow, coins, hasTraje) {
         this.mainWindow = mainWindow;
 		this.spent=0;
-		
+        
+        console.log(hasTraje);
+        this.hasTraje=hasTraje;
         this.coins=coins;
         this.init();
 
