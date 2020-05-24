@@ -32,7 +32,7 @@ class MiniGameTrigger extends Trigger {
 				game.player.trajar(ctx);
 				game.loadingAnimation(ctx,"down",game.map);
 				game.save();
-				game.window.postMessage("credits",'*');
+				top.window.postMessage("credits",'*');
 			}
 			window.removeEventListener("message", messageHandler);
 		}
