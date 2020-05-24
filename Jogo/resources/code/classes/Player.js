@@ -140,5 +140,9 @@ class Player{
 		this.sprite=this.sprites[1];
 		this.draw(ctx);
 	}
+
+	getTraje(){
+		return this.hasTraje;
+	}
 }
 
