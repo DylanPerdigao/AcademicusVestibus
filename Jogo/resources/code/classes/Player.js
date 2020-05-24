@@ -7,14 +7,16 @@ class Player{
 			this.hitboxHeight=obj.hitboxHeight;
 			this.posX=obj.posX;
 			this.posY=obj.posY;
+			this.hasTraje=obj.hasTraje;
+
 		}else{
 			this.src=src;
 			this.name=name;
 			this.hitboxHeight=hitboxHeight;
+			this.hasTraje=hasTraje;
 			
 		}
 
-		this.hasTraje=hasTraje;
 
 		this.step=0;
 		this.orientation="down";
