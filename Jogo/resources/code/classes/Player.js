@@ -1,5 +1,5 @@
 class Player{
-	constructor(src,name,x,y,hitboxHeight){
+	constructor(src,name,x,y,hitboxHeight, hasTraje){
 		if (arguments.length==1){
 			var obj=src;
 			this.src=obj.src;
@@ -11,24 +11,44 @@ class Player{
 			this.src=src;
 			this.name=name;
 			this.hitboxHeight=hitboxHeight;
+			
 		}
+
+		this.hasTraje=hasTraje;
+
 		this.step=0;
 		this.orientation="down";
+
+
 		//load das imagens todas
-		this.sprite=new Array() 
+		this.sprites=new Array(new Array(16), new Array(16))	//[0] - normal	[1] - trajado
+		this.sprite= this.sprites[0];
+
 		var player = this;
+		
+		this.loaded=0;
+
 		var imgHandler = function(event){
-			var c = document.getElementById("canvas");
-			var ctx = c.getContext("2d");
-			for(let i=0;i<player.sprite.length;i++){
-				ctx.drawImage(player.sprite[i],0,0);
+			
+			if (++player.loaded== 32){
+				if (player.hasTraje){
+					player.sprite=player.sprites[1];
+				}
+				else{
+					player.sprite=player.sprites[0];
+				}
+
 			}
 		}
-		for(let i=0;i<16;i++){
-			this.sprite.push(new Image())
-			this.sprite[i].src = this.src + i + ".png";
-			this.sprite[i].addEventListener("load", imgHandler);
+		
+		for (let j = 0; j<2; j++){
+			for(let i=0;i<16;i++){
+				this.sprites[j][i] = new Image();
+				this.sprites[j][i].src = this.src +"_traje".repeat(j)+"/player_male" + i + ".png";
+				this.sprites[j][i].addEventListener("load", imgHandler);
+			}
 		}
+
 		//ajuste da posiçao final
 		if(arguments.length>1){
 			this.setPosition(x,y);
@@ -111,6 +131,11 @@ class Player{
 	 */
 	getDimensions(){
 		return ([this.posX+2,this.posY+this.sprite[0].height-this.hitboxHeight,this.sprite[0].width-4,this.hitboxHeight]);
+	}
+
+	trajar(){
+		this.hasTraje=true;
+		this.sprite=this.sprites[1]
 	}
 }
 
