@@ -25,7 +25,7 @@ class Game {
 		this.canInteract=false;
 		this.isShowingMap=false;
 		this.isAnimated=false;
-		this.isDebugging=true;
+		this.isDebugging=false;
 		this.isPaused=false;
 		this.yDebug = 0;
 		this.yDebug = 0;
