@@ -58,7 +58,7 @@ class Person extends Trigger {
 		var name = game.player.name;
 		var money = game.money;
 		var n = this.speak(ctx,dialog,name,money);
-		money.addMoney(n, ctx);
+		money.updateMoney(n, ctx);
 	}
 }
 

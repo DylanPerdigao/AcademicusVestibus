@@ -31,7 +31,7 @@ class Money extends Component {
 	 * @param {Number} n 
 	 * @returns the value after adicioned
 	 */
-    addMoney(n, ctx) {
+    updateMoney(n, ctx) {
 		this.value+=n;
 		this.draw(ctx);
         return this.value;

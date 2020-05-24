@@ -22,7 +22,7 @@ class MiniGameTrigger extends Trigger {
 
 
 		function messageHandler(ev){
-			game.money.addMoney(parseInt(ev.data), ctx);
+			game.money.updateMoney(parseInt(ev.data), ctx);
 			frm.style.display = "none";
 			document.getElementById("game").style.display = "block";
 			
