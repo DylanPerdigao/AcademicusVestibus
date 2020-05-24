@@ -207,5 +207,12 @@
 			[" piece(s)"],
 			["Press 'Enter' to return"]
 		]
+	},
+	"shop":{
+		"title":"SHOP",
+		"price":"PRICE: 400 coins",
+		"money":["YOU HAVE: "," coins"],
+		"return":"RETURN",
+		"buy":"BUY"
 	}
 }
