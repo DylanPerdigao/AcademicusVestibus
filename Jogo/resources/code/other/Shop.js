@@ -39,15 +39,16 @@ class Shop {
 		var labelMoney = document.getElementById("money");
 		labelMoney.innerHTML = lang.shop.money[0] + this.coins + lang.shop.money[1];
         var buttons = document.getElementsByTagName("button");
-        var buttonBuy = null; 
+        this.buttonBuy = null; 
         this.score= document.getElementById("score");
         var me = this;
         var btnHandler = function(ev){
             if (ev.target.id == "buy"){
-				me.coins -= 400;
+                me.coins -= 400;
+                me.hasTraje=true;
 				labelMoney.textContent = lang.shop.money[0] + me.coins + lang.shop.money[1];
                 me.spent-=400;
-                me.verifyBuy(buttonBuy);
+                me.verifyBuy();
             }
             else{   //back
                 me.exit();
@@ -57,9 +58,9 @@ class Shop {
         for(let i=0;i<buttons.length;i++){
             switch(buttons[i].id){
 				case "buy":
-                	buttonBuy = buttons[i];
-					buttonBuy.innerHTML = lang.shop.buy;
-					this.verifyBuy(buttonBuy);
+                	this.buttonBuy = buttons[i];
+					this.buttonBuy.innerHTML = lang.shop.buy;
+					this.verifyBuy();
 					break;
 				case "return":
 					buttons[i].innerHTML = lang.shop.return;
@@ -71,9 +72,12 @@ class Shop {
 
     }
 
-    verifyBuy(button){
+    verifyBuy(){
         if (this.coins<400){
-            button.disabled = true;
+            this.buttonBuy.disabled = true;
+        }
+        if (this.hasTraje){
+            this.buttonBuy.style.display = "none";
         }
     }
 
