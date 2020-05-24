@@ -26,6 +26,9 @@ class MiniGameTrigger extends Trigger {
 			game.money.updateMoney(parseInt(ev.data), ctx);
 			if (ev.data=="-400"){
 				game.player.trajar(ctx);
+				game.loadingAnimation(ctx,"down",game.map);
+				game.save();
+				game.window.postMessage("credits",'*');
 			}
 			window.removeEventListener("message", messageHandler);
 		}
