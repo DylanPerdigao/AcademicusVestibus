@@ -360,6 +360,7 @@ class Game {
 	loadMap(ctx,direction){
 		this.move(ctx,direction);
 		this.isAnimated=false;
+		this.money.draw(ctx);
 		this.window.addEventListener("keydown",this.kHandler);
 	}
 }
