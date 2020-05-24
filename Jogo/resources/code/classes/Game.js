@@ -355,8 +355,8 @@ class Game {
 	 * @param {String} direction direction where the player is facing
 	 */	
 	loadMap(ctx,direction){
-		this.move(ctx,this.invertDirection(direction));
-		this.move(ctx,direction);
+		this.player.orientation=direction;
+		this.draw(ctx);
 		this.isAnimated=false;
 		this.money.draw(ctx);
 		this.window.addEventListener("keydown",this.kHandler);
