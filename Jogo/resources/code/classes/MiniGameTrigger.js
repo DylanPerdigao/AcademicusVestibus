@@ -14,7 +14,7 @@ class MiniGameTrigger extends Trigger {
 	interaction(ctx,game){
 
 		document.getElementById("game").style.display = "none";
-		var frm = document.getElementsByTagName("iframe")[0];
+		var frm = document.getElementById("minigame");
 		frm.src = this.miniGameSrc;
 		frm.addEventListener("load", iframeHandler);
 		frm.style.display = "block";
@@ -22,7 +22,11 @@ class MiniGameTrigger extends Trigger {
 
 		function messageHandler(ev){
 			frm.style.display = "none";
-			document.getElementById("game").style.display = "block";
+			var gameSection = document.getElementById("game");
+			gameSection.style.display = "block";
+			var z = top.window.document.getElementById("mainFrame");
+			z.focus();
+			var x = document.activeElement.tagName;
 			game.money.updateMoney(parseInt(ev.data), ctx);
 			if (ev.data=="-400"){
 				game.player.trajar(ctx);
@@ -31,7 +35,7 @@ class MiniGameTrigger extends Trigger {
 		}
 
 		function iframeHandler(ev){
-			let frm = ev.target;
+			var frm = ev.target;
 			frm.contentWindow.postMessage(String(game.money.getMoney()), "*");
 			frm.removeEventListener("load", iframeHandler);
 		}
