@@ -30,7 +30,7 @@ class Game {
 		this.yDebug = 0;
 		this.yDebug = 0;
 		this.window = window;
-		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
+		this.loadingAnimation(ctx,"down"); // ativa também o listener das teclas
 		//LISTENER
 		var game=this;
 		this.kHandler = function(event){
