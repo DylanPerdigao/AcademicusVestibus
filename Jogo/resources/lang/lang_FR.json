@@ -207,5 +207,12 @@
 			[" pièce(s)"],
 			["Appuyez 'Enter' pour sortir"]
 		]
+	},
+	"shop":{
+		"title":"MAGASIN",
+		"price":"PRIX: 400 pièces",
+		"money":["VOUS AVEZ: "," pièces"],
+		"return":"RETOUR",
+		"buy":"ACHETER"
 	}
 }

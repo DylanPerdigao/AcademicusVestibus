@@ -207,5 +207,12 @@
 			[" moeda(s)"],
 			["Pressione 'Enter' para voltar"]
 		]
+	},
+	"shop":{
+		"title":"LOJA",
+		"price":"PREÇO: 400 moedas",
+		"money":["VOCÊ TEM: "," moedas"],
+		"return":"VOLTAR",
+		"buy":"COMPRAR"
 	}
 }
