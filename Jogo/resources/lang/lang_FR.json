@@ -54,7 +54,8 @@
 	"informations":[
 		["PARLER"],
 		["PRENDRE","LE BUS"],
-		["ARGENT","INSUFISANT"]
+		["ARGENT","INSUFISANT"],
+		["ENTRER"]
 	],
 	"people":[
 		["Pour rentrer à la maison, prends le bus"],

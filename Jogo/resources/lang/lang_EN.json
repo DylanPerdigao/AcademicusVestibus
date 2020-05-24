@@ -54,7 +54,8 @@
 	"informations":[
 		["SPEAK"],
 		["CATCH THE","BUS"],
-		["INSUFFICIENT","MONEY"]
+		["INSUFFICIENT","MONEY"],
+		["ENTER"]
 	],
 	"people":[
 		["To go home, take the bus"],

@@ -48,9 +48,7 @@ class MiniGameTrigger extends Trigger {
 
 	inform(ctx,dialog){
 		var lang = JSON.parse(window.localStorage.getItem("lang"));
-		
-		//TODO: Mudar fala conforme linguagem
-		dialog.writeInfo(ctx,lang.informations[2]);
+		dialog.writeInfo(ctx,lang.informations[3]);
 		
 	}
 }

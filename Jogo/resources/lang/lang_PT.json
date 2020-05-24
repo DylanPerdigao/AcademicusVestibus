@@ -54,7 +54,8 @@
 	"informations":[
 		["FALAR"],
 		["APANHAR","AUTOCARRO"],
-		["DINHEIRO","INSUFICIENTE"]
+		["DINHEIRO","INSUFICIENTE"],
+		["ENTRAR"]
 	],
 	"people":[
 		["Para voltares a casa apanha o autocarro"],
