@@ -42,7 +42,7 @@ class Bus extends Teleporter {
 		var money = game.money;
 		var dialog = game.dialog;
 		if(money.value>=BUS_COST){
-			money.addMoney(BUS_COST, ctx);
+			money.addMoney(-BUS_COST, ctx);
 			this.teleport(ctx,game,game.mapList[this.location]);
 		}else{
 			this.inform(ctx,dialog,money);
