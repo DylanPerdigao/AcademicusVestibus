@@ -26,7 +26,7 @@ class MiniGameTrigger extends Trigger {
 			document.getElementById("game").style.display = "block";
 			game.money.updateMoney(parseInt(ev.data), ctx);
 			if (ev.data=="-400"){
-				game.player.trajar();
+				game.player.trajar(ctx);
 			}
 			window.removeEventListener("message", messageHandler);
 		}

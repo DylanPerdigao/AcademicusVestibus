@@ -10,9 +10,7 @@ function main() {
         new Shop(args[0], args[1]);
     }
     function messageHandler(ev){
-        console.log(ev.data)
         var coins = parseInt(ev.data);
-        console.log(coins)
         
         return [ev.source,coins];
     }
@@ -43,7 +41,7 @@ class Shop {
         var btnHandler = function(ev){
             if (ev.target.id == "buy"){
 				me.coins -= 400;
-				labelMoney.textContent = lang.shop.money[0] + this.coins + lang.shop.money[1];
+				labelMoney.textContent = lang.shop.money[0] + me.coins + lang.shop.money[1];
                 me.spent-=400;
                 me.verifyBuy(buttonBuy);
             }
