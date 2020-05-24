@@ -30,7 +30,7 @@ class Game {
 		this.yDebug = 0;
 		this.yDebug = 0;
 		this.window = window;
-		this.loadingAnimation(ctx,"down",null); // ativa também o listener das teclas
+		this.loadingAnimation(ctx,"down"); // ativa também o listener das teclas
 		//LISTENER
 		var game=this;
 		this.kHandler = function(event){
@@ -355,6 +355,7 @@ class Game {
 	 * @param {String} direction direction where the player is facing
 	 */	
 	loadMap(ctx,direction){
+		this.move(ctx,this.invertDirection(direction));
 		this.move(ctx,direction);
 		this.isAnimated=false;
 		this.money.draw(ctx);
