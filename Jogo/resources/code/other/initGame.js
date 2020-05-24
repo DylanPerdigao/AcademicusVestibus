@@ -27,7 +27,7 @@ function main(){
 		var mapUniversity = new Map(maps.UNIVERSITY);
 		var name = window.localStorage.getItem("name");
 		game = new Game(ctx,null,
-			new Player("../../textures/player/male/player_male",name,canvas.width/2,canvas.height/2,5),
+			new Player("../../textures/player/male",name,canvas.width/2,canvas.height/2,5,false),
 			new Array(mapHome,mapPlace,mapUniversity),
 			new Money("../../textures/gui/labelMoney.svg",ctx.canvas.width-50,10,45,17,10,false),
 			new MiniMap("../../textures/map/map.png",0,0),
