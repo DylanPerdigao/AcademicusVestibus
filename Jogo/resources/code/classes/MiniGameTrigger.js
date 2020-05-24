@@ -20,7 +20,6 @@ class MiniGameTrigger extends Trigger {
 		frm.style.display = "block";
 		window.addEventListener("message", messageHandler);
 
-
 		function messageHandler(ev){
 			frm.style.display = "none";
 			document.getElementById("game").style.display = "block";
