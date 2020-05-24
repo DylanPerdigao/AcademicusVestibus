@@ -133,9 +133,10 @@ class Player{
 		return ([this.posX+2,this.posY+this.sprite[0].height-this.hitboxHeight,this.sprite[0].width-4,this.hitboxHeight]);
 	}
 
-	trajar(){
+	trajar(ctx){
 		this.hasTraje=true;
-		this.sprite=this.sprites[1]
+		this.sprite=this.sprites[1];
+		this.draw(ctx);
 	}
 }
 

@@ -104,7 +104,7 @@ class Game {
 						this.money.updateMoney(-100, ctx);
 						break;
 					case "t":
-						this.player.trajar();
+						this.player.trajar(ctx);
 						break;
 				}	
 				this.showDebug(ctx);	
