@@ -25,7 +25,6 @@ class MiniGameTrigger extends Trigger {
 			game.money.updateMoney(parseInt(ev.data), ctx);
 			frm.style.display = "none";
 			document.getElementById("game").style.display = "block";
-			
 			window.removeEventListener("message", messageHandler);
 		}
 
