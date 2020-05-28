@@ -6,10 +6,6 @@ class MiniGameTrigger extends Trigger {
 		
 		this.hitboxColor = "blue";
 	}
-	
-    action(ctx) {
-		ctx.clearRect(0,0,ctx.canvas.width,ctx,canvas.height);
-	}
 
 	interaction(ctx,game){
 
