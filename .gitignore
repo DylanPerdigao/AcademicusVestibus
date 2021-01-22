@@ -4,6 +4,7 @@
 *.idea
 Icon
 Icon?
+RandomUsefulStuff/*
 Jogo/debug.log
 Jogo/resources/html/debug.log
 Jogo/resources/code/classes/Snake/debug.log
